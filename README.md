@@ -63,8 +63,8 @@ This project is under development so we encourage you to follow:
 ## Table of contents
 
 1. *Screaming architecture*
-   1. [How to use .net projects to reflect architectural boundaries](./Projects.md)
-   2. [How to use *namespaces* to reflect *Ubiquitous Language*](./Namespaces.md)
+   1. [How to use .net projects to reflect architectural boundaries](./Projects-and-Namespaces.md)
+   2. [How to use *namespaces* to reflect *Ubiquitous Language*](./Projects-and-Namespaces.md)
 2. *Hexagonal Architecture* - *coming soon*
 3. *DDD Building Blocks* - *coming soon*
 4. Testing domain model - *coming soon*
