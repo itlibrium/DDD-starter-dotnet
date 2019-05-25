@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <AssemblyName>MyCompany.Crm.Startup</AssemblyName>
+        <RootNamespace>MyCompany.Crm</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />      
+      <ProjectReference Include="..\Sales\Sales.Adapters.RestApi\Sales.Adapters.RestApi.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
+      <ProjectReference Include="..\Sales\Sales.App\Sales.App.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Domain\Sales.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
