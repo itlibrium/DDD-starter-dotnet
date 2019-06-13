@@ -4,10 +4,15 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.App</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Wholesale" />
     </ItemGroup>
 
 </Project>

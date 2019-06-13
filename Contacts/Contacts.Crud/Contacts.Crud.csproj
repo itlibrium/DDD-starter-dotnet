@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Contacts.Crud</AssemblyName>
         <RootNamespace>MyCompany.Crm.Contacts</RootNamespace>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

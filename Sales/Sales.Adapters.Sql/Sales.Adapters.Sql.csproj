@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.Adapters.Sql</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
