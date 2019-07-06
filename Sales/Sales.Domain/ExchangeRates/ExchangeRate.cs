@@ -1,34 +1,37 @@
 using System;
 using System.Globalization;
 using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.ExchangeRates
 {
-    public struct ExchangeRate : IEquatable<ExchangeRate>
+    public struct ExchangeRate : PriceModifier, IEquatable<ExchangeRate>
     {
-        public Currency To { get; }
+        public Currency Currency { get; }
         public decimal Value { get; }
         
-        public ExchangeRate Of(Currency to, decimal value) => new ExchangeRate(to, value);
+        public ExchangeRate Of(Currency toCurrency, decimal value) => new ExchangeRate(toCurrency, value);
         
-        private ExchangeRate(Currency to, decimal value)
+        private ExchangeRate(Currency currency, decimal value)
         {
-            To = to;
+            Currency = currency;
             Value = value;
         }
         
-        public static Money operator *(Money money, ExchangeRate exchangeRate)
+        public Money ApplyOn(Money price)
         {
-            if (money.Currency != Currency.PLN) throw new DomainException();
-            return Money.Of(money.Value * exchangeRate.Value, exchangeRate.To);
+            if (price.Currency != Currency.PLN) throw new DomainException();
+            return Money.Of(price.Value * Value, Currency);
         }
 
-        public bool Equals(ExchangeRate other) => (To, Value).Equals((other.To, other.Value));
-        public override bool Equals(object obj) => obj is ExchangeRate other && Equals(other);
-        public override int GetHashCode() => (To, Value).GetHashCode();
+        public static Money operator *(Money money, ExchangeRate exchangeRate) => exchangeRate.ApplyOn(money);
 
-        public override string ToString() 
-            => $"{Value.ToString(CultureInfo.InvariantCulture)} {To.GetEnumName()}/{Currency.PLN.GetEnumName()}";
+        public bool Equals(ExchangeRate other) => (To: Currency, Value).Equals((other.Currency, other.Value));
+        public override bool Equals(object obj) => obj is ExchangeRate other && Equals(other);
+        public override int GetHashCode() => (To: Currency, Value).GetHashCode();
+
+        public override string ToString() => 
+            $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.GetEnumName()}/{Currency.PLN.GetEnumName()}";
     }
 }

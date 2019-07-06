@@ -43,8 +43,7 @@ namespace MyCompany.Crm.Sales.Commons
             return Percentage.Of((int) Math.Round(x.Value / y.Value, 0));
         }
         
-        private static Money Calculate(Money x, Percentage y, Func<decimal, decimal, decimal> calculate) => 
-            new Money(calculate(x.Value, y.Fraction), x.Currency);
+        public static Money Max(Money x, Money y) => x > y ? x : y;
 
         public static bool operator ==(Money x, Money y) => x.Equals(y);
         public static bool operator !=(Money x, Money y) => !x.Equals(y);

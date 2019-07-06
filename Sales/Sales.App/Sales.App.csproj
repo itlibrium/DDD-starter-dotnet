@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Wholesale" />
+      <PackageReference Include="TaskTupleAwaiter" Version="1.2.0" />
     </ItemGroup>
 
 </Project>

@@ -3,35 +3,34 @@ using MyCompany.Crm.Sales.Commons;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
-    public readonly struct Discount : IEquatable<Discount>
+    public readonly struct Discount : PriceModifier, IEquatable<Discount>
     {
-        private readonly Percentage _percentage;
-        private readonly Money _value;
         private readonly bool _isPercentage;
-        
-        public static Discount Of(Percentage value) => 
-            new Discount(value, default, true);
-        
-        public static Discount Of(Money value) => 
-            new Discount(default, value, false);
+        private readonly PercentageDiscount _percentageDiscount;
+        private readonly ValueDiscount _valueDiscount;
 
-        private Discount(Percentage percentage, Money value, bool isPercentage)
+        public static Discount Percentage(Percentage value) =>
+            new Discount(true, PercentageDiscount.Of(value), default);
+        
+        public static Discount Value(Money value) =>
+            new Discount(true, default, ValueDiscount.Of(value));
+
+        private Discount(bool isPercentage, PercentageDiscount percentageDiscount, ValueDiscount valueDiscount)
         {
-            _percentage = percentage;
-            _value = value;
             _isPercentage = isPercentage;
+            _percentageDiscount = percentageDiscount;
+            _valueDiscount = valueDiscount;
         }
 
         public Money ApplyOn(Money price) => _isPercentage
-            ? price * (Percentage.Of100 - _percentage)
-            : price - _value;
+            ? _percentageDiscount.ApplyOn(price)
+            : _valueDiscount.ApplyOn(price);
 
-        public bool Equals(Discount other) => (_percentage, _value, IsPercentage: _isPercentage)
-            .Equals((other._percentage, other._value, other._isPercentage));
+        public bool Equals(Discount other) => (_isPercentage, _percentageDiscount, _valueDiscount)
+            .Equals((other._isPercentage, other._percentageDiscount, other._valueDiscount));
         public override bool Equals(object obj) => obj is Discount other && Equals(other);
-        public override int GetHashCode() => (_percentage, _value, IsPercentage: _isPercentage).GetHashCode();
+        public override int GetHashCode() => (_isPercentage, _percentageDiscount, _valueDiscount).GetHashCode();
 
-        public override string ToString() => 
-            $"Discount of {(_isPercentage ? _percentage.ToString() : _value.ToString())}";
+        public override string ToString() => _isPercentage ? _percentageDiscount.ToString() : _valueDiscount.ToString();
     }
 }

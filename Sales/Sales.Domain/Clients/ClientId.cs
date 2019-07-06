@@ -7,13 +7,13 @@ namespace MyCompany.Crm.Sales.Clients
         public Guid Value { get; }
 
         public static ClientId New() => new ClientId(Guid.NewGuid());
-        public static ClientId For(Guid value) => new ClientId(value);
+        public static ClientId From(Guid value) => new ClientId(value);
         private ClientId(Guid value) => Value = value;
 
         public bool Equals(ClientId other) => Value.Equals(other.Value);
         public override bool Equals(object obj) => obj is ClientId other && Equals(other);
         public override int GetHashCode() => Value.GetHashCode();
 
-        public override string ToString() => $"ClientId {Value.ToString()}";
+        public override string ToString() => $"Client: {Value.ToString()}";
     }
 }

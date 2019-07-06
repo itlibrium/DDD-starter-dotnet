@@ -20,13 +20,12 @@ namespace MyCompany.Crm.Sales.Products
             Unit = unit;
         }
         
-        public IEnumerable<ProductAmount> ToEnumerable() => new[] {this};
-
         public override bool Equals(object obj) => obj is ProductAmount other && Equals(other);
         public bool Equals(ProductAmount other) =>
             (ProductId, Value, Unit).Equals((other.ProductId, other.Value, other.Unit));
         public override int GetHashCode() => (ProductId.Value, Value, Unit).GetHashCode();
 
-        public override string ToString() => $"Product: {ProductId.ToString()} {Value.ToString()} {Unit.GetEnumName()}";
+        public override string ToString() => 
+            $"Product: {ProductId.ToString()} - {Value.ToString()} {Unit.GetEnumName()}";
     }
 }

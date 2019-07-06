@@ -1,6 +1,5 @@
 using System;
 using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.ExchangeRates;
 using MyCompany.Crm.Sales.Products;
 
 namespace MyCompany.Crm.Sales.Pricing
@@ -18,14 +17,14 @@ namespace MyCompany.Crm.Sales.Pricing
             Price = price;
         }
         
-        public Quote ChangePrice(Money newPrice) => new Quote(ProductAmount, newPrice);
-        
-        public Quote ChangeCurrency(in ExchangeRate exchangeRate) => ChangePrice(Price * exchangeRate);
+        internal Quote Apply<TPriceModifier>(TPriceModifier priceModifier) 
+            where TPriceModifier : struct, PriceModifier
+            => new Quote(ProductAmount, priceModifier.ApplyOn(Price));
 
-        public bool Equals(Quote other) => (Amount: ProductAmount, Price).Equals((other.ProductAmount, other.Price));
+        public bool Equals(Quote other) => (ProductAmount, Price).Equals((other.ProductAmount, other.Price));
         public override bool Equals(object obj) => obj is Quote other && Equals(other);
-        public override int GetHashCode() => (Amount: ProductAmount, Price).GetHashCode();
+        public override int GetHashCode() => (ProductAmount, Price).GetHashCode();
 
-        public override string ToString() => $"{ProductAmount.ToString()} for {Price.ToString()}";
+        public override string ToString() => $"{ProductAmount.ToString()} - {Price.ToString()}";
     }
 }

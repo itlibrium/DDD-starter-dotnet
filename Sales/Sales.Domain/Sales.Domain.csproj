@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+      <PackageReference Include="TaskTupleAwaiter" Version="1.2.0" />
     </ItemGroup>
 
 </Project>
