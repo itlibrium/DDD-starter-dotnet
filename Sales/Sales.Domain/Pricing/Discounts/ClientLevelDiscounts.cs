@@ -20,7 +20,7 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
 
         public Offer ApplyOn(Offer offer) => Offer.FromQuotes(offer.Quotes.Select(RecalculateQuote));
 
-        private Quote RecalculateQuote(Quote quote)
+        internal Quote RecalculateQuote(Quote quote)
         {
             var productAmount = quote.ProductAmount;
             return _productDiscounts.TryGetValue((productAmount.ProductId, productAmount.Unit), out var discount)

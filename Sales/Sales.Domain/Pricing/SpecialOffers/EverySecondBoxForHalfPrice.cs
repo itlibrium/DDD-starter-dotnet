@@ -1,13 +1,18 @@
-using System;
-
 namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
 {
-    public class EverySecondBoxForHalfPrice : OfferModifier
+    public class EverySecondBoxForHalfPrice : SpecialOffer
     {
-        public Offer ApplyOn(Offer offer)
+        public static EverySecondBoxForHalfPrice Or(OfferModifier fallbackModifier) => 
+            new EverySecondBoxForHalfPrice(fallbackModifier);
+
+        private EverySecondBoxForHalfPrice(OfferModifier fallbackModifier) : base(fallbackModifier)
         {
-            // more coming soon
-            throw new NotImplementedException();
+        }
+
+        public override Offer ApplyOn(Offer offer)
+        {
+            // implementation coming soon
+            return base.ApplyOn(offer);
         }
     }
 }

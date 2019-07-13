@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Products

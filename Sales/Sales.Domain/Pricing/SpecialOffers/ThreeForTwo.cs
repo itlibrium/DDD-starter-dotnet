@@ -1,13 +1,17 @@
-using System;
-
 namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
 {
-    public class ThreeForTwo : OfferModifier
+    public class ThreeForTwo : SpecialOffer
     {
-        public Offer ApplyOn(Offer offer)
+        public static ThreeForTwo Or(OfferModifier fallbackModifier) => new ThreeForTwo(fallbackModifier);
+
+        private ThreeForTwo(OfferModifier fallbackModifier) : base(fallbackModifier)
         {
-            // more coming soon
-            throw new NotImplementedException();
+        }
+
+        public override Offer ApplyOn(Offer offer)
+        {
+            // implementation coming soon
+            return base.ApplyOn(offer);
         }
     }
 }
