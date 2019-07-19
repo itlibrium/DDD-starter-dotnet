@@ -26,6 +26,6 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
         public override int GetHashCode() => (ProductId, AmountUnit, Discount).GetHashCode();
 
         public override string ToString() =>
-            $"{Discount.ToString()} for {AmountUnit.GetEnumName()} of {ProductId.ToString()}";
+            $"{Discount.ToString()} for {AmountUnit.ToCode()} of {ProductId.ToString()}";
     }
 }

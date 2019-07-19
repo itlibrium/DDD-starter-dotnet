@@ -25,6 +25,6 @@ namespace MyCompany.Crm.Sales.Products
         public override int GetHashCode() => (ProductId.Value, Value, Unit).GetHashCode();
 
         public override string ToString() => 
-            $"Product: {ProductId.ToString()} - {Value.ToString()} {Unit.GetEnumName()}";
+            $"Product: {ProductId.ToString()} - {Value.ToString()} {Unit.ToCode()}";
     }
 }

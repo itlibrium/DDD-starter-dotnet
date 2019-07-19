@@ -67,6 +67,6 @@ namespace MyCompany.Crm.Sales.Commons
         public bool Equals(Money other) => (Value, Currency).Equals((other.Value, other.Currency));
         public override int GetHashCode() => (Value, Currency).GetHashCode();
 
-        public override string ToString() => $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.GetEnumName()}";
+        public override string ToString() => $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.ToCode()}";
     }
 }

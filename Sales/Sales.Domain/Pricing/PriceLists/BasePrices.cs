@@ -17,7 +17,7 @@ namespace MyCompany.Crm.Sales.Pricing.PriceLists
 
         public Money GetFor(ProductAmount productAmount) =>
             _prices.TryGetValue((productAmount.ProductId, productAmount.Unit), out var price) 
-                ? price 
+                ? price * productAmount.Value 
                 : throw new DomainException();
     }
 }

@@ -32,6 +32,6 @@ namespace MyCompany.Crm.Sales.ExchangeRates
         public override int GetHashCode() => (To: Currency, Value).GetHashCode();
 
         public override string ToString() => 
-            $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.GetEnumName()}/{Currency.PLN.GetEnumName()}";
+            $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.ToCode()}/{Currency.PLN.ToCode()}";
     }
 }

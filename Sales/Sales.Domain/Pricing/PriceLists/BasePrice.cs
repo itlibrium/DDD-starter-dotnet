@@ -27,6 +27,6 @@ namespace MyCompany.Crm.Sales.Pricing.PriceLists
         public override int GetHashCode() => (ProductId, AmountUnit, Price).GetHashCode();
 
         public override string ToString() =>
-            $"Base price of {ProductId.ToString()} {AmountUnit.GetEnumName()}: {Price.ToString()}";
+            $"Base price of {ProductId.ToString()} {AmountUnit.ToCode()}: {Price.ToString()}";
     }
 }
