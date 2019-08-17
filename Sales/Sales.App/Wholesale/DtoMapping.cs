@@ -18,8 +18,8 @@ namespace MyCompany.Crm.Sales.Wholesale
 
         internal static QuoteDto ToDto(this Quote quote) => new QuoteDto(
             quote.ProductAmount.ProductId.Value,
-            quote.ProductAmount.Value,
-            quote.ProductAmount.Unit.ToCode(),
+            quote.ProductAmount.Amount.Value,
+            quote.ProductAmount.Amount.Unit.ToCode(),
             quote.Price.Value,
             quote.Price.Currency.ToCode()); 
     }

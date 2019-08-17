@@ -23,7 +23,7 @@ namespace MyCompany.Crm.Sales.OnlineSales
         
         public static QuoteDto ToDto(this Quote quote) => new QuoteDto(
             quote.ProductAmount.ProductId.Value,
-            quote.ProductAmount.Value,
+            quote.ProductAmount.Amount.Value,
             quote.Price.Value,
             quote.Price.Currency.ToCode());
     }

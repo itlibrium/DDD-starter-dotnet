@@ -10,39 +10,46 @@ namespace MyCompany.Crm.Sales.Pricing
 {
     public readonly struct Offer : IEquatable<Offer>
     {
+        private readonly ImmutableDictionary<ProductUnit, Quote> _items;
+        
         public Currency Currency { get; }
-        
-        public ImmutableArray<Quote> Quotes { get; }
-        
-        public Money TotalPrice => Quotes
-            .Aggregate(Money.Zero(Currency), (sum, quote) => sum + quote.Price);
-        
-        public ImmutableArray<ProductAmount> ProductAmounts => Quotes
-            .Select(quote => quote.ProductAmount)
-            .ToImmutableArray();
 
-        public static Offer FromQuotes(IEnumerable<Quote> quotes) => new Offer(quotes.ToImmutableArray());
+        public int Count => _items.Count;
         
-        public static Offer WithBasePrices(ImmutableArray<ProductAmount> productAmounts, BasePrices basePrices) => 
-            FromQuotes(productAmounts.Select(productAmount => 
+        public Money TotalPrice => Quotes.Aggregate(Money.Zero(Currency), (sum, current) => sum + current.Price);
+        
+        public IEnumerable<Quote> Quotes => _items.Values;
+        
+        public IEnumerable<ProductAmount> ProductAmounts => _items.Values.Select(quote => quote.ProductAmount);
+        
+        public static Offer FromQuotes(Currency currency, IEnumerable<Quote> quotes) => new Offer(currency, quotes);
+
+        internal static Offer WithBasePrices(Currency currency, ImmutableArray<ProductAmount> productAmounts, 
+            BasePrices basePrices) => 
+            FromQuotes(currency, productAmounts.Select(productAmount => 
                 Quote.For(productAmount, basePrices.GetFor(productAmount))));
 
-        private Offer(ImmutableArray<Quote> quotes)
+        private Offer(Currency currency, IEnumerable<Quote> quotes)
         {
-            if(Quotes.Length == 0) throw new DomainException();
-            var currency = Quotes[0].Price.Currency;
-            foreach (var quote in Quotes)
-                if (quote.Price.Currency != currency) throw new DomainException();
-
+            var items = quotes
+                .GroupBy(quote => quote.ProductAmount.ProductUnit)
+                .Select(grouping => grouping
+                    .Aggregate((sum, current) => sum + current))
+                .ToImmutableDictionary(quote => quote.ProductAmount.ProductUnit);
+            if (items.Count == 0) throw new DomainException();
+            if (items.Values.Any(quote => quote.Price.Currency != currency)) throw new DomainException();
+            _items = items;
             Currency = currency;
-            Quotes = quotes;
         }
 
         internal Offer Apply(OfferModifier offerModifier) => offerModifier.ApplyOn(this);
 
+        internal Offer Apply(QuoteModifier quoteModifier) =>
+            FromQuotes(Currency, Quotes.Select(quote => quote.Apply(quoteModifier)));
+
         internal Offer Apply<TPriceModifier>(TPriceModifier priceModifier)
             where TPriceModifier : struct, PriceModifier
-            => FromQuotes(Quotes.Select(quote => quote.Apply(priceModifier)));
+            => FromQuotes(Currency, Quotes.Select(quote => quote.Apply(priceModifier)));
 
         public bool Compare(Offer other, Percentage accuracy) => TotalPrice / other.TotalPrice > accuracy;
         

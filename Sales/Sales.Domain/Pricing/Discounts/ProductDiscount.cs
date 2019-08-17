@@ -1,31 +1,27 @@
 using System;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
     public readonly struct ProductDiscount : IEquatable<ProductDiscount>
     {
-        public ProductId ProductId { get; }
-        public AmountUnit AmountUnit { get; }
+        public ProductUnit ProductUnit { get; }
         public Discount Discount { get; }
 
-        public static ProductDiscount Of(ProductId productId, AmountUnit amountUnit, Discount discount) =>
-            new ProductDiscount(productId, amountUnit, discount);
+        public static ProductDiscount Of(ProductUnit productUnit, Discount discount) =>
+            new ProductDiscount(productUnit, discount);
         
-        private ProductDiscount(ProductId productId, AmountUnit amountUnit, Discount discount)
+        private ProductDiscount(ProductUnit productUnit, Discount discount)
         {
-            ProductId = productId;
-            AmountUnit = amountUnit;
+            ProductUnit = productUnit;
             Discount = discount;
         }
 
-        public bool Equals(ProductDiscount other) => (ProductId, AmountUnit, Discount)
-            .Equals((other.ProductId, other.AmountUnit, other.Discount));
+        public bool Equals(ProductDiscount other) => (ProductUnit, Discount)
+            .Equals((other.ProductUnit, other.Discount));
         public override bool Equals(object obj) => obj is ProductDiscount other && Equals(other);
-        public override int GetHashCode() => (ProductId, AmountUnit, Discount).GetHashCode();
+        public override int GetHashCode() => (ProductUnit, Discount).GetHashCode();
 
-        public override string ToString() =>
-            $"{Discount.ToString()} for {AmountUnit.ToCode()} of {ProductId.ToString()}";
+        public override string ToString() => $"{Discount.ToString()} for {ProductUnit.ToString()}";
     }
 }

@@ -21,6 +21,10 @@ namespace MyCompany.Crm.Sales.Pricing
             where TPriceModifier : struct, PriceModifier
             => new Quote(ProductAmount, priceModifier.ApplyOn(Price));
 
+        internal Quote Apply(QuoteModifier quoteModifier) => quoteModifier.ApplyOn(this);
+
+        public static Quote operator +(Quote x, Quote y) => For(x.ProductAmount + y.ProductAmount, x.Price + y.Price);
+
         public bool Equals(Quote other) => (ProductAmount, Price).Equals((other.ProductAmount, other.Price));
         public override bool Equals(object obj) => obj is Quote other && Equals(other);
         public override int GetHashCode() => (ProductAmount, Price).GetHashCode();

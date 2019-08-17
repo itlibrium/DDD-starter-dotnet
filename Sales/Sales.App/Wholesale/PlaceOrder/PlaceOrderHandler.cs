@@ -1,17 +1,25 @@
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.Sales.Time;
 
 namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
 {
     public class PlaceOrderHandler
     {
         private readonly OrderRepository _orders;
-        
+        private readonly Clock _clock;
+
+        public PlaceOrderHandler(OrderRepository orders, Clock clock)
+        {
+            _orders = orders;
+            _clock = clock;
+        }
+
         public async Task<OrderPlaced> Handle(PlaceOrderCommand command)
         {
             var orderId = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
-            order.Place();
+            order.Place(_clock.Now);
             await _orders.Save(order);
             return CreateEventFrom(order);
         }

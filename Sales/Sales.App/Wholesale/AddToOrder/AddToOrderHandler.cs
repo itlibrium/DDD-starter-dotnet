@@ -30,7 +30,7 @@ namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
         private static AddedToOrder CreateEventFrom(OrderId orderId, ProductAmount productAmount) => 
             new AddedToOrder(orderId.Value, 
                 productAmount.ProductId.Value, 
-                productAmount.Value, 
-                productAmount.Unit.ToCode());
+                productAmount.Amount.Value, 
+                productAmount.Amount.Unit.ToCode());
     }
 }

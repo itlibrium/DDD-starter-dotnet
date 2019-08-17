@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.Sales.Commons;
@@ -13,7 +13,7 @@ namespace MyCompany.Crm.Sales.Pricing
         public async Task<Quote> For(ClientId clientId, ProductAmount productAmount, Currency currency) => 
             throw new NotImplementedException();
 
-        public async Task<Offer> For(ClientId clientId, ImmutableArray<ProductAmount> productAmounts, Currency currency) 
+        public async Task<Offer> For(ClientId clientId, IEnumerable<ProductAmount> productAmounts, Currency currency) 
             => throw new NotImplementedException();
     }
 }

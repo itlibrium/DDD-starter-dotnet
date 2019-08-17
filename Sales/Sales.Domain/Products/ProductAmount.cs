@@ -1,30 +1,48 @@
 using System;
-using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Products
 {
     public readonly struct ProductAmount : IEquatable<ProductAmount>
     {
         public ProductId ProductId { get; }
-        public int Value { get; }
-        public AmountUnit Unit { get; }
+        public Amount Amount { get; }
+
+        public ProductUnit ProductUnit => ProductUnit.Of(ProductId, Amount.Unit);
 
         public static ProductAmount Of(ProductId productId, int value, AmountUnit unit) =>
-            new ProductAmount(productId, value, unit);
+            new ProductAmount(productId, Amount.Of(value, unit));
         
-        private ProductAmount(ProductId productId, int value, AmountUnit unit)
+        public static ProductAmount Of(ProductId productId, Amount amount) => new ProductAmount(productId, amount);
+        
+        private ProductAmount(ProductId productId, Amount amount)
         {
             ProductId = productId;
-            Value = value;
-            Unit = unit;
+            Amount = amount;
+        }
+
+        public static ProductAmount operator +(ProductAmount x, ProductAmount y)
+        {
+            CheckProductId(x, y);
+            return Of(x.ProductId, x.Amount + y.Amount);
+        }
+        
+        public static ProductAmount operator -(ProductAmount x, ProductAmount y)
+        {
+            CheckProductId(x, y);
+            return Of(x.ProductId, x.Amount - y.Amount);
+        }
+
+        private static void CheckProductId(ProductAmount x, ProductAmount y)
+        {
+            if (!x.ProductId.Equals(y.ProductId)) throw new DomainException();
         }
         
         public override bool Equals(object obj) => obj is ProductAmount other && Equals(other);
         public bool Equals(ProductAmount other) =>
-            (ProductId, Value, Unit).Equals((other.ProductId, other.Value, other.Unit));
-        public override int GetHashCode() => (ProductId.Value, Value, Unit).GetHashCode();
+            (ProductId, Amount).Equals((other.ProductId, other.Amount));
+        public override int GetHashCode() => (ProductId, Amount).GetHashCode();
 
         public override string ToString() => 
-            $"Product: {ProductId.ToString()} - {Value.ToString()} {Unit.ToCode()}";
+            $"Product: {ProductId.ToString()} - {Amount.ToString()}";
     }
 }
