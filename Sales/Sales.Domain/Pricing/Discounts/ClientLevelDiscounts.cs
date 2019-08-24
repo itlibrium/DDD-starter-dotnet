@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using MyCompany.Crm.Sales.Products;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Pricing;
+using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.Sales.Time;
 using MyCompany.Crm.TechnicalStuff;
 
@@ -32,8 +33,9 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             var (orderId, offer) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
             var orderHeader = await _orderHeaders.GetBy(orderId);
-            var currentOffer = await _calculatePrices.For(orderHeader.ClientId, offer.ProductAmounts, offer.Currency);
-            if(!offer.Equals(currentOffer)) throw new DomainException();
+            var currentOffer = await _calculatePrices.For(orderHeader.ClientId, SalesChannel.Wholesales,
+                offer.ProductAmounts, offer.Currency);
+            if (!offer.Equals(currentOffer)) throw new DomainException();
             order.ConfirmPrices(offer, _clock.Now + _offerExpirationTime);
             await _orders.Save(order);
             return CreateEventFrom(orderId, offer);
@@ -43,7 +45,7 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             OrderId.From(command.OrderId),
             Offer.FromQuotes(command.CurrencyCode.ToDomainModel<Currency>(),
                 command.Quotes.Select(quote => quote.ToDomainModel())));
-        
+
         private static OfferConfirmed CreateEventFrom(OrderId orderId, Offer offer) => new OfferConfirmed(
             orderId.Value, offer.Quotes
                 .Select(quote => quote.ToDto())

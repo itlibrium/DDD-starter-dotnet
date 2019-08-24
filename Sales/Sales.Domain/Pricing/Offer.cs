@@ -24,9 +24,8 @@ namespace MyCompany.Crm.Sales.Pricing
         
         public static Offer FromQuotes(Currency currency, IEnumerable<Quote> quotes) => new Offer(currency, quotes);
 
-        internal static Offer WithBasePrices(Currency currency, ImmutableArray<ProductAmount> productAmounts, 
-            BasePrices basePrices) => 
-            FromQuotes(currency, productAmounts.Select(productAmount => 
+        internal static Offer WithBasePrices(ImmutableArray<ProductAmount> productAmounts, BasePrices basePrices) => 
+            FromQuotes(Currency.PLN, productAmounts.Select(productAmount => 
                 Quote.For(productAmount, basePrices.GetFor(productAmount))));
 
         private Offer(Currency currency, IEnumerable<Quote> quotes)

@@ -1,4 +1,3 @@
-using System.Linq;
 using MyCompany.Crm.Sales.Pricing.Discounts;
 
 namespace MyCompany.Crm.Sales.Pricing

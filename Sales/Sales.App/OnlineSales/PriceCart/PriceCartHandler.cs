@@ -6,6 +6,7 @@ using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.OnlineSales.PriceCart
@@ -19,7 +20,7 @@ namespace MyCompany.Crm.Sales.OnlineSales.PriceCart
         public async Task<CartPriced> Handle(PriceCartCommand command)
         {
             var (clientId, currency, productAmounts) = CreateDomainModelFrom(command);
-            var offer = await _calculatePrices.For(clientId, productAmounts, currency);
+            var offer = await _calculatePrices.For(clientId, SalesChannel.OnlineSales, productAmounts, currency);
             var cartPriced = CreateEventFrom(clientId, offer);
             return cartPriced;
         }
