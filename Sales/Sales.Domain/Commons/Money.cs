@@ -32,7 +32,8 @@ namespace MyCompany.Crm.Sales.Commons
         public static Money operator *(Money x, decimal y) => Calculate(x, y, (a, b) => a * b);
         public static Money operator /(Money x, decimal y) => Calculate(x, y, (a, b) => a / b);
         
-        public static Money operator *(Money x, Percentage y) =>  Calculate(x, y.Fraction, (a, b) => a * b);
+        public static Money operator *(Money x, Percentage y) => 
+            Calculate(x, y.Fraction, (a, b) => a * b);
         
         private static Money Calculate<T>(Money x, T y, Func<decimal, T, decimal> calculate) => 
             new Money(calculate(x.Value, y), x.Currency);
@@ -40,7 +41,7 @@ namespace MyCompany.Crm.Sales.Commons
         public static Percentage operator /(Money x, Money y)
         {
             CheckCurrencies(x, y);
-            return Percentage.Of((int) Math.Round(x.Value / y.Value, 0));
+            return Percentage.Of((int) Math.Round((x.Value / y.Value) * 100, 0));
         }
         
         public static Money Max(Money x, Money y) => x > y ? x : y;
@@ -67,6 +68,7 @@ namespace MyCompany.Crm.Sales.Commons
         public bool Equals(Money other) => (Value, Currency).Equals((other.Value, other.Currency));
         public override int GetHashCode() => (Value, Currency).GetHashCode();
 
-        public override string ToString() => $"{Value.ToString(CultureInfo.InvariantCulture)} {Currency.ToCode()}";
+        public override string ToString() => 
+            $"{Value.ToString("F", CultureInfo.InvariantCulture)} {Currency.ToCode()}";
     }
 }
