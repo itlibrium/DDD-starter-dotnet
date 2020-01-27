@@ -11,13 +11,20 @@
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
+        <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="4.9.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />      
+      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />
+      <ProjectReference Include="..\Contacts\Contacts.Database\Contacts.Database.csproj" />      
       <ProjectReference Include="..\Sales\Sales.Adapters.RestApi\Sales.Adapters.RestApi.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
       <ProjectReference Include="..\Sales\Sales.App\Sales.App.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Crud\Sales.Crud.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Database\Sales.Database.csproj" />
       <ProjectReference Include="..\Sales\Sales.Domain\Sales.Domain.csproj" />
     </ItemGroup>
 
