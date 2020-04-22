@@ -42,6 +42,7 @@ namespace MyCompany.Crm
             if (_environment.IsDevelopment()) 
                 app.UseDeveloperExceptionPage();
 
+            app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
