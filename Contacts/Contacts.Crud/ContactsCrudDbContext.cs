@@ -28,8 +28,9 @@ namespace MyCompany.Crm.Contacts
             modelBuilder.Entity<Company>()
                 .OwnsOne(company => company.Address);
             modelBuilder.Entity<Company>()
-                .OwnsMany(company => company.Phones)
-                .HasForeignKey("CompanyId")
+                .OwnsMany(company => company.Phones, phone => phone
+                    .WithOwner()
+                    .HasForeignKey("CompanyId"))
                 .HasKey("CompanyId", "Number");
         }
 

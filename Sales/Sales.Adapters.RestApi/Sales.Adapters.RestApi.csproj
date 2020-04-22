@@ -1,18 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.Adapters.RestApi</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>default</LangVersion>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Sales.App.Contracts\Sales.App.Contracts.csproj" />      
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    </ItemGroup>
+    </ItemGroup>    
 
 </Project>

@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace MyCompany.Crm
 {
     public static class Program
     {
-        public static void Main(string[] args) => CreateWebHostBuilder(args).Build().Run();
+        public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
-        private static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost
+        private static IHostBuilder CreateHostBuilder(string[] args) => Host
             .CreateDefaultBuilder(args)
-            .UseStartup<Startup>();
+            .ConfigureWebHostDefaults(webBuilder => webBuilder
+                .UseStartup<Startup>());
     }
 }

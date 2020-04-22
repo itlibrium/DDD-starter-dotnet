@@ -2,12 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.Contacts.Crud.Tests</AssemblyName>
+        <RootNamespace>MyCompany.Crm.Contacts</RootNamespace>
 
         <IsPackable>false</IsPackable>
-
-        <AssemblyName>MyCompany.Crm.Contacts.Crud.Tests</AssemblyName>
-
-        <RootNamespace>MyCompany.Crm.Contacts</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
