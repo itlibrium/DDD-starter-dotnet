@@ -10,6 +10,12 @@ namespace MyCompany.Crm
         private static IHostBuilder CreateHostBuilder(string[] args) => Host
             .CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder => webBuilder
-                .UseStartup<Startup>());
+                .UseStartup<Startup>())
+            .UseDefaultServiceProvider((context, options) =>
+            {
+                var isNotProduction = !context.HostingEnvironment.IsProduction();
+                options.ValidateScopes = isNotProduction;
+                options.ValidateOnBuild = isNotProduction;
+            });
     }
 }

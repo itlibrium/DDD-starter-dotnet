@@ -24,7 +24,8 @@ namespace MyCompany.Crm
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddControllersAsServices();
             services.AddDbContextPool<ContactsCrudDbContext>(options => options
                 .UseNpgsql(_configuration.GetConnectionString("Contacts"), sqlOptions => sqlOptions
                     .MigrationsAssembly(ContactsDatabaseAssemblyInfo.Name)
