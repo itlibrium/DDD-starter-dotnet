@@ -1,0 +1,44 @@
+version: "2.4"
+services:  
+  postgres:    
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+
+  es01:
+    volumes:
+      - ${CERTS_DIR}/CA/ca.crt:${ES_CONFIG_DIR}/certs/ca.crt:ro
+      - ${CERTS_DIR}/Elastic/es01.pem:${ES_CONFIG_DIR}/certs/es01.pem:ro
+      - ${CERTS_DIR}/Elastic/es01.crt:${ES_CONFIG_DIR}/certs/es01.crt:ro
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m     
+    ports:
+      - 9200:9200
+  es02:
+    volumes:
+      - ${CERTS_DIR}/CA/ca.crt:${ES_CONFIG_DIR}/certs/ca.crt:ro
+      - ${CERTS_DIR}/Elastic/es02.pem:${ES_CONFIG_DIR}/certs/es02.pem:ro
+      - ${CERTS_DIR}/Elastic/es02.crt:${ES_CONFIG_DIR}/certs/es02.crt:ro
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m      
+    ports:
+      - 9201:9200
+
+  es03:
+    volumes:      
+      - ${CERTS_DIR}/CA/ca.crt:${ES_CONFIG_DIR}/certs/ca.crt:ro
+      - ${CERTS_DIR}/Elastic/es03.pem:${ES_CONFIG_DIR}/certs/es03.pem:ro
+      - ${CERTS_DIR}/Elastic/es03.crt:${ES_CONFIG_DIR}/certs/es03.crt:ro
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - 9203:9200
+
+  kibana01:
+    volumes:
+      - ${CERTS_DIR}/CA/ca.crt:${KIBANA_CONFIG_DIR}/certs/ca.crt:ro
+      - ${CERTS_DIR}/Elastic/kibana01.pem:${KIBANA_CONFIG_DIR}/certs/kibana01.pem:ro
+      - ${CERTS_DIR}/Elastic/kibana01.crt:${KIBANA_CONFIG_DIR}/certs/kibana01.crt:ro
+    ports:
+      - 5601:5601

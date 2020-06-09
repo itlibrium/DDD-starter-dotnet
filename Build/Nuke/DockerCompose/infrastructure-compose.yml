@@ -1,0 +1,131 @@
+version: "2.4"
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    networks:
+      - crm
+    environment:
+      POSTGRES_PASSWORD:
+  
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_VERSION}
+    container_name: es01    
+    volumes:
+      - ${ES_USERS_DIR}/users:${ES_CONFIG_DIR}/users:ro
+      - ${ES_USERS_DIR}/users_roles:${ES_CONFIG_DIR}/users_roles:ro
+    environment:
+      - cluster.name=es_cluster
+      - node.name=es01
+      - discovery.seed_hosts=es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=${ES_CONFIG_DIR}/certs/es01.pem
+      - xpack.security.transport.ssl.certificate=${ES_CONFIG_DIR}/certs/es01.crt
+      - xpack.security.transport.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=${ES_CONFIG_DIR}/certs/es01.pem
+      - xpack.security.http.ssl.certificate=${ES_CONFIG_DIR}/certs/es01.crt
+      - xpack.security.http.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - crm
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_VERSION}
+    container_name: es02
+    volumes:
+      - ${ES_USERS_DIR}/users:${ES_CONFIG_DIR}/users:ro
+      - ${ES_USERS_DIR}/users_roles:${ES_CONFIG_DIR}/users_roles:ro
+    environment:
+      - cluster.name=es_cluster
+      - node.name=es02
+      - discovery.seed_hosts=es01,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=${ES_CONFIG_DIR}/certs/es02.pem
+      - xpack.security.transport.ssl.certificate=${ES_CONFIG_DIR}/certs/es02.crt
+      - xpack.security.transport.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=${ES_CONFIG_DIR}/certs/es02.pem
+      - xpack.security.http.ssl.certificate=${ES_CONFIG_DIR}/certs/es02.crt
+      - xpack.security.http.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - crm
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_VERSION}
+    container_name: es03
+    volumes:
+      - ${ES_USERS_DIR}/users:${ES_CONFIG_DIR}/users:ro
+      - ${ES_USERS_DIR}/users_roles:${ES_CONFIG_DIR}/users_roles:ro
+    environment:
+      - cluster.name=es_cluster
+      - node.name=es03
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02,es03
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=${ES_CONFIG_DIR}/certs/es03.pem
+      - xpack.security.transport.ssl.certificate=${ES_CONFIG_DIR}/certs/es03.crt
+      - xpack.security.transport.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.client_authentication=required
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=${ES_CONFIG_DIR}/certs/es03.pem
+      - xpack.security.http.ssl.certificate=${ES_CONFIG_DIR}/certs/es03.crt
+      - xpack.security.http.ssl.certificate_authorities=${ES_CONFIG_DIR}/certs/ca.crt
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - crm
+
+  kibana01:
+    image: docker.elastic.co/kibana/kibana:${KIBANA_VERSION}
+    container_name: kibana01
+    environment:
+      - SERVER_NAME=kibana01
+      - SERVER_HOST=kibana01
+      - ELASTICSEARCH_HOSTS=["https://es01:9200","https://es02:9200","https://es03:9200"]
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=${KIBANA_CONFIG_DIR}/certs/ca.crt
+      - ELASTICSEARCH_SSL_VERIFICATIONMODE=certificate
+      - ELASTICSEARCH_USERNAME=${ES_KIBANA01_USER}
+      - ELASTICSEARCH_PASSWORD=${ES_KIBANA01_PASSWORD}
+      - XPACK_SECURITY_ENCRYPTIONKEY=${KIBANA_ENCRYPTIONKEY}
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${KIBANA_ENCRYPTIONKEY}      
+      - SERVER_SSL_ENABLED=true
+      - SERVER_SSL_KEY=${KIBANA_CONFIG_DIR}/certs/kibana01.pem
+      - SERVER_SSL_CERTIFICATE=${KIBANA_CONFIG_DIR}/certs/kibana01.crt
+    networks:
+      - crm
+
+volumes:
+  crm_postgres:
+    driver: local  
+  crm_es01:
+    driver: local
+  crm_es02:
+    driver: local
+  crm_es03:
+    driver: local
+  crm_kibana01:
+    driver: local
+
+networks:
+  crm:
+    driver: bridge

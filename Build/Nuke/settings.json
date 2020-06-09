@@ -1,0 +1,13 @@
+{
+  "Elastic": {
+    "ElasticsearchVersion": "7.7.0",
+    "ElasticsearchConfigDirectory": "/usr/share/elasticsearch/config",
+    "SuperUserName": "admin",
+    "KibanaVersion": "7.7.0",
+    "KibanaConfigDirectory": "/usr/share/kibana/config",
+    "Kibana01UserName": "kibana01"
+  },
+  "Postgres": {
+    
+  }
+}

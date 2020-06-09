@@ -5,6 +5,7 @@
         <AssemblyName>MyCompany.Crm.Startup</AssemblyName>
         <RootNamespace>MyCompany.Crm</RootNamespace>
         <LangVersion>latest</LangVersion>
+        <UserSecretsId>MyCompanyCrm</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>        
