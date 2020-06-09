@@ -62,9 +62,7 @@ namespace MyCompany.Crm.Sales.Orders
             if (_isPlaced) throw new DomainException();
             if (!HasSameProductAmountsAs(offer))
                 throw new DomainException();
-            if (!_priceAgreement.IsValidOn(now))
-                ConfirmPrices(offer, priceAgreementExpiresOn);
-            else if (priceChangesPolicy.CanChangePrices(_priceAgreement.Quotes, offer.Quotes))
+            if (_priceAgreement.CanChangePrices(offer.Quotes, now, priceChangesPolicy))
                 ConfirmPrices(offer, priceAgreementExpiresOn);
             else
                 throw new DomainException();
