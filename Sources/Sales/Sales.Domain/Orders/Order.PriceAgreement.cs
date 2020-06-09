@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Pricing;
 
@@ -9,17 +8,17 @@ namespace MyCompany.Crm.Sales.Orders
     {
         private readonly struct PriceAgreement
         {
-            private readonly ImmutableArray<Quote> _quotes;
+            public ImmutableArray<Quote> Quotes { get; }
             private readonly DateTime _expiresOn;
 
             public static PriceAgreement Non() => 
                 new PriceAgreement(ImmutableArray<Quote>.Empty, DateTime.MinValue);
-            public static PriceAgreement Temporary(IEnumerable<Quote> quotes, DateTime expiresOn) => 
-                new PriceAgreement(quotes.ToImmutableArray(), expiresOn);
+            public static PriceAgreement Temporary(ImmutableArray<Quote> quotes, DateTime expiresOn) => 
+                new PriceAgreement(quotes, expiresOn);
 
             private PriceAgreement(ImmutableArray<Quote> quotes, DateTime expiresOn)
             {
-                _quotes = quotes;
+                Quotes = quotes;
                 _expiresOn = expiresOn;
             }
 

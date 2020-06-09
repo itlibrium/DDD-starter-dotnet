@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 
@@ -9,24 +10,23 @@ namespace MyCompany.Crm.Sales.Orders
     public partial class Order
     {
         public OrderId Id { get; }
-        
+
         private readonly Dictionary<ProductUnit, Amount> _items = new Dictionary<ProductUnit, Amount>();
 
         private PriceAgreement _priceAgreement;
         private bool _isPlaced;
 
-        public IEnumerable<ProductAmount> ProductAmounts => 
+        public IEnumerable<ProductAmount> ProductAmounts =>
             _items.Select(pair => ProductAmount.Of(pair.Key.ProductId, pair.Value));
-        
+
         public static Order New() => new Order(OrderId.New());
-        
-        public static Order FromOffer(Offer offer)
+
+        public static Order FromOffer(Offer offer, DateTime priceAgreementExpiresOn)
         {
-            var now = DateTime.UtcNow;
             var order = New();
             order.Add(offer.ProductAmounts);
-            order.ConfirmPrices(offer, now);
-            order.Place(now);
+            order.ConfirmPrices(offer, priceAgreementExpiresOn);
+            order.Place(priceAgreementExpiresOn);
             return order;
         }
 
@@ -42,7 +42,7 @@ namespace MyCompany.Crm.Sales.Orders
         private void Add(IEnumerable<ProductAmount> productAmounts)
         {
             if (_isPlaced) throw new DomainException();
-            foreach (var productAmount in productAmounts) 
+            foreach (var productAmount in productAmounts)
                 AddOrUpdateItem(productAmount);
             _priceAgreement = PriceAgreement.Non();
         }
@@ -56,15 +56,24 @@ namespace MyCompany.Crm.Sales.Orders
                 _items.Add(productUnit, productAmount.Amount);
         }
 
-        public void ConfirmPrices(Offer offer, DateTime expiresOn)
+        public void ConfirmPrices(Offer offer, DateTime priceAgreementExpiresOn, DateTime now, 
+            PriceChangesPolicy priceChangesPolicy)
         {
             if (_isPlaced) throw new DomainException();
             if (!HasSameProductAmountsAs(offer))
                 throw new DomainException();
-            _priceAgreement = PriceAgreement.Temporary(offer.Quotes, expiresOn);
+            if (!_priceAgreement.IsValidOn(now))
+                ConfirmPrices(offer, priceAgreementExpiresOn);
+            else if (priceChangesPolicy.CanChangePrices(_priceAgreement.Quotes, offer.Quotes))
+                ConfirmPrices(offer, priceAgreementExpiresOn);
+            else
+                throw new DomainException();
         }
 
-        private bool HasSameProductAmountsAs(Offer offer) => 
+        private void ConfirmPrices(Offer offer, DateTime priceAgreementExpiresOn) => 
+            _priceAgreement = PriceAgreement.Temporary(offer.Quotes, priceAgreementExpiresOn);
+
+        private bool HasSameProductAmountsAs(Offer offer) =>
             _items.Count == offer.Count && offer.ProductAmounts.All(HasMatchingItem);
 
         private bool HasMatchingItem(ProductAmount productAmount) =>

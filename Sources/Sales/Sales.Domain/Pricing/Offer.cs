@@ -18,9 +18,11 @@ namespace MyCompany.Crm.Sales.Pricing
         
         public Money TotalPrice => Quotes.Aggregate(Money.Zero(Currency), (sum, current) => sum + current.Price);
         
-        public IEnumerable<Quote> Quotes => _items.Values;
+        public ImmutableArray<Quote> Quotes => _items.Values.ToImmutableArray();
         
-        public IEnumerable<ProductAmount> ProductAmounts => _items.Values.Select(quote => quote.ProductAmount);
+        public ImmutableArray<ProductAmount> ProductAmounts => _items.Values
+            .Select(quote => quote.ProductAmount)
+            .ToImmutableArray();
         
         public static Offer FromQuotes(Currency currency, IEnumerable<Quote> quotes) => new Offer(currency, quotes);
 
