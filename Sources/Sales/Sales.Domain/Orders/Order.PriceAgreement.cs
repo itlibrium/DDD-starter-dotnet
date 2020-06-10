@@ -13,32 +13,57 @@ namespace MyCompany.Crm.Sales.Orders
         private readonly struct PriceAgreement
         {
             private readonly ImmutableArray<Quote> _quotes;
-            public DateTime? ExpiresOn { get; }
+            private readonly DateTime _expiresOn;
+            public PriceAgreementType Type { get; }
+            public DateTime? ExpiresOn => Type == PriceAgreementType.Temporary ? _expiresOn : (DateTime?) null;
 
             public static PriceAgreement Non() =>
-                new PriceAgreement(ImmutableArray<Quote>.Empty, null);
+                new PriceAgreement(PriceAgreementType.Non, ImmutableArray<Quote>.Empty, default);
 
             public static PriceAgreement Temporary(ImmutableArray<Quote> quotes, DateTime expiresOn) =>
-                new PriceAgreement(quotes, expiresOn);
+                new PriceAgreement(PriceAgreementType.Temporary, quotes, expiresOn);
 
-            private PriceAgreement(ImmutableArray<Quote> quotes, DateTime? expiresOn)
+            public static PriceAgreement Final(ImmutableArray<Quote> quotes) =>
+                new PriceAgreement(PriceAgreementType.Final, quotes, default);
+
+            private PriceAgreement(PriceAgreementType type, ImmutableArray<Quote> quotes, DateTime expiresOn)
             {
                 _quotes = quotes;
-                ExpiresOn = expiresOn;
+                Type = type;
+                _expiresOn = expiresOn;
             }
 
             public bool CanChangePrices(ImmutableArray<Quote> newQuotes,
                 DateTime now,
-                PriceChangesPolicy priceChangesPolicy) =>
-                !IsValidOn(now) || priceChangesPolicy.CanChangePrices(_quotes, newQuotes);
-            
-            public bool IsValidOn(DateTime date) => ExpiresOn is null || ExpiresOn >= date;
+                PriceChangesPolicy priceChangesPolicy) => Type switch
+            {
+                PriceAgreementType.Non => true,
+                PriceAgreementType.Temporary =>
+                    ExpiresOn < now || priceChangesPolicy.CanChangePrices(_quotes, newQuotes),
+                PriceAgreementType.Final => false,
+                _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
+            };
+
+            public bool IsValidOn(DateTime date) => Type switch
+            {
+                PriceAgreementType.Non => false,
+                PriceAgreementType.Temporary => ExpiresOn >= date,
+                PriceAgreementType.Final => true,
+                _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
+            };
 
             public Money? GetPrice(ProductAmount productAmount)
             {
                 var quote = _quotes.SingleOrDefault(q => q.ProductAmount.Equals(productAmount));
                 return quote.Price.IsEmpty ? (Money?) null : quote.Price;
             }
+        }
+
+        public enum PriceAgreementType : byte
+        {
+            Non,
+            Temporary,
+            Final
         }
     }
 }
