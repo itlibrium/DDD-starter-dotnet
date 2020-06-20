@@ -22,6 +22,12 @@ namespace MyCompany.Crm.Sales.Orders
             return order;
         }
 
+        private void AddAndApply(Event @event)
+        {
+            @event.Apply(this);
+            _newEvents.Add(@event);
+        }
+
         public interface Event
         {
             void Apply(Order order);
@@ -29,9 +35,9 @@ namespace MyCompany.Crm.Sales.Orders
         
         public class CreatedFromOffer : Event
         {
-            public IImmutableList<PriceConfirmation> PriceConfirmations { get; }
+            public ImmutableArray<PriceConfirmation> PriceConfirmations { get; }
 
-            public CreatedFromOffer(IImmutableList<PriceConfirmation> priceConfirmations) => 
+            public CreatedFromOffer(ImmutableArray<PriceConfirmation> priceConfirmations) => 
                 PriceConfirmations = priceConfirmations;
 
             public void Apply(Order order)
@@ -88,10 +94,10 @@ namespace MyCompany.Crm.Sales.Orders
         public class PricesConfirmed : Event
         {
             public DateTime PriceAgreementExpiresOn { get; }
-            public IImmutableList<PriceConfirmation> PriceConfirmations { get; }
+            public ImmutableArray<PriceConfirmation> PriceConfirmations { get; }
 
             public PricesConfirmed(DateTime priceAgreementExpiresOn,
-                IImmutableList<PriceConfirmation> priceConfirmations)
+                ImmutableArray<PriceConfirmation> priceConfirmations)
             {
                 PriceAgreementExpiresOn = priceAgreementExpiresOn;
                 PriceConfirmations = priceConfirmations;
@@ -117,16 +123,16 @@ namespace MyCompany.Crm.Sales.Orders
         public class PriceConfirmation
         {
             public Guid ProductId { get; }
-            public string AmountUnit { get; }
             public int Amount { get; }
+            public string AmountUnit { get; }
             public decimal Price { get; }
             public string Currency { get; }
 
-            public PriceConfirmation(Guid productId, string amountUnit, int amount, decimal price, string currency)
+            public PriceConfirmation(Guid productId, int amount, string amountUnit, decimal price, string currency)
             {
                 ProductId = productId;
-                AmountUnit = amountUnit;
                 Amount = amount;
+                AmountUnit = amountUnit;
                 Price = price;
                 Currency = currency;
             }

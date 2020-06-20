@@ -5,6 +5,7 @@ using System.Linq;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Orders
 {
@@ -31,11 +32,15 @@ namespace MyCompany.Crm.Sales.Orders
         public static Order FromOffer(Offer offer)
         {
             var order = New();
-            foreach (var productAmount in offer.ProductAmounts)
-                order.AddItem(productAmount.ProductUnit, productAmount.Amount);
-            order._priceAgreement = PriceAgreement.Final(offer.Quotes);
-            order._isPlaced = true;
+            order.AddAndApply(new CreatedFromOffer(CreatePriceConfirmationsFrom(offer.Quotes)));
             return order;
+
+            // Version without events:
+            // foreach (var productAmount in offer.ProductAmounts)
+            //     order.AddItem(productAmount.ProductUnit, productAmount.Amount);
+            // order._priceAgreement = PriceAgreement.Final(offer.Quotes);
+            // order._isPlaced = true;
+            // return order;
         }
 
         public static Order Restore(OrderId id,
@@ -93,7 +98,12 @@ namespace MyCompany.Crm.Sales.Orders
         public void Add(ProductAmount productAmount)
         {
             if (_isPlaced) throw new DomainException();
-            AddItem(productAmount.ProductUnit, productAmount.Amount);
+            AddAndApply(new ProductAmountAdded(productAmount.ProductId.Value,
+                productAmount.Amount.Unit.ToCode(),
+                productAmount.Amount.Value));
+
+            // Version without events:
+            // AddItem(productAmount.ProductUnit, productAmount.Amount);
         }
 
         private void AddItem(ProductUnit productUnit, Amount amount)
@@ -112,21 +122,36 @@ namespace MyCompany.Crm.Sales.Orders
             var quotes = offer.Quotes;
             if (!HasSameProductAmountsAs(quotes)) throw new DomainException();
             if (!_priceAgreement.CanChangePrices(quotes, now, priceChangesPolicy)) throw new DomainException();
-            _priceAgreement = PriceAgreement.Temporary(quotes, priceAgreementExpiresOn);
+            AddAndApply(new PricesConfirmed(priceAgreementExpiresOn, CreatePriceConfirmationsFrom(quotes)));
+
+            // Version without events:
+            // _priceAgreement = PriceAgreement.Temporary(quotes, priceAgreementExpiresOn);
         }
 
         private bool HasSameProductAmountsAs(ImmutableArray<Quote> quotes) =>
             _items.Count == quotes.Length && quotes.Select(quote => quote.ProductAmount).All(HasMatchingItem);
 
         private bool HasMatchingItem(ProductAmount productAmount) =>
-            _items.TryGetValue(productAmount.ProductUnit, out var amount) && 
+            _items.TryGetValue(productAmount.ProductUnit, out var amount) &&
             amount.Equals(productAmount.Amount);
 
         public void Place(DateTime now)
         {
             if (_isPlaced) return;
             if (!_priceAgreement.IsValidOn(now)) throw new DomainException();
-            _isPlaced = true;
+            AddAndApply(new Placed());
+
+            // Version without events:
+            // _isPlaced = true;
         }
+        
+        private static ImmutableArray<PriceConfirmation> CreatePriceConfirmationsFrom(ImmutableArray<Quote> quotes) =>
+            quotes
+                .Select(quote => new PriceConfirmation(
+                    quote.ProductAmount.ProductId.Value,
+                    quote.ProductAmount.Amount.Value,
+                    quote.ProductAmount.Amount.Unit.ToCode(),
+                    quote.Price.Value, quote.Price.Currency.ToCode()))
+                .ToImmutableArray();
     }
 }
