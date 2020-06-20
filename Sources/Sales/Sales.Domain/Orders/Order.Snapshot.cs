@@ -9,7 +9,7 @@ namespace MyCompany.Crm.Sales.Orders
     public partial class Order
     {
         public Snapshot GetSnapshot() => new Snapshot(Id.Value,
-            CreateOrderItems(_items).ToImmutableList(),
+            CreateOrderItems(_items).ToImmutableArray(),
             _priceAgreement.Type.ToCode(),
             _priceAgreement.ExpiresOn,
             _isPlaced);
@@ -21,8 +21,8 @@ namespace MyCompany.Crm.Sales.Orders
                 var productAmount = ProductAmount.Of(productUnit.ProductId, amount);
                 var price = _priceAgreement.GetPrice(productAmount);
                 yield return new Snapshot.Item(productUnit.ProductId.Value,
-                    amount.Unit.ToCode(),
                     amount.Value,
+                    amount.Unit.ToCode(),
                     price?.Value,
                     price?.Currency.ToCode());
             }
@@ -31,15 +31,15 @@ namespace MyCompany.Crm.Sales.Orders
         public class Snapshot
         {
             public Guid Id { get; }
-            public IImmutableList<Item> Items { get; }
+            public ImmutableArray<Item> Items { get; }
             public string PriceAgreementType { get; }
             public DateTime? PriceAgreementExpiresOn { get; }
             public bool IsPlaced { get; }
 
-            public Snapshot(Guid id, 
-                IImmutableList<Item> items, 
-                string priceAgreementType, 
-                DateTime? priceAgreementExpiresOn, 
+            public Snapshot(Guid id,
+                ImmutableArray<Item> items,
+                string priceAgreementType,
+                DateTime? priceAgreementExpiresOn,
                 bool isPlaced)
             {
                 Id = id;
@@ -52,16 +52,16 @@ namespace MyCompany.Crm.Sales.Orders
             public class Item
             {
                 public Guid ProductId { get; }
-                public string AmountUnit { get; }
                 public int Amount { get; }
+                public string AmountUnit { get; }
                 public decimal? Price { get; }
                 public string Currency { get; }
 
-                public Item(Guid productId, string amountUnit, int amount, decimal? price, string currency)
+                public Item(Guid productId, int amount, string amountUnit, decimal? price, string currency)
                 {
                     ProductId = productId;
-                    AmountUnit = amountUnit;
                     Amount = amount;
+                    AmountUnit = amountUnit;
                     Price = price;
                     Currency = currency;
                 }

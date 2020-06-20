@@ -119,8 +119,8 @@ namespace MyCompany.Crm.Sales.Orders
             _items.Count == quotes.Length && quotes.Select(quote => quote.ProductAmount).All(HasMatchingItem);
 
         private bool HasMatchingItem(ProductAmount productAmount) =>
-            !_items.TryGetValue(productAmount.ProductUnit, out var amount)
-            || !amount.Equals(productAmount.Amount);
+            _items.TryGetValue(productAmount.ProductUnit, out var amount) && 
+            amount.Equals(productAmount.Amount);
 
         public void Place(DateTime now)
         {

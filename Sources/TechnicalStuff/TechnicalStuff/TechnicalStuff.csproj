@@ -5,6 +5,7 @@
         <AssemblyName>MyCompany.Crm.TechnicalStuff</AssemblyName>
         <RootNamespace>MyCompany.Crm.TechnicalStuff</RootNamespace>
         <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
 </Project>

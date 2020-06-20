@@ -31,6 +31,10 @@ namespace MyCompany.Crm
                     .MigrationsAssembly(ContactsDatabaseAssemblyInfo.Name)
                     .MigrationsHistoryTable("__ContactsCrudDbContext_Migrations")));
             services.AddScoped<ContactsCrudDao, ContactsEfCrudDao>();
+            services.AddDbContextPool<SalesDbContext>(options => options
+                .UseNpgsql(_configuration.GetConnectionString("Sales"), sqlOptions => sqlOptions
+                    .MigrationsAssembly(SalesDatabaseAssemblyInfo.Name)
+                    .MigrationsHistoryTable("__SalesDbContext_Migrations")));
             services.AddDbContextPool<SalesCrudDbContext>(options => options
                 .UseNpgsql(_configuration.GetConnectionString("Sales"), sqlOptions => sqlOptions
                     .MigrationsAssembly(SalesDatabaseAssemblyInfo.Name)
