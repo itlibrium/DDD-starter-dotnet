@@ -38,14 +38,14 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
         {
             var (orderId, offer) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
-            var orderHeader = await _orderHeaders.GetBy(orderId);
-            var currentOffer = await _calculatePrices.For(orderHeader.ClientId, 
+            var (clientId, _) = await _orderHeaders.GetBy(orderId);
+            var currentOffer = await _calculatePrices.For(clientId, 
                 SalesChannel.Wholesales,
                 offer.ProductAmounts,
                 offer.Currency);
             if (!offer.Equals(currentOffer))
                 throw new DomainException();
-            var priceChangesPolicy = await _priceChangesPolicies.ChooseFor(orderHeader.ClientId);
+            var priceChangesPolicy = await _priceChangesPolicies.ChooseFor(clientId);
             var now = _clock.Now;
             order.ConfirmPrices(offer, now + _offerExpirationTime, now, priceChangesPolicy);
             await _orders.Save(order);

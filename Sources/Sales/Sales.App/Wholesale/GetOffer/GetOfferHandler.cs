@@ -27,9 +27,8 @@ namespace MyCompany.Crm.Sales.Wholesale.GetOffer
         {
             var (orderId, currency) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
-            var orderHeader = await _orderHeaders.GetBy(orderId);
-            var offer = await _calculatePrices.For(orderHeader.ClientId, SalesChannel.Wholesales, order.ProductAmounts,
-                currency);
+            var (clientId, _) = await _orderHeaders.GetBy(orderId);
+            var offer = await _calculatePrices.For(clientId, SalesChannel.Wholesales, order.ProductAmounts, currency);
             return CreateEventFrom(orderId, offer);
         }
 
