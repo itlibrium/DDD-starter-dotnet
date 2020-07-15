@@ -72,12 +72,5 @@ namespace MyCompany.Crm.Sales.Orders
                 .CombineWith(Type)
                 .ToHashCode();
         }
-
-        public enum PriceAgreementType : byte
-        {
-            Non,
-            Temporary,
-            Final
-        }
     }
 }

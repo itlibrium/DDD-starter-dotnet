@@ -62,12 +62,12 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static Order RestoreFrom(OrderDoc orderDoc)
             {
-                var priceAgreementType = orderDoc.PriceAgreementType.ToDomainModel<Order.PriceAgreementType>();
+                var priceAgreementType = orderDoc.PriceAgreementType.ToDomainModel<PriceAgreementType>();
                 return priceAgreementType switch
                 {
-                    Order.PriceAgreementType.Non => RestoreWithNoPriceAgreement(orderDoc),
-                    Order.PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(orderDoc),
-                    Order.PriceAgreementType.Final => RestoreWithFinalPriceAgreement(orderDoc),
+                    PriceAgreementType.Non => RestoreWithNoPriceAgreement(orderDoc),
+                    PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(orderDoc),
+                    PriceAgreementType.Final => RestoreWithFinalPriceAgreement(orderDoc),
                     _ => throw new ArgumentOutOfRangeException(nameof(priceAgreementType), priceAgreementType, null)
                 };
             }
@@ -114,20 +114,20 @@ namespace MyCompany.Crm.Sales.Orders
                 return new OrderDoc
                 {
                     Id = order.Id.Value,
-                    PriceAgreementType = nameof(Order.PriceAgreementType.Non)
+                    PriceAgreementType = nameof(PriceAgreementType.Non)
                 };
             }
             
             private static void Merge(OrderDoc orderDoc, Order.PricesConfirmed pricesConfirmed)
             {
-                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Temporary);
+                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Temporary);
                 orderDoc.PriceAgreementExpiresOn = pricesConfirmed.PriceAgreementExpiresOn;
                 orderDoc.Items = CreateOrderItemDocsFrom(pricesConfirmed.PriceConfirmations);
             }
 
             private static void Merge(OrderDoc orderDoc, Order.ProductAmountAdded productAmountAdded)
             {
-                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Non);
+                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Non);
                 orderDoc.Items.ForEach(item =>
                 {
                     item.Price = null;
@@ -145,7 +145,7 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static void Merge(OrderDoc orderDoc, Order.CreatedFromOffer createdFromOffer)
             {
-                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Final);
+                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Final);
                 orderDoc.PriceAgreementExpiresOn = null;
                 orderDoc.Items = CreateOrderItemDocsFrom(createdFromOffer.PriceConfirmations);
                 orderDoc.IsPlaced = true;
