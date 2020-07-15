@@ -1,11 +1,10 @@
 using System;
 using FluentAssertions;
 using ITLIBRIUM.BddToolkit;
-using MyCompany.Crm.Sales;
 using MyCompany.Crm.Sales.Commons;
 using Xunit;
 
-namespace Sales.Domain.Commons
+namespace MyCompany.Crm.Sales.Domain.Commons
 {
     public class MoneyTests
     {
