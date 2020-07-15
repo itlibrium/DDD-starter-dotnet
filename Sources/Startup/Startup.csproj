@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,14 +15,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />
-      <ProjectReference Include="..\Contacts\Contacts.Database\Contacts.Database.csproj" />      
+      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />           
       <ProjectReference Include="..\Sales\Sales.Adapters.RestApi\Sales.Adapters.RestApi.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
       <ProjectReference Include="..\Sales\Sales.App\Sales.App.csproj" />
       <ProjectReference Include="..\Sales\Sales.Crud\Sales.Crud.csproj" />
-      <ProjectReference Include="..\Sales\Sales.Database\Sales.Database.csproj" />
       <ProjectReference Include="..\Sales\Sales.Domain\Sales.Domain.csproj" />
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Marten\TechnicalStuff.Marten.csproj" />
     </ItemGroup>
 
 </Project>
