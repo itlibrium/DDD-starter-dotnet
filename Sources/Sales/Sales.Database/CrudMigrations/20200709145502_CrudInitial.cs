@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyCompany.Crm.Sales.Database.Migrations
+namespace MyCompany.Crm.Sales.CrudMigrations
 {
-    public partial class Initial : Migration
+    public partial class CrudInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

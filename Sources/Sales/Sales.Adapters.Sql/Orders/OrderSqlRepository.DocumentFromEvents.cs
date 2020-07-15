@@ -1,0 +1,186 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Threading.Tasks;
+using Marten;
+using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.Sales.Pricing;
+using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff;
+
+namespace MyCompany.Crm.Sales.Orders
+{
+    public static partial class OrderSqlRepository
+    {
+        public class DocumentFromEvents : OrderRepository
+        {
+            private readonly Dictionary<OrderId, OrderDoc> _orders = new Dictionary<OrderId, OrderDoc>();
+            private readonly IDocumentSession _session;
+            
+            public DocumentFromEvents(IDocumentSession session) => _session = session;
+
+            public async Task<Order> GetBy(OrderId id)
+            {
+                if (_orders.ContainsKey(id))
+                    throw new DesignError(SameAggregateRestoredMoreThanOnce);
+                var orderDoc = await _session.LoadAsync<OrderDoc>(id.Value);
+                if (orderDoc is null) throw new DomainException();
+                var order = RestoreFrom(orderDoc);
+                _orders.Add(id, orderDoc);
+                return order;
+            }
+
+            public Task Save(Order order)
+            {
+                // TODO: optimistic locking
+                // TODO: document versioning
+                var orderDoc = GetOrderDoc(order);
+                foreach (var newEvent in order.NewEvents)
+                {
+                    switch (newEvent)
+                    {
+                        case Order.CreatedFromOffer createdFromOffer:
+                            Merge(orderDoc, createdFromOffer);
+                            break;
+                        case Order.ProductAmountAdded productAmountAdded:
+                            Merge(orderDoc, productAmountAdded);
+                            break;
+                        case Order.PricesConfirmed pricesConfirmed:
+                            Merge(orderDoc, pricesConfirmed);
+                            break;
+                        case Order.Placed _:
+                            orderDoc.IsPlaced = true;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(newEvent), newEvent, null);
+                    }
+                }
+                _session.Store(orderDoc);
+                return _session.SaveChangesAsync();
+            }
+
+            private static Order RestoreFrom(OrderDoc orderDoc)
+            {
+                var priceAgreementType = orderDoc.PriceAgreementType.ToDomainModel<Order.PriceAgreementType>();
+                return priceAgreementType switch
+                {
+                    Order.PriceAgreementType.Non => RestoreWithNoPriceAgreement(orderDoc),
+                    Order.PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(orderDoc),
+                    Order.PriceAgreementType.Final => RestoreWithFinalPriceAgreement(orderDoc),
+                    _ => throw new ArgumentOutOfRangeException(nameof(priceAgreementType), priceAgreementType, null)
+                };
+            }
+
+            private static Order RestoreWithNoPriceAgreement(OrderDoc orderDoc) => Order.Restore(
+                OrderId.From(orderDoc.Id),
+                orderDoc.Items
+                    .Select(dbOrderItem => ProductAmount.Of(ProductId.From(dbOrderItem.ProductId),
+                        Amount.Of(dbOrderItem.Amount, dbOrderItem.AmountUnit.ToDomainModel<AmountUnit>())))
+                    .ToImmutableArray(),
+                orderDoc.IsPlaced);
+
+            private static Order RestoreWithTemporaryPriceAgreement(OrderDoc orderDoc)
+            {
+                if (!orderDoc.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+                return Order.Restore(
+                    OrderId.From(orderDoc.Id),
+                    CreateQuotesFrom(orderDoc.Items),
+                    orderDoc.PriceAgreementExpiresOn.Value,
+                    orderDoc.IsPlaced);
+            }
+
+            private static Order RestoreWithFinalPriceAgreement(OrderDoc orderDoc) => Order.Restore(
+                OrderId.From(orderDoc.Id),
+                CreateQuotesFrom(orderDoc.Items),
+                orderDoc.IsPlaced);
+
+            private static ImmutableArray<Quote> CreateQuotesFrom(IEnumerable<OrderItemDoc> orderItemDocs) =>
+                orderItemDocs.Select(orderItemDoc => CreateQuoteFrom(orderItemDoc)).ToImmutableArray();
+
+            private static Quote CreateQuoteFrom(OrderItemDoc orderItemDoc)
+            {
+                if (!orderItemDoc.Price.HasValue || orderItemDoc.Currency is null) throw new DomainException();
+                return Quote.For(
+                    ProductAmount.Of(ProductId.From(orderItemDoc.ProductId),
+                        Amount.Of(orderItemDoc.Amount, orderItemDoc.AmountUnit.ToDomainModel<AmountUnit>())),
+                    Money.Of(orderItemDoc.Price.Value, orderItemDoc.Currency.ToDomainModel<Currency>()));
+            }
+            
+            private OrderDoc GetOrderDoc(Order order)
+            {
+                if (_orders.TryGetValue(order.Id, out var orderDoc)) 
+                    return orderDoc;
+                return new OrderDoc
+                {
+                    Id = order.Id.Value,
+                    PriceAgreementType = nameof(Order.PriceAgreementType.Non)
+                };
+            }
+            
+            private static void Merge(OrderDoc orderDoc, Order.PricesConfirmed pricesConfirmed)
+            {
+                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Temporary);
+                orderDoc.PriceAgreementExpiresOn = pricesConfirmed.PriceAgreementExpiresOn;
+                orderDoc.Items = CreateOrderItemDocsFrom(pricesConfirmed.PriceConfirmations);
+            }
+
+            private static void Merge(OrderDoc orderDoc, Order.ProductAmountAdded productAmountAdded)
+            {
+                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Non);
+                orderDoc.Items.ForEach(item =>
+                {
+                    item.Price = null;
+                    item.Currency = null;
+                });
+                orderDoc.Items.Add(new OrderItemDoc()
+                {
+                    ProductId = productAmountAdded.ProductId,
+                    Amount = productAmountAdded.Amount,
+                    AmountUnit = productAmountAdded.AmountUnit,
+                    Price = null,
+                    Currency = null
+                });
+            }
+
+            private static void Merge(OrderDoc orderDoc, Order.CreatedFromOffer createdFromOffer)
+            {
+                orderDoc.PriceAgreementType = nameof(Order.PriceAgreementType.Final);
+                orderDoc.PriceAgreementExpiresOn = null;
+                orderDoc.Items = CreateOrderItemDocsFrom(createdFromOffer.PriceConfirmations);
+                orderDoc.IsPlaced = true;
+            }
+            
+            private static List<OrderItemDoc> CreateOrderItemDocsFrom(
+                ImmutableArray<Order.PriceConfirmation> priceConfirmations) =>
+                priceConfirmations
+                    .Select(priceConfirmation => new OrderItemDoc
+                    {
+                        ProductId = priceConfirmation.ProductId,
+                        Amount = priceConfirmation.Amount,
+                        AmountUnit = priceConfirmation.AmountUnit,
+                        Price = priceConfirmation.Price,
+                        Currency = priceConfirmation.Currency
+                    })
+                    .ToList();
+
+            private class OrderDoc
+            {
+                public Guid Id { get; set; }
+                public List<OrderItemDoc> Items { get; set; } = new List<OrderItemDoc>();
+                public string PriceAgreementType { get; set; }
+                public DateTime? PriceAgreementExpiresOn { get; set; }
+                public bool IsPlaced { get; set; }
+            }
+
+            private class OrderItemDoc
+            {
+                public Guid ProductId { get; set; }
+                public int Amount { get; set; }
+                public string AmountUnit { get; set; }
+                public decimal? Price { get; set; }
+                public string Currency { get; set; }
+            }
+        }
+    }
+}

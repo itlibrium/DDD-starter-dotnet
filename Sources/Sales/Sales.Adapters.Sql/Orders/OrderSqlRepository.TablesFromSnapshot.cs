@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -6,11 +7,11 @@ using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Orders
 {
-    public partial class OrderSqlRepository
+    public static partial class OrderSqlRepository
     {
-        private class TablesFromSnapshot : OrderRepository
+        public class TablesFromSnapshot : OrderRepository
         {
-            private readonly Dictionary<OrderId, OrderData> _orders = new Dictionary<OrderId, OrderData>();
+            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new Dictionary<OrderId, SalesDb.Order>();
             private readonly SalesDbContext _dbContext;
 
             public TablesFromSnapshot(SalesDbContext dbContext) => _dbContext = dbContext;
@@ -18,26 +19,52 @@ namespace MyCompany.Crm.Sales.Orders
             public async Task<Order> GetBy(OrderId id)
             {
                 if (_orders.ContainsKey(id))
-                    throw new DesignError(
-                        "Same aggregate is restored from the repository more than once in a single business transaction");
-                var data = await _dbContext.Orders
-                    .Include(order => order.Items)
-                    .SingleOrDefaultAsync(order => order.Id == id.Value);
-                if (data is null) throw new DomainException();
-                _orders.Add(id, data);
-                return RestoreOrderFrom(data);
+                    throw new DesignError(SameAggregateRestoredMoreThanOnce);
+                var dbOrder = await _dbContext.Orders
+                    .Include(o => o.Items)
+                    .SingleOrDefaultAsync(o => o.Id == id.Value);
+                if (dbOrder is null) throw new DomainException();
+                var snapshot = CreateSnapshotFrom(dbOrder);
+                var order = Order.RestoreFrom(snapshot);
+                _orders.Add(id, dbOrder);
+                return order;
             }
 
             public Task Save(Order order)
             {
-                if (!_orders.TryGetValue(order.Id, out var data))
-                {
-                    data = new OrderData {Id = order.Id.Value};
-                    _dbContext.Orders.Add(data);
-                }
+                var dbOrder = GetDbOrder(order);
                 var snapshot = order.GetSnapshot();
-                data.Items = snapshot.Items
-                    .Select(item => new OrderItemData
+                Merge(dbOrder, snapshot);
+                return _dbContext.SaveChangesAsync();
+            }
+
+            private static Order.Snapshot CreateSnapshotFrom(SalesDb.Order dbOrder) => new Order.Snapshot(
+                dbOrder.Id,
+                dbOrder.Items
+                    .Select(dbOrderItem => new Order.Snapshot.Item(
+                        dbOrderItem.ProductId,
+                        dbOrderItem.Amount,
+                        dbOrderItem.AmountUnit,
+                        dbOrderItem.Price,
+                        dbOrderItem.Currency))
+                    .ToImmutableArray(),
+                dbOrder.PriceAgreementType,
+                dbOrder.PriceAgreementExpiresOn,
+                dbOrder.IsPlaced);
+
+            private SalesDb.Order GetDbOrder(Order order)
+            {
+                if (_orders.TryGetValue(order.Id, out var dbOrder)) 
+                    return dbOrder;
+                dbOrder = new SalesDb.Order {Id = order.Id.Value};
+                _dbContext.Orders.Add(dbOrder);
+                return dbOrder;
+            }
+            
+            private static void Merge(SalesDb.Order dbOrder, Order.Snapshot snapshot)
+            {
+                dbOrder.Items = snapshot.Items
+                    .Select(item => new SalesDb.OrderItem
                     {
                         ProductId = item.ProductId,
                         Amount = item.Amount,
@@ -46,10 +73,9 @@ namespace MyCompany.Crm.Sales.Orders
                         Currency = item.Currency
                     })
                     .ToList();
-                data.PriceAgreementType = snapshot.PriceAgreementType;
-                data.PriceAgreementExpiresOn = snapshot.PriceAgreementExpiresOn;
-                data.IsPlaced = snapshot.IsPlaced;
-                return Task.CompletedTask;
+                dbOrder.PriceAgreementType = snapshot.PriceAgreementType;
+                dbOrder.PriceAgreementExpiresOn = snapshot.PriceAgreementExpiresOn;
+                dbOrder.IsPlaced = snapshot.IsPlaced;
             }
         }
     }

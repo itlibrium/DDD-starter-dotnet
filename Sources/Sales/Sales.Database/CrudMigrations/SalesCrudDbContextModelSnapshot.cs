@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyCompany.Crm.Sales.Database.Migrations
+namespace MyCompany.Crm.Sales.CrudMigrations
 {
     [DbContext(typeof(SalesCrudDbContext))]
     partial class SalesCrudDbContextModelSnapshot : ModelSnapshot
@@ -13,16 +13,18 @@ namespace MyCompany.Crm.Sales.Database.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid>("ClientId");
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -32,17 +34,23 @@ namespace MyCompany.Crm.Sales.Database.Migrations
             modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<DateTime>("AddedOn");
+                    b.Property<DateTime>("AddedOn")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("AuthorId");
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid?>("OrderHeaderId");
+                    b.Property<Guid?>("OrderHeaderId")
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid>("OrderId");
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Text");
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -55,26 +63,27 @@ namespace MyCompany.Crm.Sales.Database.Migrations
                 {
                     b.OwnsOne("MyCompany.Crm.Sales.Orders.InvoicingDetails", "InvoicingDetails", b1 =>
                         {
-                            b1.Property<Guid>("OrderHeaderId");
+                            b1.Property<Guid>("OrderHeaderId")
+                                .HasColumnType("uuid");
 
-                            b1.Property<string>("Name");
+                            b1.Property<string>("Name")
+                                .HasColumnType("text");
 
-                            b1.Property<string>("TaxId");
+                            b1.Property<string>("TaxId")
+                                .HasColumnType("text");
 
                             b1.HasKey("OrderHeaderId");
 
                             b1.ToTable("OrderHeaders");
 
-                            b1.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader")
-                                .WithOne("InvoicingDetails")
-                                .HasForeignKey("MyCompany.Crm.Sales.Orders.InvoicingDetails", "OrderHeaderId")
-                                .OnDelete(DeleteBehavior.Cascade);
+                            b1.WithOwner()
+                                .HasForeignKey("OrderHeaderId");
                         });
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
                 {
-                    b.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader")
+                    b.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader", null)
                         .WithMany("Notes")
                         .HasForeignKey("OrderHeaderId");
                 });

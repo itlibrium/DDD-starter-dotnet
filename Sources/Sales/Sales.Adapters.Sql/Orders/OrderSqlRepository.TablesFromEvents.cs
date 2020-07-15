@@ -4,78 +4,158 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.Sales.Pricing;
+using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Orders
 {
-    public partial class OrderSqlRepository
+    public static partial class OrderSqlRepository
     {
-        private class TablesFromEvents : OrderRepository
+        public class TablesFromEvents : OrderRepository
         {
-            private readonly Dictionary<OrderId, OrderData> _orders = new Dictionary<OrderId, OrderData>();
+            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new Dictionary<OrderId, SalesDb.Order>();
             private readonly SalesDbContext _dbContext;
 
-            public TablesFromEvents(SalesDbContext dbContext) => _dbContext = dbContext;
+            public TablesFromEvents(SalesDbContext dfContext) => _dbContext = dfContext;
 
             public async Task<Order> GetBy(OrderId id)
             {
                 if (_orders.ContainsKey(id))
-                    throw new DesignError(
-                        "Same aggregate is restored from the repository more than once in a single business transaction");
-                var data = await _dbContext.Orders
-                    .Include(order => order.Items)
-                    .SingleOrDefaultAsync(order => order.Id == id.Value);
-                if (data is null) throw new DomainException();
-                _orders.Add(id, data);
-                return RestoreOrderFrom(data);
+                    throw new DesignError(SameAggregateRestoredMoreThanOnce);
+                var dbOrder = await _dbContext.Orders
+                    .Include(o => o.Items)
+                    .SingleOrDefaultAsync(o => o.Id == id.Value);
+                if (dbOrder is null) throw new DomainException();
+                var order = RestoreFrom(dbOrder);
+                _orders.Add(id, dbOrder);
+                return order;
             }
 
             public Task Save(Order order)
             {
-                if (!_orders.TryGetValue(order.Id, out var orderData))
-                {
-                    orderData = new OrderData {Id = order.Id.Value};
-                    _dbContext.Orders.Add(orderData);
-                }
+                var dbOrder = GetDbOrder(order);
                 foreach (var newEvent in order.NewEvents)
                 {
                     switch (newEvent)
                     {
                         case Order.CreatedFromOffer createdFromOffer:
-                            orderData.PriceAgreementType = nameof(Order.PriceAgreementType.Final);
-                            orderData.PriceAgreementExpiresOn = null;
-                            orderData.Items = CreateOrderItemsDataFrom(createdFromOffer.PriceConfirmations);
-                            orderData.IsPlaced = true;
+                            Merge(dbOrder, createdFromOffer);
                             break;
                         case Order.ProductAmountAdded productAmountAdded:
-                            orderData.Items.Add(new OrderItemData
-                            {
-                                ProductId = productAmountAdded.ProductId,
-                                Amount = productAmountAdded.Amount,
-                                AmountUnit = productAmountAdded.AmountUnit,
-                                Price = null,
-                                Currency = null
-                            });
+                            Merge(dbOrder, productAmountAdded);
                             break;
                         case Order.PricesConfirmed pricesConfirmed:
-                            orderData.PriceAgreementType = nameof(Order.PriceAgreementType.Temporary);
-                            orderData.PriceAgreementExpiresOn = pricesConfirmed.PriceAgreementExpiresOn;
-                            orderData.Items = CreateOrderItemsDataFrom(pricesConfirmed.PriceConfirmations);
+                            Merge(dbOrder, pricesConfirmed);
                             break;
                         case Order.Placed _:
-                            orderData.IsPlaced = true;
+                            dbOrder.IsPlaced = true;
                             break;
                         default:
                             throw new ArgumentOutOfRangeException(nameof(newEvent), newEvent, null);
                     }
                 }
-                return Task.CompletedTask;
+                return _dbContext.SaveChangesAsync();
             }
 
-            private static List<OrderItemData> CreateOrderItemsDataFrom(
+            private static Order RestoreFrom(SalesDb.Order dbOrder)
+            {
+                var priceAgreementType = dbOrder.PriceAgreementType.ToDomainModel<Order.PriceAgreementType>();
+                return priceAgreementType switch
+                {
+                    Order.PriceAgreementType.Non => RestoreWithNoPriceAgreement(dbOrder),
+                    Order.PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(dbOrder),
+                    Order.PriceAgreementType.Final => RestoreWithFinalPriceAgreement(dbOrder),
+                    _ => throw new ArgumentOutOfRangeException(nameof(priceAgreementType), priceAgreementType, null)
+                };
+            }
+
+            private static Order RestoreWithNoPriceAgreement(SalesDb.Order dbOrder) => Order.Restore(
+                OrderId.From(dbOrder.Id),
+                dbOrder.Items
+                    .Select(dbOrderItem => ProductAmount.Of(ProductId.From(dbOrderItem.ProductId),
+                        Amount.Of(dbOrderItem.Amount, dbOrderItem.AmountUnit.ToDomainModel<AmountUnit>())))
+                    .ToImmutableArray(),
+                dbOrder.IsPlaced);
+
+            private static Order RestoreWithTemporaryPriceAgreement(SalesDb.Order dbOrder)
+            {
+                if (!dbOrder.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+                return Order.Restore(
+                    OrderId.From(dbOrder.Id),
+                    CreateQuotesFrom(dbOrder.Items),
+                    dbOrder.PriceAgreementExpiresOn.Value,
+                    dbOrder.IsPlaced);
+            }
+
+            private static Order RestoreWithFinalPriceAgreement(SalesDb.Order dbOrder) => Order.Restore(
+                OrderId.From(dbOrder.Id),
+                CreateQuotesFrom(dbOrder.Items),
+                dbOrder.IsPlaced);
+
+            private static ImmutableArray<Quote> CreateQuotesFrom(IEnumerable<SalesDb.OrderItem> dbOrderItems) =>
+                dbOrderItems.Select(dbOrderItem => CreateQuoteFrom(dbOrderItem)).ToImmutableArray();
+
+            private static Quote CreateQuoteFrom(SalesDb.OrderItem dbOrderItem)
+            {
+                if (!dbOrderItem.Price.HasValue || dbOrderItem.Currency is null) throw new DomainException();
+                return Quote.For(
+                    ProductAmount.Of(ProductId.From(dbOrderItem.ProductId),
+                        Amount.Of(dbOrderItem.Amount, dbOrderItem.AmountUnit.ToDomainModel<AmountUnit>())),
+                    Money.Of(dbOrderItem.Price.Value, dbOrderItem.Currency.ToDomainModel<Currency>()));
+            }
+            
+            private SalesDb.Order GetDbOrder(Order order)
+            {
+                if (_orders.TryGetValue(order.Id, out var dbOrder)) 
+                    return dbOrder;
+                dbOrder = new SalesDb.Order
+                {
+                    Id = order.Id.Value,
+                    PriceAgreementType = nameof(Order.PriceAgreementType.Non)
+                };
+                _dbContext.Orders.Add(dbOrder);
+                return dbOrder;
+            }
+            
+            private static void Merge(SalesDb.Order dbOrder, Order.PricesConfirmed pricesConfirmed)
+            {
+                dbOrder.PriceAgreementType = nameof(Order.PriceAgreementType.Temporary);
+                dbOrder.PriceAgreementExpiresOn = pricesConfirmed.PriceAgreementExpiresOn;
+                dbOrder.Items = CreateDbOrderItemsFrom(pricesConfirmed.PriceConfirmations);
+            }
+
+            private static void Merge(SalesDb.Order dbOrder, Order.ProductAmountAdded productAmountAdded)
+            {
+                dbOrder.PriceAgreementType = nameof(Order.PriceAgreementType.Non);
+                dbOrder.Items.ForEach(item =>
+                {
+                    item.Price = null;
+                    item.Currency = null;
+                });
+                dbOrder.Items.Add(new SalesDb.OrderItem
+                {
+                    ProductId = productAmountAdded.ProductId,
+                    Amount = productAmountAdded.Amount,
+                    AmountUnit = productAmountAdded.AmountUnit,
+                    Price = null,
+                    Currency = null
+                });
+            }
+
+            private static void Merge(SalesDb.Order dbOrder, Order.CreatedFromOffer createdFromOffer)
+            {
+                dbOrder.PriceAgreementType = nameof(Order.PriceAgreementType.Final);
+                dbOrder.PriceAgreementExpiresOn = null;
+                dbOrder.Items = CreateDbOrderItemsFrom(createdFromOffer.PriceConfirmations);
+                dbOrder.IsPlaced = true;
+            }
+            
+            private static List<SalesDb.OrderItem> CreateDbOrderItemsFrom(
                 ImmutableArray<Order.PriceConfirmation> priceConfirmations) =>
                 priceConfirmations
-                    .Select(priceConfirmation => new OrderItemData
+                    .Select(priceConfirmation => new SalesDb.OrderItem
                     {
                         ProductId = priceConfirmation.ProductId,
                         Amount = priceConfirmation.Amount,

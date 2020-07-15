@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyCompany.Crm.Contacts.Database.Migrations
+namespace MyCompany.Crm.Contacts.Migrations
 {
     public partial class Initial : Migration
     {
@@ -53,12 +53,12 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                 name: "Phone",
                 columns: table => new
                 {
-                    CompanyId = table.Column<Guid>(nullable: false),
-                    Number = table.Column<string>(nullable: false)
+                    Number = table.Column<string>(nullable: false),
+                    CompanyId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Phone", x => new { x.CompanyId, x.Number });
+                    table.PrimaryKey("PK_Phone", x => x.Number);
                     table.ForeignKey(
                         name: "FK_Phone_Companies_CompanyId",
                         column: x => x.CompanyId,
@@ -148,6 +148,11 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                 name: "IX_GroupTag_TagId",
                 table: "GroupTag",
                 column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Phone_CompanyId",
+                table: "Phone",
+                column: "CompanyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

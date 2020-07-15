@@ -14,9 +14,9 @@ namespace MyCompany.Crm.Sales.Orders
         private readonly List<Event> _newEvents = new List<Event>();
         public IReadOnlyList<Event> NewEvents => _newEvents.AsReadOnly();
 
-        public static Order Restore(Guid id, IEnumerable<Event> events)
+        public static Order RestoreFrom(OrderId id, IEnumerable<Event> events)
         {
-            var order = New(OrderId.From(id));
+            var order = New(id);
             foreach (var @event in events)
                 @event.Apply(order);
             return order;

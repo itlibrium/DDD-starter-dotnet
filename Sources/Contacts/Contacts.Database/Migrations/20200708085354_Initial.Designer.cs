@@ -2,29 +2,36 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using MyCompany.Crm.Contacts;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyCompany.Crm.Contacts.Database.Migrations
+namespace MyCompany.Crm.Contacts.Migrations
 {
     [DbContext(typeof(ContactsCrudDbContext))]
-    partial class ContactsCrudDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200708085354_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<DateTime>("AddedOn");
+                    b.Property<DateTime>("AddedOn")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -33,9 +40,11 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyGroup", b =>
                 {
-                    b.Property<Guid>("CompanyId");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid>("GroupId");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("CompanyId", "GroupId");
 
@@ -44,9 +53,11 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyTag", b =>
                 {
-                    b.Property<Guid>("CompanyId");
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid>("TagId");
+                    b.Property<Guid>("TagId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("CompanyId", "TagId");
 
@@ -58,11 +69,14 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
             modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.Group", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -71,9 +85,11 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.GroupTag", b =>
                 {
-                    b.Property<Guid>("GroupId");
+                    b.Property<Guid>("GroupId")
+                        .HasColumnType("uuid");
 
-                    b.Property<Guid>("TagId");
+                    b.Property<Guid>("TagId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("GroupId", "TagId");
 
@@ -85,11 +101,14 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
             modelBuilder.Entity("MyCompany.Crm.Contacts.Tags.Tag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -100,38 +119,42 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                 {
                     b.OwnsOne("MyCompany.Crm.Contacts.Companies.Address", "Address", b1 =>
                         {
-                            b1.Property<Guid>("CompanyId");
+                            b1.Property<Guid>("CompanyId")
+                                .HasColumnType("uuid");
 
-                            b1.Property<string>("City");
+                            b1.Property<string>("City")
+                                .HasColumnType("text");
 
-                            b1.Property<string>("Street");
+                            b1.Property<string>("Street")
+                                .HasColumnType("text");
 
-                            b1.Property<string>("ZipCode");
+                            b1.Property<string>("ZipCode")
+                                .HasColumnType("text");
 
                             b1.HasKey("CompanyId");
 
                             b1.ToTable("Companies");
 
-                            b1.HasOne("MyCompany.Crm.Contacts.Companies.Company", "Company")
-                                .WithOne("Address")
-                                .HasForeignKey("MyCompany.Crm.Contacts.Companies.Address", "CompanyId")
-                                .OnDelete(DeleteBehavior.Cascade);
+                            b1.WithOwner("Company")
+                                .HasForeignKey("CompanyId");
                         });
 
                     b.OwnsMany("MyCompany.Crm.Contacts.Companies.Phone", "Phones", b1 =>
                         {
-                            b1.Property<Guid>("CompanyId");
+                            b1.Property<string>("Number")
+                                .HasColumnType("text");
 
-                            b1.Property<string>("Number");
+                            b1.Property<Guid>("CompanyId")
+                                .HasColumnType("uuid");
 
-                            b1.HasKey("CompanyId", "Number");
+                            b1.HasKey("Number");
+
+                            b1.HasIndex("CompanyId");
 
                             b1.ToTable("Phone");
 
-                            b1.HasOne("MyCompany.Crm.Contacts.Companies.Company")
-                                .WithMany("Phones")
-                                .HasForeignKey("CompanyId")
-                                .OnDelete(DeleteBehavior.Cascade);
+                            b1.WithOwner()
+                                .HasForeignKey("CompanyId");
                         });
                 });
 
@@ -140,12 +163,14 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.HasOne("MyCompany.Crm.Contacts.Companies.Company", "Company")
                         .WithMany("Groups")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyCompany.Crm.Contacts.Groups.Group", "Group")
                         .WithMany("Companies")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyTag", b =>
@@ -153,12 +178,14 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.HasOne("MyCompany.Crm.Contacts.Companies.Company", "Company")
                         .WithMany("Tags")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyCompany.Crm.Contacts.Tags.Tag", "Tag")
                         .WithMany("Companies")
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.GroupTag", b =>
@@ -166,12 +193,14 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.HasOne("MyCompany.Crm.Contacts.Groups.Group", "Group")
                         .WithMany("Tags")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyCompany.Crm.Contacts.Tags.Tag", "Tag")
                         .WithMany("Groups")
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

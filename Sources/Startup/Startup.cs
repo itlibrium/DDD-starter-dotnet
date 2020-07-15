@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Marten;
+using Marten.Events;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyCompany.Crm.Contacts;
-using MyCompany.Crm.Contacts.Database;
 using MyCompany.Crm.Sales;
-using MyCompany.Crm.Sales.Database;
+using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.TechnicalStuff.Marten;
 
 namespace MyCompany.Crm
 {
@@ -27,24 +29,26 @@ namespace MyCompany.Crm
             services.AddControllers()
                 .AddControllersAsServices();
             services.AddDbContextPool<ContactsCrudDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Contacts"), sqlOptions => sqlOptions
-                    .MigrationsAssembly(ContactsDatabaseAssemblyInfo.Name)
-                    .MigrationsHistoryTable("__ContactsCrudDbContext_Migrations")));
-            services.AddScoped<ContactsCrudDao, ContactsEfCrudDao>();
+                .UseNpgsql(_configuration.GetConnectionString("Contacts")));
+            services.AddScoped<ContactsCrudDao, ContactsCrudEfDao>();
             services.AddDbContextPool<SalesDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Sales"), sqlOptions => sqlOptions
-                    .MigrationsAssembly(SalesDatabaseAssemblyInfo.Name)
-                    .MigrationsHistoryTable("__SalesDbContext_Migrations")));
+                .UseNpgsql(_configuration.GetConnectionString("Sales")));
+            services.AddMarten(options =>
+                {
+                    options.Connection(_configuration.GetConnectionString("Sales"));
+                    options.Events.StreamIdentity = StreamIdentity.AsGuid;
+                })
+                .BuildSessionsWith<LightweightSessionFactory>()
+                .InitializeStore();
+            services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
             services.AddDbContextPool<SalesCrudDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Sales"), sqlOptions => sqlOptions
-                    .MigrationsAssembly(SalesDatabaseAssemblyInfo.Name)
-                    .MigrationsHistoryTable("__SalesCrudDbContext_Migrations")));
-            services.AddScoped<SalesCrudDao, SalesEfCrudDao>();
+                .UseNpgsql(_configuration.GetConnectionString("Sales")));
+            services.AddScoped<SalesCrudDao, SalesCrudEfDao>();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            if (_environment.IsDevelopment()) 
+            if (_environment.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting();

@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
+using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
 
@@ -26,6 +29,53 @@ namespace MyCompany.Crm.Sales.Orders
                     price?.Value,
                     price?.Currency.ToCode());
             }
+        }
+
+        public static Order RestoreFrom(Snapshot snapshot)
+        {
+            var priceAgreementType = snapshot.PriceAgreementType.ToDomainModel<PriceAgreementType>();
+            return priceAgreementType switch
+            {
+                PriceAgreementType.Non => RestoreWithNoPriceAgreement(snapshot),
+                PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(snapshot),
+                PriceAgreementType.Final => RestoreWithFinalPriceAgreement(snapshot),
+                _ => throw new ArgumentOutOfRangeException(nameof(priceAgreementType), priceAgreementType, null)
+            };
+        }
+
+        private static Order RestoreWithNoPriceAgreement(Snapshot snapshot) => Restore(
+            OrderId.From(snapshot.Id),
+            snapshot.Items
+                .Select(orderItemData => ProductAmount.Of(ProductId.From(orderItemData.ProductId),
+                    Amount.Of(orderItemData.Amount, orderItemData.AmountUnit.ToDomainModel<AmountUnit>())))
+                .ToImmutableArray(),
+            snapshot.IsPlaced);
+
+        private static Order RestoreWithTemporaryPriceAgreement(Snapshot orderData)
+        {
+            if (!orderData.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+            return Restore(
+                OrderId.From(orderData.Id),
+                CreateQuotesFrom(orderData.Items),
+                orderData.PriceAgreementExpiresOn.Value,
+                orderData.IsPlaced);
+        }
+
+        private static Order RestoreWithFinalPriceAgreement(Snapshot orderData) => Restore(
+            OrderId.From(orderData.Id),
+            CreateQuotesFrom(orderData.Items),
+            orderData.IsPlaced);
+
+        private static ImmutableArray<Quote> CreateQuotesFrom(IEnumerable<Snapshot.Item> orderItemsData) =>
+            orderItemsData.Select(orderItemData => CreateQuoteFrom(orderItemData)).ToImmutableArray();
+
+        private static Quote CreateQuoteFrom(Snapshot.Item item)
+        {
+            if (!item.Price.HasValue || item.Currency is null) throw new DomainException();
+            return Quote.For(
+                ProductAmount.Of(ProductId.From(item.ProductId),
+                    Amount.Of(item.Amount, item.AmountUnit.ToDomainModel<AmountUnit>())),
+                Money.Of(item.Price.Value, item.Currency.ToDomainModel<Currency>()));
         }
 
         public class Snapshot
