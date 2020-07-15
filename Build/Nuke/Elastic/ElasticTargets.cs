@@ -6,10 +6,10 @@ using static MyCompany.Crm.Nuke.Paths;
 
 namespace MyCompany.Crm.Nuke.Elastic
 {
-    public class ElasticTargets : NukeBuild
+    public static class ElasticTargets
     {
         public static readonly AbsolutePath UsersDirectory = ArtifactsDirectory / "Elastic" / "Users";
-        private static readonly AbsolutePath ElasticDirectory = BuildDirectory / "Elastic";
+        private static readonly AbsolutePath ElasticDirectory = NukeDirectory / "Elastic";
         private static readonly AbsolutePath CreateUsersScript = ElasticDirectory / "create_elastic_users.sh";
         
         public static Target CreateElasticUsers => _ => _

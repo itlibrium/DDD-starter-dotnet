@@ -7,10 +7,10 @@ using static MyCompany.Crm.Nuke.Paths;
 
 namespace MyCompany.Crm.Nuke.Certs
 {
-    public class CertsTargets
+    public static class CertsTargets
     {
         public static readonly AbsolutePath CertsDirectory = ArtifactsDirectory / "Certs";
-        private static readonly AbsolutePath DevCertsDirectory = BuildDirectory / "Certs" / "DevCerts";
+        private static readonly AbsolutePath DevCertsDirectory = NukeDirectory / "Certs" / "DevCerts";
 
         public static Target PrepareCertificates => _ => _
             .Executes(() =>

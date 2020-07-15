@@ -15,9 +15,9 @@ namespace MyCompany.Crm.Nuke.DockerCompose
 {
     public static class DockerComposeTargets
     {
-        private static readonly AbsolutePath ComposeDirectory = BuildDirectory / "DockerCompose";
+        private static readonly AbsolutePath ComposeDirectory = NukeDirectory / "DockerCompose";
 
-        public static Target StartDockerComposeInfrastructure => _ => _
+        public static Target StartLocalDockerInfrastructure => _ => _
             .DependsOn(PrepareCertificates, CreateElasticUsers)
             .Executes(() =>
             {
@@ -27,7 +27,7 @@ namespace MyCompany.Crm.Nuke.DockerCompose
                     .SetDetach(true));
             });
 
-        public static Target StopDockerComposeInfrastructure => _ => _
+        public static Target StopLocalDockerInfrastructure => _ => _
             .Executes(() =>
             {
                 DockerComposeTasks.Down(settings => settings
@@ -36,8 +36,11 @@ namespace MyCompany.Crm.Nuke.DockerCompose
                 );
             });
 
-        public static Target CleanDockerComposeInfrastructure => _ => _
-            .DependsOn(StopDockerComposeInfrastructure)
+        public static Target CleanLocalDockerInfrastructure => _ => _
+            .DependsOn(
+                StopLocalDockerInfrastructure,
+                CleanCertificates,
+                CleanElasticUsers)
             .Executes(() =>
             {
                 DockerTasks.DockerVolumePrune(settings => settings
@@ -64,7 +67,7 @@ namespace MyCompany.Crm.Nuke.DockerCompose
                 else
                 {
                     throw new ArgumentOutOfRangeException(nameof(Environment), Build.Environment,
-                        $"Environment not supported for {nameof(Build.StartDockerComposeInfrastructure)}");
+                        $"Environment not supported for {/*nameof(Build.StartDockerComposeInfrastructure)*/""}");
                 }
             }
         }
