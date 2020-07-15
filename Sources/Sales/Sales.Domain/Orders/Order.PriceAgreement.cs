@@ -5,12 +5,13 @@ using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Orders
 {
     public partial class Order
     {
-        private readonly struct PriceAgreement
+        private readonly struct PriceAgreement : IEquatable<PriceAgreement>
         {
             private readonly ImmutableArray<Quote> _quotes;
             private readonly DateTime _expiresOn;
@@ -39,7 +40,7 @@ namespace MyCompany.Crm.Sales.Orders
             {
                 PriceAgreementType.Non => true,
                 PriceAgreementType.Temporary =>
-                    ExpiresOn < now || priceChangesPolicy.CanChangePrices(_quotes, newQuotes),
+                ExpiresOn < now || priceChangesPolicy.CanChangePrices(_quotes, newQuotes),
                 PriceAgreementType.Final => false,
                 _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
             };
@@ -57,6 +58,19 @@ namespace MyCompany.Crm.Sales.Orders
                 var quote = _quotes.SingleOrDefault(q => q.ProductAmount.Equals(productAmount));
                 return quote.Price.IsEmpty ? (Money?) null : quote.Price;
             }
+
+            public bool Equals(PriceAgreement other) =>
+                Type == other.Type &&
+                _expiresOn.Equals(other._expiresOn) &&
+                _quotes.HasSameItemsAs(other._quotes);
+
+            public override bool Equals(object obj) => obj is PriceAgreement other && Equals(other);
+
+            public override int GetHashCode() => new HashCode()
+                .CombineWith(_quotes)
+                .CombineWith(_expiresOn)
+                .CombineWith(Type)
+                .ToHashCode();
         }
 
         public enum PriceAgreementType : byte

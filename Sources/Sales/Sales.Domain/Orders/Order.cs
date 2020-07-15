@@ -9,7 +9,7 @@ using MyCompany.Crm.TechnicalStuff;
 
 namespace MyCompany.Crm.Sales.Orders
 {
-    public partial class Order
+    public partial class Order : IEquatable<Order>
     {
         public OrderId Id { get; }
 
@@ -153,5 +153,18 @@ namespace MyCompany.Crm.Sales.Orders
                     quote.ProductAmount.Amount.Unit.ToCode(),
                     quote.Price.Value, quote.Price.Currency.ToCode()))
                 .ToImmutableArray();
+
+        public bool Equals(Order other)
+        {
+            if (other is null) return false;
+            return Id.Equals(other.Id) &&
+                   _isPlaced == other._isPlaced &&
+                   _items.HasSameItemsAs(other._items) &&
+                   _priceAgreement.Equals(other._priceAgreement);
+        }
+
+        public override bool Equals(object obj) => obj is Order other && Equals(other);
+
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }
