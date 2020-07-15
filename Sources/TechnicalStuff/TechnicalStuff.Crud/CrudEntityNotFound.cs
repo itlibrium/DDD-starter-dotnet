@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace TechnicalStuff.Crud
+namespace MyCompany.Crm.TechnicalStuff.Crud
 {
     public class CrudEntityNotFound : Exception
     {

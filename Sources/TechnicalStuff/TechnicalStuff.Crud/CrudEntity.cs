@@ -2,7 +2,7 @@ using System;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace TechnicalStuff.Crud
+namespace MyCompany.Crm.TechnicalStuff.Crud
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class CrudEntity

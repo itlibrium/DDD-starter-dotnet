@@ -1,4 +1,4 @@
-using TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
 namespace MyCompany.Crm.Sales
 {

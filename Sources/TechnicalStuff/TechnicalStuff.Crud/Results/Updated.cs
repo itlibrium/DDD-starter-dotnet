@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace TechnicalStuff.Crud.Results
+namespace MyCompany.Crm.TechnicalStuff.Crud.Results
 {
     public readonly struct Updated : IEquatable<Updated>
     {

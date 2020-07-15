@@ -28,10 +28,11 @@ namespace MyCompany.Crm.Contacts
             modelBuilder.Entity<Company>()
                 .OwnsOne(company => company.Address);
             modelBuilder.Entity<Company>()
-                .OwnsMany(company => company.Phones, phone => phone
-                    .WithOwner()
-                    .HasForeignKey("CompanyId"))
-                .HasKey("CompanyId", "Number");
+                .OwnsMany(company => company.Phones, phone =>
+                {
+                    phone.WithOwner().HasForeignKey(nameof(Phone.CompanyId));
+                    phone.HasKey(nameof(Phone.Number));
+                });
         }
 
         private static void ConfigureContactGroup(ModelBuilder modelBuilder)
@@ -47,7 +48,7 @@ namespace MyCompany.Crm.Contacts
                 .WithMany(tag => tag.Companies)
                 .HasForeignKey(companyTag => companyTag.CompanyId);
         }
-        
+
         private static void ConfigureContactTag(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CompanyTag>()

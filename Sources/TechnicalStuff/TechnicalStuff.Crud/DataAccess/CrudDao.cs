@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.JsonPatch;
-using TechnicalStuff.Crud.Results;
+using MyCompany.Crm.TechnicalStuff.Crud.Results;
 
-namespace TechnicalStuff.Crud.DataAccess
+namespace MyCompany.Crm.TechnicalStuff.Crud.DataAccess
 {
     public interface CrudDao
     {

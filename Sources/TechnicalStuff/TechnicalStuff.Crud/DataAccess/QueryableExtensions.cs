@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace TechnicalStuff.Crud.DataAccess
+namespace MyCompany.Crm.TechnicalStuff.Crud.DataAccess
 {
     public static class QueryableExtensions
     {

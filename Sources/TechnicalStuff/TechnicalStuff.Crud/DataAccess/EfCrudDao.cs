@@ -4,17 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
-using TechnicalStuff.Crud.Results;
+using MyCompany.Crm.TechnicalStuff.Crud.Results;
 
-namespace TechnicalStuff.Crud.DataAccess
+namespace MyCompany.Crm.TechnicalStuff.Crud.DataAccess
 {
     public class EfCrudDao : CrudDao
     {
-        private readonly DbContext _dbContext;
+        private readonly DbContext _context;
 
-        protected EfCrudDao(DbContext dbContext) => _dbContext = dbContext;
+        protected EfCrudDao(DbContext context) => _context = context;
 
-        public IQueryable<TEntity> Entities<TEntity>() where TEntity : class => _dbContext.Set<TEntity>();
+        public IQueryable<TEntity> Entities<TEntity>() where TEntity : class => _context.Set<TEntity>();
 
         public Task<bool> CheckIfExists<TEntity>(Guid id) where TEntity : CrudEntity =>
             Entities<TEntity>().AnyAsync(e => e.Id == id);
@@ -27,8 +27,8 @@ namespace TechnicalStuff.Crud.DataAccess
             if (entity.IsDeleted)
                 throw new InvalidOperationException();
             entity.Id = Guid.NewGuid();
-            await _dbContext.Set<TEntity>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await _context.Set<TEntity>().AddAsync(entity);
+            await _context.SaveChangesAsync();
             return CrudResult.Created(entity);
         }
 
@@ -62,7 +62,7 @@ namespace TechnicalStuff.Crud.DataAccess
                 .Apply(queryConfig)
                 .AsAsyncEnumerable();
 
-        public Task<Updated<TEntity>> Update<TEntity>(Guid id, TEntity entity) 
+        public Task<Updated<TEntity>> Update<TEntity>(Guid id, TEntity entity)
             where TEntity : CrudEntity =>
             Update(id, Config<TEntity>.Empty, entity);
 
@@ -70,8 +70,8 @@ namespace TechnicalStuff.Crud.DataAccess
             where TEntity : CrudEntity
         {
             entity.Id = id;
-            _dbContext.Update(entity);
-            await _dbContext.SaveChangesAsync();
+            _context.Set<TEntity>().Update(entity);
+            await _context.SaveChangesAsync();
             return CrudResult.Updated(entity);
         }
 
@@ -85,7 +85,7 @@ namespace TechnicalStuff.Crud.DataAccess
         {
             var entity = await GetById(id, queryConfig);
             patch.ApplyTo(entity);
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return CrudResult.Updated(entity);
         }
 
@@ -93,13 +93,13 @@ namespace TechnicalStuff.Crud.DataAccess
             where TEntity : CrudEntity =>
             Update(id, Config<TEntity>.Empty, updateEntity);
 
-        public async Task<Updated> Update<TEntity>(Guid id, QueryConfig<TEntity> queryConfig, 
+        public async Task<Updated> Update<TEntity>(Guid id, QueryConfig<TEntity> queryConfig,
             Action<TEntity> updateEntity)
             where TEntity : CrudEntity
         {
             var entity = await GetById(id, queryConfig);
             updateEntity(entity);
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return CrudResult.Updated(id);
         }
 
@@ -113,7 +113,7 @@ namespace TechnicalStuff.Crud.DataAccess
         {
             var entity = await GetById(id, queryConfig);
             var updatedEntity = updateEntity(entity);
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return CrudResult.Updated(updatedEntity);
         }
 
@@ -127,7 +127,7 @@ namespace TechnicalStuff.Crud.DataAccess
         {
             var entity = await GetById(id, queryConfig);
             var result = updateEntity(entity);
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return CrudResult.Updated(result);
         }
 
@@ -137,25 +137,25 @@ namespace TechnicalStuff.Crud.DataAccess
             var entity = await Entities<TEntity>().SingleOrDefaultAsync(e => e.Id == id);
             if (entity is null || entity.IsDeleted)
                 return new Deleted(id, false);
-            
+
             switch (deletePolicy)
             {
                 case DeletePolicy.Soft:
                     entity.IsDeleted = true;
                     break;
                 case DeletePolicy.Hard:
-                    _dbContext.Set<TEntity>().Remove(entity);
+                    _context.Set<TEntity>().Remove(entity);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(deletePolicy),
                         deletePolicy,
                         $"Unsupported {nameof(DeletePolicy)}");
             }
-            await _dbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return CrudResult.Deleted(id, true);
         }
 
-        public Task SaveChanges() => _dbContext.SaveChangesAsync();
+        public Task SaveChanges() => _context.SaveChangesAsync();
 
         private async Task<TEntity> GetById<TEntity>(Guid id, QueryConfig<TEntity> queryConfig)
             where TEntity : CrudEntity

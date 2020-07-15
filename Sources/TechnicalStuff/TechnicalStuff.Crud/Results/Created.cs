@@ -1,6 +1,6 @@
 using System;
 
-namespace TechnicalStuff.Crud.Results {
+namespace MyCompany.Crm.TechnicalStuff.Crud.Results {
     public readonly struct Created<TEntity> : IEquatable<Created<TEntity>>
     {
         public TEntity Entity { get; }

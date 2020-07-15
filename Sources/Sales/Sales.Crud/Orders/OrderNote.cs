@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using TechnicalStuff.Crud;
+using MyCompany.Crm.TechnicalStuff.Crud;
 
 namespace MyCompany.Crm.Sales.Orders
 {

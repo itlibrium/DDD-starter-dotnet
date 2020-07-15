@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TechnicalStuff.Crud.Api;
-using TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Api;
+using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
 namespace MyCompany.Crm.Contacts.Tags
 {

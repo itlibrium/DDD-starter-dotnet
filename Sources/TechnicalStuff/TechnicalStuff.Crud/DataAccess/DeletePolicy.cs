@@ -1,4 +1,4 @@
-namespace TechnicalStuff.Crud.DataAccess
+namespace MyCompany.Crm.TechnicalStuff.Crud.DataAccess
 {
     public enum DeletePolicy
     {

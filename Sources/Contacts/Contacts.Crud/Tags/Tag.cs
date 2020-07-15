@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using MyCompany.Crm.Contacts.Companies;
 using MyCompany.Crm.Contacts.Groups;
-using TechnicalStuff.Crud;
+using MyCompany.Crm.TechnicalStuff.Crud;
 
 namespace MyCompany.Crm.Contacts.Tags
 {

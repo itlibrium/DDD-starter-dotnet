@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using MyCompany.Crm.TechnicalStuff.Crud;
 using Newtonsoft.Json;
-using TechnicalStuff.Crud;
 
 namespace MyCompany.Crm.Sales.Orders
 {

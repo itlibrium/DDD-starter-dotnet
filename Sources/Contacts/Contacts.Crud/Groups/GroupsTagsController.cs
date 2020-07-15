@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.Contacts.Tags;
-using TechnicalStuff.Crud.Api;
+using MyCompany.Crm.TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Groups
 {

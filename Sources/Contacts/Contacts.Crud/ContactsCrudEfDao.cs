@@ -1,12 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
-using TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
 namespace MyCompany.Crm.Contacts
 {
-    public class ContactsEfCrudDao : EfCrudDao, ContactsCrudDao
+    public class ContactsCrudEfDao : EfCrudDao, ContactsCrudDao
     {
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter",
             Justification = "Required by DI container")]
-        public ContactsEfCrudDao(ContactsCrudDbContext dbContext) : base(dbContext) { }
+        public ContactsCrudEfDao(ContactsCrudDbContext context) : base(context) { }
     }
 }
