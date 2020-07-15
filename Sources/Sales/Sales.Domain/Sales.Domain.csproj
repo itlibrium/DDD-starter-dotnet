@@ -5,6 +5,7 @@
         <AssemblyName>MyCompany.Crm.Sales.Domain</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Collections.Immutable" Version="1.7.0" />
+      <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
       <PackageReference Include="TaskTupleAwaiter" Version="1.2.0" />
     </ItemGroup>
 
