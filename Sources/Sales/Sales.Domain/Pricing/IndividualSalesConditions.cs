@@ -1,7 +1,9 @@
 using MyCompany.Crm.Sales.Pricing.Discounts;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
+    [DddPolicy]
     internal class IndividualSalesConditions : OfferModifier, QuoteModifier
     {
         private readonly ClientLevelDiscounts _clientLevelDiscounts;

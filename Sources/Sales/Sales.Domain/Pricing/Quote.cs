@@ -1,9 +1,11 @@
 using System;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
+    [DddValueObject]
     public readonly struct Quote : IEquatable<Quote>
     {
         public ProductAmount ProductAmount { get; }

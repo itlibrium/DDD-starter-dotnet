@@ -1,9 +1,11 @@
 using System;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.PriceLists
 {
+    [DddValueObject]
     public readonly struct BasePrice : IEquatable<BasePrice>
     {
         public ProductUnit ProductUnit { get; }

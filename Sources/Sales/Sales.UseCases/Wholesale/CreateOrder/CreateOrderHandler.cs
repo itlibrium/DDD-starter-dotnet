@@ -1,10 +1,15 @@
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
 {
-    public class CreateOrderHandler
+    [Stateless]
+    [DddAppService]
+    public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
     {
         private readonly OrderRepository _orders;
 

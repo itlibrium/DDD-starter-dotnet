@@ -1,8 +1,10 @@
 using System;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
+    [DddValueObject]
     public readonly struct ProductDiscount : IEquatable<ProductDiscount>
     {
         public ProductUnit ProductUnit { get; }

@@ -1,7 +1,11 @@
 using System;
+using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Time
 {
+    [Stateless]
+    [DddDomainService]
     internal class SystemClock : Clock
     {
         public DateTime Now

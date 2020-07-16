@@ -6,11 +6,13 @@ using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Orders
 {
     public partial class Order
     {
+        [DddValueObject]
         private readonly struct PriceAgreement : IEquatable<PriceAgreement>
         {
             private readonly ImmutableArray<Quote> _quotes;

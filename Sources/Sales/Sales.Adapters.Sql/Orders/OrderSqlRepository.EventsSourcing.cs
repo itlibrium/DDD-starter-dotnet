@@ -1,11 +1,15 @@
 using System;
 using System.Threading.Tasks;
 using Marten;
+using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {
+        [Stateless]
+        [DddRepository]
         public class EventsSourcing : OrderRepository
         {
             private readonly IDocumentSession _session;

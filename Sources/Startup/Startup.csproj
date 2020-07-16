@@ -12,6 +12,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.5" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+        <PackageReference Include="Scrutor" Version="3.2.1" />
     </ItemGroup>
 
     <ItemGroup>

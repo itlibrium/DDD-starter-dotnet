@@ -4,7 +4,5 @@ namespace MyCompany.Crm.Sales.Orders
     {
         private const string SameAggregateRestoredMoreThanOnce =
             "Same aggregate is restored from the repository more than once in a single business transaction";
-
-        
     }
 }

@@ -1,7 +1,9 @@
 using System;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Products
 {
+    [DddValueObject]
     public readonly struct ProductId : IEquatable<ProductId>
     {
         public Guid Value { get; }

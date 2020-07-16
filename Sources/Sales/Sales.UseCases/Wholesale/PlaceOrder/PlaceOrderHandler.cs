@@ -1,10 +1,15 @@
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Time;
+using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
 {
-    public class PlaceOrderHandler
+    [Stateless]
+    [DddAppService]
+    public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly OrderRepository _orders;
         private readonly Clock _clock;

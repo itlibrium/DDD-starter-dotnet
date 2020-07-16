@@ -1,5 +1,8 @@
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+
 namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
 {
+    [DddPolicy]
     public class EverySecondBoxForHalfPrice : SpecialOffer
     {
         public static EverySecondBoxForHalfPrice Or(OfferModifier fallbackModifier) => 

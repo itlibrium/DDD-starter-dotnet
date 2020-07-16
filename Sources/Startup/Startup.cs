@@ -1,15 +1,10 @@
-﻿using Marten;
-using Marten.Events;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyCompany.Crm.Contacts;
-using MyCompany.Crm.Sales;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.Marten;
+using MyCompany.Crm.Registrations;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm
 {
@@ -28,22 +23,9 @@ namespace MyCompany.Crm
         {
             services.AddControllers()
                 .AddControllersAsServices();
-            services.AddDbContextPool<ContactsCrudDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Contacts")));
-            services.AddScoped<ContactsCrudDao, ContactsCrudEfDao>();
-            services.AddDbContextPool<SalesDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Sales")));
-            services.AddMarten(options =>
-                {
-                    options.Connection(_configuration.GetConnectionString("Sales"));
-                    options.Events.StreamIdentity = StreamIdentity.AsGuid;
-                })
-                .BuildSessionsWith<LightweightSessionFactory>()
-                .InitializeStore();
-            services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
-            services.AddDbContextPool<SalesCrudDbContext>(options => options
-                .UseNpgsql(_configuration.GetConnectionString("Sales")));
-            services.AddScoped<SalesCrudDao, SalesCrudEfDao>();
+            services.RegisterSalesModule(_configuration);
+            services.RegisterContactsModule(_configuration);
+            services.Decorate(typeof(CommandHandler<,>), typeof(TransactionDecorator<,>));
         }
 
         public void Configure(IApplicationBuilder app)

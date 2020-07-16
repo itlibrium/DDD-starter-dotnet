@@ -6,6 +6,7 @@ using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.Metadata;
 
 namespace MyCompany.Crm.Sales.Orders
 {
@@ -28,11 +29,13 @@ namespace MyCompany.Crm.Sales.Orders
             _newEvents.Add(@event);
         }
 
+        [DomainEvent]
         public interface Event
         {
             void Apply(Order order);
         }
         
+        [DomainEvent]
         public class CreatedFromOffer : Event
         {
             public ImmutableArray<PriceConfirmation> PriceConfirmations { get; }
@@ -65,6 +68,7 @@ namespace MyCompany.Crm.Sales.Orders
             }
         }
 
+        [DomainEvent]
         public class ProductAmountAdded : Event
         {
             public Guid ProductId { get; }
@@ -91,6 +95,7 @@ namespace MyCompany.Crm.Sales.Orders
             }
         }
 
+        [DomainEvent]
         public class PricesConfirmed : Event
         {
             public DateTime PriceAgreementExpiresOn { get; }
@@ -138,6 +143,7 @@ namespace MyCompany.Crm.Sales.Orders
             }
         }
 
+        [DomainEvent]
         public class Placed : Event
         {
             public void Apply(Order order) => order._isPlaced = true;

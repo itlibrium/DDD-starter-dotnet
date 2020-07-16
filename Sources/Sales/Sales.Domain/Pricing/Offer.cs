@@ -5,9 +5,11 @@ using System.Linq;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing.PriceLists;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
+    [DddValueObject]
     public readonly struct Offer : IEquatable<Offer>
     {
         private readonly ImmutableDictionary<ProductUnit, Quote> _items;

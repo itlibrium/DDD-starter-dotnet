@@ -3,15 +3,17 @@ using System.Globalization;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.ExchangeRates
 {
+    [DddValueObject]
     public struct ExchangeRate : PriceModifier, IEquatable<ExchangeRate>
     {
         public Currency Currency { get; }
         public decimal Value { get; }
         
-        public ExchangeRate Of(Currency toCurrency, decimal value) => new ExchangeRate(toCurrency, value);
+        public static ExchangeRate Of(Currency toCurrency, decimal value) => new ExchangeRate(toCurrency, value);
         
         private ExchangeRate(Currency currency, decimal value)
         {

@@ -1,8 +1,11 @@
 using System;
 using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
+    [DddPolicy]
+    [DddValueObject]
     public readonly struct ValueDiscount : PriceModifier, IEquatable<ValueDiscount>
     {
         private readonly Money _value;

@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Metadata\TechnicalStuff.Metadata.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff\TechnicalStuff.csproj" />
     </ItemGroup>
 

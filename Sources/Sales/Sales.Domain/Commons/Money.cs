@@ -2,9 +2,11 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Commons
 {
+    [DddValueObject]
     public readonly struct Money : IEquatable<Money>
     {
         public decimal Value { get; }

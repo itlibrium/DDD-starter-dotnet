@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.PriceLists
 {
+    [DddValueObject]
     public readonly struct BasePrices
     {
         private readonly ImmutableDictionary<ProductUnit, Money> _prices;

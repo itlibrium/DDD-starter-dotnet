@@ -1,5 +1,8 @@
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+
 namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
 {
+    [DddPolicy]
     public class ThreeForTwo : SpecialOffer
     {
         public static ThreeForTwo Or(OfferModifier fallbackModifier) => new ThreeForTwo(fallbackModifier);

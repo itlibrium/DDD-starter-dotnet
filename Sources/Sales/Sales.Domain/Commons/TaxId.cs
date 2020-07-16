@@ -1,7 +1,9 @@
 using System;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Commons
 {
+    [DddValueObject]
     public readonly struct TaxId : IEquatable<TaxId>
     {
         public string Value { get; }

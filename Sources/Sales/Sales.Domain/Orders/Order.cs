@@ -6,9 +6,11 @@ using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Orders
 {
+    [DddAggregate]
     public partial class Order : IEquatable<Order>
     {
         public OrderId Id { get; }
