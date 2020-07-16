@@ -14,14 +14,14 @@ namespace MyCompany.Crm.Sales.Wholesale.GetQuickQuote
 
         public GetQuickQuoteHandler(CalculatePrices calculatePrices) => _calculatePrices = calculatePrices;
 
-        public async Task<QuickQuoteCalculated> Handle(GetQuickQuoteCommand command)
+        public async Task<QuickQuoteCalculated> Handle(GetQuickQuote command)
         {
             var (clientId, productAmount, currency) = CreateDomainModelFrom(command);
             var quote = await _calculatePrices.For(clientId, SalesChannel.Wholesales, productAmount, currency);
             return CreateEventFrom(clientId, quote);
         }
 
-        private static (ClientId, ProductAmount, Currency) CreateDomainModelFrom(GetQuickQuoteCommand command) => (
+        private static (ClientId, ProductAmount, Currency) CreateDomainModelFrom(GetQuickQuote command) => (
             ClientId.From(command.ClientId),
             ProductAmount.Of(
                 ProductId.From(command.ProductId),

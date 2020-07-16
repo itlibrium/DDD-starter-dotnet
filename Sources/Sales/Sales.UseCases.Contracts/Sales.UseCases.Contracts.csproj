@@ -11,4 +11,8 @@
       <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>

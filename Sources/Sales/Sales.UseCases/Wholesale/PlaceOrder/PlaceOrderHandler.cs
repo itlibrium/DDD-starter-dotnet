@@ -15,7 +15,7 @@ namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
             _clock = clock;
         }
 
-        public async Task<OrderPlaced> Handle(PlaceOrderCommand command)
+        public async Task<OrderPlaced> Handle(PlaceOrder command)
         {
             var orderId = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
@@ -24,7 +24,7 @@ namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
             return CreateEventFrom(order);
         }
         
-        private static OrderId CreateDomainModelFrom(PlaceOrderCommand command) => OrderId.From(command.OrderId);
+        private static OrderId CreateDomainModelFrom(PlaceOrder command) => OrderId.From(command.OrderId);
         
         private static OrderPlaced CreateEventFrom(Order order) => new OrderPlaced(order.Id.Value);
     }

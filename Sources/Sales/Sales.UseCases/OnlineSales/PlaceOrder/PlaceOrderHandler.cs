@@ -7,10 +7,11 @@ using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
 {
-    public class PlaceOrderHandler
+    public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly CalculatePrices _calculatePrices;
         private readonly OrderRepository _orders;
@@ -21,7 +22,7 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
             _orders = orders;
         }
 
-        public async Task<OrderPlaced> Handle(PlaceOrderCommand command)
+        public async Task<OrderPlaced> Handle(PlaceOrder command)
         {
             var (clientId, offer) = CreateDomainModelFrom(command);
             var currentOffer = await _calculatePrices.For(clientId,
@@ -34,7 +35,7 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
             return CreateEventFrom(clientId, order);
         }
 
-        private static (ClientId, Offer) CreateDomainModelFrom(PlaceOrderCommand command) => (
+        private static (ClientId, Offer) CreateDomainModelFrom(PlaceOrder command) => (
             ClientId.From(command.ClientId),
             Offer.FromQuotes(command.CurrencyCode.ToDomainModel<Currency>(),
                 command.Quotes.Select(quote => quote.ToDomainModel())));

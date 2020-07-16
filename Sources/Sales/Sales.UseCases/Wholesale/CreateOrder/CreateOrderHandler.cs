@@ -10,7 +10,7 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
 
         public CreateOrderHandler(OrderRepository orders) => _orders = orders;
 
-        public async Task<OrderCreated> Handle(CreateOrderCommand command)
+        public async Task<OrderCreated> Handle(CreateOrder command)
         {
             var clientId = CreateDomainModelFrom(command);
             var order = Order.New();
@@ -18,7 +18,7 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
             return CreateEventFrom(order, clientId);
         }
 
-        private static ClientId CreateDomainModelFrom(CreateOrderCommand command) => ClientId.From(command.ClientId);
+        private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);
         
         private static OrderCreated CreateEventFrom(Order order, ClientId clientId) => 
             new OrderCreated(order.Id.Value, clientId.Value);

@@ -11,7 +11,7 @@ namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
 
         public AddToOrderHandler(OrderRepository orders) => _orders = orders;
 
-        public async Task<AddedToOrder> Handle(AddToOrderCommand command)
+        public async Task<AddedToOrder> Handle(AddToOrder command)
         {
             var (orderId, productAmount) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
@@ -20,7 +20,7 @@ namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
             return CreateEventFrom(orderId, productAmount);
         }
 
-        private static (OrderId, ProductAmount) CreateDomainModelFrom(AddToOrderCommand command) => (
+        private static (OrderId, ProductAmount) CreateDomainModelFrom(AddToOrder command) => (
             OrderId.From(command.OrderId),
             ProductAmount.Of(
                 ProductId.From(command.ProductId), 

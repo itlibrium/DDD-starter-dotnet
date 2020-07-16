@@ -34,7 +34,7 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             _clock = clock;
         }
 
-        public async Task<OfferConfirmed> Handle(ConfirmOfferCommand command)
+        public async Task<OfferConfirmed> Handle(ConfirmOffer command)
         {
             var (orderId, offer) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
@@ -52,7 +52,7 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             return CreateEventFrom(orderId, offer);
         }
 
-        private static (OrderId, Offer) CreateDomainModelFrom(ConfirmOfferCommand command) => (
+        private static (OrderId, Offer) CreateDomainModelFrom(ConfirmOffer command) => (
             OrderId.From(command.OrderId),
             Offer.FromQuotes(command.CurrencyCode.ToDomainModel<Currency>(),
                 command.Quotes.Select(quote => quote.ToDomainModel())));

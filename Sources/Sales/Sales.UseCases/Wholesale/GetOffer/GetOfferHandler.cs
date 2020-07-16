@@ -23,7 +23,7 @@ namespace MyCompany.Crm.Sales.Wholesale.GetOffer
             _calculatePrices = calculatePrices;
         }
 
-        public async Task<OfferCalculated> Handle(GetOfferCommand command)
+        public async Task<OfferCalculated> Handle(GetOffer command)
         {
             var (orderId, currency) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
@@ -32,7 +32,7 @@ namespace MyCompany.Crm.Sales.Wholesale.GetOffer
             return CreateEventFrom(orderId, offer);
         }
 
-        private static (OrderId, Currency) CreateDomainModelFrom(GetOfferCommand command) => (
+        private static (OrderId, Currency) CreateDomainModelFrom(GetOffer command) => (
             OrderId.From(command.OrderId), command.CurrencyCode.ToDomainModel<Currency>());
 
         private static OfferCalculated CreateEventFrom(OrderId orderId, Offer offer) => new OfferCalculated(

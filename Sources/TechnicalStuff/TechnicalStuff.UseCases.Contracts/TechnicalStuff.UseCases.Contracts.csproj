@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.UseCases.Contracts</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.UseCases</RootNamespace>
+    </PropertyGroup>
+
+</Project>

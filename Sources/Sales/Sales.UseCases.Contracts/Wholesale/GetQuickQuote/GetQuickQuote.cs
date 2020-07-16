@@ -1,8 +1,9 @@
 using System;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.GetQuickQuote
 {
-    public readonly struct GetQuickQuoteCommand
+    public readonly struct GetQuickQuote : Command
     {
         public Guid ClientId { get; }
         public Guid ProductId { get; }
@@ -10,7 +11,7 @@ namespace MyCompany.Crm.Sales.Wholesale.GetQuickQuote
         public string UnitCode { get; }
         public string CurrencyCode { get; }
 
-        public GetQuickQuoteCommand(Guid clientId, Guid productId, int amount, string unitCode, string currencyCode)
+        public GetQuickQuote(Guid clientId, Guid productId, int amount, string unitCode, string currencyCode)
         {
             ClientId = clientId;
             ProductId = productId;

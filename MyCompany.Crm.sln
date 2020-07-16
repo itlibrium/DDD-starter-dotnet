@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.IntegrationTests", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Marten", "Sources\TechnicalStuff\TechnicalStuff.Marten\TechnicalStuff.Marten.csproj", "{E5526B10-65CB-4619-A5C3-4C29A86D76A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.UseCases", "Sources\TechnicalStuff\TechnicalStuff.UseCases\TechnicalStuff.UseCases.csproj", "{9FF8E353-1ACC-407A-A9B8-55183261A8C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.UseCases.Contracts", "Sources\TechnicalStuff\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj", "{85E951AA-5333-4181-B5B1-305050405BFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,14 @@ Global
 		{E5526B10-65CB-4619-A5C3-4C29A86D76A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5526B10-65CB-4619-A5C3-4C29A86D76A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5526B10-65CB-4619-A5C3-4C29A86D76A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF8E353-1ACC-407A-A9B8-55183261A8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF8E353-1ACC-407A-A9B8-55183261A8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF8E353-1ACC-407A-A9B8-55183261A8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF8E353-1ACC-407A-A9B8-55183261A8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E951AA-5333-4181-B5B1-305050405BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E951AA-5333-4181-B5B1-305050405BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E951AA-5333-4181-B5B1-305050405BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E951AA-5333-4181-B5B1-305050405BFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9DE86BB4-7D8E-4997-BDCE-C5E7E30968AF} = {6114F446-78E7-49DC-BA34-C9904FE7838B}
@@ -146,5 +158,7 @@ Global
 		{C751FBCB-B7AE-4ECE-BEDE-4A6600EC77D0} = {2F88D996-6A05-4BE0-A064-F7748E584090}
 		{4B8223B4-1F0C-444C-88CE-B181D8277ACE} = {B442AF5F-B127-45EF-B835-714A187D3F0A}
 		{E5526B10-65CB-4619-A5C3-4C29A86D76A9} = {E9167F5F-E45B-4ABD-ACCD-89E3514BB0AA}
+		{9FF8E353-1ACC-407A-A9B8-55183261A8C8} = {E9167F5F-E45B-4ABD-ACCD-89E3514BB0AA}
+		{85E951AA-5333-4181-B5B1-305050405BFE} = {E9167F5F-E45B-4ABD-ACCD-89E3514BB0AA}
 	EndGlobalSection
 EndGlobal

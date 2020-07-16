@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Immutable;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
 {
-    public readonly struct ConfirmOfferCommand
+    public readonly struct ConfirmOffer : Command
     {
         public Guid OrderId { get; }
         public string CurrencyCode { get; }
         public ImmutableArray<QuoteDto> Quotes { get; }
 
-        public ConfirmOfferCommand(Guid orderId, string currencyCode, ImmutableArray<QuoteDto> quotes)
+        public ConfirmOffer(Guid orderId, string currencyCode, ImmutableArray<QuoteDto> quotes)
         {
             OrderId = orderId;
             CurrencyCode = currencyCode;

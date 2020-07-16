@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.UseCases\TechnicalStuff.UseCases.csproj" />
       <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
       <ProjectReference Include="..\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj" />
     </ItemGroup>
