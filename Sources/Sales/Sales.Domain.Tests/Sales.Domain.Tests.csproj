@@ -5,7 +5,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>MyCompany.Crm.Sales.Domain</RootNamespace>
+        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
 
         <AssemblyName>MyCompany.Crm.Sales.Domain.Tests</AssemblyName>
     </PropertyGroup>
