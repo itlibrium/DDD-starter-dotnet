@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.App.Contracts</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.UseCases.Contracts</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>

@@ -2,14 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.App</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.UseCases</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sales.App.Contracts\Sales.App.Contracts.csproj" />
       <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
+      <ProjectReference Include="..\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>

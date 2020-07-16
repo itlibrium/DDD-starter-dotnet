@@ -18,9 +18,9 @@
       <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />           
       <ProjectReference Include="..\Sales\Sales.Adapters.RestApi\Sales.Adapters.RestApi.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
-      <ProjectReference Include="..\Sales\Sales.App\Sales.App.csproj" />
       <ProjectReference Include="..\Sales\Sales.Crud\Sales.Crud.csproj" />
       <ProjectReference Include="..\Sales\Sales.Domain\Sales.Domain.csproj" />
+      <ProjectReference Include="..\Sales\Sales.UseCases\Sales.UseCases.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Marten\TechnicalStuff.Marten.csproj" />
     </ItemGroup>
 
