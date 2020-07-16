@@ -1,10 +1,7 @@
-using System.Collections.Immutable;
-using System.Threading;
 using Nuke.Common;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.EntityFramework;
 using static MyCompany.Crm.Nuke.DockerCompose.DockerComposeTargets;
-using static MyCompany.Crm.Nuke.DotNet.DotNetTargets;
 using static MyCompany.Crm.Nuke.Postgres.PostgresTasks;
 using static MyCompany.Crm.Nuke.Paths;
 
@@ -21,7 +18,7 @@ namespace MyCompany.Crm.Nuke.DotNet
         };
 
         public static Target ApplyMigrationsOnLocalDockerInfrastructure => _ => _
-            .DependsOn(Compile, StartLocalDockerInfrastructure)
+            .DependsOn(StartLocalDockerInfrastructure)
             .Executes(() =>
             {
                 WaitForDatabase(Settings.Postgres.MigrationConnectionString);
