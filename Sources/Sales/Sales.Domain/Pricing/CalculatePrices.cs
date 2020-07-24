@@ -32,7 +32,7 @@ namespace MyCompany.Crm.Sales.Pricing
 
         public async Task<Quote> For(ClientId clientId, SalesChannel salesChannel, ProductAmount productAmount,
             Currency currency) =>
-            (await For(clientId, salesChannel, new ImmutableArray<ProductAmount> {productAmount}, currency))
+            (await For(clientId, salesChannel, ImmutableArray.Create(productAmount), currency))
                 .Quotes.Single();
 
         public Task<Offer> For(ClientId clientId, SalesChannel salesChannel,
@@ -43,12 +43,12 @@ namespace MyCompany.Crm.Sales.Pricing
             ImmutableArray<ProductAmount> productAmounts, Currency currency)
         {
             var offerRequest = OfferRequest.For(clientId, salesChannel, productAmounts);
-            var (basePrices, offerModificator, exchangeRate) = await (
+            var (basePrices, offerModifier, exchangeRate) = await (
                 _priceLists.GetBasePricesFor(clientId, productAmounts),
                 _offerModifiers.ChooseFor(offerRequest),
                 _exchangeRates.GetFor(currency));
             return Offer.WithBasePrices(productAmounts, basePrices)
-                .Apply(offerModificator)
+                .Apply(offerModifier)
                 .Apply(exchangeRate);
         }
     }
