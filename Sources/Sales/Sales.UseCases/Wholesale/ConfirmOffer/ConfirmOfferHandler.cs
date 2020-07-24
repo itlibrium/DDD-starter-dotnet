@@ -23,6 +23,7 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
         private readonly OrderHeaderRepository _orderHeaders;
         private readonly CalculatePrices _calculatePrices;
         private readonly PriceChangesPolicies _priceChangesPolicies;
+        private readonly OrderEventsOutbox _eventsOutbox;
         private readonly Clock _clock;
         private readonly TimeSpan _offerExpirationTime = TimeSpan.FromHours(24);
 
@@ -30,12 +31,14 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             OrderHeaderRepository orderHeaders,
             CalculatePrices calculatePrices,
             PriceChangesPolicies priceChangesPolicies,
+            OrderEventsOutbox eventsOutbox,
             Clock clock)
         {
             _orders = orders;
             _orderHeaders = orderHeaders;
             _calculatePrices = calculatePrices;
             _priceChangesPolicies = priceChangesPolicies;
+            _eventsOutbox = eventsOutbox;
             _clock = clock;
         }
 
@@ -54,7 +57,9 @@ namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
             var now = _clock.Now;
             order.ConfirmPrices(offer, now + _offerExpirationTime, now, priceChangesPolicy);
             await _orders.Save(order);
-            return CreateEventFrom(orderId, offer);
+            var offerConfirmed = CreateEventFrom(orderId, offer);
+            _eventsOutbox.Add(offerConfirmed);
+            return offerConfirmed;
         }
 
         private static (OrderId, Offer) CreateDomainModelFrom(ConfirmOffer command) => (

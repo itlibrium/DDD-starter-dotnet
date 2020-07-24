@@ -3,11 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Contacts;
 
-namespace MyCompany.Crm.Registrations
+namespace MyCompany.Crm.DI.Modules
 {
     internal static class ContactsRegistrations
     {
-        public static IServiceCollection RegisterContactsModule(this IServiceCollection services,
+        public static IServiceCollection AddContactsModule(this IServiceCollection services,
             IConfiguration configuration)
         {
             services.AddDbContextPool<ContactsCrudDbContext>(options => options

@@ -12,11 +12,13 @@ namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly OrderRepository _orders;
+        private readonly OrderEventsOutbox _eventsOutbox;
         private readonly Clock _clock;
 
-        public PlaceOrderHandler(OrderRepository orders, Clock clock)
+        public PlaceOrderHandler(OrderRepository orders, OrderEventsOutbox eventsOutbox, Clock clock)
         {
             _orders = orders;
+            _eventsOutbox = eventsOutbox;
             _clock = clock;
         }
 
@@ -26,7 +28,9 @@ namespace MyCompany.Crm.Sales.Wholesale.PlaceOrder
             var order = await _orders.GetBy(orderId);
             order.Place(_clock.Now);
             await _orders.Save(order);
-            return CreateEventFrom(order);
+            var orderPlaced = CreateEventFrom(order);
+            _eventsOutbox.Add(orderPlaced);
+            return orderPlaced;
         }
         
         private static OrderId CreateDomainModelFrom(PlaceOrder command) => OrderId.From(command.OrderId);

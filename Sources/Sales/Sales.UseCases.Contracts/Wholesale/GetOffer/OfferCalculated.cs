@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 
 namespace MyCompany.Crm.Sales.Wholesale.GetOffer
 {
-    public readonly struct OfferCalculated
+    public class OfferCalculated
     {
         public Guid OrderId { get; }
         public ImmutableArray<QuoteDto> Quotes { get; }

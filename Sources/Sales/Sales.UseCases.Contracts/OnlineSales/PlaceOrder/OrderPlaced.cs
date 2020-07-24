@@ -2,7 +2,7 @@ using System;
 
 namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
 {
-    public readonly struct OrderPlaced
+    public class OrderPlaced : OrderEvent
     {
         public Guid OrderId { get; }
         public Guid ClientId { get; }

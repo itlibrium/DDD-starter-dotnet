@@ -19,11 +19,14 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
     {
         private readonly CalculatePrices _calculatePrices;
         private readonly OrderRepository _orders;
+        private readonly OrderEventsOutbox _eventsOutbox;
 
-        public PlaceOrderHandler(CalculatePrices calculatePrices, OrderRepository orders)
+        public PlaceOrderHandler(CalculatePrices calculatePrices, OrderRepository orders,
+            OrderEventsOutbox eventsOutbox)
         {
             _calculatePrices = calculatePrices;
             _orders = orders;
+            _eventsOutbox = eventsOutbox;
         }
 
         public async Task<OrderPlaced> Handle(PlaceOrder command)
@@ -36,7 +39,9 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
             if (!offer.Equals(currentOffer)) throw new DomainException();
             var order = Order.FromOffer(offer);
             await _orders.Save(order);
-            return CreateEventFrom(clientId, order);
+            var orderPlaced = CreateEventFrom(clientId, order);
+            _eventsOutbox.Add(orderPlaced);
+            return orderPlaced;
         }
 
         private static (ClientId, Offer) CreateDomainModelFrom(PlaceOrder command) => (

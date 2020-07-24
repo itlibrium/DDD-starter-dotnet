@@ -2,7 +2,7 @@ using System;
 
 namespace MyCompany.Crm.Sales.Wholesale.GetQuickQuote
 {
-    public readonly struct QuickQuoteCalculated
+    public class QuickQuoteCalculated
     {
         public Guid ClientId { get; }
         public QuoteDto Quote { get; }

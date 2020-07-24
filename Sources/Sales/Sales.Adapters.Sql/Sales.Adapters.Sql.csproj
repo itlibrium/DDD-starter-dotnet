@@ -7,14 +7,14 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>      
+    <ItemGroup>
       <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
       <PackageReference Include="Marten" Version="3.12.2" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
     </ItemGroup>
 

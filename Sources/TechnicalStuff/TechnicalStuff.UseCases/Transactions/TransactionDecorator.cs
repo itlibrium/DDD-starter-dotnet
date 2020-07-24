@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using JetBrains.Annotations;
 
-namespace MyCompany.Crm.TechnicalStuff.UseCases
+namespace MyCompany.Crm.TechnicalStuff.UseCases.Transactions
 {
     [PublicAPI]
     public class TransactionDecorator<TCommand> : CommandHandler<TCommand>

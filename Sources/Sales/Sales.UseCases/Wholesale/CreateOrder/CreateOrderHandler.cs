@@ -12,15 +12,22 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
     {
         private readonly OrderRepository _orders;
+        private readonly OrderEventsOutbox _eventsOutbox;
 
-        public CreateOrderHandler(OrderRepository orders) => _orders = orders;
+        public CreateOrderHandler(OrderRepository orders, OrderEventsOutbox eventsOutbox)
+        {
+            _orders = orders;
+            _eventsOutbox = eventsOutbox;
+        }
 
         public async Task<OrderCreated> Handle(CreateOrder command)
         {
             var clientId = CreateDomainModelFrom(command);
             var order = Order.New();
             await _orders.Save(order);
-            return CreateEventFrom(order, clientId);
+            var orderCreated = CreateEventFrom(order, clientId);
+            _eventsOutbox.Add(orderCreated);
+            return orderCreated;
         }
 
         private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);

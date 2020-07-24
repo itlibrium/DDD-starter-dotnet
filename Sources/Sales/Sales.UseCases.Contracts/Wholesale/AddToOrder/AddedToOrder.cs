@@ -2,7 +2,7 @@ using System;
 
 namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
 {
-    public readonly struct AddedToOrder
+    public class AddedToOrder : OrderEvent
     {
         public Guid OrderId { get; }
         public Guid ProductId { get; }

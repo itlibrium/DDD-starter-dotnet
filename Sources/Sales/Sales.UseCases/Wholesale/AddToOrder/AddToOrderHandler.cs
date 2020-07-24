@@ -13,8 +13,13 @@ namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>
     {
         private readonly OrderRepository _orders;
+        private readonly OrderEventsOutbox _eventsOutbox;
 
-        public AddToOrderHandler(OrderRepository orders) => _orders = orders;
+        public AddToOrderHandler(OrderRepository orders, OrderEventsOutbox eventsOutbox)
+        {
+            _orders = orders;
+            _eventsOutbox = eventsOutbox;
+        }
 
         public async Task<AddedToOrder> Handle(AddToOrder command)
         {
@@ -22,7 +27,9 @@ namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
             var order = await _orders.GetBy(orderId);
             order.Add(productAmount);
             await _orders.Save(order);
-            return CreateEventFrom(orderId, productAmount);
+            var addedToOrder = CreateEventFrom(orderId, productAmount);
+            _eventsOutbox.Add(addedToOrder);
+            return addedToOrder;
         }
 
         private static (OrderId, ProductAmount) CreateDomainModelFrom(AddToOrder command) => (
