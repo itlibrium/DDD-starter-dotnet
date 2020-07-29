@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Marten;
+using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
@@ -30,19 +30,29 @@ namespace MyCompany.Crm.Sales.Orders
 
             public async Task<Order> GetBy(OrderId id)
             {
-                var events = (await _session.Events.FetchStreamAsync(id.Value))
+                if (_orderVersions.ContainsKey(id))
+                    throw new DesignError(SameAggregateRestoredMoreThanOnce);
+                var events = await _session.Events.FetchStreamAsync(id.Value);
+                var version = events.Count > 0 ? events[^1].Version : 0;
+                _orderVersions.Add(id, version);
+                var orderEvents = events
                     .Select(e => e.Data)
                     .Cast<Order.Event>();
-                return Order.RestoreFrom(id, events);
+                return Order.RestoreFrom(id, orderEvents);
             }
 
-            public Task Save(Order order)
+            public async Task Save(Order order)
             {
-                // TODO: optimistic locking
                 // TODO: event versioning
-                _session.Events.Append(order.Id.Value, order.NewEvents);
-                return _session.SaveChangesAsync();
+                _session.Events.Append(
+                    order.Id.Value,
+                    CalculateExpectedVersionFor(order), 
+                    order.NewEvents);
+                await _session.SaveChangesAsync();
             }
+
+            private int CalculateExpectedVersionFor(Order order) =>
+                (_orderVersions.TryGetValue(order.Id, out var version) ? version : 0) + order.NewEvents.Count;
         }
     }
 }
