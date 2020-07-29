@@ -26,6 +26,11 @@ namespace MyCompany.Crm.DI.Modules
                 {
                     options.Connection(configuration.GetConnectionString("Sales"));
                     options.Events.StreamIdentity = StreamIdentity.AsGuid;
+                    foreach (var (type, name) in OrderSqlRepository.EventsSourcing.Events)
+                    {
+                        options.Events.AddEventType(type);
+                        options.Events.EventMappingFor(type).EventTypeName = name;
+                    }
                 })
                 .BuildSessionsWith<LightweightSessionFactory>()
                 .InitializeStore();
