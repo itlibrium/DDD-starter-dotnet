@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.TechnicalStuff.Crud.Api;
 using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
-namespace MyCompany.Crm.Contacts.Tags
+namespace MyCompany.Crm.Contacts.Tags.RestApi
 {
     [ApiController]
-    [Route("/api/tags")]
+    [Route("/rets/tags")]
+    [ApiVersion("1")]
     public class TagsController : ControllerBase
     {
         private readonly ContactsCrudDao _dao;
@@ -27,7 +28,7 @@ namespace MyCompany.Crm.Contacts.Tags
             .ToOkResult();
 
         [HttpGet]
-        public IAsyncEnumerable<Tag> Read(string name = null, int skip = 0, int take = 20) => _dao
+        public IAsyncEnumerable<Tag> Search(string name = null, int skip = 0, int take = 20) => _dao
             .Read<Tag>(query => query
                 .Where(tag => name == null || tag.Name.Contains(name))
                 .Skip(skip)

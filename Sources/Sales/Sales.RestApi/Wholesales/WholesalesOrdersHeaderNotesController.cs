@@ -1,18 +1,21 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.Crud;
 using MyCompany.Crm.TechnicalStuff.Crud.Api;
 using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.Crm.Sales.Wholesales
 {
-    [Route("/api/order-headers/{orderId}/notes")]
-    public class OrderHeadersNotesController : ControllerBase
+    [ApiController]
+    [Route("/rest/wholesales/orders/{orderId}/header/notes")]
+    [ApiVersion("1")]
+    public class WholesalesOrdersHeaderNotesController : ControllerBase
     {
         private readonly SalesCrudDao _dao;
 
-        public OrderHeadersNotesController(SalesCrudDao dao) => _dao = dao;
+        public WholesalesOrdersHeaderNotesController(SalesCrudDao dao) => _dao = dao;
 
         [HttpPost]
         public async Task<ActionResult<OrderNote>> Create(Guid orderId, OrderNote note)

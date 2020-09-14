@@ -7,10 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.Contacts.Groups;
 using MyCompany.Crm.TechnicalStuff.Crud.Api;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.Crm.Contacts.Companies.RestApi
 {
     [ApiController]
-    [Route("/api/companies/{companyId}/groups")]
+    [Route("/rest/companies/{companyId}/groups")]
+    [ApiVersion("1")]
     public class CompaniesGroupsController : ControllerBase
     {
         private readonly ContactsCrudDao _dao;

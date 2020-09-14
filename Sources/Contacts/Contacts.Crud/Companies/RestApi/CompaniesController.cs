@@ -9,10 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.TechnicalStuff.Crud.Api;
 using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.Crm.Contacts.Companies.RestApi
 {
     [ApiController]
-    [Route("api/companies")]
+    [Route("rest/companies")]
+    [ApiVersion("1")]
+    [ApiVersion("2")]
     public class CompaniesController : ControllerBase
     {
         private readonly ContactsCrudDao _dao;
@@ -20,6 +22,7 @@ namespace MyCompany.Crm.Contacts.Companies
         public CompaniesController(ContactsCrudDao dao) => _dao = dao;
 
         [HttpPost]
+        [MapToApiVersion("1")]
         public Task<ActionResult<Company>> Create(Company company)
         {
             company.AddedOn = DateTime.UtcNow;
@@ -30,20 +33,31 @@ namespace MyCompany.Crm.Contacts.Companies
         }
 
         [HttpGet("{id}")]
+        [MapToApiVersion("1")]
         public Task<ActionResult<Company>> Read(Guid id) => _dao
             .Read(id, DefaultIncludes)
             .ToOkResult();
 
         [HttpGet]
-        public IAsyncEnumerable<ListItem> Read(string name = null, int skip = 0, int take = 20) => _dao
+        [MapToApiVersion("1")]
+        public IAsyncEnumerable<ListItem> SearchV1(string name = null, int skip = 0, int take = 20) => _dao
             .Read<Company, ListItem>(query => query
                 .Apply(ListIncludes)
                 .Where(company => name == null || company.Name.Contains(name))
                 .Skip(skip)
                 .Take(take)
                 .Select(ToListItem));
+        
+        [HttpGet]
+        [MapToApiVersion("2")]
+        public IAsyncEnumerable<ListItem> SearchV2(string query = null, int page = 1, int pageSize = 20)
+        {
+            // TODO: search using full text search in postgresql
+            throw new NotImplementedException();
+        }
 
         [HttpPut("{id}")]
+        [MapToApiVersion("1")]
         public Task<ActionResult<Company>> Update(Guid id, Company patch) => _dao
             .Update<Company>(id, DefaultIncludes, company =>
             {
@@ -60,6 +74,7 @@ namespace MyCompany.Crm.Contacts.Companies
             .ToOkResult();
 
         [HttpDelete("{id}")]
+        [MapToApiVersion("1")]
         public Task<StatusCodeResult> Delete(Guid id) => _dao
             .Delete<Company>(id, DeletePolicy.Soft)
             .ToStatusCodeResult();

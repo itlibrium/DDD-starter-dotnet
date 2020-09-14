@@ -32,6 +32,7 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
 
         private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);
         
+        // TODO: add sales channel type
         private static OrderCreated CreateEventFrom(Order order, ClientId clientId) => 
             new OrderCreated(order.Id.Value, clientId.Value);
     }

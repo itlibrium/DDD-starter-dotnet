@@ -81,6 +81,14 @@ namespace MyCompany.Crm.TechnicalStuff.Crud.Api
                 created.Entity);
 
         [PublicAPI]
+        public static async Task<ActionResult<TEntity>> ToOkResult<TEntity>(this Task<Created<TEntity>> createPromise)
+            where TEntity : CrudEntity
+        {
+            var created = await createPromise;
+            return new OkObjectResult(created.Entity);
+        }
+
+        [PublicAPI]
         public static async Task<ActionResult<TEntity>> ToOkResult<TEntity>(this Task<TEntity> readPromise) =>
             new ActionResult<TEntity>(await readPromise);
 
@@ -93,6 +101,13 @@ namespace MyCompany.Crm.TechnicalStuff.Crud.Api
         {
             await updatePromise;
             return new NoContentResult();
+        }
+        
+        [PublicAPI]
+        public static async Task<OkResult> ToOkResult(this Task<Updated> updatePromise)
+        {
+            await updatePromise;
+            return new OkResult();
         }
 
         [PublicAPI]
@@ -110,6 +125,13 @@ namespace MyCompany.Crm.TechnicalStuff.Crud.Api
 
             // var deleted = await deletePromise;
             // return deleted.WasPresent ? (StatusCodeResult) new NoContentResult() : new NotFoundResult();
+        }
+        
+        [PublicAPI]
+        public static async Task<OkResult> ToOkResult(this Task<Deleted> deletePromise)
+        {
+            await deletePromise;
+            return new OkResult();
         }
     }
 }

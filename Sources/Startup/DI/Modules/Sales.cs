@@ -36,6 +36,7 @@ namespace MyCompany.Crm.DI.Modules
             services.AddDbContextPool<SalesKafkaOutboxDbContext>(options => options
                 .UseNpgsql(configuration.GetConnectionString("Sales")));
             services.AddScoped<SalesKafkaOutboxWriter>();
+            services.AddScoped<OrderReadModelDao, OrderReadModelSqlDao>();
             services.AddMessageOutboxes(SalesAdaptersKafka);
             services.AddStatelessComponents(SalesDomain, SalesUseCases, SalesAdaptersSql);
             return services;

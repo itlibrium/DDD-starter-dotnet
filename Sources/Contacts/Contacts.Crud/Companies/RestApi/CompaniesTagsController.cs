@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.Contacts.Tags;
 using MyCompany.Crm.TechnicalStuff.Crud.Api;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.Crm.Contacts.Companies.RestApi
 {
-    [Route("/api/companies/{companyId}/tags")]
+    [ApiController]
+    [Route("/rest/companies/{companyId}/tags")]
+    [ApiVersion("1")]
     public class CompaniesTagsController : ControllerBase
     {
         private readonly ContactsCrudDao _dao;

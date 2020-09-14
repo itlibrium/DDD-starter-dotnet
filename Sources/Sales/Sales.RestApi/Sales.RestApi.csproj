@@ -2,14 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.Adapters.RestApi</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.RestApi</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>default</LangVersion>
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Sales.Crud\Sales.Crud.csproj" />
+      <ProjectReference Include="..\Sales.ReadModels\Sales.ReadModels.csproj" />
       <ProjectReference Include="..\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     </ItemGroup>    
 
 </Project>
