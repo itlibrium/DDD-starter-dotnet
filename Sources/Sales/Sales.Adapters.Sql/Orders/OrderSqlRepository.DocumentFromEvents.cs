@@ -19,9 +19,11 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class DocumentFromEvents : OrderRepository
         {
-            private readonly Dictionary<OrderId, OrderDoc> _orders = new Dictionary<OrderId, OrderDoc>();
+            private readonly Dictionary<OrderId, (OrderDoc Doc, Guid Version)>
+                _orders = new Dictionary<OrderId, (OrderDoc, Guid)>();
+
             private readonly IDocumentSession _session;
-            
+
             public DocumentFromEvents(IDocumentSession session) => _session = session;
 
             public async Task<Order> GetBy(OrderId id)
@@ -31,13 +33,13 @@ namespace MyCompany.Crm.Sales.Orders
                 var orderDoc = await _session.LoadAsync<OrderDoc>(id.Value);
                 if (orderDoc is null) throw new DomainException();
                 var order = RestoreFrom(orderDoc);
-                _orders.Add(id, orderDoc);
+                var metadata = await _session.Tenant.MetadataForAsync(orderDoc);
+                _orders.Add(id, (orderDoc, metadata.CurrentVersion));
                 return order;
             }
 
             public Task Save(Order order)
             {
-                // TODO: optimistic locking
                 // TODO: document versioning
                 var orderDoc = GetOrderDoc(order);
                 foreach (var newEvent in order.NewEvents)
@@ -60,7 +62,8 @@ namespace MyCompany.Crm.Sales.Orders
                             throw new ArgumentOutOfRangeException(nameof(newEvent), newEvent, null);
                     }
                 }
-                _session.Store(orderDoc);
+                var version = GetCurrentVersionFor(order);
+                _session.Store(orderDoc, version);
                 return _session.SaveChangesAsync();
             }
 
@@ -110,18 +113,18 @@ namespace MyCompany.Crm.Sales.Orders
                         Amount.Of(orderItemDoc.Amount, orderItemDoc.AmountUnit.ToDomainModel<AmountUnit>())),
                     Money.Of(orderItemDoc.Price.Value, orderItemDoc.Currency.ToDomainModel<Currency>()));
             }
-            
+
             private OrderDoc GetOrderDoc(Order order)
             {
-                if (_orders.TryGetValue(order.Id, out var orderDoc)) 
-                    return orderDoc;
+                if (_orders.TryGetValue(order.Id, out var orderData))
+                    return orderData.Doc;
                 return new OrderDoc
                 {
                     Id = order.Id.Value,
                     PriceAgreementType = nameof(PriceAgreementType.Non)
                 };
             }
-            
+
             private static void Merge(OrderDoc orderDoc, Order.PricesConfirmed pricesConfirmed)
             {
                 orderDoc.PriceAgreementType = nameof(PriceAgreementType.Temporary);
@@ -154,7 +157,7 @@ namespace MyCompany.Crm.Sales.Orders
                 orderDoc.Items = CreateOrderItemDocsFrom(createdFromOffer.PriceConfirmations);
                 orderDoc.IsPlaced = true;
             }
-            
+
             private static List<OrderItemDoc> CreateOrderItemDocsFrom(
                 ImmutableArray<Order.PriceConfirmation> priceConfirmations) =>
                 priceConfirmations
@@ -167,8 +170,11 @@ namespace MyCompany.Crm.Sales.Orders
                         Currency = priceConfirmation.Currency
                     })
                     .ToList();
+            
+            private Guid GetCurrentVersionFor(Order order) =>
+                _orders.TryGetValue(order.Id, out var orderData) ? orderData.Version : Guid.Empty;
 
-            private class OrderDoc
+            public class OrderDoc
             {
                 public Guid Id { get; set; }
                 public List<OrderItemDoc> Items { get; set; } = new List<OrderItemDoc>();
@@ -177,7 +183,7 @@ namespace MyCompany.Crm.Sales.Orders
                 public bool IsPlaced { get; set; }
             }
 
-            private class OrderItemDoc
+            public class OrderItemDoc
             {
                 public Guid ProductId { get; set; }
                 public int Amount { get; set; }

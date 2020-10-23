@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Marten.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
@@ -20,9 +22,7 @@ namespace MyCompany.Crm.Sales.Orders
         private readonly IServiceProvider _serviceProvider;
 
         private string _repositoryImplementation;
-        private IServiceScope _scope;
-        private OrderRepository _repository;
-        private Order _order;
+        private Scope _scope;
 
         public OrderSqlRepositoryTests(WebApplicationFactory<Startup> appFactory) => _serviceProvider = appFactory
             .WithWebHostBuilder(builder => builder
@@ -39,7 +39,7 @@ namespace MyCompany.Crm.Sales.Orders
         [InlineData(nameof(OrderSqlRepository.TablesFromEvents))]
         [InlineData(nameof(OrderSqlRepository.DocumentFromSnapshot))]
         [InlineData(nameof(OrderSqlRepository.DocumentFromEvents))]
-        [InlineData(nameof(OrderSqlRepository.EventsSourcing), Skip = "Not implemented")]
+        [InlineData(nameof(OrderSqlRepository.EventsSourcing))]
         public async Task RestoredOrderIsEqualToOriginal(string repositoryImplementation)
         {
             _repositoryImplementation = repositoryImplementation;
@@ -47,8 +47,8 @@ namespace MyCompany.Crm.Sales.Orders
             var offer1 = CreateOfferFor(productAmount1, productAmount2);
             var offer2 = CreateOfferFor(productAmount1, productAmount2, productAmount3);
             var now = _clock.Now;
-            
-            await TestRestoreAfter(() => Order.New());
+
+            await TestRestoreFor(Order.New());
             await TestRestoreAfter(order => order.Add(productAmount1));
             await TestRestoreAfter(order => order.Add(productAmount2));
             await TestRestoreAfter(order => order.ConfirmPrices(offer1, now.AddDays(2), now, _priceChangesPolicies));
@@ -56,7 +56,52 @@ namespace MyCompany.Crm.Sales.Orders
             await TestRestoreAfter(order =>
                 order.ConfirmPrices(offer2, now.AddDays(3), now.AddDays(1), _priceChangesPolicies));
             await TestRestoreAfter(order => order.Place(now.AddDays(2)));
-            await TestRestoreAfter(() => Order.FromOffer(offer2));
+            await TestRestoreFor(Order.FromOffer(offer2));
+        }
+
+        [Theory]
+        [InlineData(nameof(OrderSqlRepository.TablesFromSnapshot))]
+        [InlineData(nameof(OrderSqlRepository.TablesFromEvents))]
+        [InlineData(nameof(OrderSqlRepository.DocumentFromSnapshot))]
+        [InlineData(nameof(OrderSqlRepository.DocumentFromEvents))]
+        [InlineData(nameof(OrderSqlRepository.EventsSourcing))]
+        public async Task CanNotSaveOrderIfVersionHasChangedInDb(string repositoryImplementation)
+        {
+            _repositoryImplementation = repositoryImplementation;
+            var id = OrderId.New();
+            using var scope0 = CreateScope();
+            scope0.SetOrder(Order.New(id));
+            await scope0.SaveOrder();
+
+            var productAmount = ProductAmount.Of(ProductId.New(), Amount.Of(3, AmountUnit.Box));
+            using var scope1 = CreateScope();
+            using var scope2 = CreateScope();
+            await scope1.LoadOrder(id);
+            await scope2.LoadOrder(id);
+            scope1.Execute(order => order.Add(productAmount));
+            scope2.Execute(order => order.Add(productAmount));
+            Func<Task> action1 = () => scope1.SaveOrder();
+            Func<Task> action2 = () => scope2.SaveOrder();
+            await action1.Should().NotThrowAsync();
+            switch (repositoryImplementation)
+            {
+                case nameof(OrderSqlRepository.TablesFromSnapshot):
+                case nameof(OrderSqlRepository.TablesFromEvents):
+                    await action2.Should().ThrowExactlyAsync<DbUpdateConcurrencyException>();
+                    break;
+                case nameof(OrderSqlRepository.DocumentFromSnapshot):
+                case nameof(OrderSqlRepository.DocumentFromEvents):
+                    (await action2.Should().ThrowExactlyAsync<AggregateException>())
+                        .WithInnerExceptionExactly<ConcurrencyException>();
+                    break;
+                case nameof(OrderSqlRepository.EventsSourcing):
+                    await action2.Should().ThrowExactlyAsync<EventStreamUnexpectedMaxEventIdException>();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
+                        repositoryImplementation,
+                        null);
+            }
         }
 
         private static (ProductAmount, ProductAmount, ProductAmount) CreateProductAmounts()
@@ -81,61 +126,90 @@ namespace MyCompany.Crm.Sales.Orders
                 productAmount,
                 Money.Of((index + 1) * 1.23m, Currency.PLN))));
 
-        private async Task TestRestoreAfter(Func<Order> action)
+        private async Task TestRestoreFor(Order order)
         {
-            _order = action();
+            SetNewScope();
+            _scope.SetOrder(order);
             await TestRestore();
         }
 
         private async Task TestRestoreAfter(Action<Order> action)
         {
-            action(_order);
+            _scope.Execute(action);
             await TestRestore();
         }
 
         private async Task TestRestore()
         {
-            await Save(_order);
-            var restoredOrder = await GetBy(_order.Id);
-            restoredOrder.Should().Be(_order);
-            _order = restoredOrder;
+            await _scope.SaveOrder();
+            var savedOrder = _scope.Order;
+            SetNewScope();
+            await _scope.LoadOrder(savedOrder.Id);
+            var restoredOrder = _scope.Order;
+            restoredOrder.Should().Be(savedOrder);
         }
 
-        private Task<Order> GetBy(OrderId id)
-        {
-            CreateScope();
-            return _repository.GetBy(id);
-        }
-
-        private Task Save(Order order)
-        {
-            if (_repository is null)
-                CreateScope();
-            return _repository.Save(order);
-        }
-
-        private void CreateScope()
+        private void SetNewScope()
         {
             _scope?.Dispose();
-            _scope = _serviceProvider.CreateScope();
-            _repository = _repositoryImplementation switch
-            {
-                nameof(OrderSqlRepository.TablesFromSnapshot) => _scope.ServiceProvider
-                    .GetService<OrderSqlRepository.TablesFromSnapshot>(),
-                nameof(OrderSqlRepository.TablesFromEvents) => _scope.ServiceProvider
-                    .GetService<OrderSqlRepository.TablesFromEvents>(),
-                nameof(OrderSqlRepository.DocumentFromSnapshot) => _scope.ServiceProvider
-                    .GetService<OrderSqlRepository.DocumentFromSnapshot>(),
-                nameof(OrderSqlRepository.DocumentFromEvents) => _scope.ServiceProvider
-                    .GetService<OrderSqlRepository.DocumentFromEvents>(),
-                nameof(OrderSqlRepository.EventsSourcing) => _scope.ServiceProvider
-                    .GetService<OrderSqlRepository.EventsSourcing>(),
-                _ => throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
-                    _repositoryImplementation,
-                    null)
-            };
+            _scope = CreateScope();
         }
+        
+        private Scope CreateScope() => new Scope(_serviceProvider, _repositoryImplementation);
 
         public void Dispose() => _scope?.Dispose();
+
+        private class Scope : IDisposable
+        {
+            private readonly IServiceScope _scope;
+            private readonly OrderRepository _repository;
+            public Order Order { get; private set; }
+
+            public Scope(IServiceProvider serviceProvider, string repositoryImplementation)
+            {
+                _scope = serviceProvider.CreateScope();
+                _repository = CreateRepository(_scope, repositoryImplementation);
+            }
+
+            public void SetOrder(Order order)
+            {
+                if (Order != null)
+                    throw new InvalidOperationException("Order is already set");
+                Order = order;
+            }
+
+            public async Task LoadOrder(OrderId id)
+            {
+                if (Order != null)
+                    throw new InvalidOperationException("Order is already set");
+                Order = await _repository.GetBy(id);
+            }
+
+            public void Execute(Action<Order> action) => action(Order);
+
+            public Task SaveOrder() => _repository.Save(Order);
+
+            public void Dispose() => _scope?.Dispose();
+            
+            private static OrderRepository CreateRepository(IServiceScope scope, string repositoryImplementation)
+            {
+                return repositoryImplementation switch
+                {
+                    nameof(OrderSqlRepository.TablesFromSnapshot) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.TablesFromSnapshot>(),
+                    nameof(OrderSqlRepository.TablesFromEvents) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.TablesFromEvents>(),
+                    nameof(OrderSqlRepository.DocumentFromSnapshot) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.DocumentFromSnapshot>(),
+                    nameof(OrderSqlRepository.DocumentFromEvents) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.DocumentFromEvents>(),
+                    nameof(OrderSqlRepository.EventsSourcing) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.EventsSourcing>(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
+                        repositoryImplementation,
+                        null)
+                };
+            }
+        }
     }
 }
