@@ -31,6 +31,8 @@ namespace MyCompany.Crm.DI.Modules
                         options.Events.AddEventType(type);
                         options.Events.EventMappingFor(type).EventTypeName = name;
                     }
+                    options.Schema.For<Order.Snapshot>().UseOptimisticConcurrency(true);
+                    options.Schema.For<OrderSqlRepository.DocumentFromEvents.OrderDoc>().UseOptimisticConcurrency(true);
                 })
                 .BuildSessionsWith<LightweightSessionFactory>()
                 .InitializeStore();

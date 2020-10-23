@@ -74,35 +74,33 @@ namespace MyCompany.Crm.Sales.Orders
             await scope0.SaveOrder();
 
             var productAmount = ProductAmount.Of(ProductId.New(), Amount.Of(3, AmountUnit.Box));
-            using (var scope1 = CreateScope())
-            using (var scope2 = CreateScope())
+            using var scope1 = CreateScope();
+            using var scope2 = CreateScope();
+            await scope1.LoadOrder(id);
+            await scope2.LoadOrder(id);
+            scope1.Execute(order => order.Add(productAmount));
+            scope2.Execute(order => order.Add(productAmount));
+            Func<Task> action1 = () => scope1.SaveOrder();
+            Func<Task> action2 = () => scope2.SaveOrder();
+            await action1.Should().NotThrowAsync();
+            switch (repositoryImplementation)
             {
-                await scope1.LoadOrder(id);
-                await scope2.LoadOrder(id);
-                scope1.Execute(order => order.Add(productAmount));
-                scope2.Execute(order => order.Add(productAmount));
-                Func<Task> action1 = () => scope1.SaveOrder();
-                Func<Task> action2 = () => scope2.SaveOrder();
-                await action1.Should().NotThrowAsync();
-                switch (repositoryImplementation)
-                {
-                    case nameof(OrderSqlRepository.TablesFromSnapshot):
-                    case nameof(OrderSqlRepository.TablesFromEvents):
-                        await action2.Should().ThrowExactlyAsync<DbUpdateConcurrencyException>();
-                        break;
-                    case nameof(OrderSqlRepository.DocumentFromSnapshot):
-                    case nameof(OrderSqlRepository.DocumentFromEvents):
-                        (await action2.Should().ThrowExactlyAsync<AggregateException>())
-                            .WithInnerExceptionExactly<ConcurrencyException>();
-                        break;
-                    case nameof(OrderSqlRepository.EventsSourcing):
-                        await action2.Should().ThrowExactlyAsync<EventStreamUnexpectedMaxEventIdException>();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
-                            repositoryImplementation,
-                            null);
-                }
+                case nameof(OrderSqlRepository.TablesFromSnapshot):
+                case nameof(OrderSqlRepository.TablesFromEvents):
+                    await action2.Should().ThrowExactlyAsync<DbUpdateConcurrencyException>();
+                    break;
+                case nameof(OrderSqlRepository.DocumentFromSnapshot):
+                case nameof(OrderSqlRepository.DocumentFromEvents):
+                    (await action2.Should().ThrowExactlyAsync<AggregateException>())
+                        .WithInnerExceptionExactly<ConcurrencyException>();
+                    break;
+                case nameof(OrderSqlRepository.EventsSourcing):
+                    await action2.Should().ThrowExactlyAsync<EventStreamUnexpectedMaxEventIdException>();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
+                        repositoryImplementation,
+                        null);
             }
         }
 

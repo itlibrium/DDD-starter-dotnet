@@ -174,7 +174,7 @@ namespace MyCompany.Crm.Sales.Orders
             private Guid GetCurrentVersionFor(Order order) =>
                 _orders.TryGetValue(order.Id, out var orderData) ? orderData.Version : Guid.Empty;
 
-            private class OrderDoc
+            public class OrderDoc
             {
                 public Guid Id { get; set; }
                 public List<OrderItemDoc> Items { get; set; } = new List<OrderItemDoc>();
@@ -183,7 +183,7 @@ namespace MyCompany.Crm.Sales.Orders
                 public bool IsPlaced { get; set; }
             }
 
-            private class OrderItemDoc
+            public class OrderItemDoc
             {
                 public Guid ProductId { get; set; }
                 public int Amount { get; set; }
