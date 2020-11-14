@@ -5,7 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyCompany.Crm.DI;
 using MyCompany.Crm.DI.Modules;
-using MyCompany.Crm.TechnicalStuff.Api;
+using MyCompany.Crm.TechnicalStuff.Api.Docs;
+using MyCompany.Crm.TechnicalStuff.Api.Versioning;
 
 namespace MyCompany.Crm
 {

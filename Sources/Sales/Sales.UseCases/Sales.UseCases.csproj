@@ -9,7 +9,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.UseCases\TechnicalStuff.UseCases.csproj" />
+      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
       <ProjectReference Include="..\Sales.DeepModel\Sales.DeepModel.csproj" />
+      <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
       <ProjectReference Include="..\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj" />
     </ItemGroup>
 

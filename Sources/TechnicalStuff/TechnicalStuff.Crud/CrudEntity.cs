@@ -8,6 +8,6 @@ namespace MyCompany.Crm.TechnicalStuff.Crud
     public class CrudEntity
     {
         [BindNever] public Guid Id { get; set; }
-        [BindNever] protected internal bool IsDeleted { get; set; }
+        [BindNever] public bool IsDeleted { get; set; }
     }
 }

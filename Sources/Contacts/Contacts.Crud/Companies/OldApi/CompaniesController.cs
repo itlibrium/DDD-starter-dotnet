@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Companies.OldApi
 {
@@ -15,27 +15,27 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
     [Route("/api/companies")]
     public class CompaniesController : ControllerBase
     {
-        private readonly ContactsCrudDao _dao;
+        private readonly ContactsCrudOperations _operations;
 
-        public CompaniesController(ContactsCrudDao dao) => _dao = dao;
+        public CompaniesController(ContactsCrudOperations operations) => _operations = operations;
 
         [HttpPost("create")]
         public Task<ActionResult<Company>> Create(Company company)
         {
             company.AddedOn = DateTime.UtcNow;
             company.Address = new Address();
-            return _dao
+            return _operations
                 .Create(company)
                 .ToOkResult();
         }
 
         [HttpGet("get")]
-        public Task<ActionResult<Company>> Get(Guid id) => _dao
+        public Task<ActionResult<Company>> Get(Guid id) => _operations
             .Read(id, DefaultIncludes)
             .ToOkResult();
 
         [HttpGet("search")]
-        public IAsyncEnumerable<ListItem> Search(string name = null, int skip = 0, int take = 20) => _dao
+        public IAsyncEnumerable<ListItem> Search(string name = null, int skip = 0, int take = 20) => _operations
             .Read<Company, ListItem>(query => query
                 .Apply(ListIncludes)
                 .Where(company => name == null || company.Name.Contains(name))
@@ -44,7 +44,7 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
                 .Select(ToListItem));
 
         [HttpPost("update")]
-        public Task<ActionResult<Company>> Update(Guid id, Company patch) => _dao
+        public Task<ActionResult<Company>> Update(Guid id, Company patch) => _operations
             .Update<Company>(id, DefaultIncludes, company =>
             {
                 //Custom action is needed to replace Phones collection.
@@ -60,19 +60,19 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
             .ToOkResult();
 
         [HttpPost("delete")]
-        public Task<OkResult> Delete(Guid id) => _dao
+        public Task<OkResult> Delete(Guid id) => _operations
             .Delete<Company>(id, DeletePolicy.Soft)
             .ToOkResult();
         
         [HttpPost("set-address")]
-        public Task<ActionResult<Address>> SetAddress(Guid companyId, Address address) => _dao
+        public Task<ActionResult<Address>> SetAddress(Guid companyId, Address address) => _operations
             .Update<Company, Address>(companyId,
                 query => query.Include(c => c.Address),
                 company => company.Address = address)
             .ToOkResult();
         
         [HttpPost("add-group")]
-        public Task<OkResult> AddGroup(Guid companyId, Guid groupId) => _dao
+        public Task<OkResult> AddGroup(Guid companyId, Guid groupId) => _operations
             .Update<Company>(companyId,
                 query => query.Include(company => company.Groups),
                 company =>
@@ -88,7 +88,7 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
             .ToOkResult();
 
         [HttpPost("remove-group")]
-        public Task<OkResult> RemoveGroup(Guid companyId, Guid groupId) => _dao
+        public Task<OkResult> RemoveGroup(Guid companyId, Guid groupId) => _operations
             .Update<Company>(companyId,
                 query => query.Include(company => company.Groups),
                 company =>
@@ -101,7 +101,7 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
             .ToOkResult();
         
         [HttpPost("add-tag")]
-        public Task<OkResult> AddTag(Guid companyId, Guid tagId) => _dao
+        public Task<OkResult> AddTag(Guid companyId, Guid tagId) => _operations
             .Update<Company>(companyId,
                 query => query.Include(company => company.Tags),
                 company =>
@@ -117,7 +117,7 @@ namespace MyCompany.Crm.Contacts.Companies.OldApi
             .ToOkResult();
 
         [HttpPost("remove-tag")]
-        public Task<OkResult> RemoveTag(Guid companyId, Guid tagId) => _dao
+        public Task<OkResult> RemoveTag(Guid companyId, Guid tagId) => _operations
             .Update<Company>(companyId,
                 query => query.Include(company => company.Tags),
                 company =>

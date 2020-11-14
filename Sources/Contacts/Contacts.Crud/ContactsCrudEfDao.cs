@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Ef;
 
 namespace MyCompany.Crm.Contacts
 {
-    public class ContactsCrudEfDao : EfCrudDao, ContactsCrudDao
+    public class ContactsCrudEfDao : EfCrudDao, ContactsCrudOperations
     {
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter",
             Justification = "Required by DI container")]

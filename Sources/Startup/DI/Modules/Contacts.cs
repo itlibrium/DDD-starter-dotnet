@@ -12,7 +12,7 @@ namespace MyCompany.Crm.DI.Modules
         {
             services.AddDbContextPool<ContactsCrudDbContext>(options => options
                 .UseNpgsql(configuration.GetConnectionString("Contacts")));
-            services.AddScoped<ContactsCrudDao, ContactsCrudEfDao>();
+            services.AddScoped<ContactsCrudOperations, ContactsCrudEfDao>();
             return services;
         }
     }

@@ -37,13 +37,11 @@ namespace MyCompany.Crm.DI.Modules
                 .BuildSessionsWith<LightweightSessionFactory>()
                 .InitializeStore();
             services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
-            services.AddDbContextPool<SalesCrudDbContext>(options => options
-                .UseNpgsql(configuration.GetConnectionString("Sales")));
-            services.AddScoped<SalesCrudDao, SalesCrudEfDao>();
+            services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddDbContextPool<SalesKafkaOutboxDbContext>(options => options
                 .UseNpgsql(configuration.GetConnectionString("Sales")));
             services.AddScoped<SalesKafkaOutboxWriter>();
-            services.AddScoped<OrderReadModelDao, OrderReadModelSqlDao>();
+            services.AddScoped<OrderDetailsDao, OrderDetailsSqlDao>();
             services.AddMessageOutboxes(SalesAdaptersKafka);
             services.AddStatelessComponents(SalesDomain, SalesUseCases, SalesAdaptersSql);
             return services;

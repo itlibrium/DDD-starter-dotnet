@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using MyCompany.Crm.Sales.Orders;
 
 namespace MyCompany.Crm.Sales
 {
@@ -8,6 +9,8 @@ namespace MyCompany.Crm.Sales
     {
         public DbSet<SalesDb.Order> Orders { get; set; }
         public DbSet<SalesDb.OrderItem> OrderItems { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderNote> OrderNotes { get; set; }
 
         public SalesDbContext([NotNull] DbContextOptions<SalesDbContext> options) : base(options) { }
 
@@ -23,6 +26,8 @@ namespace MyCompany.Crm.Sales
             {
                 orderItem.HasKey(i => new {i.OrderId, i.ProductId, i.AmountUnit});
             });
+            modelBuilder.Entity<OrderHeader>()
+                .OwnsOne(orderHeader => orderHeader.InvoicingDetails);
         }
     }
 }

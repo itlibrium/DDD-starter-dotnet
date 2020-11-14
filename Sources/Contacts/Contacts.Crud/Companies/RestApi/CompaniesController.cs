@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Companies.RestApi
 {
@@ -17,9 +17,9 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
     [ApiVersion("2")]
     public class CompaniesController : ControllerBase
     {
-        private readonly ContactsCrudDao _dao;
+        private readonly ContactsCrudOperations _operations;
 
-        public CompaniesController(ContactsCrudDao dao) => _dao = dao;
+        public CompaniesController(ContactsCrudOperations operations) => _operations = operations;
 
         [HttpPost]
         [MapToApiVersion("1")]
@@ -27,20 +27,20 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
         {
             company.AddedOn = DateTime.UtcNow;
             company.Address = new Address();
-            return _dao
+            return _operations
                 .Create(company)
                 .ToCreatedAtActionResult();
         }
 
         [HttpGet("{id}")]
         [MapToApiVersion("1")]
-        public Task<ActionResult<Company>> Read(Guid id) => _dao
+        public Task<ActionResult<Company>> Read(Guid id) => _operations
             .Read(id, DefaultIncludes)
             .ToOkResult();
 
         [HttpGet]
         [MapToApiVersion("1")]
-        public IAsyncEnumerable<ListItem> SearchV1(string name = null, int skip = 0, int take = 20) => _dao
+        public IAsyncEnumerable<ListItem> SearchV1(string name = null, int skip = 0, int take = 20) => _operations
             .Read<Company, ListItem>(query => query
                 .Apply(ListIncludes)
                 .Where(company => name == null || company.Name.Contains(name))
@@ -58,7 +58,7 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
 
         [HttpPut("{id}")]
         [MapToApiVersion("1")]
-        public Task<ActionResult<Company>> Update(Guid id, Company patch) => _dao
+        public Task<ActionResult<Company>> Update(Guid id, Company patch) => _operations
             .Update<Company>(id, DefaultIncludes, company =>
             {
                 //Custom action is needed to replace Phones collection.
@@ -75,7 +75,7 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
 
         [HttpDelete("{id}")]
         [MapToApiVersion("1")]
-        public Task<StatusCodeResult> Delete(Guid id) => _dao
+        public Task<StatusCodeResult> Delete(Guid id) => _operations
             .Delete<Company>(id, DeletePolicy.Soft)
             .ToStatusCodeResult();
 

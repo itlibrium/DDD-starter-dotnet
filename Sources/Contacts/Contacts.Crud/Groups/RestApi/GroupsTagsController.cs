@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.Contacts.Tags;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Groups.RestApi
 {
@@ -14,19 +14,19 @@ namespace MyCompany.Crm.Contacts.Groups.RestApi
     [ApiVersion("1")]
     public class GroupsTagsController : ControllerBase
     {
-        private readonly ContactsCrudDao _dao;
+        private readonly ContactsCrudOperations _operations;
 
-        public GroupsTagsController(ContactsCrudDao dao) => _dao = dao;
+        public GroupsTagsController(ContactsCrudOperations operations) => _operations = operations;
 
         [HttpGet]
-        public IAsyncEnumerable<Tag> Read(Guid groupId) => _dao
+        public IAsyncEnumerable<Tag> Read(Guid groupId) => _operations
             .Read<GroupTag, Tag>(query => query
                 .Include(groupTag => groupTag.Tag)
                 .Where(groupTag => groupTag.GroupId == groupId)
                 .Select(groupTag => groupTag.Tag));
         
         [HttpPut("{tagId}")]
-        public Task<NoContentResult> Add(Guid groupId, Guid tagId) => _dao
+        public Task<NoContentResult> Add(Guid groupId, Guid tagId) => _operations
             .Update<Group>(groupId,
                 query => query.Include(group => group.Tags),
                 group =>
@@ -42,7 +42,7 @@ namespace MyCompany.Crm.Contacts.Groups.RestApi
             .ToNoContentResult();
 
         [HttpDelete("{tagId}")]
-        public Task<NoContentResult> Remove(Guid groupId, Guid tagId) => _dao
+        public Task<NoContentResult> Remove(Guid groupId, Guid tagId) => _operations
             .Update<Group>(groupId,
                 query => query.Include(group => group.Tags),
                 group =>

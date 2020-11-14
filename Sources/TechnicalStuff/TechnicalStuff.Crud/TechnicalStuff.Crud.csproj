@@ -10,8 +10,7 @@
 
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
-      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.5" />      
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.5" />
     </ItemGroup>
 
     <ItemGroup>

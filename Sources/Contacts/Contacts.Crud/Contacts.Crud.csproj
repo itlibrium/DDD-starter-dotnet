@@ -10,6 +10,8 @@
     </PropertyGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Api\TechnicalStuff.Crud.Api.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Ef\TechnicalStuff.Crud.Ef.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj" />
     </ItemGroup>
     

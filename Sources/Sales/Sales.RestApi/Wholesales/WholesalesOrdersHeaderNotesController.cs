@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.Crud;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Sales.Wholesales
 {
@@ -13,15 +13,15 @@ namespace MyCompany.Crm.Sales.Wholesales
     [ApiVersion("1")]
     public class WholesalesOrdersHeaderNotesController : ControllerBase
     {
-        private readonly SalesCrudDao _dao;
+        private readonly SalesCrudOperations _operations;
 
-        public WholesalesOrdersHeaderNotesController(SalesCrudDao dao) => _dao = dao;
+        public WholesalesOrdersHeaderNotesController(SalesCrudOperations operations) => _operations = operations;
 
         [HttpPost]
         public async Task<ActionResult<OrderNote>> Create(Guid orderId, OrderNote note)
         {
             await CheckIfOrderExists(orderId);
-            return await _dao.Create(note).ToCreatedAtActionResult(createdNote => new
+            return await _operations.Create(note).ToCreatedAtActionResult(createdNote => new
             {
                 orderId = createdNote.OrderId,
                 id = createdNote.Id
@@ -32,26 +32,26 @@ namespace MyCompany.Crm.Sales.Wholesales
         public async Task<ActionResult<OrderNote>> Read(Guid orderId, Guid id)
         {
             await CheckIfOrderExists(orderId);
-            return await _dao.Read<OrderNote>(id).ToOkResult();
+            return await _operations.Read<OrderNote>(id).ToOkResult();
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult<OrderNote>> Update(Guid orderId, Guid id, OrderNote note)
         {
             await CheckIfOrderExists(orderId);
-            return await _dao.Update(id, note).ToOkResult();
+            return await _operations.Update(id, note).ToOkResult();
         }
 
         [HttpDelete("{id}")]
         public async Task<StatusCodeResult> Delete(Guid orderId, Guid id)
         {
             await CheckIfOrderExists(orderId);
-            return await _dao.Delete<OrderNote>(id, DeletePolicy.Hard).ToStatusCodeResult();
+            return await _operations.Delete<OrderNote>(id, DeletePolicy.Hard).ToStatusCodeResult();
         }
 
         private async Task CheckIfOrderExists(Guid orderId)
         {
-            if (!await _dao.CheckIfExists<OrderHeader>(orderId))
+            if (!await _operations.CheckIfExists<OrderHeader>(orderId))
                 throw new CrudEntityNotFound(typeof(OrderHeader), orderId);
         }
     }

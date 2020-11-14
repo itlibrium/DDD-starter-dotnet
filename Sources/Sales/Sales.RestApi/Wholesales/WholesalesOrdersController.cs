@@ -13,13 +13,13 @@ namespace MyCompany.Crm.Sales.Wholesales
     public class WholesalesOrdersController : ControllerBase
     {
         private readonly CommandHandler<CreateOrder, OrderCreated> _createOrderHandler;
-        private readonly OrderReadModelDao _orderReadModelDao;
+        private readonly OrderDetailsDao _orderDetailsDao;
 
         public WholesalesOrdersController(CommandHandler<CreateOrder, OrderCreated> createOrderHandler,
-            OrderReadModelDao orderReadModelDao)
+            OrderDetailsDao orderDetailsDao)
         {
             _createOrderHandler = createOrderHandler;
-            _orderReadModelDao = orderReadModelDao;
+            _orderDetailsDao = orderDetailsDao;
         }
 
         [HttpPost]
@@ -27,11 +27,11 @@ namespace MyCompany.Crm.Sales.Wholesales
         {
             var orderCreated = await _createOrderHandler.Handle(createOrder);
             // Returning value works only if read model is created synchronously.
-            var order = await _orderReadModelDao.GetBy(orderCreated.OrderId);
+            var order = await _orderDetailsDao.GetBy(orderCreated.OrderId);
             return CreatedAtAction("Get", new {id = orderCreated.OrderId}, order);
         }
 
         [HttpGet("{id}")]
-        public async Task<OrderReadModel> Get(Guid id) => await _orderReadModelDao.GetBy(id);
+        public async Task<AllOrderDetails> Get(Guid id) => await _orderDetailsDao.GetBy(id);
     }
 }

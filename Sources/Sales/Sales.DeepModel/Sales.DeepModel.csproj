@@ -11,6 +11,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Metadata\TechnicalStuff.Metadata.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff\TechnicalStuff.csproj" />
+      <ProjectReference Include="..\Sales.DeepModel.Contracts\Sales.DeepModel.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>

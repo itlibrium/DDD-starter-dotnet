@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Crud.Ef</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Crud.Ef</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
+    </ItemGroup>
+
+</Project>

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Tags.RestApi
 {
@@ -13,34 +13,34 @@ namespace MyCompany.Crm.Contacts.Tags.RestApi
     [ApiVersion("1")]
     public class TagsController : ControllerBase
     {
-        private readonly ContactsCrudDao _dao;
+        private readonly ContactsCrudOperations _operations;
 
-        public TagsController(ContactsCrudDao dao) => _dao = dao;
+        public TagsController(ContactsCrudOperations operations) => _operations = operations;
 
         [HttpPost]
-        public Task<ActionResult<Tag>> Create(Tag tag) => _dao
+        public Task<ActionResult<Tag>> Create(Tag tag) => _operations
             .Create(tag)
             .ToCreatedAtActionResult();
         
         [HttpGet("{id}")]
-        public Task<ActionResult<Tag>> Read(Guid id) => _dao
+        public Task<ActionResult<Tag>> Read(Guid id) => _operations
             .Read<Tag>(id)
             .ToOkResult();
 
         [HttpGet]
-        public IAsyncEnumerable<Tag> Search(string name = null, int skip = 0, int take = 20) => _dao
+        public IAsyncEnumerable<Tag> Search(string name = null, int skip = 0, int take = 20) => _operations
             .Read<Tag>(query => query
                 .Where(tag => name == null || tag.Name.Contains(name))
                 .Skip(skip)
                 .Take(take));
 
         [HttpPut("{id}")]
-        public Task<ActionResult<Tag>> Update(Guid id, Tag tag) => _dao
+        public Task<ActionResult<Tag>> Update(Guid id, Tag tag) => _operations
             .Update(id, tag)
             .ToOkResult();
 
         [HttpDelete("{id}")]
-        public Task<StatusCodeResult> Delete(Guid id) => _dao
+        public Task<StatusCodeResult> Delete(Guid id) => _operations
             .Delete<Tag>(id, DeletePolicy.Hard)
             .ToStatusCodeResult();
     }

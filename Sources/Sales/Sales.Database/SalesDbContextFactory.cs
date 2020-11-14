@@ -21,22 +21,4 @@ namespace MyCompany.Crm.Sales
                 .Options);
         }
     }
-    
-    [UsedImplicitly]
-    public class SalesCrudDbContextFactory : IDesignTimeDbContextFactory<SalesCrudDbContext>
-        
-    {
-        private const string DatabaseName = "Sales";
-        private const string MigrationsHistoryTable = "__SalesCrud_Migrations";
-
-        public SalesCrudDbContext CreateDbContext(string[] args)
-        {
-            return new SalesCrudDbContext(new DbContextOptionsBuilder<SalesCrudDbContext>()
-                .UseNpgsql("Server=localhost;Port=5432;Database=Sales;User Id=postgres;Password=password;",
-                    sqlOptions => sqlOptions
-                        .MigrationsAssembly(typeof(SalesDbContextFactory).Assembly.FullName)
-                        .MigrationsHistoryTable(MigrationsHistoryTable))
-                .Options);
-        }
-    }
 }

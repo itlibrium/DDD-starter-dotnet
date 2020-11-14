@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
-      <ProjectReference Include="..\Sales.Crud\Sales.Crud.csproj" />
+      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

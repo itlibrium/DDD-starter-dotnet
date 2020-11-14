@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.DataAccess;
+using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Sales.Wholesales
 {
@@ -13,21 +13,21 @@ namespace MyCompany.Crm.Sales.Wholesales
     [ApiVersion("1")]
     public class WholesalesOrdersHeaderController : ControllerBase
     {
-        private readonly SalesCrudDao _dao;
+        private readonly SalesCrudOperations _operations;
 
-        public WholesalesOrdersHeaderController(SalesCrudDao dao) => _dao = dao;
+        public WholesalesOrdersHeaderController(SalesCrudOperations operations) => _operations = operations;
 
         [HttpGet]
         public async Task<ActionResult<OrderHeader>> Read(Guid id)
         {
             await CheckIfOrderExists(id);
-            return await _dao
+            return await _operations
                 .Read(id, DefaultIncludes)
                 .ToOkResult();
         }
 
         [HttpPut]
-        public Task<ActionResult<OrderHeader>> CreateOrUpdate(Guid id, OrderHeader orderHeader) => _dao
+        public Task<ActionResult<OrderHeader>> CreateOrUpdate(Guid id, OrderHeader orderHeader) => _operations
             .Update(id, DefaultIncludes, orderHeader)
             .ToOkResult();
 

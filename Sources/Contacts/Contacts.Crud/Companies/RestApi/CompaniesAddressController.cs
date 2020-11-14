@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
+using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Companies.RestApi
 {
@@ -13,13 +13,13 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
     [ApiVersion("2")]
     public class CompaniesAddressController : ControllerBase
     {
-        private readonly ContactsCrudDao _dao;
+        private readonly ContactsCrudOperations _operations;
 
-        public CompaniesAddressController(ContactsCrudDao dao) => _dao = dao;
+        public CompaniesAddressController(ContactsCrudOperations operations) => _operations = operations;
 
         [HttpGet]
         [MapToApiVersion("1")]
-        public Task<ActionResult<Address>> Read(Guid companyId) => _dao
+        public Task<ActionResult<Address>> Read(Guid companyId) => _operations
             .Read<Company, Address>(companyId, query => query
                 .Include(c => c.Address)
                 .Select(c => c.Address))
@@ -27,7 +27,7 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
 
         [HttpPut]
         [MapToApiVersion("1")]
-        public Task<ActionResult<Address>> UpdateV1(Guid companyId, AddressV1 addressV1) => _dao
+        public Task<ActionResult<Address>> UpdateV1(Guid companyId, AddressV1 addressV1) => _operations
             .Update<Company, Address>(companyId,
                 query => query.Include(c => c.Address),
                 company => company.Address = MapFrom(addressV1))
@@ -35,7 +35,7 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
 
         [HttpPut]
         [MapToApiVersion("2")]
-        public Task<ActionResult<Address>> UpdateV2(Guid companyId, Address address) => _dao
+        public Task<ActionResult<Address>> UpdateV2(Guid companyId, Address address) => _operations
             .Update<Company, Address>(companyId,
                 query => query.Include(c => c.Address),
                 company => company.Address = address)
