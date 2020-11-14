@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.ReadModels</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.ReadModel</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
     </PropertyGroup>
 

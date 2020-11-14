@@ -7,7 +7,7 @@
 
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
 
-        <AssemblyName>MyCompany.Crm.Sales.Domain.Tests</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.DeepModel.Tests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
+      <ProjectReference Include="..\Sales.DeepModel\Sales.DeepModel.csproj" />
     </ItemGroup>
 
 </Project>

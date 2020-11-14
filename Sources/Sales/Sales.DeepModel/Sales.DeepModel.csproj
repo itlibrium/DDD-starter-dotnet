@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.Domain</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.DeepModel</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
         <Nullable>disable</Nullable>

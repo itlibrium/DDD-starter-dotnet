@@ -20,7 +20,7 @@
       <ProjectReference Include="..\Sales\Sales.Adapters.Kafka\Sales.Adapters.Kafka.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters.Sql\Sales.Adapters.Sql.csproj" />
       <ProjectReference Include="..\Sales\Sales.Crud\Sales.Crud.csproj" />
-      <ProjectReference Include="..\Sales\Sales.Domain\Sales.Domain.csproj" />
+      <ProjectReference Include="..\Sales\Sales.DeepModel\Sales.DeepModel.csproj" />
       <ProjectReference Include="..\Sales\Sales.RestApi\Sales.RestApi.csproj" />
       <ProjectReference Include="..\Sales\Sales.UseCases\Sales.UseCases.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Api\TechnicalStuff.Api.csproj" />
