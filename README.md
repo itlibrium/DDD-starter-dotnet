@@ -94,10 +94,10 @@ This architecture style is best for Deep Model with high business complexity. It
 
 **Code:**
 
-1. Complex aggregate: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.cs)
-2. Aggregate's private Value Object: [`PriceAgreement`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.PriceAgreement.cs)
-3. Aggregate's events: [`Order.Events`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.Events.cs)
-4. Aggregate's snapshot: [`Order.Snapshot`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.Snapshot.cs)
+1. Complex aggregate: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.cs)
+2. Aggregate's private Value Object: [`PriceAgreement`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.PriceAgreement.cs)
+3. Aggregate's events: [`Order.Events`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.Events.cs)
+4. Aggregate's snapshot: [`Order.Snapshot`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.Snapshot.cs)
 
 **Blog:**
 
@@ -107,10 +107,10 @@ This architecture style is best for Deep Model with high business complexity. It
 
 **Code:**
 
-1. Identifiers eg: [`OrderId`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/OrderId.cs), [`ProductId`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Products/ProductId.cs)
-2. Simple quantities (often with operators facilitating calculations) eg: [`Amount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Products/Amount.cs), [`ProductAmount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Products/ProductAmount.cs), [`Money`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Commons/Money.cs)
-3. Complex quantities (often used by Policies) eg: [`Offer`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/Offer.cs), [`Quote`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/Quote.cs)
-4. Other domain concepts (often used for communication between other Building Blocks) eg: [`OfferRequest`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/OfferRequest.cs), [`BasePrice`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/PriceLists/BasePrice.cs)
+1. Identifiers eg: [`OrderId`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/OrderId.cs), [`ProductId`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Products/ProductId.cs)
+2. Simple quantities (often with operators facilitating calculations) eg: [`Amount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Products/Amount.cs), [`ProductAmount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Products/ProductAmount.cs), [`Money`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Commons/Money.cs)
+3. Complex quantities (often used by Policies) eg: [`Offer`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/Offer.cs), [`Quote`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/Quote.cs)
+4. Other domain concepts (often used for communication between other Building Blocks) eg: [`OfferRequest`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/OfferRequest.cs), [`BasePrice`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/PriceLists/BasePrice.cs)
 
 **Blog:**
 
@@ -120,8 +120,8 @@ This architecture style is best for Deep Model with high business complexity. It
 
 **Code:**
 
-1. Calculations eg: [`OfferModifier`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/OfferModifier.cs), [`ClientLevelDiscount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/Discounts/ClientLevelDiscounts.cs), [`SpecialOffer`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/SpecialOffers/SpecialOffer.cs)
-2. Adjusting Aggregate's rules eg: [`PriceChangesPolicy`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/PriceChanges/PriceChangesPolicy.cs), [`AllowPriceChangesIfTotalPriceIsLower`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/PriceChanges/AllowPriceChangesIfTotalPriceIsLower.cs)
+1. Calculations eg: [`OfferModifier`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/OfferModifier.cs), [`ClientLevelDiscount`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/Discounts/ClientLevelDiscounts.cs), [`SpecialOffer`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/SpecialOffers/SpecialOffer.cs)
+2. Adjusting Aggregate's rules eg: [`PriceChangesPolicy`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/PriceChanges/PriceChangesPolicy.cs), [`AllowPriceChangesIfTotalPriceIsLower`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/PriceChanges/AllowPriceChangesIfTotalPriceIsLower.cs)
 
 **Blog:**
 
@@ -132,19 +132,19 @@ This architecture style is best for Deep Model with high business complexity. It
 **Code:**
 
 1. Creating Aggregates and Value Object: factory methods on each type
-2. Choosing Policy for given conditions: [`PriceChangesPolicies`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/PriceChanges/PriceChangesPolicies.cs), [`OfferModifiers`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/OfferModifiers.cs)
+2. Choosing Policy for given conditions: [`PriceChangesPolicies`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/PriceChanges/PriceChangesPolicies.cs), [`OfferModifiers`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/OfferModifiers.cs)
 
 #### Domain Service
 
 **Code:**
 
-1. Domain sub-processes: [`CalculatePrices`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Pricing/CalculatePrices.cs)
+1. Domain sub-processes: [`CalculatePrices`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Pricing/CalculatePrices.cs)
 
 ### Emitting Events from Aggregates
 
 **Code:**
 
-1. List inside Aggregate: [`Order.NewEvents`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.Events.cs)
+1. List inside Aggregate: [`Order.NewEvents`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.Events.cs)
 
 Alternatives that won't be implemented:
 
@@ -158,7 +158,7 @@ Alternatives that won't be implemented:
 
 **Code:**
 
-1. [Tests for `Money` Value Object](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain.Tests/Commons/MoneyTests.cs)
+1. [Tests for `Money` Value Object](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel.Tests/Commons/MoneyTests.cs)
 
 **Tools:**
 
@@ -172,8 +172,8 @@ Of course, at the end of the day the Deep Model and CRUD have to work together. 
 
 **Code:**
 
-1. Separation rules (Aggregate) and simple data (Anemic Entity) eg: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/Order.cs) - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud/Orders/OrderHeader.cs)
-2. Accessing CRUD data in Deep Model eg: [`OrderHeaderRepository`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Domain/Orders/OrderHeaderRepository.cs), [`ConfirmOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/ConfirmOffer/ConfirmOfferHandler.cs)
+1. Separation rules (Aggregate) and simple data (Anemic Entity / Data Structure) eg: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.cs) - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/Orders/OrderHeader.cs)
+2. Accessing CRUD data in Use Cases eg: [`ConfirmOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/ConfirmOffer/ConfirmOfferHandler.cs), [`GetOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/GetOffer/GetOfferHandler.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
 
 ### Persistence of Aggregates
 
