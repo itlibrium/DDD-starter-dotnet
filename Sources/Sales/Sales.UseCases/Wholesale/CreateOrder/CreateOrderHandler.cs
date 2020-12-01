@@ -12,11 +12,14 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
     {
         private readonly OrderRepository _orders;
+        private readonly SalesCrudOperations _crudOperations;
         private readonly OrderEventsOutbox _eventsOutbox;
 
-        public CreateOrderHandler(OrderRepository orders, OrderEventsOutbox eventsOutbox)
+        public CreateOrderHandler(OrderRepository orders, SalesCrudOperations crudOperations, 
+            OrderEventsOutbox eventsOutbox)
         {
             _orders = orders;
+            _crudOperations = crudOperations;
             _eventsOutbox = eventsOutbox;
         }
 
@@ -24,16 +27,18 @@ namespace MyCompany.Crm.Sales.Wholesale.CreateOrder
         {
             var clientId = CreateDomainModelFrom(command);
             var order = Order.New();
+            var orderHeader = new OrderHeader {Id = order.Id.Value, ClientId = clientId.Value};
             await _orders.Save(order);
+            await _crudOperations.Create(orderHeader);
             var orderCreated = CreateEventFrom(order, clientId);
             _eventsOutbox.Add(orderCreated);
             return orderCreated;
         }
 
         private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);
-        
+
         // TODO: add sales channel type
-        private static OrderCreated CreateEventFrom(Order order, ClientId clientId) => 
+        private static OrderCreated CreateEventFrom(Order order, ClientId clientId) =>
             new OrderCreated(order.Id.Value, clientId.Value);
     }
 }

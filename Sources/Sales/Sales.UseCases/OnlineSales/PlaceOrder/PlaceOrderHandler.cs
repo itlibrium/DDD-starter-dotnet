@@ -19,13 +19,15 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
     {
         private readonly CalculatePrices _calculatePrices;
         private readonly OrderRepository _orders;
+        private readonly SalesCrudOperations _crudOperations;
         private readonly OrderEventsOutbox _eventsOutbox;
 
-        public PlaceOrderHandler(CalculatePrices calculatePrices, OrderRepository orders,
-            OrderEventsOutbox eventsOutbox)
+        public PlaceOrderHandler(CalculatePrices calculatePrices, OrderRepository orders, 
+            SalesCrudOperations crudOperations, OrderEventsOutbox eventsOutbox)
         {
             _calculatePrices = calculatePrices;
             _orders = orders;
+            _crudOperations = crudOperations;
             _eventsOutbox = eventsOutbox;
         }
 
@@ -38,7 +40,14 @@ namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
                 offer.Currency);
             if (!offer.Equals(currentOffer)) throw new DomainException();
             var order = Order.FromOffer(offer);
+            var orderHeader = new OrderHeader
+            {
+                Id = order.Id.Value, 
+                ClientId = clientId.Value, 
+                InvoicingDetails = command.InvoicingDetails
+            };
             await _orders.Save(order);
+            await _crudOperations.Create(orderHeader);
             var orderPlaced = CreateEventFrom(clientId, order);
             _eventsOutbox.Add(orderPlaced);
             return orderPlaced;
