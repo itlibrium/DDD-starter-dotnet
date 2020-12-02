@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.OnlineSales.PlaceOrder
+namespace MyCompany.Crm.Sales.Orders
 {
     public class OrderPlaced : OrderEvent
     {

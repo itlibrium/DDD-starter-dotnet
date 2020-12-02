@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace MyCompany.Crm.Sales.Orders
 {
-    public interface OrderDetailsDao
+    public interface OrderDetailsFinder
     {
         Task<AllOrderDetails> GetBy(Guid id);
     }

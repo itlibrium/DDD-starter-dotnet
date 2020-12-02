@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.OnlineSales.PlaceOrder;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
@@ -13,13 +12,13 @@ namespace MyCompany.Crm.Sales.OnlineSales
     public class OnlineSalesOrdersController : ControllerBase
     {
         private readonly CommandHandler<PlaceOrder.PlaceOrder, OrderPlaced> _placeOrderHandler;
-        private readonly OrderDetailsDao _orderDetailsDao;
+        private readonly OrderDetailsFinder _orderDetailsFinder;
 
         public OnlineSalesOrdersController(CommandHandler<PlaceOrder.PlaceOrder, OrderPlaced> placeOrderHandler,
-            OrderDetailsDao orderDetailsDao)
+            OrderDetailsFinder orderDetailsFinder)
         {
             _placeOrderHandler = placeOrderHandler;
-            _orderDetailsDao = orderDetailsDao;
+            _orderDetailsFinder = orderDetailsFinder;
         }
 
         [HttpPost]
@@ -27,11 +26,11 @@ namespace MyCompany.Crm.Sales.OnlineSales
         {
             var orderPlaced = await _placeOrderHandler.Handle(placeOrder);
             // Returning value works only if read model is created synchronously.
-            var order = await _orderDetailsDao.GetBy(orderPlaced.OrderId);
-            return CreatedAtAction("Get", new {id = orderPlaced.OrderId}, order);
+            var orderDetails = await _orderDetailsFinder.GetBy(orderPlaced.OrderId);
+            return CreatedAtAction("Get", new {id = orderPlaced.OrderId}, orderDetails);
         }
 
         [HttpGet("{id}")]
-        public async Task<AllOrderDetails> Get(Guid id) => await _orderDetailsDao.GetBy(id);
+        public async Task<AllOrderDetails> Get(Guid id) => await _orderDetailsFinder.GetBy(id);
     }
 }

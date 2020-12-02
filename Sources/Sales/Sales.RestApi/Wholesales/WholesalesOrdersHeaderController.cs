@@ -18,20 +18,14 @@ namespace MyCompany.Crm.Sales.Wholesales
         public WholesalesOrdersHeaderController(SalesCrudOperations operations) => _operations = operations;
 
         [HttpGet]
-        public async Task<ActionResult<OrderHeader>> Read(Guid id)
-        {
-            await CheckIfOrderExists(id);
-            return await _operations
-                .Read(id, DefaultIncludes)
-                .ToOkResult();
-        }
-
-        [HttpPut]
-        public Task<ActionResult<OrderHeader>> CreateOrUpdate(Guid id, OrderHeader orderHeader) => _operations
-            .Update(id, DefaultIncludes, orderHeader)
+        public async Task<ActionResult<OrderHeader>> Read(Guid id) => await _operations
+            .Read(id, DefaultIncludes)
             .ToOkResult();
 
-        private Task CheckIfOrderExists(Guid orderId) => throw new NotImplementedException();
+        [HttpPut]
+        public Task<ActionResult<OrderHeader>> Update(Guid id, OrderHeader orderHeader) => _operations
+            .Update(id, DefaultIncludes, orderHeader)
+            .ToOkResult();
 
         private static readonly QueryConfig<OrderHeader> DefaultIncludes =
             orderHeaders => orderHeaders.Include(i => i.InvoicingDetails);
