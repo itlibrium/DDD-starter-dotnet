@@ -164,16 +164,22 @@ Alternatives that won't be implemented:
 
 1. [BDD toolkit](https://github.com/itlibrium/BDD-toolkit-dotnet) - our another open source project
 
-### Glueing *DDD* and *CRUD*
+### Combining *DDD* and *CRUD*
 
-Even in a single Bounded Context often we find parts with different complexity. Deep Model requires different techniques like Hexagonal Architecture and DDD Building Blocks. Best fit for CRUDs is single or two layer architecture with as much framework / libraries help as possible. 
+Even in a single Bounded Context we often find parts with different complexity. Some part of the Bounded Context may require Deep Model and techniques like Hexagonal Architecture and DDD Building Blocks. At the same time, another part may need CRUD model where single or two-layered architecture (using frameworks and libraries as much as possible) is the best fit. 
 
-Of course, at the end of the day the Deep Model and CRUD have to work together. To find out how to glue them check the code in the `Sales` Bounded Context.
+Using completely separate styles - Hexagonal Architecture for the Deep part and single/two layered architecture for CRUD part - is possible only if there are no use cases where we need to operate on both models. It's only a mater of time when such a use case occurs. What then? Which architecture style should be used?
+
+The solution we propose is to use flexible Hexagonal Architecture, but avoid usage of OOP and Tactical DDD patterns for the CRUD parts. Check out the Sales Bounded Context where we show it in action. You can also check the Contacts Bounded Context where we show sample CRUD model implementation which is kept as simple as possible.
 
 **Code:**
 
-1. Separation rules (Aggregate) and simple data (Anemic Entity / Data Structure) eg: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.cs) - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/Orders/OrderHeader.cs)
-2. Accessing CRUD data in Use Cases eg: [`ConfirmOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/ConfirmOffer/ConfirmOfferHandler.cs), [`GetOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/GetOffer/GetOfferHandler.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
+1. CRUD Bounded Context with single layer architecture eg: [`Contacts`](https://github.com/itlibrium/DDD-starter-dotnet/tree/master/Sources/Contacts)
+2. Bounded Context with Deep Model and CRUD Model eg: 
+   1. Separation rules (Aggregate) and simple data (Anemic Entity / Data Structure) eg:  - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/Orders/OrderHeader.cs)
+   2. Saving both Deep Model and CRUD Model in Command Handler (single transaction) eg: , [`CreateOrderHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/CreateOrder/CreateOrderHandler.cs)
+   3. Reading CRUD Model in Command Handler eg: , [`GetOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/GetOffer/GetOfferHandler.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
+   4. Managing CRUD Model without Command Handler eg: [`WholesalesOrdersHeaderController`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.RestApi/Wholesales/WholesalesOrdersHeaderController.cs), [`WholesalesOrdersHeaderNotesController`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.RestApi/Wholesales/WholesalesOrdersHeaderNotesController.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
 
 ### Persistence of Aggregates
 
