@@ -1,12 +1,10 @@
 using System;
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Orders.PriceChanges
 {
-    [Stateless]
     [DddFactory]
     public class PriceChangesPolicies
     {

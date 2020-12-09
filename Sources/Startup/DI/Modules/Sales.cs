@@ -6,13 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales;
 using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.TechnicalStuff.Marten;
 
 namespace MyCompany.Crm.DI.Modules
 {
     internal static class Sales
     {
-        private static readonly Assembly SalesDomain = typeof(SalesDomainAssemblyInfo).Assembly;
+        private static readonly Assembly SalesDeepModel = typeof(SalesDeepModelAssemblyInfo).Assembly;
         private static readonly Assembly SalesUseCases = typeof(SalesUseCasesAssemblyInfo).Assembly;
         private static readonly Assembly SalesAdaptersSql = typeof(SalesAdaptersSqlAssemblyInfo).Assembly;
         private static readonly Assembly SalesAdaptersKafka = typeof(SalesAdaptersKafkaAssemblyInfo).Assembly;
@@ -36,14 +37,15 @@ namespace MyCompany.Crm.DI.Modules
                 })
                 .BuildSessionsWith<LightweightSessionFactory>()
                 .InitializeStore();
-            services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
             services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddDbContextPool<SalesKafkaOutboxDbContext>(options => options
                 .UseNpgsql(configuration.GetConnectionString("Sales")));
             services.AddScoped<SalesKafkaOutboxWriter>();
-            services.AddScoped<OrderDetailsFinder, OrderDetailsSqlDao>();
             services.AddMessageOutboxes(SalesAdaptersKafka);
-            services.AddStatelessComponents(SalesDomain, SalesUseCases, SalesAdaptersSql);
+            services.AddStatelessComponentsFrom(SalesDeepModel, SalesUseCases, SalesAdaptersSql);
+            services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
+            services.AddScoped<AllowAnyPriceChanges>();
+            services.AddScoped<AllowPriceChangesIfTotalPriceIsLower>();
             return services;
         }
     }

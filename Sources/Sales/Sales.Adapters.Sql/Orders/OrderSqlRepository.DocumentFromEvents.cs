@@ -8,14 +8,12 @@ using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {
-        [Stateless]
         [DddRepository]
         public class DocumentFromEvents : OrderRepository
         {

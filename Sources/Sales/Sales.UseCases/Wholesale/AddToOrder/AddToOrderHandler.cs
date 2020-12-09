@@ -2,13 +2,11 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.AddToOrder
 {
-    [Stateless]
     [DddAppService]
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>
     {

@@ -4,7 +4,7 @@ using MyCompany.Crm.TechnicalStuff.Metadata;
 
 namespace MyCompany.Crm.Sales.ExchangeRates
 {
-    [Stateless]
+    [ExternalService]
     internal class FakeExchangeRateProvider : ExchangeRateProvider
     {
         public Task<ExchangeRate> GetFor(Currency currency) => Task.FromResult(ExchangeRate.Of(currency, 1));

@@ -5,5 +5,5 @@ using System.Runtime.CompilerServices;
 
 namespace MyCompany.Crm.Sales
 {
-    public class SalesDomainAssemblyInfo { }
+    public class SalesDeepModelAssemblyInfo { }
 }

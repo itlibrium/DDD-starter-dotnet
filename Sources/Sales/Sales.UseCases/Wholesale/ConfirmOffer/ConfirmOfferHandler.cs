@@ -10,13 +10,11 @@ using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.Sales.Time;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.ConfirmOffer
 {
-    [Stateless]
     [DddAppService]
     public class ConfirmOfferHandler  : CommandHandler<ConfirmOffer, OfferConfirmed>
     {

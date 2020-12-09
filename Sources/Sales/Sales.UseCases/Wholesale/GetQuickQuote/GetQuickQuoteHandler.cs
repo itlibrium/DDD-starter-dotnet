@@ -5,13 +5,11 @@ using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesale.GetQuickQuote
 {
-    [Stateless]
     [DddAppService]
     public class GetQuickQuoteHandler : CommandHandler<GetQuickQuote, QuickQuoteCalculated>
     {

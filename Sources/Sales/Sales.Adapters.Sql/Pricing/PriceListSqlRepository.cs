@@ -4,12 +4,10 @@ using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing.PriceLists;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
-    [Stateless]
     [DddRepository]
     public class PriceListSqlRepository : PriceListRepository
     {

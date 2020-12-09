@@ -2,13 +2,11 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Pricing.Discounts;
 using MyCompany.Crm.Sales.Pricing.SpecialOffers;
 using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff.Metadata;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using TaskTupleAwaiter;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
-    [Stateless]
     [DddFactory]
     public class OfferModifiers
     {
