@@ -13,7 +13,6 @@ namespace MyCompany.Crm.Nuke.DotNet
         private static readonly (string WorkingDir, string Name)[] DbContexts =
         {
             ("Sales/Sales.Database", "SalesDbContext"),
-            ("Sales/Sales.Database", "SalesCrudDbContext"),
             ("Contacts/Contacts.Database", "ContactsCrudDbContext")
         };
 
