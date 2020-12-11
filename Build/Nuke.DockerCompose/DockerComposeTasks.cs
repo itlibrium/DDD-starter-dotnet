@@ -22,8 +22,8 @@ namespace Nuke.DockerCompose
                     if (output.StartsWith("WARNING!"))
                         Logger.Warn(output);
                     else
-                        Logger.Error(output);
-
+                        Logger.Normal(output);
+                    //TODO: logging real errors
                     break;
                 }
                 default:
@@ -43,11 +43,17 @@ namespace Nuke.DockerCompose
         public static IReadOnlyCollection<Output> Down(DockerComposeDownSettings settings = null) =>
             StartProcess(settings ?? new DockerComposeDownSettings());
 
+        public static IReadOnlyCollection<Output> Logs(Configure<DockerComposeLogsSettings> configure) =>
+            Logs(configure(new DockerComposeLogsSettings()));
+        
+        public static IReadOnlyCollection<Output> Logs(DockerComposeLogsSettings settings = null) =>
+            StartProcess(settings ?? new DockerComposeLogsSettings());
+
         private static IReadOnlyCollection<Output> StartProcess([NotNull] ToolSettings settings)
         {
             if (settings == null) throw new ArgumentNullException(nameof(settings));
             var process = ProcessTasks.StartProcess(settings);
-            process.AssertZeroExitCode();
+            process.AssertWaitForExit();
             return process.Output;
         }
     }

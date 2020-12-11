@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
@@ -22,16 +23,17 @@ namespace MyCompany.Crm.Nuke.DockerCompose
             .Executes(() =>
             {
                 DockerComposeTasks.Up(settings => settings
-                    .SetFile(InfrastructureComposeFiles)
+                    .SetFile(GetInfrastructureComposeFiles())
                     .Apply(SetInfrastructureEnvironmentVariables)
                     .SetDetach(true));
+                WriteLogsInfo();
             });
 
         public static Target StopLocalDockerInfrastructure => _ => _
             .Executes(() =>
             {
                 DockerComposeTasks.Down(settings => settings
-                    .SetFile(InfrastructureComposeFiles)
+                    .SetFile(GetInfrastructureComposeFiles())
                     .Apply(SetInfrastructureEnvironmentVariables)
                 );
             });
@@ -47,28 +49,34 @@ namespace MyCompany.Crm.Nuke.DockerCompose
                     .SetForce(true));
             });
 
-        private static IEnumerable<string> InfrastructureComposeFiles
-        {
-            get
+        public static Target DisplayLocalDockerInfrastructureLogs => _ => _
+            .Executes(() =>
             {
-                yield return ComposeDirectory / "infrastructure-compose.yml";
-                if (EnvironmentIs(Development))
-                {
-                    var overrideFilePath = GetOverrideFileNameFor(Development);
-                    if (FileExists(overrideFilePath))
-                        yield return overrideFilePath;
-                }
-                else if (EnvironmentIs(Test))
-                {
-                    var overrideFilePath = GetOverrideFileNameFor(Test);
-                    if (FileExists(overrideFilePath))
-                        yield return overrideFilePath;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Environment), Build.Environment,
-                        $"Environment not supported for {/*nameof(Build.StartDockerComposeInfrastructure)*/""}");
-                }
+                DockerComposeTasks.Logs(settings => settings
+                    .SetFile(GetInfrastructureComposeFiles())
+                    .Apply(SetInfrastructureEnvironmentVariables)
+                    .SetFollow(true));
+            });
+
+        private static IEnumerable<string> GetInfrastructureComposeFiles([CallerMemberName] string targetName = null)
+        {
+            yield return ComposeDirectory / "infrastructure-compose.yml";
+            if (EnvironmentIs(Development))
+            {
+                var overrideFilePath = GetOverrideFileNameFor(Development);
+                if (FileExists(overrideFilePath))
+                    yield return overrideFilePath;
+            }
+            else if (EnvironmentIs(Test))
+            {
+                var overrideFilePath = GetOverrideFileNameFor(Test);
+                if (FileExists(overrideFilePath))
+                    yield return overrideFilePath;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(Environment), Build.Environment,
+                    $"Environment not supported for: {targetName}");
             }
         }
 
@@ -86,5 +94,17 @@ namespace MyCompany.Crm.Nuke.DockerCompose
                 .SetEnvironmentVariable("KIBANA_ENCRYPTIONKEY", Settings.Elastic.KibanaEncryptionKey)
                 .SetEnvironmentVariable("ES_USERS_DIR", UsersDirectory)
                 .SetEnvironmentVariable("CERTS_DIR", CertsDirectory);
+        
+        private static void WriteLogsInfo()
+        {
+            var previousForegroundColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine();
+            Console.WriteLine("-----------------------");
+            Console.WriteLine($"Use \"nuke {nameof(DisplayLocalDockerInfrastructureLogs)}\" to see the logs.");
+            Console.WriteLine("-----------------------");
+            Console.WriteLine();
+            Console.ForegroundColor = previousForegroundColor;
+        }
     }
 }

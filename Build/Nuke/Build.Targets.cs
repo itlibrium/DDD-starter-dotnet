@@ -34,7 +34,10 @@ namespace MyCompany.Crm.Nuke
 
         [PublicAPI]
         public Target CleanLocalDockerInfrastructure => DockerComposeTargets.CleanLocalDockerInfrastructure;
-
+        
+        [PublicAPI]
+        public Target DisplayLocalDockerInfrastructureLogs => DockerComposeTargets.DisplayLocalDockerInfrastructureLogs;
+        
         [PublicAPI]
         public Target PrepareCertificates => CertsTargets.PrepareCertificates;
 
