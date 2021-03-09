@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.Sales.Adapters</AssemblyName>
+        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+      <PackageReference Include="Marten" Version="3.12.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.11" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Ef\TechnicalStuff.Crud.Ef.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Outbox.Kafka\TechnicalStuff.Outbox.Kafka.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Outbox.Postgres\TechnicalStuff.Outbox.Postgres.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Postgres\TechnicalStuff.Postgres.csproj" />
+      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+      <ProjectReference Include="..\Sales.DeepModel\Sales.DeepModel.csproj" />
+      <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

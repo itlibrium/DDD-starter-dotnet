@@ -2,8 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.Sales;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MyCompany.Crm.Sales.Migrations

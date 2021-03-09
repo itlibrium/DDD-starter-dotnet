@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Transactions</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Transactions</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

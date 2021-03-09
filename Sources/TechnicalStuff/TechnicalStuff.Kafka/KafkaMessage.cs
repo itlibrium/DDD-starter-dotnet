@@ -2,15 +2,17 @@ namespace MyCompany.Crm.TechnicalStuff.Kafka
 {
     public class KafkaMessage
     {
+        public const string MessageType = "KafkaMessage";
+        
         public string Topic { get; }
         public string Key { get; }
-        public string Value { get; }
+        public string ValueAsJson { get; }
         
-        public KafkaMessage(string topic, string key, string value)
+        public KafkaMessage(string topic, string key, string valueAsJson)
         {
             Topic = topic;
             Key = key;
-            Value = value;
+            ValueAsJson = valueAsJson;
         }
     }
 }

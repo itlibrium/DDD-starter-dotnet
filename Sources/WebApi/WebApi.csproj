@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.Startup</AssemblyName>
+        <RootNamespace>MyCompany.Crm</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <UserSecretsId>MyCompanyCrm</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>        
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.5" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+        <PackageReference Include="Scrutor" Version="3.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Adapters\Sales.Adapters.csproj" />
+      <ProjectReference Include="..\Sales\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+      <ProjectReference Include="..\Sales\Sales.DeepModel\Sales.DeepModel.csproj" />
+      <ProjectReference Include="..\Sales\Sales.RestApi\Sales.RestApi.csproj" />
+      <ProjectReference Include="..\Sales\Sales.UseCases\Sales.UseCases.csproj" />
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Api\TechnicalStuff.Api.csproj" />
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Marten\TechnicalStuff.Marten.csproj" />
+    </ItemGroup>
+
+</Project>

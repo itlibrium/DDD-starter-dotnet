@@ -20,7 +20,7 @@ namespace MyCompany.Crm.Nuke.DotNet
     {
         private static readonly ISet<string> RootProjects = new HashSet<string>
         {
-            "Startup",
+            "WebApi",
             "Contacts.Database",
             "Sales.Database"
         };

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.Database</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.Database.Migrations</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>default</LangVersion>
         <OutputType>Exe</OutputType>
@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Sales.Adapters\Sales.Adapters.csproj" />
-      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+      <ProjectReference Include="..\Sales.Database\Sales.Database.csproj" />
     </ItemGroup>
 
 </Project>

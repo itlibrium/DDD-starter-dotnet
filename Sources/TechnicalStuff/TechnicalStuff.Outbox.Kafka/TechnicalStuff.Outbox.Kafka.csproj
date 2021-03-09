@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Outbox.Kafka</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Outbox.Kafka</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Sales\Sales.UseCases\Sales.UseCases.csproj" />
+      <ProjectReference Include="..\TechnicalStuff.Kafka\TechnicalStuff.Kafka.csproj" />
+      <ProjectReference Include="..\TechnicalStuff.Outbox\TechnicalStuff.Outbox.csproj" />
+    </ItemGroup>
+
+</Project>
