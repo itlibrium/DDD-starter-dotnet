@@ -5,7 +5,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <AssemblyName>MyCompany.Crm.Sales.UseCases.Tests</AssemblyName>
+        <AssemblyName>MyCompany.Crm.Sales.ProcessModel.Tests</AssemblyName>
 
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
     </PropertyGroup>
@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sales.UseCases\Sales.UseCases.csproj" />
+      <ProjectReference Include="..\Sales.ProcessModel\Sales.ProcessModel.csproj" />
     </ItemGroup>
 
 </Project>

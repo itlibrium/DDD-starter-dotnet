@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Sales\Sales.UseCases\Sales.UseCases.csproj" />
       <ProjectReference Include="..\TechnicalStuff.Kafka\TechnicalStuff.Kafka.csproj" />
       <ProjectReference Include="..\TechnicalStuff.Outbox\TechnicalStuff.Outbox.csproj" />
     </ItemGroup>

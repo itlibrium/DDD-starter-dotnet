@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.RestApi", "Sources\Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Adapters", "Sources\Sales\Sales.Adapters\Sales.Adapters.csproj", "{0F36E2E3-EEFC-4C74-88DF-AA281238F768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.UseCases", "Sources\Sales\Sales.UseCases\Sales.UseCases.csproj", "{EA9ECA12-F038-4437-8D08-34A61DC2DE50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.ProcessModel", "Sources\Sales\Sales.ProcessModel\Sales.ProcessModel.csproj", "{EA9ECA12-F038-4437-8D08-34A61DC2DE50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DeepModel", "Sources\Sales\Sales.DeepModel\Sales.DeepModel.csproj", "{88560531-4322-49A6-BE34-91D70CF8CE5C}"
 EndProject
@@ -20,13 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TechnicalStuff", "Technical
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff", "Sources\TechnicalStuff\TechnicalStuff\TechnicalStuff.csproj", "{CD120717-6AF0-4A13-A62F-9B86F23DD408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.UseCases.Contracts", "Sources\Sales\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj", "{FC20F68C-69A8-4DDA-8C67-33A41FEEFB20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.ProcessModel.Contracts", "Sources\Sales\Sales.ProcessModel.Contracts\Sales.ProcessModel.Contracts.csproj", "{FC20F68C-69A8-4DDA-8C67-33A41FEEFB20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.DeepModel.Tests", "Sources\Sales\Sales.DeepModel.Tests\Sales.DeepModel.Tests.csproj", "{AD0D919C-8499-46A7-869E-EEB6456C6BA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Crud.Contracts", "Sources\Sales\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj", "{570D4428-2C17-40E3-B257-2587200D76AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.UseCases.Tests", "Sources\Sales\Sales.UseCases.Tests\Sales.UseCases.Tests.csproj", "{44B45E96-A286-44DC-A2F7-0E213005BDBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.ProcessModel.Tests", "Sources\Sales\Sales.ProcessModel.Tests\Sales.ProcessModel.Tests.csproj", "{44B45E96-A286-44DC-A2F7-0E213005BDBF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Crud", "Sources\TechnicalStuff\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj", "{7366E7E8-283D-4772-9807-BDC55917B9F3}"
 EndProject

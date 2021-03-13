@@ -11,8 +11,8 @@
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Api\TechnicalStuff.Crud.Api.csproj" />
       <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+      <ProjectReference Include="..\Sales.ProcessModel.Contracts\Sales.ProcessModel.Contracts.csproj" />
       <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
-      <ProjectReference Include="..\Sales.UseCases.Contracts\Sales.UseCases.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
