@@ -26,6 +26,7 @@ namespace MyCompany.Crm.Sales.Pricing
             .Select(quote => quote.ProductAmount)
             .ToImmutableArray();
         
+        public static Offer FromQuotes(Currency currency, params Quote[] quotes) => new Offer(currency, quotes);
         public static Offer FromQuotes(Currency currency, IEnumerable<Quote> quotes) => new Offer(currency, quotes);
 
         internal static Offer WithBasePrices(ImmutableArray<ProductAmount> productAmounts, BasePrices basePrices) => 
@@ -56,6 +57,7 @@ namespace MyCompany.Crm.Sales.Pricing
 
         public bool Compare(Offer other, Percentage accuracy) => TotalPrice / other.TotalPrice > accuracy;
         
+        // TODO: real Equals and GetHashCode
         public bool Equals(Offer other) => Quotes.Equals(other.Quotes);
         public override bool Equals(object obj) => obj is Offer other && Equals(other);
         public override int GetHashCode() => Quotes.GetHashCode();

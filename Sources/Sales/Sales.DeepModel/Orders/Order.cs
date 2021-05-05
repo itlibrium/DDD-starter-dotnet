@@ -35,6 +35,7 @@ namespace MyCompany.Crm.Sales.Orders
         {
             var order = New();
             order.AddAndApply(new CreatedFromOffer(CreatePriceConfirmationsFrom(offer.Quotes)));
+            order.AddAndApply(new Placed());
             return order;
 
             // Version without events:

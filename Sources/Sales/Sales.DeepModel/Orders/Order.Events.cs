@@ -64,7 +64,6 @@ namespace MyCompany.Crm.Sales.Orders
                             priceConfirmation.Currency.ToDomainModel<Currency>())));
                 }
                 order._priceAgreement = PriceAgreement.Final(quotes.ToImmutableArray());
-                order._isPlaced = true;
             }
         }
 
