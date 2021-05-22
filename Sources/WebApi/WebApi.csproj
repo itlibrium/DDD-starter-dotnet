@@ -18,6 +18,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />
+      <ProjectReference Include="..\Payments\Payments.ProcessModel.Contracts\Payments.ProcessModel.Contracts.csproj" />
+      <ProjectReference Include="..\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj" />
+      <ProjectReference Include="..\ProductsDelivery\ProductsDelivery.ProcessModel.Contracts\ProductsDelivery.ProcessModel.Contracts.csproj" />
+      <ProjectReference Include="..\ProductsDelivery\ProductsDelivery.ProcessModel\ProductsDelivery.ProcessModel.csproj" />
+      <ProjectReference Include="..\RiscManagement\RiscManagement.ProcessModel.Contracts\RiscManagement.ProcessModel.Contracts.csproj" />
+      <ProjectReference Include="..\RiscManagement\RiscManagement.ProcessModel\RiscManagement.ProcessModel.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters\Sales.Adapters.csproj" />
       <ProjectReference Include="..\Sales\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
       <ProjectReference Include="..\Sales\Sales.DeepModel\Sales.DeepModel.csproj" />
