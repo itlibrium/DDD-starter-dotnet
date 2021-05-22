@@ -45,7 +45,8 @@ namespace MyCompany.Crm
         {
             services.AddControllers()
                 .AddControllersAsServices() // to check container registrations at startup
-                .AddXmlSerializerFormatters(); // to show content negotiation
+                // .AddXmlSerializerFormatters() // to show content negotiation
+                .AddNewtonsoftJson();
             // TODO: additional media types in Open API documents
             
             // Versioning whole API is done by path segment (manually in Route attribute).
