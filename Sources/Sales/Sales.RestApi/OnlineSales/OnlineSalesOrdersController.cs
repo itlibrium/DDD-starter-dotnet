@@ -26,8 +26,8 @@ namespace MyCompany.Crm.Sales.OnlineSales
         {
             var orderPlaced = await _placeOrderHandler.Handle(placeOrder);
             // Returning value works only if read model is created synchronously.
-            var orderDetails = await _orderDetailsFinder.GetBy(orderPlaced.OrderId);
-            return CreatedAtAction("Get", new {id = orderPlaced.OrderId}, orderDetails);
+            // var orderDetails = await _orderDetailsFinder.GetBy(orderPlaced.OrderId);
+            return CreatedAtAction("Get", new {id = orderPlaced.OrderId}, null /*orderDetails*/);
         }
 
         [HttpGet("{id}")]
