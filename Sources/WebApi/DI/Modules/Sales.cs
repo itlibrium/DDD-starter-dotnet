@@ -41,6 +41,7 @@ namespace MyCompany.Crm.DI.Modules
                 .InitializeStore();
             services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddMessageOutboxes(SalesAdapters);
+            services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();
             services.AddScoped<TransactionalOutboxPostgresRepository<SalesDb>>();
             services.AddStatelessComponentsFrom(SalesDeepModel, SalesUseCases, SalesAdapters);
             services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();

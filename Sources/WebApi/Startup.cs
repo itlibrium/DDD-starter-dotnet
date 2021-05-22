@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyCompany.Crm.DI;
 using MyCompany.Crm.DI.Modules;
+using MyCompany.Crm.Infrastructure;
+using MyCompany.Crm.Sales;
 using MyCompany.Crm.TechnicalStuff.Api.Docs;
 using MyCompany.Crm.TechnicalStuff.Api.Versioning;
 
@@ -70,6 +72,8 @@ Use REST API instead whenever possible.";
         {
             services.AddOutboxesRegistry();
             services.AddKafka(_configuration);
+            services.AddSingleton<FakeMessageBroker>();
+            services.AddHostedService<FakeMessageConsumer>();
         }
         
         private void ConfigureModulesServices(IServiceCollection services)
