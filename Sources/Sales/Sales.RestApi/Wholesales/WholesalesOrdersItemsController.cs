@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Wholesale.AddToOrder;
+using MyCompany.Crm.Sales.Wholesale.OrderModification;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.Wholesales

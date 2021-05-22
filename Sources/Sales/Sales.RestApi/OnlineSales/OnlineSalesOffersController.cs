@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.OnlineSales.PriceCart;
+using MyCompany.Crm.Sales.OnlineSale.CartPricing;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.Sales.OnlineSales
@@ -10,13 +10,13 @@ namespace MyCompany.Crm.Sales.OnlineSales
     [ApiVersion("1")]
     public class OnlineSalesOffersController : ControllerBase
     {
-        private readonly CommandHandler<PriceCart.PriceCart, CartPriced> _priceCartHandler;
+        private readonly CommandHandler<PriceCart, CartPriced> _priceCartHandler;
 
-        public OnlineSalesOffersController(CommandHandler<PriceCart.PriceCart, CartPriced> priceCartHandler) =>
+        public OnlineSalesOffersController(CommandHandler<PriceCart, CartPriced> priceCartHandler) =>
             _priceCartHandler = priceCartHandler;
 
         [HttpPost]
-        public async Task<CartPriced> PriceCart(PriceCart.PriceCart priceCart) =>
+        public async Task<CartPriced> PriceCart(PriceCart priceCart) =>
             await _priceCartHandler.Handle(priceCart);
     }
 }
