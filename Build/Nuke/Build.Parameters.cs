@@ -18,19 +18,19 @@ namespace MyCompany.Crm.Nuke
         {
             get
             {
-                if (!_environment.Equals(Nuke.Environment.Undefined))
+                if (!_environment.Equals(Environment.Undefined))
                     return _environment;
-                if (!AspNetCoreEnvironment.Equals(Nuke.Environment.Undefined))
+                if (!AspNetCoreEnvironment.Equals(Environment.Undefined))
                     return AspNetCoreEnvironment;
-                if (!DotNetEnvironment.Equals(Nuke.Environment.Undefined))
+                if (!DotNetEnvironment.Equals(Environment.Undefined))
                     return DotNetEnvironment;
-                return Nuke.Environment.Development;
+                return Environment.Development;
             }
             private set
             {
-                if (value.Equals(Nuke.Environment.Undefined))
+                if (value.Equals(Environment.Undefined))
                     throw new ArgumentException(
-                        $"{nameof(Environment)} can not be set to {Nuke.Environment.Undefined}");
+                        $"{nameof(Environment)} can not be set to {Environment.Undefined}");
                 _environment = value;
             }
         }
