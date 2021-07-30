@@ -5,6 +5,6 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
 {
     public interface TransactionalOutboxProcessor
     {
-        Task<OutboxProcessingResult> ProcessSingleBatch(CancellationToken cancellationToken);
+        Task<BatchProcessingResult> ProcessSingleBatch(int partition, CancellationToken cancellationToken);
     }
 }

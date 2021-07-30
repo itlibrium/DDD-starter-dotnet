@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using MyCompany.Crm.TechnicalStuff.Kafka;
 
@@ -25,7 +26,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
         public override Task Send()
         {
             foreach (var kafkaMessage in _kafkaMessages)
-                _kafkaMessageProducer.Produce(kafkaMessage);
+                _kafkaMessageProducer.Produce(kafkaMessage, CancellationToken.None);
             _kafkaMessages.Clear();
             return Task.CompletedTask;
         }

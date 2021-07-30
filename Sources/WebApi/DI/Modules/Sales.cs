@@ -42,7 +42,7 @@ namespace MyCompany.Crm.DI.Modules
             services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddMessageOutboxes(SalesAdapters);
             services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();
-            services.AddScoped<TransactionalOutboxPostgresRepository<SalesDb>>();
+            services.AddScoped<PostgresOutboxRepository<SalesDb>>();
             services.AddStatelessComponentsFrom(SalesDeepModel, SalesUseCases, SalesAdapters);
             services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
             services.AddScoped<AllowAnyPriceChanges>();

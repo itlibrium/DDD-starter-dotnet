@@ -1,35 +1,54 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Threading;
+using System.Threading.Tasks;
 using Confluent.Kafka;
+using Microsoft.Extensions.Logging;
 
 namespace MyCompany.Crm.TechnicalStuff.Kafka
 {
     public class KafkaMessageProducer : IDisposable
     {
+        private static readonly ImmutableHashSet<ErrorCode> InvalidMessageErrors = new HashSet<ErrorCode>
+        {
+            ErrorCode.Local_BadMsg,
+            ErrorCode.Local_KeySerialization,
+            ErrorCode.Local_ValueSerialization,
+            ErrorCode.InvalidMsg,
+            ErrorCode.InvalidMsgSize,
+            ErrorCode.MsgSizeTooLarge
+        }.ToImmutableHashSet();
+
         private readonly IProducer<string, string> _producer;
+        private readonly ILogger<KafkaMessageProducer> _logger;
 
-        public KafkaMessageProducer(ProducerConfig config) =>
+        public KafkaMessageProducer(ProducerConfig config, ILogger<KafkaMessageProducer> logger)
+        {
             _producer = new ProducerBuilder<string, string>(config).Build();
-
-        public KafkaMessageProducer(IProducer<string, string> producer) => _producer = producer;
-
-        public void Produce(KafkaMessage message) =>
-            _producer.Produce(message.Topic,
-                new Message<string, string> {Key = message.Key, Value = message.ValueAsJson},
-                report => ErrorHandler(report));
-
-        // TODO: flexible error handling
-        private static void ErrorHandler(DeliveryReport<string, string> report)
-        {
-            if (report.Error.Code == ErrorCode.NoError)
-                return;
-            throw new NotImplementedException();
+            _logger = logger;
         }
 
-        public void Dispose()
+        public async Task<KafkaProducerResult> Produce(KafkaMessage message, CancellationToken cancellationToken)
         {
-            // TODO: configurable timeout, loop with checking result
-            _producer.Flush(TimeSpan.FromMilliseconds(1000));
-            _producer.Dispose();
+            try
+            {
+                var result = await _producer.ProduceAsync(message.Topic,
+                    new Message<string, string> {Key = message.Key, Value = message.ValueAsJson},
+                    cancellationToken);
+                return result.Status == PersistenceStatus.Persisted
+                    ? KafkaProducerResult.NoError
+                    : KafkaProducerResult.NoAck;
+            }
+            catch (ProduceException<string, string> e)
+            {
+                _logger.LogError(e, "Kafka producer failed");
+                return InvalidMessageErrors.Contains(e.Error.Code)
+                    ? KafkaProducerResult.InvalidMessage
+                    : KafkaProducerResult.OtherError;
+            }
         }
+
+        public void Dispose() => _producer.Dispose();
     }
 }

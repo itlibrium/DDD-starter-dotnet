@@ -1,34 +1,32 @@
-using System;
 using MyCompany.Crm.TechnicalStuff.Kafka;
+using MyCompany.Crm.TechnicalStuff.UseCases;
 using Newtonsoft.Json;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
 {
-    public abstract class TransactionalKafkaOutbox<TMessage> : TransactionalOutbox
+    public abstract class TransactionalKafkaOutbox<TMessage> : TransactionalOutbox<TMessage>
+        where TMessage : Message
     {
         protected abstract string Topic { get; }
 
-        protected TransactionalKafkaOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository)
-            : base(outboxes, repository) { }
+        protected TransactionalKafkaOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
+            MessageTypes messageTypes) : base(outboxes, repository, messageTypes) { }
 
-        public void Add(TMessage message)
+        protected override string GetProcessorTypeFor(TMessage message) => Processors.Kafka;
+
+        protected override string CreatePayloadFrom(TMessage message)
         {
-            var kafkaMessage = new KafkaMessage(
-                Topic,
+            var kafkaMessage = new KafkaMessage(Topic,
                 GetKeyFor(message),
                 Serialize(message));
-            var outboxMessage = new OutboxMessage(
-                Guid.NewGuid(),
-                KafkaMessage.MessageType,
-                Serialize(kafkaMessage));
-            Add(outboxMessage);
+            return Serialize(kafkaMessage);
         }
 
         protected abstract string GetKeyFor(TMessage message);
 
         // TODO: flexible serialization (json, avro, etc. - Kafka specific)
         private static string Serialize(TMessage message) => JsonConvert.SerializeObject(message);
-        
+
         private static string Serialize(KafkaMessage kafkaMessage) => JsonConvert.SerializeObject(kafkaMessage);
     }
 }

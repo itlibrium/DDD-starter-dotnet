@@ -2,16 +2,16 @@ using System.Threading.Tasks;
 
 namespace MyCompany.Crm.TechnicalStuff.UseCases
 {
-    public interface DomainEventHandler
-    {
-        Task Handle(DomainEvent domainEvent);
-    }
-
-    public interface DomainEventHandler<in TEvent> : DomainEventHandler
+    public interface DomainEventHandler<in TEvent> : MessageHandler
         where TEvent : DomainEvent
     {
-        Task DomainEventHandler.Handle(DomainEvent domainEvent) => Handle((TEvent) domainEvent);
-
+        Task MessageHandler.Handle(Message message)
+        {
+            if (!(message is TEvent domainEvent))
+                throw new DesignError($"{message.GetType().Name} in incompatible with {GetType().Name}");
+            return Handle(domainEvent);
+        }
+        
         Task Handle(TEvent domainEvent);
     }
 }

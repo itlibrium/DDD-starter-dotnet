@@ -2,19 +2,14 @@ using System.Threading.Tasks;
 
 namespace MyCompany.Crm.TechnicalStuff.UseCases
 {
-    public interface CommandHandler
-    {
-        Task Handle(Command command);
-    }
-
-    public interface CommandHandler<in TCommand> : CommandHandler
+    public interface CommandHandler<in TCommand> : MessageHandler
         where TCommand : Command
     {
-        Task CommandHandler.Handle(Command command)
+        Task MessageHandler.Handle(Message message)
         {
-            if (!(command is TCommand tCommand))
-                throw new DesignError($"{command.GetType().Name} in incompatible with {GetType().Name}");
-            return Handle(tCommand);
+            if (!(message is TCommand command))
+                throw new DesignError($"{message.GetType().Name} in incompatible with {GetType().Name}");
+            return Handle(command);
         }
 
         Task Handle(TCommand command);

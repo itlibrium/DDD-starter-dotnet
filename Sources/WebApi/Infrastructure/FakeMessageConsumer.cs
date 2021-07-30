@@ -29,7 +29,7 @@ namespace MyCompany.Crm.Infrastructure
             {
                 var command = await _broker.ReadCommand(cancellationToken);
                 using var scope = _scopeFactory.CreateScope();
-                var handler = (CommandHandler) scope.ServiceProvider.GetService(CreateCommandHandlerTypeFor(command));
+                var handler = (MessageHandler) scope.ServiceProvider.GetService(CreateCommandHandlerTypeFor(command));
                 await handler.Handle(command);
             }
         }
@@ -44,7 +44,7 @@ namespace MyCompany.Crm.Infrastructure
                 var domainEvent = await _broker.ReadEvent(cancellationToken);
                 using var scope = _scopeFactory.CreateScope();
                 var handler =
-                    (DomainEventHandler) scope.ServiceProvider.GetService(CreateEventHandlerTypeFor(domainEvent));
+                    (MessageHandler) scope.ServiceProvider.GetService(CreateEventHandlerTypeFor(domainEvent));
                 await handler.Handle(domainEvent);
             }
         }

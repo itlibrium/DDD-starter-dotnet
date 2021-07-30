@@ -4,14 +4,18 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <AssemblyName>MyCompany.Crm.TechnicalStuff.Outbox</AssemblyName>
         <RootNamespace>MyCompany.Crm.TechnicalStuff.Outbox</RootNamespace>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\TechnicalStuff.Transactions\TechnicalStuff.Transactions.csproj" />
+    <ItemGroup>      
+      <ProjectReference Include="..\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj" />      
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.15" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.17" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
 

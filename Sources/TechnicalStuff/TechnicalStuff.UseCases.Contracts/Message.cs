@@ -1,4 +1,4 @@
 namespace MyCompany.Crm.TechnicalStuff.UseCases
 {
-    public interface DomainEvent : Message { }
+    public interface Message { }
 }
