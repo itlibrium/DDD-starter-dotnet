@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
-      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.5" />
+      <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.17" />
     </ItemGroup>
 
     <ItemGroup>

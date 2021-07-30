@@ -8,9 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
-      <PackageReference Include="Marten" Version="3.12.2" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.11" />
+      <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
+      <PackageReference Include="Marten" Version="3.13.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.17" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
     </ItemGroup>
 
