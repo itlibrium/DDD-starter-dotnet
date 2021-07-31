@@ -16,14 +16,19 @@ namespace MyCompany.Crm.DI
         }
         
         public static IServiceCollection AddMessageOutboxes(this IServiceCollection services,
-            params Assembly[] assemblies) =>
+            params Assembly[] assemblies)
+        {
             services.Scan(selector => selector
                 .FromAssemblies(assemblies)
                 .AddClasses(filter => filter
                     .AssignableToAny(typeof(TransactionalOutbox), typeof(NonTransactionalOutbox)))
                 .AsSelfWithInterfaces()
                 .WithScopedLifetime());
-        
+            // TODO: registering types
+            services.AddSingleton<MessageTypes>();
+            return services;
+        }
+
         public static IServiceCollection DecorateCommandHandlers(this IServiceCollection services)
         {
             services.TryDecorate(typeof(CommandHandler<>), typeof(TransactionalMessageSendingDecorator<>));
