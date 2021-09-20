@@ -32,7 +32,7 @@ namespace MyCompany.Crm.Sales.Products
 
         private static void CheckUnits(Amount x, Amount y)
         {
-            if (x.Unit != y.Unit) throw new DomainException();
+            if (x.Unit != y.Unit) throw new DomainError();
         }
 
         public bool Equals(Amount other) => (Value, Unit).Equals((other.Value, other.Unit));

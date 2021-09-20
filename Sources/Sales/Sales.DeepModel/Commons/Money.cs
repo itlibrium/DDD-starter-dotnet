@@ -73,9 +73,9 @@ namespace MyCompany.Crm.Sales.Commons
         private static void CheckCurrencies(Money x, Money y, bool allowEmpty)
         {
             if (!allowEmpty && (x.IsEmpty || y.IsEmpty))
-                throw new DomainException();
+                throw new DomainError();
             if (x.Currency != y.Currency)
-                throw new DomainException();
+                throw new DomainError();
         }
 
         public override bool Equals(object obj) => obj is Money other && Equals(other);

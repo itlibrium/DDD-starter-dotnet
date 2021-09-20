@@ -1,4 +1,5 @@
 using System;
+using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Products
@@ -36,7 +37,7 @@ namespace MyCompany.Crm.Sales.Products
 
         private static void CheckProductId(ProductAmount x, ProductAmount y)
         {
-            if (!x.ProductId.Equals(y.ProductId)) throw new DomainException();
+            if (!x.ProductId.Equals(y.ProductId)) throw new DomainError();
         }
         
         public override bool Equals(object obj) => obj is ProductAmount other && Equals(other);

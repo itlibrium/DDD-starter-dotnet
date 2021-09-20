@@ -5,6 +5,7 @@ using System.Linq;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing.PriceLists;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
@@ -40,8 +41,8 @@ namespace MyCompany.Crm.Sales.Pricing
                 .Select(grouping => grouping
                     .Aggregate((sum, current) => sum + current))
                 .ToImmutableDictionary(quote => quote.ProductAmount.ProductUnit);
-            if (items.Count == 0) throw new DomainException();
-            if (items.Values.Any(quote => quote.Price.Currency != currency)) throw new DomainException();
+            if (items.Count == 0) throw new DomainError();
+            if (items.Values.Any(quote => quote.Price.Currency != currency)) throw new DomainError();
             _items = items;
             Currency = currency;
         }

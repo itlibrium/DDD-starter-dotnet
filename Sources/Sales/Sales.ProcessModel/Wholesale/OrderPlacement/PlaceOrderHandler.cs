@@ -28,19 +28,20 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
         {
             var orderId = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
-            order.Place(_clock.Now);
+            var now = _clock.Now;
+            order.Place(now);
             await _orders.Save(order);
-            var orderPlaced = await CreateEventFrom(order);
+            var orderPlaced = await CreateEventFrom(order, now);
             _eventsOutbox.Add(orderPlaced);
             return orderPlaced;
         }
         
         private static OrderId CreateDomainModelFrom(PlaceOrder command) => OrderId.From(command.OrderId);
 
-        private async Task<OrderPlaced> CreateEventFrom(Order order)
+        private async Task<OrderPlaced> CreateEventFrom(Order order, DateTime placedOn)
         {
             var orderHeader = await _crudOperations.Read<OrderHeader>(order.Id.Value);
-            return new OrderPlaced(order.Id.Value, orderHeader.ClientId, DateTime.UtcNow);
+            return new OrderPlaced(order.Id.Value, orderHeader.ClientId, placedOn);
         }
     }
 }

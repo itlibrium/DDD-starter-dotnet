@@ -1,6 +1,7 @@
 using System;
 using FluentAssertions;
 using ITLIBRIUM.BddToolkit;
+using MyCompany.Crm.TechnicalStuff;
 using Xunit;
 
 namespace MyCompany.Crm.Sales.Commons
@@ -235,7 +236,7 @@ namespace MyCompany.Crm.Sales.Commons
             public void ErrorIsReturned(Result result)
             {
                 result.IsSuccessful.Should().BeFalse();
-                result.Exception.Should().BeOfType<DomainException>();
+                result.Exception.Should().BeOfType<DomainError>();
             }
         }
     }

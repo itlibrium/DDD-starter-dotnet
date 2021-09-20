@@ -25,7 +25,7 @@ namespace MyCompany.Crm.Sales.Orders
                 var dbOrder = await _dbContext.Orders
                     .Include(o => o.Items)
                     .SingleOrDefaultAsync(o => o.Id == id.Value);
-                if (dbOrder is null) throw new DomainException();
+                if (dbOrder is null) throw new DomainError();
                 var snapshot = CreateSnapshotFrom(dbOrder);
                 var order = Order.RestoreFrom(snapshot);
                 _orders.Add(id, dbOrder);

@@ -51,7 +51,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
                 offer.ProductAmounts,
                 offer.Currency);
             if (!offer.Equals(currentOffer))
-                throw new DomainException();
+                throw new DomainError();
             var priceChangesPolicy = await _priceChangesPolicies.ChooseFor(clientId);
             var now = _clock.Now;
             order.ConfirmPrices(offer, now + _offerExpirationTime, now, priceChangesPolicy);

@@ -53,7 +53,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         private static Order RestoreWithTemporaryPriceAgreement(Snapshot orderData)
         {
-            if (!orderData.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+            if (!orderData.PriceAgreementExpiresOn.HasValue) throw new DomainError();
             return Restore(
                 OrderId.From(orderData.Id),
                 CreateQuotesFrom(orderData.Items),
@@ -71,7 +71,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         private static Quote CreateQuoteFrom(Snapshot.Item item)
         {
-            if (!item.Price.HasValue || item.Currency is null) throw new DomainException();
+            if (!item.Price.HasValue || item.Currency is null) throw new DomainError();
             return Quote.For(
                 ProductAmount.Of(ProductId.From(item.ProductId),
                     Amount.Of(item.Amount, item.AmountUnit.ToDomainModel<AmountUnit>())),

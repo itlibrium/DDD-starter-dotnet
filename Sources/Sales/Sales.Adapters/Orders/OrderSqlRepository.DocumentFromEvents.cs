@@ -29,7 +29,7 @@ namespace MyCompany.Crm.Sales.Orders
                 if (_orders.ContainsKey(id))
                     throw new DesignError(SameAggregateRestoredMoreThanOnce);
                 var orderDoc = await _session.LoadAsync<OrderDoc>(id.Value);
-                if (orderDoc is null) throw new DomainException();
+                if (orderDoc is null) throw new DomainError();
                 var order = RestoreFrom(orderDoc);
                 var metadata = await _session.Tenant.MetadataForAsync(orderDoc);
                 _orders.Add(id, (orderDoc, metadata.CurrentVersion));
@@ -87,7 +87,7 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static Order RestoreWithTemporaryPriceAgreement(OrderDoc orderDoc)
             {
-                if (!orderDoc.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+                if (!orderDoc.PriceAgreementExpiresOn.HasValue) throw new DomainError();
                 return Order.Restore(
                     OrderId.From(orderDoc.Id),
                     CreateQuotesFrom(orderDoc.Items),
@@ -105,7 +105,7 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static Quote CreateQuoteFrom(OrderItemDoc orderItemDoc)
             {
-                if (!orderItemDoc.Price.HasValue || orderItemDoc.Currency is null) throw new DomainException();
+                if (!orderItemDoc.Price.HasValue || orderItemDoc.Currency is null) throw new DomainError();
                 return Quote.For(
                     ProductAmount.Of(ProductId.From(orderItemDoc.ProductId),
                         Amount.Of(orderItemDoc.Amount, orderItemDoc.AmountUnit.ToDomainModel<AmountUnit>())),

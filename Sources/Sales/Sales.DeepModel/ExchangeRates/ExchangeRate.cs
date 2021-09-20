@@ -23,7 +23,7 @@ namespace MyCompany.Crm.Sales.ExchangeRates
         
         public Money ApplyOn(Money price)
         {
-            if (price.Currency != Currency.PLN) throw new DomainException();
+            if (price.Currency != Currency.PLN) throw new DomainError();
             return Money.Of(price.Value * Value, Currency);
         }
 

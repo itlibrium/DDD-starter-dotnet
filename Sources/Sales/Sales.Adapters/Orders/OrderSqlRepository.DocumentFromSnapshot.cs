@@ -23,7 +23,7 @@ namespace MyCompany.Crm.Sales.Orders
                     throw new DesignError(SameAggregateRestoredMoreThanOnce);
                 var snapshot = await _session.LoadAsync<Order.Snapshot>(id.Value);
                 if (snapshot is null) 
-                    throw new DomainException();
+                    throw new DomainError();
                 var order = Order.RestoreFrom(snapshot);
                 var metadata = await _session.Tenant.MetadataForAsync(snapshot);
                 _orderVersions.Add(id, metadata.CurrentVersion);

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
+using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.PriceLists
@@ -21,6 +22,6 @@ namespace MyCompany.Crm.Sales.Pricing.PriceLists
         public Money GetFor(ProductAmount productAmount) =>
             _prices.TryGetValue(productAmount.ProductUnit, out var price) 
                 ? price * productAmount.Amount.Value
-                : throw new DomainException();
+                : throw new DomainError();
     }
 }

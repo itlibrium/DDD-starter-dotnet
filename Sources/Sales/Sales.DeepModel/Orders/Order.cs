@@ -100,7 +100,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         public void Add(ProductAmount productAmount)
         {
-            if (_isPlaced) throw new DomainException();
+            if (_isPlaced) throw new DomainError();
             AddAndApply(new ProductAmountAdded(productAmount.ProductId.Value,
                 productAmount.Amount.Unit.ToCode(),
                 productAmount.Amount.Value));
@@ -121,10 +121,10 @@ namespace MyCompany.Crm.Sales.Orders
         public void ConfirmPrices(Offer offer, DateTime priceAgreementExpiresOn, DateTime now,
             PriceChangesPolicy priceChangesPolicy)
         {
-            if (_isPlaced) throw new DomainException();
+            if (_isPlaced) throw new DomainError();
             var quotes = offer.Quotes;
-            if (!HasSameProductAmountsAs(quotes)) throw new DomainException();
-            if (!_priceAgreement.CanChangePrices(quotes, now, priceChangesPolicy)) throw new DomainException();
+            if (!HasSameProductAmountsAs(quotes)) throw new DomainError();
+            if (!_priceAgreement.CanChangePrices(quotes, now, priceChangesPolicy)) throw new DomainError();
             AddAndApply(new PricesConfirmed(priceAgreementExpiresOn, CreatePriceConfirmationsFrom(quotes)));
 
             // Version without events:
@@ -141,7 +141,7 @@ namespace MyCompany.Crm.Sales.Orders
         public void Place(DateTime now)
         {
             if (_isPlaced) return;
-            if (!_priceAgreement.IsValidOn(now)) throw new DomainException();
+            if (!_priceAgreement.IsValidOn(now)) throw new DomainError();
             AddAndApply(new Placed());
 
             // Version without events:

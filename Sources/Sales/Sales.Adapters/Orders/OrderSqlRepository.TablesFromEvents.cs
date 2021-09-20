@@ -30,7 +30,7 @@ namespace MyCompany.Crm.Sales.Orders
                     .Include(o => o.Items)
                     .SingleOrDefaultAsync(o => o.Id == id.Value);
                 var entry = _dbContext.Entry(dbOrder);
-                if (dbOrder is null) throw new DomainException();
+                if (dbOrder is null) throw new DomainError();
                 var order = RestoreFrom(dbOrder);
                 _orders.Add(id, dbOrder);
                 return order;
@@ -85,7 +85,7 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static Order RestoreWithTemporaryPriceAgreement(SalesDb.Order dbOrder)
             {
-                if (!dbOrder.PriceAgreementExpiresOn.HasValue) throw new DomainException();
+                if (!dbOrder.PriceAgreementExpiresOn.HasValue) throw new DomainError();
                 return Order.Restore(
                     OrderId.From(dbOrder.Id),
                     CreateQuotesFrom(dbOrder.Items),
@@ -103,7 +103,7 @@ namespace MyCompany.Crm.Sales.Orders
 
             private static Quote CreateQuoteFrom(SalesDb.OrderItem dbOrderItem)
             {
-                if (!dbOrderItem.Price.HasValue || dbOrderItem.Currency is null) throw new DomainException();
+                if (!dbOrderItem.Price.HasValue || dbOrderItem.Currency is null) throw new DomainError();
                 return Quote.For(
                     ProductAmount.Of(ProductId.From(dbOrderItem.ProductId),
                         Amount.Of(dbOrderItem.Amount, dbOrderItem.AmountUnit.ToDomainModel<AmountUnit>())),

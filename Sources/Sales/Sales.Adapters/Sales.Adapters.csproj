@@ -27,4 +27,9 @@
       <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Integration\Payments" />
+      <Folder Include="Integration\ProductsDelivery" />
+    </ItemGroup>
+
 </Project>
