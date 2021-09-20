@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.Payments.ProcessModel.Contracts</AssemblyName>
+        <RootNamespace>MyCompany.Crm.Payments</RootNamespace>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff\TechnicalStuff.csproj" />
+    </ItemGroup>
 
 </Project>

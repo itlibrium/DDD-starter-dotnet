@@ -2,10 +2,17 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>MyCompany.Crm.RiscManagement.ProcessModel</AssemblyName>
+        <RootNamespace>MyCompany.Crm.RiscManagement</RootNamespace>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\RiscManagement.ProcessModel.Contracts\RiscManagement.ProcessModel.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Class1.cs" />
     </ItemGroup>
 
 </Project>
