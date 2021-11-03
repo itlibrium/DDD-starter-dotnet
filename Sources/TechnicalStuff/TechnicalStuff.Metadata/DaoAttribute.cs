@@ -3,8 +3,5 @@ using System;
 namespace MyCompany.Crm.TechnicalStuff.Metadata
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
-    public class DaoAttribute : Attribute
-    {
-        
-    }
+    public class DaoAttribute : Attribute { }
 }

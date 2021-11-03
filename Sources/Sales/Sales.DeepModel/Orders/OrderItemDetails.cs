@@ -1,7 +1,11 @@
 using System;
+using JetBrains.Annotations;
+using MyCompany.Crm.TechnicalStuff.Metadata;
 
 namespace MyCompany.Crm.Sales.Orders
 {
+    [DataStructure]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class OrderItemDetails
     {
         public Guid ProductId { get; set; }

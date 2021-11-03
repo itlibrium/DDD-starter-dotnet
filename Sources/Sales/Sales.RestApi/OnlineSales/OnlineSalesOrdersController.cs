@@ -1,9 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.OnlineSale.OrderPlacement;
+using MyCompany.Crm.Sales.OnlineSale;
 using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.Sales.Wholesale.OrderPlacement;
 using MyCompany.Crm.TechnicalStuff.UseCases;
+using PlaceOrder = MyCompany.Crm.Sales.OnlineSale.OrderPlacement.PlaceOrder;
 
 namespace MyCompany.Crm.Sales.OnlineSales
 {
@@ -32,6 +34,6 @@ namespace MyCompany.Crm.Sales.OnlineSales
         }
 
         [HttpGet("{id}")]
-        public async Task<AllOrderDetails> Get(Guid id) => await _orderDetailsFinder.GetBy(id);
+        public async Task<OrderDetails> Get(Guid id) => await _orderDetailsFinder.GetBy(id);
     }
 }

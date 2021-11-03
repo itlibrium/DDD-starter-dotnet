@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Immutable;
-using MyCompany.Crm.Sales.Wholesale;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
 {
     public class OfferConfirmed : OrderEvent
     {

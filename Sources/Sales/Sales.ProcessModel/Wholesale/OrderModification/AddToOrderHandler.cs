@@ -25,6 +25,11 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderModification
             var order = await _orders.GetBy(orderId);
             order.Add(productAmount);
             await _orders.Save(order);
+            // var allOrderDetails = _readModels.Get(orderId)
+            // allOrderDetails.Apply(order.NewEvents)
+            // albo
+            // allOrderDetails.AddProductAmount(productAmount)
+            // _readModels.Save(allOrderDetails)
             var addedToOrder = CreateEventFrom(orderId, productAmount);
             _eventsOutbox.Add(addedToOrder);
             return addedToOrder;

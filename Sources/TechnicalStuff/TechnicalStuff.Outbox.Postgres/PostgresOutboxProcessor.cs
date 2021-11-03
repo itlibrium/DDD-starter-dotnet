@@ -38,6 +38,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
                     cancellationToken);
                 foreach (var item in batch)
                 {
+                    // TODO: break if cancellation requested
                     var result = await Process(item, cancellationToken);
                     if (result == BatchItemProcessingResult.TemporaryError)
                     {

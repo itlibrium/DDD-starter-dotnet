@@ -7,11 +7,9 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>      
-      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+    <ItemGroup>
       <ProjectReference Include="..\Sales.DeepModel\Sales.DeepModel.csproj" />
       <ProjectReference Include="..\Sales.ProcessModel.Contracts\Sales.ProcessModel.Contracts.csproj" />
-      <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>

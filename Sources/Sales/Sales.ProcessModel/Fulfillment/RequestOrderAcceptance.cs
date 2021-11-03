@@ -1,7 +1,7 @@
 using System;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.Crm.Sales.Fulfillment
 {
     public readonly struct RequestOrderAcceptance : Command
     {

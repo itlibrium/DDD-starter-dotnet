@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.Sales.Wholesale;
 using MyCompany.Crm.Sales.Wholesale.OrderCreation;
 using MyCompany.Crm.TechnicalStuff.UseCases;
 

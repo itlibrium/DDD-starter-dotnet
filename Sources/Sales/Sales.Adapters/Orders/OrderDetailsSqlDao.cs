@@ -6,8 +6,13 @@ namespace MyCompany.Crm.Sales.Orders
 {
     // TODO: implementation for all persistence options used for OrderRepository
     [Dao]
-    public class OrderDetailsSqlDao : OrderDetailsFinder
+    public class OrderDetailsSqlDao : OnlineSale.OrderDetailsFinder,
+        Wholesale.OrderDetailsFinder
     {
-        public Task<AllOrderDetails> GetBy(Guid id) => throw new NotImplementedException();
+        Task<OnlineSale.OrderDetails> OnlineSale.OrderDetailsFinder.GetBy(Guid id) =>
+            throw new NotImplementedException();
+        
+        Task<AllOrderDetails> Wholesale.OrderDetailsFinder.GetBy(Guid id) =>
+            throw new NotImplementedException();
     }
 }
