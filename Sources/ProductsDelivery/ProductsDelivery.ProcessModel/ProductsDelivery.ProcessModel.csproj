@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ProductsDelivery.ProcessModel.Contracts\ProductsDelivery.ProcessModel.Contracts.csproj" />
+      <Compile Remove="Class1.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Class1.cs" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
     </ItemGroup>
 
 </Project>

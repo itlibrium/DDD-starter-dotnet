@@ -20,6 +20,7 @@
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Outbox.Kafka\TechnicalStuff.Outbox.Kafka.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Outbox.Postgres\TechnicalStuff.Outbox.Postgres.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Postgres\TechnicalStuff.Postgres.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
       <ProjectReference Include="..\Sales.DeepModel\Sales.DeepModel.csproj" />
       <ProjectReference Include="..\Sales.ProcessModel\Sales.ProcessModel.csproj" />
     </ItemGroup>

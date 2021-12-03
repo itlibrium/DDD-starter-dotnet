@@ -9,12 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Metadata\TechnicalStuff.Metadata.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff\TechnicalStuff.csproj" />
-      <ProjectReference Include="..\Sales.DeepModel.Contracts\Sales.DeepModel.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
       <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
       <PackageReference Include="TaskTupleAwaiter" Version="1.2.0" />
     </ItemGroup>

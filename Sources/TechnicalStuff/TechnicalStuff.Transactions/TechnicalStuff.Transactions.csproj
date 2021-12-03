@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj" />
+      <ProjectReference Include="..\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
     </ItemGroup>
 
 </Project>
