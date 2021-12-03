@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 using MyCompany.Crm.TechnicalStuff.UseCases;
@@ -24,7 +23,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
             await _decorated.Handle(command);
             var transaction = Transaction.Current;
             if (transaction != null && transaction.TransactionInformation.Status != TransactionStatus.Committed)
-                throw new InvalidOperationException();
+                throw new DesignError($"{GetType().Name} used within uncommitted transaction");
             await Task.WhenAll(_outboxes.ForCurrentUseCase.Select(outbox => outbox.Send()));
         }
     }
@@ -47,7 +46,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
             var result = await _decorated.Handle(command);
             var transaction = Transaction.Current;
             if (transaction != null && transaction.TransactionInformation.Status != TransactionStatus.Committed)
-                throw new InvalidOperationException();
+                throw new DesignError($"{GetType().Name} used within uncommitted transaction");
             await Task.WhenAll(_outboxes.ForCurrentUseCase.Select(outbox => outbox.Send()));
             return result;
         }

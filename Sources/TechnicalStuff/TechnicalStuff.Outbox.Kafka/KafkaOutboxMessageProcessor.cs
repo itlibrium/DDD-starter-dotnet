@@ -9,7 +9,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
 {
     public class KafkaOutboxMessageProcessor : OutboxMessageProcessor
     {
-        public string ProcessorType => Processors.Kafka;
+        public string ProcessorType => OutboxMessageProcessors.Kafka;
 
         private readonly KafkaMessageProducer _kafkaMessageProducer;
         private readonly ILogger<KafkaOutboxMessageProcessor> _logger;

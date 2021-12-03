@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -22,7 +21,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
         {
             var transaction = Transaction.Current;
             if (transaction == null || transaction.TransactionInformation.Status != TransactionStatus.Active)
-                throw new InvalidOperationException();
+                throw new DesignError($"{GetType().Name} used without active transaction");
             await _decorated.Handle(command);
             await Task.WhenAll(_outboxes.ForCurrentUseCase.Select(outbox => outbox.Save()));
         }
@@ -45,7 +44,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
         {
             var transaction = Transaction.Current;
             if (transaction == null || transaction.TransactionInformation.Status != TransactionStatus.Active)
-                throw new InvalidOperationException();
+                throw new DesignError($"{GetType().Name} used without active transaction");
             var result = await _decorated.Handle(command);
             await Task.WhenAll(_outboxes.ForCurrentUseCase.Select(outbox => outbox.Save()));
             return result;

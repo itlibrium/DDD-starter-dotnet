@@ -5,7 +5,7 @@ using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox
 {
-    public abstract class TransactionalOutbox
+    public class TransactionalOutbox
     {
         private readonly List<OutboxMessage> _messages = new();
         private readonly TransactionalOutboxRepository _repository;
@@ -18,8 +18,8 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
 
         public Task Save() => _repository.Save(_messages);
 
-        protected void Add(string processorType, string messageTypeId, string payload) =>
-            _messages.Add(new OutboxMessage(Guid.NewGuid(), processorType, messageTypeId, payload));
+        protected void Add(string partitionKey, string processorType, string messageTypeId, string payload) =>
+            _messages.Add(new OutboxMessage(Guid.NewGuid(), partitionKey, processorType, messageTypeId, payload));
     }
 
     public abstract class TransactionalOutbox<TMessage> : TransactionalOutbox
@@ -28,17 +28,19 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox
         private readonly MessageTypes _messageTypes;
 
         protected TransactionalOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
-            MessageTypes messageTypes) :
-            base(outboxes, repository) =>
+            MessageTypes messageTypes) : base(outboxes, repository) =>
             _messageTypes = messageTypes;
 
         public void Add(TMessage message)
         {
+            var partitionKey = GetPartitionKeyFor(message);
             var processorType = GetProcessorTypeFor(message);
             var messageTypeId = _messageTypes.GetTypeIdFor(message);
             var payload = CreatePayloadFrom(message);
-            Add(processorType, messageTypeId, payload);
+            Add(partitionKey, processorType, messageTypeId, payload);
         }
+
+        protected abstract string GetPartitionKeyFor(TMessage message);
 
         protected abstract string GetProcessorTypeFor(TMessage message);
 

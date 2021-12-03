@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Marten", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Transactions", "Sources\TechnicalStuff\TechnicalStuff.Transactions\TechnicalStuff.Transactions.csproj", "{9FF8E353-1ACC-407A-A9B8-55183261A8C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.UseCases.Contracts", "Sources\TechnicalStuff\TechnicalStuff.UseCases.Contracts\TechnicalStuff.UseCases.Contracts.csproj", "{85E951AA-5333-4181-B5B1-305050405BFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.ProcessModel", "Sources\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj", "{85E951AA-5333-4181-B5B1-305050405BFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Metadata", "Sources\TechnicalStuff\TechnicalStuff.Metadata\TechnicalStuff.Metadata.csproj", "{0C831D1E-50A4-4DA0-B558-55EA5CC689C5}"
 EndProject

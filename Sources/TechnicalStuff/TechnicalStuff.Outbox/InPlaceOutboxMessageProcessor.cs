@@ -8,16 +8,16 @@ using Newtonsoft.Json;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox
 {
-    public class InPlaceOutboxProcessor : OutboxMessageProcessor
+    public class InPlaceOutboxMessageProcessor : OutboxMessageProcessor
     {
-        public string ProcessorType => Processors.InPlace;
+        public string ProcessorType => OutboxMessageProcessors.InPlace;
 
         private readonly MessageTypes _messageTypes;
         private readonly IServiceScopeFactory _serviceScopeProvider;
-        private readonly ILogger<InPlaceOutboxProcessor> _logger;
+        private readonly ILogger<InPlaceOutboxMessageProcessor> _logger;
 
-        public InPlaceOutboxProcessor(MessageTypes messageTypes, IServiceScopeFactory serviceScopeProvider,
-            ILogger<InPlaceOutboxProcessor> logger)
+        public InPlaceOutboxMessageProcessor(MessageTypes messageTypes, IServiceScopeFactory serviceScopeProvider,
+            ILogger<InPlaceOutboxMessageProcessor> logger)
         {
             _messageTypes = messageTypes;
             _serviceScopeProvider = serviceScopeProvider;

@@ -12,17 +12,15 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
         protected TransactionalKafkaOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
             MessageTypes messageTypes) : base(outboxes, repository, messageTypes) { }
 
-        protected override string GetProcessorTypeFor(TMessage message) => Processors.Kafka;
+        protected override string GetProcessorTypeFor(TMessage message) => OutboxMessageProcessors.Kafka;
 
         protected override string CreatePayloadFrom(TMessage message)
         {
             var kafkaMessage = new KafkaMessage(Topic,
-                GetKeyFor(message),
+                GetPartitionKeyFor(message),
                 Serialize(message));
             return Serialize(kafkaMessage);
         }
-
-        protected abstract string GetKeyFor(TMessage message);
 
         // TODO: flexible serialization (json, avro, etc. - Kafka specific)
         private static string Serialize(TMessage message) => JsonConvert.SerializeObject(message);
