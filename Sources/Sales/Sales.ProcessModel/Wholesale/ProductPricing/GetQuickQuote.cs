@@ -1,5 +1,5 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesale.ProductPricing
 {

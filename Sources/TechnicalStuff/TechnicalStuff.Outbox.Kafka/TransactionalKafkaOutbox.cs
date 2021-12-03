@@ -1,5 +1,5 @@
 using MyCompany.Crm.TechnicalStuff.Kafka;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 using Newtonsoft.Json;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka

@@ -4,7 +4,7 @@ using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
 {

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Payments
 {

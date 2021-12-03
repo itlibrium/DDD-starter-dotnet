@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Wholesale.OrderModification;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesales
 {

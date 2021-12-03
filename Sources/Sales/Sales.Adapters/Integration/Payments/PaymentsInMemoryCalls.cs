@@ -1,7 +1,7 @@
 using MyCompany.Crm.Payments;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Integration.Payments
 {

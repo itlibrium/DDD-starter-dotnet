@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox
 {

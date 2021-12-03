@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Time;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
 {

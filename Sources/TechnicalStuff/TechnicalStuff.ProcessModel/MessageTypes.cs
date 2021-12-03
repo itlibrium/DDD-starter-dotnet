@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyCompany.Crm.TechnicalStuff.UseCases
+namespace MyCompany.Crm.TechnicalStuff.ProcessModel
 {
     public class MessageTypes
     {

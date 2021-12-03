@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
 {

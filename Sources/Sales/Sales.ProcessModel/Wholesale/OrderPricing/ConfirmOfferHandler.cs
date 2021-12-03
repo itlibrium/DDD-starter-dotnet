@@ -11,7 +11,7 @@ using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.Sales.Time;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
 {

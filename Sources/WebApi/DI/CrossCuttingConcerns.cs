@@ -1,8 +1,8 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.TechnicalStuff.Outbox;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 using MyCompany.Crm.TechnicalStuff.Transactions;
-using MyCompany.Crm.TechnicalStuff.UseCases;
 
 namespace MyCompany.Crm.DI
 {

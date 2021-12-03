@@ -2,7 +2,7 @@
 using MyCompany.Crm.TechnicalStuff.Outbox;
 using MyCompany.Crm.TechnicalStuff.Outbox.Kafka;
 using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Orders
 {

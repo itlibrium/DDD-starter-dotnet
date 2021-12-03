@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using System.Transactions;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.TechnicalStuff.Transactions
 {

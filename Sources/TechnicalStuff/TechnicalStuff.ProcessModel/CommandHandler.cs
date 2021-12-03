@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace MyCompany.Crm.TechnicalStuff.UseCases
+namespace MyCompany.Crm.TechnicalStuff.ProcessModel
 {
     public interface CommandHandler<in TCommand> : MessageHandler
         where TCommand : Command

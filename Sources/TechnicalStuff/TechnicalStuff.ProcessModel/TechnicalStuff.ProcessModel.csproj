@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.UseCases.Contracts</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.UseCases</RootNamespace>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.ProcessModel</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.ProcessModel</RootNamespace>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 

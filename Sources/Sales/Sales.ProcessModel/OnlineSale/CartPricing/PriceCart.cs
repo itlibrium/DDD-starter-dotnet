@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Immutable;
-using MyCompany.Crm.TechnicalStuff.UseCases;
+using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
 {
