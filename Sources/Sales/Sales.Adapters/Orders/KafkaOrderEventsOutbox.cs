@@ -14,7 +14,7 @@ namespace MyCompany.Crm.Sales.Orders
         public KafkaOrderEventsOutbox(TransactionalOutboxes outboxes, PostgresOutboxRepository<SalesDb> repository,
             MessageTypes messageTypes)
             : base(outboxes, repository, messageTypes) { }
-
-        protected override string GetKeyFor(OrderEvent orderEvent) => orderEvent.OrderId.ToString();
+        
+        protected override string GetPartitionKeyFor(OrderEvent message) => message.OrderId.ToString("N");
     }
 }
