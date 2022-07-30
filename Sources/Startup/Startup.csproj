@@ -30,6 +30,7 @@
       <ProjectReference Include="..\Sales\Sales.ProcessModel\Sales.ProcessModel.csproj" />
       <ProjectReference Include="..\Sales\Sales.RestApi\Sales.RestApi.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Api\TechnicalStuff.Api.csproj" />
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Json\TechnicalStuff.Json.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Marten\TechnicalStuff.Marten.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.Outbox.Quartz\TechnicalStuff.Outbox.Quartz.csproj" />
       <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />

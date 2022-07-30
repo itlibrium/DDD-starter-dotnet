@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.DI;
 using MyCompany.Crm.DI.Modules;
@@ -6,8 +8,10 @@ using MyCompany.Crm.Infrastructure;
 using MyCompany.Crm.Sales;
 using MyCompany.Crm.TechnicalStuff.Api.Docs;
 using MyCompany.Crm.TechnicalStuff.Api.Versioning;
+using MyCompany.Crm.TechnicalStuff.Json.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigureSerialization();
 ConfigureApiServices();
 ConfigureMessagingServices();
 ConfigureModulesServices();
@@ -18,6 +22,17 @@ app.UseRouting();
 app.MapControllers();
 app.UseOpenApiWithUi();
 app.Run();
+
+void ConfigureSerialization()
+{
+    builder.Services.Configure<JsonOptions>(options =>
+    {
+        var converters = options.SerializerOptions.Converters;
+        options.SerializerOptions.PropertyNameCaseInsensitive = true;
+        converters.Add(new JsonStringEnumConverter());
+        converters.Add(new ValueObjectJsonConverterFactory());
+    });
+}
 
 void ConfigureApiServices()
 {
@@ -64,4 +79,7 @@ void ConfigureDecorators()
     builder.Services.DecorateCommandHandlers();
 }
 
-public partial class Program { }
+namespace MyCompany.Crm
+{
+    public partial class Program { }
+}
