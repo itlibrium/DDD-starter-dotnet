@@ -43,7 +43,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderModification
                 command.UnitCode.ToDomainModel<AmountUnit>()));
         
         private static AddedToOrder CreateEventFrom(OrderId orderId, ProductAmount productAmount) => 
-            new AddedToOrder(orderId.Value, 
+            new(orderId.Value, 
                 productAmount.ProductId.Value, 
                 productAmount.Amount.Value, 
                 productAmount.Amount.Unit.ToCode());

@@ -12,7 +12,7 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
         private readonly ImmutableDictionary<ProductUnit, Discount> _discounts;
 
         public static ProductLevelDiscounts Of(IEnumerable<ProductDiscount> discounts) => 
-            new ProductLevelDiscounts(discounts.ToImmutableDictionary(
+            new(discounts.ToImmutableDictionary(
                 d => d.ProductUnit, 
                 d => d.Discount));
 

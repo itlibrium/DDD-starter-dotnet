@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.OnlineSale;
-using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Wholesale.OrderPlacement;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
 using PlaceOrder = MyCompany.Crm.Sales.OnlineSale.OrderPlacement.PlaceOrder;

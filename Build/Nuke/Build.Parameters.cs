@@ -6,9 +6,9 @@ namespace MyCompany.Crm.Nuke
     public partial class Build
     {
         [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-        public static Configuration BuildConfiguration { get; private set; } = IsLocalBuild
-            ? Configuration.Debug
-            : Configuration.Release;
+        public static string BuildConfiguration { get; private set; } = IsLocalBuild
+            ? "Debug"
+            : "Release";
 
         [Parameter]
         public static string ExecutingUser { get; private set; } = "1000";

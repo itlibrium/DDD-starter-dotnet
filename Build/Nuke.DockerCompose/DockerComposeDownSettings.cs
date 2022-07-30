@@ -6,9 +6,9 @@ namespace Nuke.DockerCompose
     [Serializable]
     public class DockerComposeDownSettings : DockerComposeSettings
     {
-        protected override Arguments ConfigureArguments(Arguments arguments)
+        protected override Arguments ConfigureProcessArguments(Arguments arguments)
         {
-            arguments = base.ConfigureArguments(arguments);
+            arguments = base.ConfigureProcessArguments(arguments);
             arguments.Add("down");
             return arguments;
         }

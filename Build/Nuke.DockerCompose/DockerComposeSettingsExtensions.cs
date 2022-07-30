@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
@@ -20,9 +19,5 @@ namespace Nuke.DockerCompose
             settings.FileInternal = files.ToList();
             return settings;
         }
-
-        [Pure]
-        public static T Apply<T>(this T settings, Func<T, T> setup)
-            where T : DockerComposeSettings => setup(settings);
     }
 }

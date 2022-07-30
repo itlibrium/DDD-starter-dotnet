@@ -45,7 +45,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
             return ClientId.From(orderHeader.ClientId);
         }
 
-        private static OfferCalculated CreateEventFrom(OrderId orderId, Offer offer) => new OfferCalculated(
+        private static OfferCalculated CreateEventFrom(OrderId orderId, Offer offer) => new(
             orderId.Value, offer.Quotes
                 .Select(quote => quote.ToDto())
                 .ToImmutableArray());

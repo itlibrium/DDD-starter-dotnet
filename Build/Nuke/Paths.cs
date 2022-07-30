@@ -11,6 +11,6 @@ namespace MyCompany.Crm.Nuke
         public static readonly AbsolutePath ArtifactsDirectory = NukeDirectory / "Artifacts";
         public static readonly AbsolutePath BinDirectory = ArtifactsDirectory / "Bin";
         
-        public static readonly AbsolutePath StartupProjectFile = SourcesDirectory / "WebApi" / "WebApi.csproj";
+        public static readonly AbsolutePath StartupProjectFile = SourcesDirectory / "Startup" / "Startup.csproj";
     }
 }

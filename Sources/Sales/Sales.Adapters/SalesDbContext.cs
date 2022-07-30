@@ -22,6 +22,7 @@ namespace MyCompany.Crm.Sales
                 order.UseXminAsConcurrencyToken();
                 order.HasMany(o => o.Items).WithOne().HasForeignKey(nameof(SalesDb.OrderItem.OrderId));
             });
+            // TODO: concurrency control for nested objects
             modelBuilder.Entity<SalesDb.OrderItem>(orderItem =>
             {
                 orderItem.HasKey(i => new {i.OrderId, i.ProductId, i.AmountUnit});

@@ -18,7 +18,7 @@ namespace MyCompany.Crm.Sales.Orders
         public class DocumentFromEvents : OrderRepository
         {
             private readonly Dictionary<OrderId, (OrderDoc Doc, Guid Version)>
-                _orders = new Dictionary<OrderId, (OrderDoc, Guid)>();
+                _orders = new();
 
             private readonly IDocumentSession _session;
 
@@ -31,7 +31,7 @@ namespace MyCompany.Crm.Sales.Orders
                 var orderDoc = await _session.LoadAsync<OrderDoc>(id.Value);
                 if (orderDoc is null) throw new DomainError();
                 var order = RestoreFrom(orderDoc);
-                var metadata = await _session.Tenant.MetadataForAsync(orderDoc);
+                var metadata = await _session.MetadataForAsync(orderDoc);
                 _orders.Add(id, (orderDoc, metadata.CurrentVersion));
                 return order;
             }
@@ -175,7 +175,7 @@ namespace MyCompany.Crm.Sales.Orders
             public class OrderDoc
             {
                 public Guid Id { get; set; }
-                public List<OrderItemDoc> Items { get; set; } = new List<OrderItemDoc>();
+                public List<OrderItemDoc> Items { get; set; } = new();
                 public string PriceAgreementType { get; set; }
                 public DateTime? PriceAgreementExpiresOn { get; set; }
                 public bool IsPlaced { get; set; }

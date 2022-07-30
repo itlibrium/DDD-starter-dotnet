@@ -36,7 +36,7 @@ namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
                 .Select(cartItem => cartItem.ToDomainModel())
                 .ToImmutableArray());
 
-        private static CartPriced CreateEventFrom(ClientId clientId, Offer offer) => new CartPriced(
+        private static CartPriced CreateEventFrom(ClientId clientId, Offer offer) => new(
             DateTime.UtcNow,
             clientId.Value,
             offer.Currency.ToCode(),

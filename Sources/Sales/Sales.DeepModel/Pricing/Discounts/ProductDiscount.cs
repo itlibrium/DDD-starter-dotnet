@@ -10,8 +10,7 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
         public ProductUnit ProductUnit { get; }
         public Discount Discount { get; }
 
-        public static ProductDiscount Of(ProductUnit productUnit, Discount discount) =>
-            new ProductDiscount(productUnit, discount);
+        public static ProductDiscount Of(ProductUnit productUnit, Discount discount) => new(productUnit, discount);
         
         private ProductDiscount(ProductUnit productUnit, Discount discount)
         {

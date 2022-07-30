@@ -7,16 +7,16 @@ namespace Nuke.DockerCompose
     [Serializable]
     public class DockerComposeSettings : ToolSettings
     {
-        public override string ToolPath => DockerComposeTasks.DockerPath;
-        public override Action<OutputType, string> CustomLogger => DockerComposeTasks.CustomLogger;
+        public override string ProcessToolPath => DockerComposeTasks.DockerPath;
+        public override Action<OutputType, string> ProcessCustomLogger => DockerComposeTasks.CustomLogger;
 
         internal List<string> FileInternal;
         public IReadOnlyCollection<string> File => FileInternal.AsReadOnly();
 
-        protected override Arguments ConfigureArguments(Arguments arguments)
+        protected override Arguments ConfigureProcessArguments(Arguments arguments)
         {
             arguments.Add("--file {value}", File);
-            return base.ConfigureArguments(arguments);
+            return base.ConfigureProcessArguments(arguments);
         }
     }
 }

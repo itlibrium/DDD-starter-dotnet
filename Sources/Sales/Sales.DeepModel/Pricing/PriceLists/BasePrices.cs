@@ -12,7 +12,7 @@ namespace MyCompany.Crm.Sales.Pricing.PriceLists
     {
         private readonly ImmutableDictionary<ProductUnit, Money> _prices;
 
-        public static BasePrices Of(IEnumerable<BasePrice> prices) => new BasePrices(prices);
+        public static BasePrices Of(IEnumerable<BasePrice> prices) => new(prices);
 
         private BasePrices(IEnumerable<BasePrice> prices) => 
             _prices = prices.ToImmutableDictionary(

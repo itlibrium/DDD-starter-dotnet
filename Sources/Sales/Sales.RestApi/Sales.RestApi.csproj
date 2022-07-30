@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.RestApi</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>default</LangVersion>
@@ -9,16 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Api\TechnicalStuff.Crud.Api.csproj" />
-      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
-      <ProjectReference Include="..\Sales.ProcessModel.Contracts\Sales.ProcessModel.Contracts.csproj" />
-      <ProjectReference Include="..\Sales.ProcessModel\Sales.ProcessModel.csproj" />
-      <ProjectReference Include="..\Sales.ReadModel.Contracts\Sales.ReadModel.Contracts.csproj" />
+      <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Api\TechnicalStuff.Crud.Api.csproj" />      
+      <ProjectReference Include="..\Sales.ProcessModel\Sales.ProcessModel.csproj" />      
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.17" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
     </ItemGroup>    
 
 </Project>

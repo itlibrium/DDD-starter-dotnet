@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Marten.Services;
+using Marten.Exceptions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,16 +15,16 @@ using Xunit;
 
 namespace MyCompany.Crm.Sales.Orders
 {
-    public class OrderSqlRepositoryTests : IClassFixture<WebApplicationFactory<Startup>>, IDisposable
+    public class OrderSqlRepositoryTests : IClassFixture<WebApplicationFactory<Program>>, IDisposable
     {
         private readonly PriceChangesPolicy _priceChangesPolicies = new FakePriceChangesPolicy();
-        private readonly SystemClock _clock = new SystemClock();
+        private readonly SystemClock _clock = new();
         private readonly IServiceProvider _serviceProvider;
 
         private string _repositoryImplementation;
         private Scope _scope;
 
-        public OrderSqlRepositoryTests(WebApplicationFactory<Startup> appFactory) => _serviceProvider = appFactory
+        public OrderSqlRepositoryTests(WebApplicationFactory<Program> appFactory) => _serviceProvider = appFactory
             .WithWebHostBuilder(builder => builder
                 .ConfigureServices(services => services
                     .AddScoped<OrderSqlRepository.TablesFromSnapshot>()
@@ -91,8 +91,7 @@ namespace MyCompany.Crm.Sales.Orders
                     break;
                 case nameof(OrderSqlRepository.DocumentFromSnapshot):
                 case nameof(OrderSqlRepository.DocumentFromEvents):
-                    (await action2.Should().ThrowExactlyAsync<AggregateException>())
-                        .WithInnerExceptionExactly<ConcurrencyException>();
+                    await action2.Should().ThrowExactlyAsync<ConcurrencyException>();
                     break;
                 case nameof(OrderSqlRepository.EventsSourcing):
                     await action2.Should().ThrowExactlyAsync<EventStreamUnexpectedMaxEventIdException>();
@@ -155,7 +154,7 @@ namespace MyCompany.Crm.Sales.Orders
             _scope = CreateScope();
         }
         
-        private Scope CreateScope() => new Scope(_serviceProvider, _repositoryImplementation);
+        private Scope CreateScope() => new(_serviceProvider, _repositoryImplementation);
 
         public void Dispose() => _scope?.Dispose();
 

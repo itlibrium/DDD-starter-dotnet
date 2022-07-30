@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Nuke.Common" Version="0.24.11" />
+      <PackageReference Include="Nuke.Common" Version="6.1.2" />
     </ItemGroup>
 
 </Project>

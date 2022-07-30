@@ -60,6 +60,6 @@ namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
                 command.Quotes.Select(quote => quote.ToDomainModel())));
 
         private static OrderPlaced CreateEventFrom(ClientId clientId, Order order, DateTime placedOn) =>
-            new OrderPlaced(order.Id.Value, clientId.Value, placedOn);
+            new(order.Id.Value, clientId.Value, placedOn);
     }
 }

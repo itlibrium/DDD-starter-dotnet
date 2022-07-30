@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.ProcessModel</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="TaskTupleAwaiter" Version="1.2.0" />
+      <PackageReference Include="TaskTupleAwaiter" Version="2.0.0" />
     </ItemGroup>
 
 </Project>

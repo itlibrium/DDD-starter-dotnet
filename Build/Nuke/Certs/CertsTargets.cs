@@ -17,7 +17,7 @@ namespace MyCompany.Crm.Nuke.Certs
             {
                 if (EnvironmentIs(Development))
                 {
-                    if (!DirectoryExists(CertsDirectory))
+                    if (!CertsDirectory.DirectoryExists())
                         CopyDirectoryRecursively(DevCertsDirectory, CertsDirectory);
                 }
                 else
@@ -31,7 +31,7 @@ namespace MyCompany.Crm.Nuke.Certs
             {
                 if (EnvironmentIs(Development))
                 {
-                    if (DirectoryExists(CertsDirectory))
+                    if (CertsDirectory.DirectoryExists())
                         DeleteDirectory(CertsDirectory);
                 }
                 else

@@ -17,7 +17,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class TablesFromEvents : OrderRepository
         {
-            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new Dictionary<OrderId, SalesDb.Order>();
+            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new();
             private readonly SalesDbContext _dbContext;
 
             public TablesFromEvents(SalesDbContext dfContext) => _dbContext = dfContext;

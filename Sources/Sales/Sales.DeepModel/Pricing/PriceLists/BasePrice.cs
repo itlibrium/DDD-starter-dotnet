@@ -11,7 +11,7 @@ namespace MyCompany.Crm.Sales.Pricing.PriceLists
         public ProductUnit ProductUnit { get; }
         public Money Price { get; }
         
-        public BasePrice Of(ProductUnit productUnit, Money price) => new BasePrice(productUnit, price);
+        public BasePrice Of(ProductUnit productUnit, Money price) => new(productUnit, price);
 
         private BasePrice(ProductUnit productUnit, Money price)
         {

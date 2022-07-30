@@ -1,5 +1,4 @@
 using System;
-using MyCompany.Crm.Sales.Orders;
 
 namespace MyCompany.Crm.Sales.Integration.Payments
 {

@@ -17,9 +17,7 @@ namespace MyCompany.Crm.TechnicalStuff.Marten
         public IDocumentSession OpenSession() => _store.OpenSession(new SessionOptions
         {
             Tracking = DocumentTracking.None,
-            IsolationLevel = IsolationLevel.ReadCommitted,
-            EnlistInAmbientTransactionScope = true,
-            OwnsTransactionLifecycle = false
+            IsolationLevel = IsolationLevel.ReadCommitted
         });
     }
 }

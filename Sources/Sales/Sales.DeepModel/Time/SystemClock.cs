@@ -11,7 +11,8 @@ namespace MyCompany.Crm.Sales.Time
             get
             {
                 var now = DateTime.UtcNow;
-                return new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
+                return new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond,
+                    DateTimeKind.Utc);
             }
         }
     }

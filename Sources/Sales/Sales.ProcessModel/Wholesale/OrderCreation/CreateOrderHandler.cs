@@ -38,6 +38,6 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
         private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);
 
         private static OrderCreated CreateEventFrom(Order order, ClientId clientId) =>
-            new OrderCreated(order.Id.Value, clientId.Value, SalesChannel.Wholesales.ToCode());
+            new(order.Id.Value, clientId.Value, SalesChannel.Wholesales.ToCode());
     }
 }

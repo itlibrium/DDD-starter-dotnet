@@ -14,9 +14,9 @@ namespace MyCompany.Crm.Sales.Commons
 
         public bool IsEmpty => Currency == Currency.Undefined;
 
-        public static Money Empty() => new Money();
-        public static Money Zero(Currency currency) => new Money(0, currency);
-        public static Money Of(decimal value, Currency currency) => new Money(value, currency);
+        public static Money Empty() => new();
+        public static Money Zero(Currency currency) => new(0, currency);
+        public static Money Of(decimal value, Currency currency) => new(value, currency);
 
         private Money(decimal value, Currency currency)
         {

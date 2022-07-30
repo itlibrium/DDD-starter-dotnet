@@ -6,7 +6,6 @@ using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Docker;
 using Nuke.DockerCompose;
-using static Nuke.Common.IO.FileSystemTasks;
 using static MyCompany.Crm.Nuke.Paths;
 using static MyCompany.Crm.Nuke.Environment;
 using static MyCompany.Crm.Nuke.Certs.CertsTargets;
@@ -24,7 +23,7 @@ namespace MyCompany.Crm.Nuke.DockerCompose
             {
                 DockerComposeTasks.Up(settings => settings
                     .SetFile(GetInfrastructureComposeFiles())
-                    .Apply(SetInfrastructureEnvironmentVariables)
+                    .Apply(upSettings => SetInfrastructureEnvironmentVariables(upSettings))
                     .SetDetach(true));
                 WriteLogsInfo();
             });
@@ -64,13 +63,13 @@ namespace MyCompany.Crm.Nuke.DockerCompose
             if (EnvironmentIs(Development))
             {
                 var overrideFilePath = GetOverrideFileNameFor(Development);
-                if (FileExists(overrideFilePath))
+                if (overrideFilePath.FileExists())
                     yield return overrideFilePath;
             }
             else if (EnvironmentIs(Test))
             {
                 var overrideFilePath = GetOverrideFileNameFor(Test);
-                if (FileExists(overrideFilePath))
+                if (overrideFilePath.FileExists())
                     yield return overrideFilePath;
             }
             else
@@ -81,20 +80,20 @@ namespace MyCompany.Crm.Nuke.DockerCompose
         }
 
         private static AbsolutePath GetOverrideFileNameFor(Environment environment) =>
-            ComposeDirectory / $"infrastructure-compose.{((string) environment).ToLower()}.yml";
+            ComposeDirectory / $"infrastructure-compose.{((string)environment).ToLower()}.yml";
 
-        private static T SetInfrastructureEnvironmentVariables<T>(T settings) where T : DockerComposeSettings =>
-            settings
-                .SetEnvironmentVariable("ES_VERSION", Settings.Elastic.ElasticsearchVersion)
-                .SetEnvironmentVariable("ES_CONFIG_DIR", Settings.Elastic.ElasticsearchConfigDirectory)
-                .SetEnvironmentVariable("KIBANA_VERSION", Settings.Elastic.KibanaVersion)
-                .SetEnvironmentVariable("KIBANA_CONFIG_DIR", Settings.Elastic.KibanaConfigDirectory)
-                .SetEnvironmentVariable("ES_KIBANA01_USER", Settings.Elastic.Kibana01UserName)
-                .SetEnvironmentVariable("ES_KIBANA01_PASSWORD", Settings.Elastic.Kibana01UserPassword)
-                .SetEnvironmentVariable("KIBANA_ENCRYPTIONKEY", Settings.Elastic.KibanaEncryptionKey)
-                .SetEnvironmentVariable("ES_USERS_DIR", UsersDirectory)
-                .SetEnvironmentVariable("CERTS_DIR", CertsDirectory);
-        
+        private static T SetInfrastructureEnvironmentVariables<T>(T settings)
+            where T : DockerComposeSettings => settings
+            .SetProcessEnvironmentVariable("ES_VERSION", Settings.Elastic.ElasticsearchVersion)
+            .SetProcessEnvironmentVariable("ES_CONFIG_DIR", Settings.Elastic.ElasticsearchConfigDirectory)
+            .SetProcessEnvironmentVariable("KIBANA_VERSION", Settings.Elastic.KibanaVersion)
+            .SetProcessEnvironmentVariable("KIBANA_CONFIG_DIR", Settings.Elastic.KibanaConfigDirectory)
+            .SetProcessEnvironmentVariable("ES_KIBANA01_USER", Settings.Elastic.Kibana01UserName)
+            .SetProcessEnvironmentVariable("ES_KIBANA01_PASSWORD", Settings.Elastic.Kibana01UserPassword)
+            .SetProcessEnvironmentVariable("KIBANA_ENCRYPTIONKEY", Settings.Elastic.KibanaEncryptionKey)
+            .SetProcessEnvironmentVariable("ES_USERS_DIR", UsersDirectory)
+            .SetProcessEnvironmentVariable("CERTS_DIR", CertsDirectory);
+
         private static void WriteLogsInfo()
         {
             var previousForegroundColor = Console.ForegroundColor;

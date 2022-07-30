@@ -72,7 +72,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
             return ClientId.From(orderHeader.ClientId);
         }
         
-        private static OfferConfirmed CreateEventFrom(OrderId orderId, Offer offer) => new OfferConfirmed(
+        private static OfferConfirmed CreateEventFrom(OrderId orderId, Offer offer) => new(
             orderId.Value, offer.Quotes
                 .Select(quote => quote.ToDto())
                 .ToImmutableArray());

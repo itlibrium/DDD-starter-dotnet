@@ -13,9 +13,9 @@ namespace MyCompany.Crm.Sales.Products
         public ProductUnit ProductUnit => ProductUnit.Of(ProductId, Amount.Unit);
 
         public static ProductAmount Of(ProductId productId, int value, AmountUnit unit) =>
-            new ProductAmount(productId, Amount.Of(value, unit));
+            new(productId, Amount.Of(value, unit));
         
-        public static ProductAmount Of(ProductId productId, Amount amount) => new ProductAmount(productId, amount);
+        public static ProductAmount Of(ProductId productId, Amount amount) => new(productId, amount);
         
         private ProductAmount(ProductId productId, Amount amount)
         {

@@ -14,9 +14,9 @@ namespace Nuke.DockerCompose
             return this;
         }
 
-        protected override Arguments ConfigureArguments(Arguments arguments)
+        protected override Arguments ConfigureProcessArguments(Arguments arguments)
         {
-            arguments = base.ConfigureArguments(arguments);
+            arguments = base.ConfigureProcessArguments(arguments);
             arguments.Add("up")
                 .Add("--detach", Detach);
             return arguments;

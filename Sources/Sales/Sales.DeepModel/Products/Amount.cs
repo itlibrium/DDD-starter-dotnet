@@ -10,7 +10,7 @@ namespace MyCompany.Crm.Sales.Products
         public int Value { get; }
         public AmountUnit Unit { get; }
 
-        public static Amount Of(int value, AmountUnit unit) => new Amount(value, unit);
+        public static Amount Of(int value, AmountUnit unit) => new(value, unit);
         
         private Amount(int value, AmountUnit unit)
         {

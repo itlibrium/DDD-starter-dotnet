@@ -8,8 +8,8 @@ namespace MyCompany.Crm.Sales.Clients
     {
         public Guid Value { get; }
 
-        public static ClientId New() => new ClientId(Guid.NewGuid());
-        public static ClientId From(Guid value) => new ClientId(value);
+        public static ClientId New() => new(Guid.NewGuid());
+        public static ClientId From(Guid value) => new(value);
         private ClientId(Guid value) => Value = value;
 
         public bool Equals(ClientId other) => Value.Equals(other.Value);

@@ -12,7 +12,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class DocumentFromSnapshot : OrderRepository
         {
-            private readonly Dictionary<OrderId, Guid> _orderVersions = new Dictionary<OrderId, Guid>();
+            private readonly Dictionary<OrderId, Guid> _orderVersions = new();
             private readonly IDocumentSession _session;
 
             public DocumentFromSnapshot(IDocumentSession session) => _session = session;
@@ -25,7 +25,7 @@ namespace MyCompany.Crm.Sales.Orders
                 if (snapshot is null) 
                     throw new DomainError();
                 var order = Order.RestoreFrom(snapshot);
-                var metadata = await _session.Tenant.MetadataForAsync(snapshot);
+                var metadata = await _session.MetadataForAsync(snapshot);
                 _orderVersions.Add(id, metadata.CurrentVersion);
                 return order;
             }

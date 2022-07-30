@@ -13,7 +13,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class TablesFromSnapshot : OrderRepository
         {
-            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new Dictionary<OrderId, SalesDb.Order>();
+            private readonly Dictionary<OrderId, SalesDb.Order> _orders = new();
             private readonly SalesDbContext _dbContext;
 
             public TablesFromSnapshot(SalesDbContext dbContext) => _dbContext = dbContext;
@@ -40,7 +40,7 @@ namespace MyCompany.Crm.Sales.Orders
                 return _dbContext.SaveChangesAsync();
             }
 
-            private static Order.Snapshot CreateSnapshotFrom(SalesDb.Order dbOrder) => new Order.Snapshot(
+            private static Order.Snapshot CreateSnapshotFrom(SalesDb.Order dbOrder) => new(
                 dbOrder.Id,
                 dbOrder.Items
                     .Select(dbOrderItem => new Order.Snapshot.Item(

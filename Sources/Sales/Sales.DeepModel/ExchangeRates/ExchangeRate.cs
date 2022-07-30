@@ -13,7 +13,7 @@ namespace MyCompany.Crm.Sales.ExchangeRates
         public Currency Currency { get; }
         public decimal Value { get; }
         
-        public static ExchangeRate Of(Currency toCurrency, decimal value) => new ExchangeRate(toCurrency, value);
+        public static ExchangeRate Of(Currency toCurrency, decimal value) => new(toCurrency, value);
         
         private ExchangeRate(Currency currency, decimal value)
         {

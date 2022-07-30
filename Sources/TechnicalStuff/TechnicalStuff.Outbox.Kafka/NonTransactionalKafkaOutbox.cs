@@ -7,7 +7,7 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
 {
     public abstract class NonTransactionalKafkaOutbox<TMessage> : NonTransactionalOutbox
     {
-        private readonly List<KafkaMessage> _kafkaMessages = new List<KafkaMessage>();
+        private readonly List<KafkaMessage> _kafkaMessages = new();
         private readonly KafkaMessageProducer _kafkaMessageProducer;
 
         protected NonTransactionalKafkaOutbox(KafkaMessageProducer kafkaMessageProducer,

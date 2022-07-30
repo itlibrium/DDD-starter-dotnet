@@ -41,7 +41,7 @@ namespace MyCompany.Crm.Contacts.Companies.RestApi
                 company => company.Address = address)
             .ToOkResult();
 
-        private Address MapFrom(AddressV1 address) => new Address
+        private Address MapFrom(AddressV1 address) => new()
         {
             Street = GetStreetFrom(address),
             ZipCode = address.ZipCode,

@@ -15,7 +15,7 @@ namespace MyCompany.Crm.DI.Modules
     internal static class Sales
     {
         private static readonly Assembly SalesDeepModel = typeof(SalesDeepModelAssemblyInfo).Assembly;
-        private static readonly Assembly SalesUseCases = typeof(SalesUseCasesAssemblyInfo).Assembly;
+        private static readonly Assembly SalesProcessModel = typeof(SalesProcessModelAssemblyInfo).Assembly;
         private static readonly Assembly SalesAdapters = typeof(SalesAdaptersAssemblyInfo).Assembly;
         
         public static IServiceCollection AddSalesModule(this IServiceCollection services,
@@ -32,7 +32,7 @@ namespace MyCompany.Crm.DI.Modules
                     foreach (var (type, name) in OrderSqlRepository.EventsSourcing.Events)
                     {
                         options.Events.AddEventType(type);
-                        options.Events.EventMappingFor(type).EventTypeName = name;
+                        options.Events.MapEventType(type, name);
                     }
                     options.Schema.For<Order.Snapshot>().UseOptimisticConcurrency(true);
                     options.Schema.For<OrderSqlRepository.DocumentFromEvents.OrderDoc>().UseOptimisticConcurrency(true);
@@ -43,7 +43,7 @@ namespace MyCompany.Crm.DI.Modules
             services.AddMessageOutboxes(SalesAdapters);
             services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();
             services.AddScoped<PostgresOutboxRepository<SalesDb>>();
-            services.AddStatelessComponentsFrom(SalesDeepModel, SalesUseCases, SalesAdapters);
+            services.AddStatelessComponentsFrom(SalesDeepModel, SalesProcessModel, SalesAdapters);
             services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
             services.AddScoped<AllowAnyPriceChanges>();
             services.AddScoped<AllowPriceChangesIfTotalPriceIsLower>();

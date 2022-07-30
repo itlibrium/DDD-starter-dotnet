@@ -12,11 +12,9 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
         private readonly PercentageDiscount _percentageDiscount;
         private readonly ValueDiscount _valueDiscount;
 
-        public static Discount Percentage(Percentage value) =>
-            new Discount(true, PercentageDiscount.Of(value), default);
+        public static Discount Percentage(Percentage value) => new(true, PercentageDiscount.Of(value), default);
         
-        public static Discount Value(Money value) =>
-            new Discount(true, default, ValueDiscount.Of(value));
+        public static Discount Value(Money value) => new(true, default, ValueDiscount.Of(value));
 
         private Discount(bool isPercentage, PercentageDiscount percentageDiscount, ValueDiscount valueDiscount)
         {

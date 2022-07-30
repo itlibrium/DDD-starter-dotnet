@@ -21,7 +21,7 @@ namespace MyCompany.Crm.Sales.Orders
                 (typeof(Order.Placed), "Order.Placed")
             };
 
-            private readonly Dictionary<OrderId, int> _orderVersions = new Dictionary<OrderId, int>();
+            private readonly Dictionary<OrderId, long> _orderVersions = new();
             private readonly IDocumentSession _session;
 
             public EventsSourcing(IDocumentSession documentSession) => _session = documentSession;
@@ -49,7 +49,7 @@ namespace MyCompany.Crm.Sales.Orders
                 await _session.SaveChangesAsync();
             }
 
-            private int CalculateExpectedVersionFor(Order order) =>
+            private long CalculateExpectedVersionFor(Order order) =>
                 (_orderVersions.TryGetValue(order.Id, out var version) ? version : 0) + order.NewEvents.Count;
         }
     }

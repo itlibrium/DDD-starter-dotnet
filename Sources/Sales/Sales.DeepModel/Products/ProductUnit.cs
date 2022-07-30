@@ -10,7 +10,7 @@ namespace MyCompany.Crm.Sales.Products
         public ProductId ProductId { get; }
         public AmountUnit Unit { get; }
         
-        public static ProductUnit Of(ProductId productId, AmountUnit unit) => new ProductUnit(productId, unit);
+        public static ProductUnit Of(ProductId productId, AmountUnit unit) => new(productId, unit);
 
         private ProductUnit(ProductId productId, AmountUnit unit)
         {

@@ -24,7 +24,7 @@ namespace MyCompany.Crm.Nuke.DotNet
                 foreach (var (workingDir, dbContextName) in DbContexts)
                 {
                     EntityFrameworkTasks.EntityFrameworkDatabaseUpdate(settings => settings
-                        .SetWorkingDirectory(SourcesDirectory / workingDir)
+                        .SetProcessWorkingDirectory(SourcesDirectory / workingDir)
                         .SetContext(dbContextName));
                 }
             });

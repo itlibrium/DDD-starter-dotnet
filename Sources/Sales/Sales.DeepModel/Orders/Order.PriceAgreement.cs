@@ -20,14 +20,13 @@ namespace MyCompany.Crm.Sales.Orders
             public PriceAgreementType Type { get; }
             public DateTime? ExpiresOn => Type == PriceAgreementType.Temporary ? _expiresOn : (DateTime?) null;
 
-            public static PriceAgreement Non() =>
-                new PriceAgreement(PriceAgreementType.Non, ImmutableArray<Quote>.Empty, default);
+            public static PriceAgreement Non() => new(PriceAgreementType.Non, ImmutableArray<Quote>.Empty, default);
 
             public static PriceAgreement Temporary(ImmutableArray<Quote> quotes, DateTime expiresOn) =>
-                new PriceAgreement(PriceAgreementType.Temporary, quotes, expiresOn);
+                new(PriceAgreementType.Temporary, quotes, expiresOn);
 
             public static PriceAgreement Final(ImmutableArray<Quote> quotes) =>
-                new PriceAgreement(PriceAgreementType.Final, quotes, default);
+                new(PriceAgreementType.Final, quotes, default);
 
             private PriceAgreement(PriceAgreementType type, ImmutableArray<Quote> quotes, DateTime expiresOn)
             {

@@ -33,6 +33,6 @@ namespace MyCompany.Crm.Sales.Wholesale.ProductPricing
             command.CurrencyCode.ToDomainModel<Currency>());
 
         private static QuickQuoteCalculated CreateEventFrom(ClientId clientId, Quote quote) =>
-            new QuickQuoteCalculated(clientId.Value, quote.ToDto());
+            new(clientId.Value, quote.ToDto());
     }
 }

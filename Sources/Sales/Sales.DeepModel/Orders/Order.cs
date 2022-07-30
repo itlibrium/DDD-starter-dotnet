@@ -24,7 +24,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         public static Order New() => New(OrderId.New());
 
-        public static Order New(OrderId id) => new Order(id,
+        public static Order New(OrderId id) => new(id,
             new Dictionary<ProductUnit, Amount>(),
             PriceAgreementType.Non,
             ImmutableArray<Quote>.Empty,
@@ -48,7 +48,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         public static Order Restore(OrderId id,
             ImmutableArray<ProductAmount> productAmounts,
-            bool isPlaced) => new Order(id,
+            bool isPlaced) => new(id,
             productAmounts
                 .ToDictionary(productAmount => productAmount.ProductUnit, productAmount => productAmount.Amount),
             PriceAgreementType.Non,
@@ -59,7 +59,7 @@ namespace MyCompany.Crm.Sales.Orders
         public static Order Restore(OrderId id,
             ImmutableArray<Quote> quotes,
             DateTime priceAgreementExpiresOn,
-            bool isPlaced) => new Order(id,
+            bool isPlaced) => new(id,
             quotes
                 .Select(quote => quote.ProductAmount)
                 .ToDictionary(productAmount => productAmount.ProductUnit, productAmount => productAmount.Amount),
@@ -70,7 +70,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         public static Order Restore(OrderId id,
             ImmutableArray<Quote> quotes,
-            bool isPlaced) => new Order(id,
+            bool isPlaced) => new(id,
             quotes
                 .Select(quote => quote.ProductAmount)
                 .ToDictionary(productAmount => productAmount.ProductUnit, productAmount => productAmount.Amount),

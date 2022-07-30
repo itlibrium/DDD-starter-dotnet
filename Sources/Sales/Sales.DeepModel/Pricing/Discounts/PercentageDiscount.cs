@@ -10,7 +10,7 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
     {
         private readonly Percentage _value;
 
-        public static PercentageDiscount Of(Percentage value) => new PercentageDiscount(value);
+        public static PercentageDiscount Of(Percentage value) => new(value);
         
         private PercentageDiscount(Percentage value) => _value = value;
 

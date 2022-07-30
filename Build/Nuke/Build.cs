@@ -4,7 +4,6 @@ using Nuke.Common.ProjectModel;
 
 namespace MyCompany.Crm.Nuke
 {
-    [CheckBuildProjectConfigurations]
     [UnsetVisualStudioEnvironmentVariables]
     public partial class Build : NukeBuild
     {

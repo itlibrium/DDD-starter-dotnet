@@ -12,7 +12,7 @@ namespace MyCompany.Crm.Sales.Orders
 {
     public partial class Order
     {
-        private readonly List<Event> _newEvents = new List<Event>();
+        private readonly List<Event> _newEvents = new();
         public IReadOnlyList<Event> NewEvents => _newEvents.AsReadOnly();
 
         public static Order RestoreFrom(OrderId id, IEnumerable<Event> events)

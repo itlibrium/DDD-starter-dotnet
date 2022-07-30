@@ -9,14 +9,14 @@ namespace MyCompany.Crm.Sales.Commons
         public int Value { get; }
         public decimal Fraction => (decimal) Value / 100;
         
-        public static Percentage Of0 => new Percentage(0);
-        public static Percentage Of100 => new Percentage(100);
-        public static Percentage Of(int value) => new Percentage(value);
+        public static Percentage Of0 => new(0);
+        public static Percentage Of100 => new(100);
+        public static Percentage Of(int value) => new(value);
 
         private Percentage(int value) => Value = value;
 
-        public static Percentage operator +(Percentage x, Percentage y) => new Percentage(x.Value + y.Value);
-        public static Percentage operator -(Percentage x, Percentage y) => new Percentage(x.Value - y.Value);
+        public static Percentage operator +(Percentage x, Percentage y) => new(x.Value + y.Value);
+        public static Percentage operator -(Percentage x, Percentage y) => new(x.Value - y.Value);
 
         public static bool operator ==(Percentage x, Percentage y) => x.Equals(y);
         public static bool operator !=(Percentage x, Percentage y) => !x.Equals(y);
@@ -37,9 +37,9 @@ namespace MyCompany.Crm.Sales.Commons
         public int Value { get; }
         public decimal Fraction => (decimal) Value / 100;
         
-        public static Percentage2 Of0 => new Percentage2(0);
-        public static Percentage2 Of100 => new Percentage2(100);
-        public static Percentage2 Of(int value) => new Percentage2(value);
+        public static Percentage2 Of0 => new(0);
+        public static Percentage2 Of100 => new(100);
+        public static Percentage2 Of(int value) => new(value);
 
         private Percentage2(int value) => Value = value;
 

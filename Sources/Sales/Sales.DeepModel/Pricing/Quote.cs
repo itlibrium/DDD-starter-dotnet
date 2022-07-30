@@ -11,7 +11,7 @@ namespace MyCompany.Crm.Sales.Pricing
         public ProductAmount ProductAmount { get; }
         public Money Price { get; }
 
-        public static Quote For(ProductAmount productAmount, Money price) => new Quote(productAmount, price);
+        public static Quote For(ProductAmount productAmount, Money price) => new(productAmount, price);
         
         private Quote(ProductAmount productAmount, Money price)
         {
@@ -19,9 +19,8 @@ namespace MyCompany.Crm.Sales.Pricing
             Price = price;
         }
         
-        internal Quote Apply<TPriceModifier>(TPriceModifier priceModifier) 
-            where TPriceModifier : struct, PriceModifier
-            => new Quote(ProductAmount, priceModifier.ApplyOn(Price));
+        internal Quote Apply<TPriceModifier>(TPriceModifier priceModifier)
+            where TPriceModifier : struct, PriceModifier => new(ProductAmount, priceModifier.ApplyOn(Price));
 
         internal Quote Apply(QuoteModifier quoteModifier) => quoteModifier.ApplyOn(this);
 

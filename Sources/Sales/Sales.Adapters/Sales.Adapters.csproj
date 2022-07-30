@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.Adapters</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
-      <PackageReference Include="Marten" Version="3.13.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.17" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+      <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+      <PackageReference Include="Marten" Version="5.8.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.5" />
     </ItemGroup>
 
     <ItemGroup>

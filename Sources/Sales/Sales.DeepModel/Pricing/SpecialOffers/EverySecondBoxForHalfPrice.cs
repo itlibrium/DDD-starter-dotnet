@@ -5,8 +5,7 @@ namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
     [DddPolicy]
     public class EverySecondBoxForHalfPrice : SpecialOffer
     {
-        public static EverySecondBoxForHalfPrice Or(OfferModifier fallbackModifier) => 
-            new EverySecondBoxForHalfPrice(fallbackModifier);
+        public static EverySecondBoxForHalfPrice Or(OfferModifier fallbackModifier) => new(fallbackModifier);
 
         private EverySecondBoxForHalfPrice(OfferModifier fallbackModifier) : base(fallbackModifier)
         {

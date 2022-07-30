@@ -21,7 +21,7 @@ namespace MyCompany.Crm.Sales.OnlineSale
                 quoteDto.Price, 
                 quoteDto.CurrencyCode.ToDomainModel<Currency>()));
         
-        public static QuoteDto ToDto(this Quote quote) => new QuoteDto(
+        public static QuoteDto ToDto(this Quote quote) => new(
             quote.ProductAmount.ProductId.Value,
             quote.ProductAmount.Amount.Value,
             quote.Price.Value,

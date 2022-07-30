@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>MyCompany.Crm.TechnicalStuff.Metadata</RootNamespace>
         <AssemblyName>MyCompany.Crm.TechnicalStuff.Metadata</AssemblyName>
     </PropertyGroup>

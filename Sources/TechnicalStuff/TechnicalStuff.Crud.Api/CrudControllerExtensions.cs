@@ -91,12 +91,12 @@ namespace TechnicalStuff.Crud.Api
 
         [PublicAPI]
         public static async Task<ActionResult<TEntity>> ToOkResult<TEntity>(this Task<TEntity> readPromise) =>
-            new ActionResult<TEntity>(await readPromise);
+            new(await readPromise);
 
         [PublicAPI]
         public static async Task<ActionResult<TEntity>> ToOkResult<TEntity>(this Task<Updated<TEntity>> updatePromise)
             where TEntity : class
-            => new ActionResult<TEntity>(await updatePromise);
+            => new(await updatePromise);
 
         [PublicAPI]
         public static async Task<NoContentResult> ToNoContentResult(this Task<Updated> updatePromise)

@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contacts", "Contacts", "{61
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts", "Sources\Contacts\Contacts.Crud\Contacts.Crud.csproj", "{9DE86BB4-7D8E-4997-BDCE-C5E7E30968AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "Sources\WebApi\WebApi.csproj", "{B064C8A6-79AB-4B7B-98A6-A5F15635ED8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "Sources\Startup\Startup.csproj", "{B064C8A6-79AB-4B7B-98A6-A5F15635ED8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.RestApi", "Sources\Sales\Sales.RestApi\Sales.RestApi.csproj", "{E7E66DCC-7D68-4900-B09D-DE06E89DA534}"
 EndProject

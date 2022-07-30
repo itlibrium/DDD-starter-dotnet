@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AssemblyName>MyCompany.Crm.Sales.Database</AssemblyName>
         <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
         <LangVersion>default</LangVersion>
@@ -9,16 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.17">
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.5" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sales.Adapters\Sales.Adapters.csproj" />
-      <ProjectReference Include="..\Sales.Crud.Contracts\Sales.Crud.Contracts.csproj" />
+      <ProjectReference Include="..\Sales.Adapters\Sales.Adapters.csproj" />      
     </ItemGroup>
 
 </Project>

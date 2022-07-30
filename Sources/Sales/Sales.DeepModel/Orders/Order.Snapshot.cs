@@ -11,7 +11,7 @@ namespace MyCompany.Crm.Sales.Orders
 {
     public partial class Order
     {
-        public Snapshot GetSnapshot() => new Snapshot(Id.Value,
+        public Snapshot GetSnapshot() => new(Id.Value,
             CreateOrderItems(_items).ToImmutableArray(),
             _priceAgreement.Type.ToCode(),
             _priceAgreement.ExpiresOn,

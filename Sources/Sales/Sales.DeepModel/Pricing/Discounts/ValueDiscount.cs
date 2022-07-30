@@ -10,7 +10,7 @@ namespace MyCompany.Crm.Sales.Pricing.Discounts
     {
         private readonly Money _value;
 
-        public static ValueDiscount Of(Money value) => new ValueDiscount(value);
+        public static ValueDiscount Of(Money value) => new(value);
         
         private ValueDiscount(Money value) => _value = value;
 

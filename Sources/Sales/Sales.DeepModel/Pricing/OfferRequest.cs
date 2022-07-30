@@ -17,8 +17,7 @@ namespace MyCompany.Crm.Sales.Pricing
         public ImmutableArray<ProductAmount> ProductAmounts { get; }
 
         public static OfferRequest For(ClientId clientId, SalesChannel salesChannel,
-            ImmutableArray<ProductAmount> productAmounts) =>
-            new OfferRequest(clientId, salesChannel, productAmounts);
+            ImmutableArray<ProductAmount> productAmounts) => new(clientId, salesChannel, productAmounts);
 
         private OfferRequest(ClientId clientId, SalesChannel salesChannel, ImmutableArray<ProductAmount> productAmounts)
         {

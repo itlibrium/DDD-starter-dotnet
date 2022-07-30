@@ -8,9 +8,9 @@ namespace MyCompany.Crm.Sales.Orders
     {
         public Guid Value { get; }
         
-        public static OrderId New() => new OrderId(Guid.NewGuid());
+        public static OrderId New() => new(Guid.NewGuid());
         
-        public static OrderId From(Guid value) => new OrderId(value);
+        public static OrderId From(Guid value) => new(value);
         
         private OrderId(Guid value) => Value = value;
 
