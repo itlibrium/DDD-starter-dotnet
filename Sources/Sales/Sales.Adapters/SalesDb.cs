@@ -1,6 +1,8 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
+using MyCompany.Crm.Sales.Orders;
+using MyCompany.Crm.Sales.Products;
 using TechnicalStuff.Postgres;
 
 namespace MyCompany.Crm.Sales
@@ -12,22 +14,13 @@ namespace MyCompany.Crm.Sales
         [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
         public class Order
         {
-            public Guid Id { get; set; }
-            public List<OrderItem> Items { get; set; }
-            public string PriceAgreementType { get; set; }
-            public DateTime? PriceAgreementExpiresOn { get; set; }
+            public OrderId Id { get; set; }
+            public List<Orders.Order.Item> Items { get; set; }
             public bool IsPlaced { get; set; }
-        }
-        
-        [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-        public class OrderItem
-        {
-            public Guid OrderId { get; set; }
-            public Guid ProductId { get; set; }
-            public int Amount { get; set; }
-            public string AmountUnit { get; set; }
-            public decimal? Price { get; set; }
-            public string Currency { get; set; }
+            public int Version { get; set; }
+
+            public Orders.Order.Item GetItemFor(ProductAmount productAmount) => 
+                Items.SingleOrDefault(i => i.ProductAmount.Equals(productAmount));
         }
     }
 }

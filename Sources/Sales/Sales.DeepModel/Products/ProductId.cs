@@ -1,12 +1,13 @@
 using System;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using MyCompany.Crm.TechnicalStuff.ValueObjects;
 
 namespace MyCompany.Crm.Sales.Products
 {
     [DddValueObject]
-    public readonly struct ProductId : IEquatable<ProductId>
+    public readonly struct ProductId : ValueObject<Guid>, IEquatable<ProductId>
     {
-        public Guid Value { get; }
+        public Guid Value { get; init; }
 
         public static ProductId New() => new(Guid.NewGuid());
         public static ProductId From(Guid value) => new(value);

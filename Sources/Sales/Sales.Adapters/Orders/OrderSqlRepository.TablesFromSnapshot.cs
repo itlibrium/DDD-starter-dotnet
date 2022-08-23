@@ -24,7 +24,7 @@ namespace MyCompany.Crm.Sales.Orders
                     throw new DesignError(SameAggregateRestoredMoreThanOnce);
                 var dbOrder = await _dbContext.Orders
                     .Include(o => o.Items)
-                    .SingleOrDefaultAsync(o => o.Id == id.Value);
+                    .SingleOrDefaultAsync(o => o.Id.Equals(id));
                 if (dbOrder is null) throw new DomainError();
                 var snapshot = CreateSnapshotFrom(dbOrder);
                 var order = Order.RestoreFrom(snapshot);
@@ -37,46 +37,25 @@ namespace MyCompany.Crm.Sales.Orders
                 var dbOrder = GetDbOrder(order);
                 var snapshot = order.GetSnapshot();
                 Merge(dbOrder, snapshot);
+                dbOrder.Version++;
                 return _dbContext.SaveChangesAsync();
             }
 
-            private static Order.Snapshot CreateSnapshotFrom(SalesDb.Order dbOrder) => new(
-                dbOrder.Id,
-                dbOrder.Items
-                    .Select(dbOrderItem => new Order.Snapshot.Item(
-                        dbOrderItem.ProductId,
-                        dbOrderItem.Amount,
-                        dbOrderItem.AmountUnit,
-                        dbOrderItem.Price,
-                        dbOrderItem.Currency))
-                    .ToImmutableArray(),
-                dbOrder.PriceAgreementType,
-                dbOrder.PriceAgreementExpiresOn,
-                dbOrder.IsPlaced);
+            private static Order.Snapshot CreateSnapshotFrom(SalesDb.Order dbOrder) =>
+                new(dbOrder.Id.Value, dbOrder.Items.ToImmutableArray(), dbOrder.IsPlaced);
 
             private SalesDb.Order GetDbOrder(Order order)
             {
-                if (_orders.TryGetValue(order.Id, out var dbOrder)) 
+                if (_orders.TryGetValue(order.Id, out var dbOrder))
                     return dbOrder;
-                dbOrder = new SalesDb.Order {Id = order.Id.Value};
+                dbOrder = new SalesDb.Order { Id = order.Id };
                 _dbContext.Orders.Add(dbOrder);
                 return dbOrder;
             }
-            
+
             private static void Merge(SalesDb.Order dbOrder, Order.Snapshot snapshot)
             {
-                dbOrder.Items = snapshot.Items
-                    .Select(item => new SalesDb.OrderItem
-                    {
-                        ProductId = item.ProductId,
-                        Amount = item.Amount,
-                        AmountUnit = item.AmountUnit,
-                        Price = item.Price,
-                        Currency = item.Currency
-                    })
-                    .ToList();
-                dbOrder.PriceAgreementType = snapshot.PriceAgreementType;
-                dbOrder.PriceAgreementExpiresOn = snapshot.PriceAgreementExpiresOn;
+                dbOrder.Items = snapshot.Items.ToList();
                 dbOrder.IsPlaced = snapshot.IsPlaced;
             }
         }

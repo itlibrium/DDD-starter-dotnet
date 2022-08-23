@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Immutable;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Orders.PriceChanges;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
@@ -13,35 +10,35 @@ namespace MyCompany.Crm.Sales.Orders
     public partial class Order
     {
         [DddValueObject]
-        private readonly struct PriceAgreement : IEquatable<PriceAgreement>
+        public class PriceAgreement : IEquatable<PriceAgreement>
         {
-            private readonly ImmutableArray<Quote> _quotes;
-            private readonly DateTime _expiresOn;
             public PriceAgreementType Type { get; }
-            public DateTime? ExpiresOn => Type == PriceAgreementType.Temporary ? _expiresOn : (DateTime?) null;
+            public Money? Price { get; }
+            public DateTime? ExpiresOn { get; }
 
-            public static PriceAgreement Non() => new(PriceAgreementType.Non, ImmutableArray<Quote>.Empty, default);
+            public static PriceAgreement Non() => new(PriceAgreementType.Non, null, default);
 
-            public static PriceAgreement Temporary(ImmutableArray<Quote> quotes, DateTime expiresOn) =>
-                new(PriceAgreementType.Temporary, quotes, expiresOn);
+            public static PriceAgreement Temporary(Money price, DateTime expiresOn) =>
+                new(PriceAgreementType.Temporary, price, expiresOn);
 
-            public static PriceAgreement Final(ImmutableArray<Quote> quotes) =>
-                new(PriceAgreementType.Final, quotes, default);
+            public static PriceAgreement Final(Money price) => new(PriceAgreementType.Final, price, default);
 
-            private PriceAgreement(PriceAgreementType type, ImmutableArray<Quote> quotes, DateTime expiresOn)
+            [JsonConstructor]
+            //https://github.com/dotnet/runtime/issues/44428
+            public PriceAgreement(PriceAgreementType type, Money? price, DateTime? expiresOn)
             {
-                _quotes = quotes;
                 Type = type;
-                _expiresOn = expiresOn;
+                Price = price;
+                ExpiresOn = expiresOn;
             }
 
-            public bool CanChangePrices(ImmutableArray<Quote> newQuotes,
-                DateTime now,
-                PriceChangesPolicy priceChangesPolicy) => Type switch
+            [SuppressMessage("ReSharper", "UnusedMember.Local", Justification = "EF")]
+            private PriceAgreement() { }
+
+            public bool CanChangePrice() => Type switch
             {
                 PriceAgreementType.Non => true,
-                PriceAgreementType.Temporary =>
-                ExpiresOn < now || priceChangesPolicy.CanChangePrices(_quotes, newQuotes),
+                PriceAgreementType.Temporary => true,
                 PriceAgreementType.Final => false,
                 _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
             };
@@ -54,23 +51,17 @@ namespace MyCompany.Crm.Sales.Orders
                 _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
             };
 
-            public Money? GetPrice(ProductAmount productAmount)
-            {
-                var quote = _quotes.SingleOrDefault(q => q.ProductAmount.Equals(productAmount));
-                return quote.Price.IsEmpty ? (Money?) null : quote.Price;
-            }
-
-            public bool Equals(PriceAgreement other) =>
+            public bool Equals(PriceAgreement? other) => other is not null &&
                 Type == other.Type &&
-                _expiresOn.Equals(other._expiresOn) &&
-                _quotes.HasSameItemsAs(other._quotes);
+                Price == other.Price &&
+                ExpiresOn == other.ExpiresOn;
 
-            public override bool Equals(object obj) => obj is PriceAgreement other && Equals(other);
+            public override bool Equals(object? obj) => obj is PriceAgreement other && Equals(other);
 
             public override int GetHashCode() => new HashCode()
-                .CombineWith(_quotes)
-                .CombineWith(_expiresOn)
                 .CombineWith(Type)
+                .CombineWith(Price)
+                .CombineWith(ExpiresOn)
                 .ToHashCode();
         }
     }

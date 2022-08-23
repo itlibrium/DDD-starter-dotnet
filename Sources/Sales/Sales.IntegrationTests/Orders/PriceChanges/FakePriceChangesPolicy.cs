@@ -5,6 +5,6 @@ namespace MyCompany.Crm.Sales.Orders.PriceChanges
 {
     public class FakePriceChangesPolicy : PriceChangesPolicy
     {
-        public bool CanChangePrices(ImmutableArray<Quote> actualQuotes, ImmutableArray<Quote> newQuotes) => true;
+        public bool CanChangePrices(ImmutableArray<Quote> oldQuotes, ImmutableArray<Quote> newQuotes) => true;
     }
 }

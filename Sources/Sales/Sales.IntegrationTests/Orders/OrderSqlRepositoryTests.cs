@@ -51,10 +51,10 @@ namespace MyCompany.Crm.Sales.Orders
             await TestRestoreFor(Order.New());
             await TestRestoreAfter(order => order.Add(productAmount1));
             await TestRestoreAfter(order => order.Add(productAmount2));
-            await TestRestoreAfter(order => order.ConfirmPrices(offer1, now.AddDays(2), now, _priceChangesPolicies));
+            await TestRestoreAfter(order => order.ConfirmPrices(offer1, _priceChangesPolicies, now.AddDays(2)));
             await TestRestoreAfter(order => order.Add(productAmount3));
             await TestRestoreAfter(order =>
-                order.ConfirmPrices(offer2, now.AddDays(3), now.AddDays(1), _priceChangesPolicies));
+                order.ConfirmPrices(offer2, _priceChangesPolicies, now.AddDays(3)));
             await TestRestoreAfter(order => order.Place(now.AddDays(2)));
             await TestRestoreFor(Order.FromOffer(offer2));
         }

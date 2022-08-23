@@ -54,7 +54,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
                 throw new DomainError();
             var priceChangesPolicy = await _priceChangesPolicies.ChooseFor(clientId);
             var now = _clock.Now;
-            order.ConfirmPrices(offer, now + _offerExpirationTime, now, priceChangesPolicy);
+            order.ConfirmPrices(offer, priceChangesPolicy, now + _offerExpirationTime);
             await _orders.Save(order);
             var offerConfirmed = CreateEventFrom(orderId, offer);
             _eventsOutbox.Add(offerConfirmed);

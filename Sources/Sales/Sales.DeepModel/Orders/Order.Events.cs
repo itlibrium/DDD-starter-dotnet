@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
-using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata;
 
 namespace MyCompany.Crm.Sales.Orders
@@ -34,112 +31,62 @@ namespace MyCompany.Crm.Sales.Orders
         {
             void Apply(Order order);
         }
-        
+
         [DomainEvent]
         public class CreatedFromOffer : Event
         {
-            public ImmutableArray<PriceConfirmation> PriceConfirmations { get; }
+            public ImmutableArray<Item> Items { get; }
 
-            public CreatedFromOffer(ImmutableArray<PriceConfirmation> priceConfirmations) => 
-                PriceConfirmations = priceConfirmations;
+            public CreatedFromOffer(ImmutableArray<Item> items) => Items = items;
 
             public void Apply(Order order)
             {
-                var quotes = new List<Quote>();
-                foreach (var priceConfirmation in PriceConfirmations)
-                {
-                    var productId = ProductId.From(priceConfirmation.ProductId);
-                    var amount = Amount.Of(
-                        priceConfirmation.Amount,
-                        priceConfirmation.AmountUnit.ToDomainModel<AmountUnit>());
-                    order._items.Add(
-                        ProductUnit.Of(
-                            productId,
-                            priceConfirmation.AmountUnit.ToDomainModel<AmountUnit>()),
-                        amount);
-                    quotes.Add(Quote.For(
-                        ProductAmount.Of(productId, amount),
-                        Money.Of(
-                            priceConfirmation.Price,
-                            priceConfirmation.Currency.ToDomainModel<Currency>())));
-                }
-                order._priceAgreement = PriceAgreement.Final(quotes.ToImmutableArray());
+                foreach (var item in Items)
+                    order._items.Add(item.ProductAmount.ProductUnit, item);
             }
         }
 
         [DomainEvent]
         public class ProductAmountAdded : Event
         {
-            public Guid ProductId { get; }
-            public string AmountUnit { get; }
-            public int Amount { get; }
+            public ProductAmount ProductAmount { get; }
 
-            public ProductAmountAdded(Guid productId, string amountUnit, int amount)
-            {
-                ProductId = productId;
-                AmountUnit = amountUnit;
-                Amount = amount;
-            }
+            public ProductAmountAdded(ProductAmount productAmount) => ProductAmount = productAmount;
 
-            public void Apply(Order order)
-            {
-                var amountUnit = AmountUnit.ToDomainModel<AmountUnit>();
-                order.AddItem(
-                    ProductUnit.Of(
-                        Products.ProductId.From(ProductId),
-                        amountUnit),
-                    Products.Amount.Of(
-                        Amount,
-                        amountUnit));
-            }
+            public void Apply(Order order) => order.AddToItem(ProductAmount);
         }
 
         [DomainEvent]
         public class PricesConfirmed : Event
         {
-            public DateTime PriceAgreementExpiresOn { get; }
-            public ImmutableArray<PriceConfirmation> PriceConfirmations { get; }
+            public ImmutableArray<Quote> Quotes { get; }
+            public PriceAgreementType AgreementType { get; }
+            public DateTime? AgreementExpiresOn { get; }
 
-            public PricesConfirmed(DateTime priceAgreementExpiresOn,
-                ImmutableArray<PriceConfirmation> priceConfirmations)
+            public PricesConfirmed(ImmutableArray<Quote> quotes, PriceAgreementType agreementType, 
+                DateTime? agreementExpiresOn)
             {
-                PriceAgreementExpiresOn = priceAgreementExpiresOn;
-                PriceConfirmations = priceConfirmations;
+                switch (agreementType)
+                {
+                    case PriceAgreementType.Non:
+                        throw new ArgumentException();
+                    case PriceAgreementType.Temporary:
+                        if (!agreementExpiresOn.HasValue)
+                            throw new ArgumentException();
+                        break;
+                    case PriceAgreementType.Final:
+                        if (agreementExpiresOn.HasValue)
+                            throw new ArgumentException();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(agreementType), agreementType, null);
+                }
+                Quotes = quotes;
+                AgreementType = agreementType;
+                AgreementExpiresOn = agreementExpiresOn;
             }
 
-            public void Apply(Order order)
-            {
-                var quotes = PriceConfirmations
-                    .Select(confirmation => Quote.For(
-                        ProductAmount.Of(
-                            ProductId.From(confirmation.ProductId),
-                            Amount.Of(
-                                confirmation.Amount,
-                                confirmation.AmountUnit.ToDomainModel<AmountUnit>())),
-                        Money.Of(
-                            confirmation.Price,
-                            confirmation.Currency.ToDomainModel<Currency>())))
-                    .ToImmutableArray();
-                order._priceAgreement = PriceAgreement.Temporary(quotes, PriceAgreementExpiresOn);
-            }
-        }
-
-        public class PriceConfirmation
-        {
-            public Guid ProductId { get; }
-            public int Amount { get; }
-            public string AmountUnit { get; }
-            public decimal Price { get; }
-            public string Currency { get; }
-
-            public PriceConfirmation(Guid productId, int amount, string amountUnit, decimal price, string currency)
-            {
-                ProductId = productId;
-                Amount = amount;
-                AmountUnit = amountUnit;
-                Price = price;
-                Currency = currency;
-            }
+            public void Apply(Order order) => order.ApplyPriceAgreements(Quotes, AgreementType, AgreementExpiresOn);
         }
 
         [DomainEvent]

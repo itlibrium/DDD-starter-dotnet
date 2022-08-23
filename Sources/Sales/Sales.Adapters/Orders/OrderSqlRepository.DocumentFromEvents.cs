@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Marten;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
@@ -17,8 +14,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class DocumentFromEvents : OrderRepository
         {
-            private readonly Dictionary<OrderId, (OrderDoc Doc, Guid Version)>
-                _orders = new();
+            private readonly Dictionary<OrderId, (OrderDoc Doc, Guid Version)> _orders = new();
 
             private readonly IDocumentSession _session;
 
@@ -30,7 +26,7 @@ namespace MyCompany.Crm.Sales.Orders
                     throw new DesignError(SameAggregateRestoredMoreThanOnce);
                 var orderDoc = await _session.LoadAsync<OrderDoc>(id.Value);
                 if (orderDoc is null) throw new DomainError();
-                var order = RestoreFrom(orderDoc);
+                var order = Order.Restore(OrderId.From(orderDoc.Id), orderDoc.Items, orderDoc.IsPlaced);
                 var metadata = await _session.MetadataForAsync(orderDoc);
                 _orders.Add(id, (orderDoc, metadata.CurrentVersion));
                 return order;
@@ -39,7 +35,7 @@ namespace MyCompany.Crm.Sales.Orders
             public Task Save(Order order)
             {
                 // TODO: document versioning
-                var orderDoc = GetOrderDoc(order);
+                var orderDoc = GetOrderDocFor(order);
                 foreach (var newEvent in order.NewEvents)
                 {
                     switch (newEvent)
@@ -65,129 +61,57 @@ namespace MyCompany.Crm.Sales.Orders
                 return _session.SaveChangesAsync();
             }
 
-            private static Order RestoreFrom(OrderDoc orderDoc)
-            {
-                var priceAgreementType = orderDoc.PriceAgreementType.ToDomainModel<PriceAgreementType>();
-                return priceAgreementType switch
-                {
-                    PriceAgreementType.Non => RestoreWithNoPriceAgreement(orderDoc),
-                    PriceAgreementType.Temporary => RestoreWithTemporaryPriceAgreement(orderDoc),
-                    PriceAgreementType.Final => RestoreWithFinalPriceAgreement(orderDoc),
-                    _ => throw new ArgumentOutOfRangeException(nameof(priceAgreementType), priceAgreementType, null)
-                };
-            }
-
-            private static Order RestoreWithNoPriceAgreement(OrderDoc orderDoc) => Order.Restore(
-                OrderId.From(orderDoc.Id),
-                orderDoc.Items
-                    .Select(dbOrderItem => ProductAmount.Of(ProductId.From(dbOrderItem.ProductId),
-                        Amount.Of(dbOrderItem.Amount, dbOrderItem.AmountUnit.ToDomainModel<AmountUnit>())))
-                    .ToImmutableArray(),
-                orderDoc.IsPlaced);
-
-            private static Order RestoreWithTemporaryPriceAgreement(OrderDoc orderDoc)
-            {
-                if (!orderDoc.PriceAgreementExpiresOn.HasValue) throw new DomainError();
-                return Order.Restore(
-                    OrderId.From(orderDoc.Id),
-                    CreateQuotesFrom(orderDoc.Items),
-                    orderDoc.PriceAgreementExpiresOn.Value,
-                    orderDoc.IsPlaced);
-            }
-
-            private static Order RestoreWithFinalPriceAgreement(OrderDoc orderDoc) => Order.Restore(
-                OrderId.From(orderDoc.Id),
-                CreateQuotesFrom(orderDoc.Items),
-                orderDoc.IsPlaced);
-
-            private static ImmutableArray<Quote> CreateQuotesFrom(IEnumerable<OrderItemDoc> orderItemDocs) =>
-                orderItemDocs.Select(orderItemDoc => CreateQuoteFrom(orderItemDoc)).ToImmutableArray();
-
-            private static Quote CreateQuoteFrom(OrderItemDoc orderItemDoc)
-            {
-                if (!orderItemDoc.Price.HasValue || orderItemDoc.Currency is null) throw new DomainError();
-                return Quote.For(
-                    ProductAmount.Of(ProductId.From(orderItemDoc.ProductId),
-                        Amount.Of(orderItemDoc.Amount, orderItemDoc.AmountUnit.ToDomainModel<AmountUnit>())),
-                    Money.Of(orderItemDoc.Price.Value, orderItemDoc.Currency.ToDomainModel<Currency>()));
-            }
-
-            private OrderDoc GetOrderDoc(Order order)
-            {
-                if (_orders.TryGetValue(order.Id, out var orderData))
-                    return orderData.Doc;
-                return new OrderDoc
-                {
-                    Id = order.Id.Value,
-                    PriceAgreementType = nameof(PriceAgreementType.Non)
-                };
-            }
+            private OrderDoc GetOrderDocFor(Order order) => _orders.TryGetValue(order.Id, out var orderData)
+                ? orderData.Doc
+                : new OrderDoc { Id = order.Id.Value };
 
             private static void Merge(OrderDoc orderDoc, Order.PricesConfirmed pricesConfirmed)
             {
-                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Temporary);
-                orderDoc.PriceAgreementExpiresOn = pricesConfirmed.PriceAgreementExpiresOn;
-                orderDoc.Items = CreateOrderItemDocsFrom(pricesConfirmed.PriceConfirmations);
+                foreach (var quote in pricesConfirmed.Quotes)
+                {
+                    var item = orderDoc.GetItemFor(quote.ProductAmount);
+                    if (item is null)
+                        throw new CorruptedDataError();
+                    switch (pricesConfirmed.AgreementType)
+                    {
+                        case PriceAgreementType.Temporary:
+                            item.ConfirmPrice(quote.Price, pricesConfirmed.AgreementExpiresOn!.Value);
+                            break;
+                        case PriceAgreementType.Final:
+                            item.ConfirmPrice(quote.Price);
+                            break;
+                        case PriceAgreementType.Non:
+                            throw new CorruptedDataError();
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
             }
 
             private static void Merge(OrderDoc orderDoc, Order.ProductAmountAdded productAmountAdded)
             {
-                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Non);
-                orderDoc.Items.ForEach(item =>
-                {
-                    item.Price = null;
-                    item.Currency = null;
-                });
-                orderDoc.Items.Add(new OrderItemDoc()
-                {
-                    ProductId = productAmountAdded.ProductId,
-                    Amount = productAmountAdded.Amount,
-                    AmountUnit = productAmountAdded.AmountUnit,
-                    Price = null,
-                    Currency = null
-                });
+                var productAmount = productAmountAdded.ProductAmount;
+                var item = orderDoc.GetItemFor(productAmount);
+                if (item is null)
+                    orderDoc.Items.Add(Order.Item.New(productAmount));
+                else
+                    item.Add(productAmount);
             }
 
-            private static void Merge(OrderDoc orderDoc, Order.CreatedFromOffer createdFromOffer)
-            {
-                orderDoc.PriceAgreementType = nameof(PriceAgreementType.Final);
-                orderDoc.PriceAgreementExpiresOn = null;
-                orderDoc.Items = CreateOrderItemDocsFrom(createdFromOffer.PriceConfirmations);
-                orderDoc.IsPlaced = true;
-            }
+            private static void Merge(OrderDoc orderDoc, Order.CreatedFromOffer createdFromOffer) => 
+                orderDoc.Items.AddRange(createdFromOffer.Items);
 
-            private static List<OrderItemDoc> CreateOrderItemDocsFrom(
-                ImmutableArray<Order.PriceConfirmation> priceConfirmations) =>
-                priceConfirmations
-                    .Select(priceConfirmation => new OrderItemDoc
-                    {
-                        ProductId = priceConfirmation.ProductId,
-                        Amount = priceConfirmation.Amount,
-                        AmountUnit = priceConfirmation.AmountUnit,
-                        Price = priceConfirmation.Price,
-                        Currency = priceConfirmation.Currency
-                    })
-                    .ToList();
-            
             private Guid GetCurrentVersionFor(Order order) =>
                 _orders.TryGetValue(order.Id, out var orderData) ? orderData.Version : Guid.Empty;
 
             public class OrderDoc
             {
                 public Guid Id { get; set; }
-                public List<OrderItemDoc> Items { get; set; } = new();
-                public string PriceAgreementType { get; set; }
-                public DateTime? PriceAgreementExpiresOn { get; set; }
+                public List<Order.Item> Items { get; set; } = new();
                 public bool IsPlaced { get; set; }
-            }
 
-            public class OrderItemDoc
-            {
-                public Guid ProductId { get; set; }
-                public int Amount { get; set; }
-                public string AmountUnit { get; set; }
-                public decimal? Price { get; set; }
-                public string Currency { get; set; }
+                public Order.Item GetItemFor(ProductAmount productAmount) => 
+                    Items.SingleOrDefault(i => i.ProductAmount.Equals(productAmount));
             }
         }
     }

@@ -36,8 +36,7 @@ void ConfigureSerialization()
 
 void ConfigureApiServices()
 {
-    builder.Services.AddControllers()
-        .AddNewtonsoftJson();
+    builder.Services.AddControllers();
     // TODO: additional media types in Open API documents
 
     // Versioning whole API is done by path segment (manually in Route attribute).

@@ -7,6 +7,6 @@ namespace MyCompany.Crm.Sales.Orders.PriceChanges
     [DddPolicy]
     public interface PriceChangesPolicy
     {
-        bool CanChangePrices(ImmutableArray<Quote> actualQuotes, ImmutableArray<Quote> newQuotes);
+        bool CanChangePrices(ImmutableArray<Quote> oldQuotes, ImmutableArray<Quote> newQuotes);
     }
 }

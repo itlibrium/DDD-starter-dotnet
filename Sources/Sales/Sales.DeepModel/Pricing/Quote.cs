@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
@@ -12,8 +13,9 @@ namespace MyCompany.Crm.Sales.Pricing
         public Money Price { get; }
 
         public static Quote For(ProductAmount productAmount, Money price) => new(productAmount, price);
-        
-        private Quote(ProductAmount productAmount, Money price)
+
+        [JsonConstructor]
+        public Quote(ProductAmount productAmount, Money price)
         {
             ProductAmount = productAmount;
             Price = price;
@@ -24,12 +26,14 @@ namespace MyCompany.Crm.Sales.Pricing
 
         internal Quote Apply(QuoteModifier quoteModifier) => quoteModifier.ApplyOn(this);
 
+        public Quote ChangePrice(Money newPrice) => new(ProductAmount, newPrice);
+
         public static Quote operator +(Quote x, Quote y) => For(x.ProductAmount + y.ProductAmount, x.Price + y.Price);
 
         public bool Equals(Quote other) => (ProductAmount, Price).Equals((other.ProductAmount, other.Price));
-        public override bool Equals(object obj) => obj is Quote other && Equals(other);
+        public override bool Equals(object? obj) => obj is Quote other && Equals(other);
         public override int GetHashCode() => (ProductAmount, Price).GetHashCode();
 
-        public override string ToString() => $"{ProductAmount.ToString()} - {Price.ToString()}";
+        public override string ToString() => $"{ProductAmount} - {Price}";
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 
@@ -38,11 +39,26 @@ namespace MyCompany.Crm.TechnicalStuff
 
         public static bool HasSameItemsAs<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             IEnumerable<KeyValuePair<TKey, TValue>> other)
+            where TValue : IEquatable<TValue>
         {
             var count = 0;
             foreach (var (key, otherValue) in other)
             {
                 if (!dictionary.TryGetValue(key, out var value) || !otherValue.Equals(value))
+                    return false;
+                count++;
+            }
+            return dictionary.Count == count;
+        }
+        
+        public static bool HasSameItemsAs<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
+            IEnumerable<KeyValuePair<TKey, TValue>> other,
+            Func<TValue, TValue, bool> comparer)
+        {
+            var count = 0;
+            foreach (var (key, otherValue) in other)
+            {
+                if (!dictionary.TryGetValue(key, out var value) || !comparer(value, otherValue))
                     return false;
                 count++;
             }

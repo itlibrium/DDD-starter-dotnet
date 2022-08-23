@@ -7,33 +7,17 @@ using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 namespace MyCompany.Crm.Sales.Commons
 {
     [DddValueObject]
-    public readonly struct Money : IEquatable<Money>
+    public record Money(decimal Value, Currency Currency)
     {
-        public decimal Value { get; }
-        public Currency Currency { get; }
-
-        public bool IsEmpty => Currency == Currency.Undefined;
-
-        public static Money Empty() => new();
         public static Money Zero(Currency currency) => new(0, currency);
         public static Money Of(decimal value, Currency currency) => new(value, currency);
-
-        private Money(decimal value, Currency currency)
-        {
-            if (currency == Currency.Undefined)
-                throw new ArgumentException($"Currency can not be {nameof(Currency.Undefined)}", nameof(currency));
-            Value = value;
-            Currency = currency;
-        }
 
         public static Money operator +(Money x, Money y) => Calculate(x, y, (a, b) => a + b);
         public static Money operator -(Money x, Money y) => Calculate(x, y, (a, b) => a - b);
 
         private static Money Calculate(Money x, Money y, Func<decimal, decimal, decimal> calculate)
         {
-            if (x.IsEmpty) return y;
-            if (y.IsEmpty) return x;
-            CheckCurrencies(x, y, true);
+            CheckCurrencies(x, y);
             return new Money(calculate(x.Value, y.Value), x.Currency);
         }
 
@@ -44,20 +28,17 @@ namespace MyCompany.Crm.Sales.Commons
 
         public static Money operator *(Money x, Percentage y) => Calculate(x, y.Fraction, (a, b) => a * b);
 
-        private static Money Calculate<T>(Money x, T y, Func<decimal, T, decimal> calculate) => x.IsEmpty
-            ? Empty()
-            : new Money(calculate(x.Value, y), x.Currency);
+        private static Money Calculate<T>(Money x, T y, Func<decimal, T, decimal> calculate) => 
+            x with { Value = calculate(x.Value, y) };
 
         public static Percentage operator /(Money x, Money y)
         {
-            CheckCurrencies(x, y, false);
+            CheckCurrencies(x, y);
             return Percentage.Of((int) Math.Round((x.Value / y.Value) * 100, 0));
         }
 
         public static Money Max(Money x, Money y) => x > y ? x : y;
 
-        public static bool operator ==(Money x, Money y) => x.Equals(y);
-        public static bool operator !=(Money x, Money y) => !x.Equals(y);
         public static bool operator >(Money x, Money y) => Compare(x, y, (a, b) => a > b);
         public static bool operator <(Money x, Money y) => Compare(x, y, (a, b) => a < b);
         public static bool operator >=(Money x, Money y) => Compare(x, y, (a, b) => a >= b);
@@ -65,22 +46,16 @@ namespace MyCompany.Crm.Sales.Commons
 
         private static bool Compare(Money x, Money y, Func<decimal, decimal, bool> compare)
         {
-            CheckCurrencies(x, y, false);
+            CheckCurrencies(x, y);
             return compare(x.Value, y.Value);
         }
 
         [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
-        private static void CheckCurrencies(Money x, Money y, bool allowEmpty)
+        private static void CheckCurrencies(Money x, Money y)
         {
-            if (!allowEmpty && (x.IsEmpty || y.IsEmpty))
-                throw new DomainError();
             if (x.Currency != y.Currency)
                 throw new DomainError();
         }
-
-        public override bool Equals(object obj) => obj is Money other && Equals(other);
-        public bool Equals(Money other) => (Value, Currency).Equals((other.Value, other.Currency));
-        public override int GetHashCode() => (Value, Currency).GetHashCode();
 
         public override string ToString() =>
             $"{Value.ToString("F", CultureInfo.InvariantCulture)} {Currency.ToCode()}";
