@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales;
+using MyCompany.Crm.Sales.Database;
+using MyCompany.Crm.Sales.Database.Sql.Documents;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.TechnicalStuff.Json.Json;
@@ -46,8 +48,7 @@ namespace MyCompany.Crm.DI.Modules
                         options.Events.AddEventType(type);
                         options.Events.MapEventType(type, name);
                     }
-                    options.Schema.For<Order.Snapshot>().UseOptimisticConcurrency(true);
-                    options.Schema.For<OrderSqlRepository.DocumentFromEvents.OrderDoc>().UseOptimisticConcurrency(true);
+                    options.Schema.For<DbOrder>().UseOptimisticConcurrency(true);
                 })
                 .BuildSessionsWith<LightweightSessionFactory>()
                 .InitializeStore();
@@ -56,7 +57,7 @@ namespace MyCompany.Crm.DI.Modules
             services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();
             services.AddScoped<PostgresOutboxRepository<SalesDb>>();
             services.AddStatelessComponentsFrom(SalesDeepModel, SalesProcessModel, SalesAdapters);
-            services.AddScoped<OrderRepository, OrderSqlRepository.TablesFromEvents>();
+            services.AddScoped<OrderRepository, OrderSqlRepository.EF>();
             services.AddScoped<AllowAnyPriceChanges>();
             services.AddScoped<AllowPriceChangesIfTotalPriceIsLower>();
             return services;

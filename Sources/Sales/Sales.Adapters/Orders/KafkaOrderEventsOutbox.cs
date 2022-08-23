@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using MyCompany.Crm.Sales.Database;
 using MyCompany.Crm.TechnicalStuff.Outbox;
 using MyCompany.Crm.TechnicalStuff.Outbox.Kafka;
 using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;

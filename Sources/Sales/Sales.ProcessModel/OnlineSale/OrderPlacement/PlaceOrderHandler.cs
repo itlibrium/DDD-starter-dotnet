@@ -40,7 +40,8 @@ namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
                 offer.ProductAmounts,
                 offer.Currency);
             if (!offer.Equals(currentOffer)) throw new DomainError();
-            var order = Order.FromOffer(offer);
+            var order = _orders.New();
+            order.ApplyOffer(offer);
             var orderHeader = new OrderHeader
             {
                 Id = order.Id.Value, 

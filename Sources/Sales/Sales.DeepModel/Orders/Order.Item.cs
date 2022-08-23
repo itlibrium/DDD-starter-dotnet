@@ -8,7 +8,7 @@ namespace MyCompany.Crm.Sales.Orders;
 
 public partial class Order
 {
-    public class Item
+    public class Item : IEquatable<Item>
     {
         public ProductAmount ProductAmount { get; private set; }
         public PriceAgreement PriceAgreement { get; private set; }
@@ -35,5 +35,10 @@ public partial class Order
 
         public void ConfirmPrice(Money price, DateTime expiresOn) => 
             PriceAgreement = PriceAgreement.Temporary(price, expiresOn);
+
+        public bool Equals(Item? other) =>
+            other is not null &&
+            ProductAmount.Equals(other.ProductAmount) &&
+            PriceAgreement.Equals(other.PriceAgreement);
     }
 }

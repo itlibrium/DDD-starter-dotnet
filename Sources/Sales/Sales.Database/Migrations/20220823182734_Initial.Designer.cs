@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyCompany.Crm.Sales.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    [Migration("20220823110853_Initial")]
+    [Migration("20220823182734_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,23 @@ namespace MyCompany.Crm.Sales.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("MyCompany.Crm.Sales.Database.Sql.EF.DbOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("IsPlaced")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
 
             modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
                 {
@@ -73,58 +90,7 @@ namespace MyCompany.Crm.Sales.Migrations
                     b.ToTable("OrderNotes");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.SalesDb+Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
-
-                    b.Property<bool>("IsPlaced")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("Version")
-                        .IsConcurrencyToken()
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
-                {
-                    b.OwnsOne("MyCompany.Crm.Sales.Orders.InvoicingDetails", "InvoicingDetails", b1 =>
-                        {
-                            b1.Property<Guid>("OrderHeaderId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("TaxId")
-                                .IsRequired()
-                                .HasColumnType("text");
-
-                            b1.HasKey("OrderHeaderId");
-
-                            b1.ToTable("OrderHeaders");
-
-                            b1.WithOwner()
-                                .HasForeignKey("OrderHeaderId");
-                        });
-
-                    b.Navigation("InvoicingDetails")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
-                {
-                    b.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader", null)
-                        .WithMany("Notes")
-                        .HasForeignKey("OrderHeaderId");
-                });
-
-            modelBuilder.Entity("MyCompany.Crm.Sales.SalesDb+Order", b =>
+            modelBuilder.Entity("MyCompany.Crm.Sales.Database.Sql.EF.DbOrder", b =>
                 {
                     b.OwnsMany("MyCompany.Crm.Sales.Orders.Order+Item", "Items", b1 =>
                         {
@@ -242,6 +208,40 @@ namespace MyCompany.Crm.Sales.Migrations
                         });
 
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
+                {
+                    b.OwnsOne("MyCompany.Crm.Sales.Orders.InvoicingDetails", "InvoicingDetails", b1 =>
+                        {
+                            b1.Property<Guid>("OrderHeaderId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("TaxId")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("OrderHeaderId");
+
+                            b1.ToTable("OrderHeaders");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderHeaderId");
+                        });
+
+                    b.Navigation("InvoicingDetails")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
+                {
+                    b.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader", null)
+                        .WithMany("Notes")
+                        .HasForeignKey("OrderHeaderId");
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>

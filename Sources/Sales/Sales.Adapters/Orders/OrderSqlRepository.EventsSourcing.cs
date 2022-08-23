@@ -26,6 +26,13 @@ namespace MyCompany.Crm.Sales.Orders
 
             public EventsSourcing(IDocumentSession documentSession) => _session = documentSession;
 
+            public Order New()
+            {
+                var id = OrderId.New();
+                var order = Create(id);
+                return order;
+            }
+            
             public async Task<Order> GetBy(OrderId id)
             {
                 if (_orderVersions.ContainsKey(id))
@@ -36,7 +43,10 @@ namespace MyCompany.Crm.Sales.Orders
                 var orderEvents = events
                     .Select(e => e.Data)
                     .Cast<Order.Event>();
-                return Order.RestoreFrom(id, orderEvents);
+                var order = Create(id);
+                foreach (var orderEvent in orderEvents)
+                    orderEvent.Apply(order);
+                return order;
             }
 
             public async Task Save(Order order)
@@ -48,9 +58,18 @@ namespace MyCompany.Crm.Sales.Orders
                     order.NewEvents);
                 await _session.SaveChangesAsync();
             }
+            
+            private static Order Create(OrderId id) => Order.RestoreFrom(new Data { Id = id });
 
             private long CalculateExpectedVersionFor(Order order) =>
                 (_orderVersions.TryGetValue(order.Id, out var version) ? version : 0) + order.NewEvents.Count;
+        }
+        
+        private class Data : Order.Data
+        {
+            public OrderId Id { get; set; }
+            public bool IsPlaced { get; set; }
+            public List<Order.Item> Items { get; } = new();
         }
     }
 }

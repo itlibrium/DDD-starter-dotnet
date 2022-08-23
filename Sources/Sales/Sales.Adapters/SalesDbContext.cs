@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using MyCompany.Crm.Sales.Database.Sql.EF;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.Ef.ValueConverters;
 using MyCompany.Crm.TechnicalStuff.ValueObjects;
@@ -9,7 +10,7 @@ namespace MyCompany.Crm.Sales
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     public class SalesDbContext : DbContext
     {
-        public DbSet<SalesDb.Order> Orders { get; set; }
+        public DbSet<DbOrder> Orders { get; set; }
         public DbSet<OrderHeader> OrderHeaders { get; set; }
         public DbSet<OrderNote> OrderNotes { get; set; }
 
@@ -24,7 +25,7 @@ namespace MyCompany.Crm.Sales
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SalesDb.Order>(order =>
+            modelBuilder.Entity<DbOrder>(order =>
             {
                 order.HasKey(o => o.Id);
                 order.Property(o => o.Version).IsConcurrencyToken();

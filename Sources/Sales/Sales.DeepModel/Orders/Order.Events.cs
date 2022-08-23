@@ -12,14 +12,6 @@ namespace MyCompany.Crm.Sales.Orders
         private readonly List<Event> _newEvents = new();
         public IReadOnlyList<Event> NewEvents => _newEvents.AsReadOnly();
 
-        public static Order RestoreFrom(OrderId id, IEnumerable<Event> events)
-        {
-            var order = New(id);
-            foreach (var @event in events)
-                @event.Apply(order);
-            return order;
-        }
-
         private void AddAndApply(Event @event)
         {
             @event.Apply(this);
@@ -42,7 +34,7 @@ namespace MyCompany.Crm.Sales.Orders
             public void Apply(Order order)
             {
                 foreach (var item in Items)
-                    order._items.Add(item.ProductAmount.ProductUnit, item);
+                    order._data.Items.Add(item);
             }
         }
 
@@ -92,7 +84,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DomainEvent]
         public class Placed : Event
         {
-            public void Apply(Order order) => order._isPlaced = true;
+            public void Apply(Order order) => order._data.IsPlaced = true;
         }
     }
 }

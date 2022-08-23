@@ -1,25 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace MyCompany.Crm.TechnicalStuff
 {
     public static class EqualsExtensions
     {
-        public static bool HasSameItemsAs<T>(this ImmutableArray<T> array, ImmutableArray<T> other)
+        public static bool HasSameItemsAs<T>(this IList<T> collection, IList<T> other)
+            where T : IEquatable<T>
         {
-            var length = array.Length;
-            if (other.Length != length) return false;
-            var counts = new Dictionary<T, int>(length);
-            for (var i = 0; i < length; i++)
+            if (other.Count != collection.Count) 
+                return false;
+            var counts = new Dictionary<T, int>(collection.Count);
+            for (var i = 0; i < collection.Count; i++)
             {
-                var item = array[i];
+                var item = collection[i];
                 if (counts.ContainsKey(item))
                     counts[item]++;
                 else
                     counts.Add(item, 1);
             }
-            for (var i = 0; i < length; i++)
+            for (var i = 0; i < collection.Count; i++)
             {
                 var item = other[i];
                 if (counts.TryGetValue(item, out var count))
@@ -36,7 +36,7 @@ namespace MyCompany.Crm.TechnicalStuff
             }
             return counts.Count == 0;
         }
-
+        
         public static bool HasSameItemsAs<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             IEnumerable<KeyValuePair<TKey, TValue>> other)
             where TValue : IEquatable<TValue>

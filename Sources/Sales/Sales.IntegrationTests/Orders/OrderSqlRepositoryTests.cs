@@ -27,18 +27,14 @@ namespace MyCompany.Crm.Sales.Orders
         public OrderSqlRepositoryTests(WebApplicationFactory<Program> appFactory) => _serviceProvider = appFactory
             .WithWebHostBuilder(builder => builder
                 .ConfigureServices(services => services
-                    .AddScoped<OrderSqlRepository.TablesFromSnapshot>()
-                    .AddScoped<OrderSqlRepository.TablesFromEvents>()
-                    .AddScoped<OrderSqlRepository.DocumentFromSnapshot>()
-                    .AddScoped<OrderSqlRepository.DocumentFromEvents>()
+                    .AddScoped<OrderSqlRepository.EF>()
+                    .AddScoped<OrderSqlRepository.Document>()
                     .AddScoped<OrderSqlRepository.EventsSourcing>()))
             .Services;
 
         [Theory]
-        [InlineData(nameof(OrderSqlRepository.TablesFromSnapshot))]
-        [InlineData(nameof(OrderSqlRepository.TablesFromEvents))]
-        [InlineData(nameof(OrderSqlRepository.DocumentFromSnapshot))]
-        [InlineData(nameof(OrderSqlRepository.DocumentFromEvents))]
+        [InlineData(nameof(OrderSqlRepository.EF))]
+        [InlineData(nameof(OrderSqlRepository.Document))]
         [InlineData(nameof(OrderSqlRepository.EventsSourcing))]
         public async Task RestoredOrderIsEqualToOriginal(string repositoryImplementation)
         {
@@ -48,30 +44,27 @@ namespace MyCompany.Crm.Sales.Orders
             var offer2 = CreateOfferFor(productAmount1, productAmount2, productAmount3);
             var now = _clock.Now;
 
-            await TestRestoreFor(Order.New());
+            await TestRestoreForNewOrder();
             await TestRestoreAfter(order => order.Add(productAmount1));
             await TestRestoreAfter(order => order.Add(productAmount2));
             await TestRestoreAfter(order => order.ConfirmPrices(offer1, _priceChangesPolicies, now.AddDays(2)));
             await TestRestoreAfter(order => order.Add(productAmount3));
-            await TestRestoreAfter(order =>
-                order.ConfirmPrices(offer2, _priceChangesPolicies, now.AddDays(3)));
+            await TestRestoreAfter(order => order.ConfirmPrices(offer2, _priceChangesPolicies, now.AddDays(3)));
             await TestRestoreAfter(order => order.Place(now.AddDays(2)));
-            await TestRestoreFor(Order.FromOffer(offer2));
+            await TestRestoreForOrderFromOffer(offer2);
         }
 
         [Theory]
-        [InlineData(nameof(OrderSqlRepository.TablesFromSnapshot))]
-        [InlineData(nameof(OrderSqlRepository.TablesFromEvents))]
-        [InlineData(nameof(OrderSqlRepository.DocumentFromSnapshot))]
-        [InlineData(nameof(OrderSqlRepository.DocumentFromEvents))]
+        [InlineData(nameof(OrderSqlRepository.EF))]
+        [InlineData(nameof(OrderSqlRepository.Document))]
         [InlineData(nameof(OrderSqlRepository.EventsSourcing))]
         public async Task CanNotSaveOrderIfVersionHasChangedInDb(string repositoryImplementation)
         {
             _repositoryImplementation = repositoryImplementation;
-            var id = OrderId.New();
             using var scope0 = CreateScope();
-            scope0.SetOrder(Order.New(id));
+            scope0.CreateOrder();
             await scope0.SaveOrder();
+            var id = scope0.Order.Id;
 
             var productAmount = ProductAmount.Of(ProductId.New(), Amount.Of(3, AmountUnit.Box));
             using var scope1 = CreateScope();
@@ -85,12 +78,10 @@ namespace MyCompany.Crm.Sales.Orders
             await action1.Should().NotThrowAsync();
             switch (repositoryImplementation)
             {
-                case nameof(OrderSqlRepository.TablesFromSnapshot):
-                case nameof(OrderSqlRepository.TablesFromEvents):
+                case nameof(OrderSqlRepository.EF):
                     await action2.Should().ThrowExactlyAsync<DbUpdateConcurrencyException>();
                     break;
-                case nameof(OrderSqlRepository.DocumentFromSnapshot):
-                case nameof(OrderSqlRepository.DocumentFromEvents):
+                case nameof(OrderSqlRepository.Document):
                     await action2.Should().ThrowExactlyAsync<ConcurrencyException>();
                     break;
                 case nameof(OrderSqlRepository.EventsSourcing):
@@ -125,10 +116,18 @@ namespace MyCompany.Crm.Sales.Orders
                 productAmount,
                 Money.Of((index + 1) * 1.23m, Currency.PLN))));
 
-        private async Task TestRestoreFor(Order order)
+        private async Task TestRestoreForNewOrder()
         {
             SetNewScope();
-            _scope.SetOrder(order);
+            _scope.CreateOrder();
+            await TestRestore();
+        }
+
+        private async Task TestRestoreForOrderFromOffer(Offer offer)
+        {
+            SetNewScope();
+            _scope.CreateOrder();
+            _scope.Order.ApplyOffer(offer);
             await TestRestore();
         }
 
@@ -153,7 +152,7 @@ namespace MyCompany.Crm.Sales.Orders
             _scope?.Dispose();
             _scope = CreateScope();
         }
-        
+
         private Scope CreateScope() => new(_serviceProvider, _repositoryImplementation);
 
         public void Dispose() => _scope?.Dispose();
@@ -170,12 +169,7 @@ namespace MyCompany.Crm.Sales.Orders
                 _repository = CreateRepository(_scope, repositoryImplementation);
             }
 
-            public void SetOrder(Order order)
-            {
-                if (Order != null)
-                    throw new InvalidOperationException("Order is already set");
-                Order = order;
-            }
+            public void CreateOrder() => Order = _repository.New();
 
             public async Task LoadOrder(OrderId id)
             {
@@ -189,26 +183,20 @@ namespace MyCompany.Crm.Sales.Orders
             public Task SaveOrder() => _repository.Save(Order);
 
             public void Dispose() => _scope?.Dispose();
-            
-            private static OrderRepository CreateRepository(IServiceScope scope, string repositoryImplementation)
-            {
-                return repositoryImplementation switch
+
+            private static OrderRepository CreateRepository(IServiceScope scope, string repositoryImplementation) =>
+                repositoryImplementation switch
                 {
-                    nameof(OrderSqlRepository.TablesFromSnapshot) => scope.ServiceProvider
-                        .GetService<OrderSqlRepository.TablesFromSnapshot>(),
-                    nameof(OrderSqlRepository.TablesFromEvents) => scope.ServiceProvider
-                        .GetService<OrderSqlRepository.TablesFromEvents>(),
-                    nameof(OrderSqlRepository.DocumentFromSnapshot) => scope.ServiceProvider
-                        .GetService<OrderSqlRepository.DocumentFromSnapshot>(),
-                    nameof(OrderSqlRepository.DocumentFromEvents) => scope.ServiceProvider
-                        .GetService<OrderSqlRepository.DocumentFromEvents>(),
+                    nameof(OrderSqlRepository.EF) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.EF>(),
+                    nameof(OrderSqlRepository.Document) => scope.ServiceProvider
+                        .GetService<OrderSqlRepository.Document>(),
                     nameof(OrderSqlRepository.EventsSourcing) => scope.ServiceProvider
                         .GetService<OrderSqlRepository.EventsSourcing>(),
                     _ => throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
                         repositoryImplementation,
                         null)
                 };
-            }
         }
     }
 }

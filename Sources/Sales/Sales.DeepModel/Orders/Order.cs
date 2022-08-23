@@ -13,49 +13,31 @@ namespace MyCompany.Crm.Sales.Orders
     [DddAggregate]
     public partial class Order : IEquatable<Order>
     {
-        public OrderId Id { get; }
+        public OrderId Id => _data.Id;
 
-        private readonly Dictionary<ProductUnit, Item> _items;
-        private bool _isPlaced;
-        
-        public IEnumerable<ProductAmount> ProductAmounts => _items.Values.Select(item => item.ProductAmount);
+        public IEnumerable<ProductAmount> ProductAmounts => _data.Items.Select(item => item.ProductAmount);
 
-        public static Order New() => New(OrderId.New());
-
-        public static Order New(OrderId id) => new(id, Enumerable.Empty<Item>(), false);
-
-        public static Order FromOffer(Offer offer)
+        public void ApplyOffer(Offer offer)
         {
-            var order = New();
             var items = offer.Quotes
                 .Select(quote => new Item(quote.ProductAmount, PriceAgreement.Final(quote.Price)))
                 .ToImmutableArray();
-            order.AddAndApply(new CreatedFromOffer(items));
-            order.AddAndApply(new Placed());
-            return order;
+            AddAndApply(new CreatedFromOffer(items));
+            AddAndApply(new Placed());
 
             // Version without events:
             // foreach (var quote in offer.Quotes)
-            //     order._items[quote.ProductAmount.ProductUnit] = Item.New(quote.ProductAmount)
-            //         .With(PriceAgreement.Final(quote.Price));
-            // order._isPlaced = true;
-            // return order;
-        }
-
-        public static Order Restore(OrderId id, IEnumerable<Item> items, bool isPlaced) => new(id, items, isPlaced);
-
-        private Order(OrderId id,
-            IEnumerable<Item> items,
-            bool isPlaced)
-        {
-            Id = id;
-            _items = items.ToDictionary(item => item.ProductAmount.ProductUnit);
-            _isPlaced = isPlaced;
+            // {
+            //     var item = Item.New(quote.ProductAmount);
+            //     item.ConfirmPrice(quote.Price);
+            //     _data.Items.Add(item);
+            //     _data.IsPlaced = true;
+            // }
         }
 
         public void Add(ProductAmount productAmount)
         {
-            if (_isPlaced)
+            if (_data.IsPlaced)
                 throw new DomainError();
             AddAndApply(new ProductAmountAdded(productAmount));
 
@@ -66,10 +48,10 @@ namespace MyCompany.Crm.Sales.Orders
         private void AddToItem(ProductAmount productAmount)
         {
             var productUnit = productAmount.ProductUnit;
-            if (_items.TryGetValue(productUnit, out var item))
-                item.Add(productAmount);
+            if (_data.TryGetItem(productUnit, out var item))
+                item!.Add(productAmount);
             else
-                _items.Add(productUnit, Item.New(productAmount));
+                _data.Items.Add(Item.New(productAmount));
         }
 
         public void ConfirmPrices(Offer offer, PriceChangesPolicy priceChangesPolicy) =>
@@ -83,13 +65,13 @@ namespace MyCompany.Crm.Sales.Orders
             PriceAgreementType agreementType,
             DateTime? agreementExpiresOn)
         {
-            if (_isPlaced)
+            if (_data.IsPlaced)
                 throw new DomainError();
             if (!newQuotes.All(quote => HasMatchingItemFor(quote.ProductAmount)))
                 throw new DomainError();
             if (!newQuotes.All(quote => CanChangePriceFor(quote.ProductAmount)))
                 throw new DomainError();
-            var oldQuotes = _items.Values
+            var oldQuotes = _data.Items
                 .Where(i => i.PriceAgreement.Type != PriceAgreementType.Non)
                 .Select(i => Quote.For(i.ProductAmount, i.PriceAgreement.Price!))
                 .ToImmutableArray();
@@ -102,11 +84,11 @@ namespace MyCompany.Crm.Sales.Orders
         }
 
         private bool HasMatchingItemFor(ProductAmount productAmount) =>
-            _items.TryGetValue(productAmount.ProductUnit, out var item) &&
+            _data.TryGetItem(productAmount.ProductUnit, out var item) &&
             item.ProductAmount.Equals(productAmount);
 
         private bool CanChangePriceFor(ProductAmount productAmount) =>
-            _items.TryGetValue(productAmount.ProductUnit, out var item) &&
+            _data.TryGetItem(productAmount.ProductUnit, out var item) &&
             item.PriceAgreement.CanChangePrice();
 
         private void ApplyPriceAgreements(ImmutableArray<Quote> quotes, PriceAgreementType agreementType,
@@ -115,7 +97,7 @@ namespace MyCompany.Crm.Sales.Orders
             foreach (var quote in quotes)
             {
                 var productUnit = quote.ProductAmount.ProductUnit;
-                if (!_items.TryGetValue(productUnit, out var item))
+                if (!_data.TryGetItem(productUnit, out var item))
                     throw new CorruptedDataError();
                 switch (agreementType)
                 {
@@ -135,7 +117,7 @@ namespace MyCompany.Crm.Sales.Orders
 
         public void Place(DateTime now)
         {
-            if (_isPlaced) return;
+            if (_data.IsPlaced) return;
             if (!AllItemsHaveValidPriceAgreementOn(now)) throw new DomainError();
             AddAndApply(new Placed());
 
@@ -144,16 +126,9 @@ namespace MyCompany.Crm.Sales.Orders
         }
 
         private bool AllItemsHaveValidPriceAgreementOn(DateTime date) =>
-            _items.Values.All(item => item.PriceAgreement.IsValidOn(date));
+            _data.Items.All(item => item.PriceAgreement.IsValidOn(date));
 
-        public bool Equals(Order? other)
-        {
-            if (other is null) return false;
-            return Id.Equals(other.Id) &&
-                   _isPlaced == other._isPlaced &&
-                   _items.HasSameItemsAs(other._items, (x, y) => x.ProductAmount.Equals(y.ProductAmount) &&
-                                                                 x.PriceAgreement.Equals(y.PriceAgreement));
-        }
+        public bool Equals(Order? other) => other is not null && _data.Equals(other._data);
 
         public override bool Equals(object? obj) => obj is Order other && Equals(other);
 

@@ -26,7 +26,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
         public async Task<OrderCreated> Handle(CreateOrder command)
         {
             var clientId = CreateDomainModelFrom(command);
-            var order = Order.New();
+            var order = _orders.New();
             var orderHeader = new OrderHeader {Id = order.Id.Value, ClientId = clientId.Value};
             await _orders.Save(order);
             await _crudOperations.Create(orderHeader);
