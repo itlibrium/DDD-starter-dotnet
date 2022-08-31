@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Contacts\Contacts.Crud\Contacts.Crud.csproj" />
+      <ProjectReference Include="..\Contacts\Contacts\Contacts.csproj" />
       <ProjectReference Include="..\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj" />
       <ProjectReference Include="..\ProductsDelivery\ProductsDelivery.ProcessModel\ProductsDelivery.ProcessModel.csproj" />
       <ProjectReference Include="..\RiscManagement\RiscManagement.ProcessModel\RiscManagement.ProcessModel.csproj" />

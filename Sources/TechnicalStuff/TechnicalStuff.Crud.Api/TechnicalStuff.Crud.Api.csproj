@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Crud.Api</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Crud.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

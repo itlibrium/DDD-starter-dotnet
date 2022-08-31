@@ -2,10 +2,9 @@ using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.TechnicalStuff.Crud;
 using MyCompany.Crm.TechnicalStuff.Crud.Operations.Results;
 
-namespace TechnicalStuff.Crud.Api
+namespace MyCompany.Crm.TechnicalStuff.Crud.Api
 {
     public static class CrudControllerExtensions
     {

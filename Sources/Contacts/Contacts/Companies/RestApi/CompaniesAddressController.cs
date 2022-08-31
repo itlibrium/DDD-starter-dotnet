@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TechnicalStuff.Crud.Api;
+using MyCompany.Crm.TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Companies.RestApi
 {

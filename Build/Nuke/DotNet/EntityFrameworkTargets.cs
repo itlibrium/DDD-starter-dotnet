@@ -14,7 +14,7 @@ namespace MyCompany.Crm.Nuke.DotNet
         private static readonly (string Project, string Name)[] DbContexts =
         {
             ("Sales/Sales.Adapters/Sales.Adapters.csproj", "SalesDbContext"),
-            ("Contacts/Contacts.Crud/Contacts.Crud.csproj", "ContactsCrudDbContext")
+            ("Contacts/Contacts/Contacts.csproj", "ContactsDbContext")
         };
 
         public static Target ApplyMigrationsOnLocalDockerInfrastructure => _ => _

@@ -4,10 +4,10 @@ using MyCompany.Crm.TechnicalStuff.Crud.Ef;
 
 namespace MyCompany.Crm.Contacts
 {
-    public class ContactsCrudEfDao : EfCrudDao, ContactsCrudOperations
+    public class ContactsEfDao : EfCrudDao, ContactsCrudOperations
     {
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter",
             Justification = "Required by DI container")]
-        public ContactsCrudEfDao(ContactsCrudDbContext context) : base(context) { }
+        public ContactsEfDao(ContactsDbContext context) : base(context) { }
     }
 }

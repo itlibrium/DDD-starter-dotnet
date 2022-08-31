@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyCompany.Crm.TechnicalStuff.Crud.Api;
 using MyCompany.Crm.TechnicalStuff.Crud.Operations;
-using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Contacts.Groups.OldApi
 {

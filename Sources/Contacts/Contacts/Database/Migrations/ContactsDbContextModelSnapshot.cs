@@ -10,14 +10,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MyCompany.Crm.Contacts.Database.Migrations
 {
-    [DbContext(typeof(ContactsCrudDbContext))]
-    partial class ContactsCrudDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ContactsDbContext))]
+    partial class ContactsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

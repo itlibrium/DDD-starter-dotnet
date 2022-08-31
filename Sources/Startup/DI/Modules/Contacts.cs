@@ -11,10 +11,10 @@ namespace MyCompany.Crm.DI.Modules
         public static IServiceCollection AddContactsModule(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddDbContextPool<ContactsCrudDbContext>(options => options
+            services.AddDbContextPool<ContactsDbContext>(options => options
                 .UseNpgsql(configuration.GetConnectionString("Contacts"), npgsqlOptions => npgsqlOptions
                     .MigrationsHistoryTable("__Contacts_Migrations")));
-            services.AddScoped<ContactsCrudOperations, ContactsCrudEfDao>();
+            services.AddScoped<ContactsCrudOperations, ContactsEfDao>();
             return services;
         }
     }

@@ -11,15 +11,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MyCompany.Crm.Contacts.Database.Migrations
 {
-    [DbContext(typeof(ContactsCrudDbContext))]
-    [Migration("20220831082759_Initial")]
+    [DbContext(typeof(ContactsDbContext))]
+    [Migration("20220831085231_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

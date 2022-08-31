@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.Crud;
+using MyCompany.Crm.TechnicalStuff.Crud.Api;
 using MyCompany.Crm.TechnicalStuff.Crud.Operations;
-using TechnicalStuff.Crud.Api;
 
 namespace MyCompany.Crm.Sales.Wholesales
 {

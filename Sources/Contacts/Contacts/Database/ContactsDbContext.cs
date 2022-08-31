@@ -7,13 +7,13 @@ using MyCompany.Crm.Contacts.Tags;
 namespace MyCompany.Crm.Contacts.Database
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
-    public class ContactsCrudDbContext : DbContext
+    public class ContactsDbContext : DbContext
     {
         public DbSet<Company> Companies { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
-        public ContactsCrudDbContext([NotNull] DbContextOptions<ContactsCrudDbContext> options) : base(options) { }
+        public ContactsDbContext([NotNull] DbContextOptions<ContactsDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

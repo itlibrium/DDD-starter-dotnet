@@ -4,7 +4,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{B442AF5F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contacts", "Contacts", "{6114F446-78E7-49DC-BA34-C9904FE7838B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts", "Sources\Contacts\Contacts.Crud\Contacts.Crud.csproj", "{9DE86BB4-7D8E-4997-BDCE-C5E7E30968AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts", "Sources\Contacts\Contacts\Contacts.csproj", "{9DE86BB4-7D8E-4997-BDCE-C5E7E30968AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Startup", "Sources\Startup\Startup.csproj", "{B064C8A6-79AB-4B7B-98A6-A5F15635ED8D}"
 EndProject
