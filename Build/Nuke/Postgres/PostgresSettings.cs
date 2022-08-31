@@ -4,6 +4,6 @@ namespace MyCompany.Crm.Nuke.Postgres
     {
         public const string Key = "Postgres";
         
-        public string MigrationConnectionString { get; set; }
+        public string ConnectionString { get; set; }
     }
 }

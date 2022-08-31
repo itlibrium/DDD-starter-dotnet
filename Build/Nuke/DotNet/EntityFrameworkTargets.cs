@@ -9,22 +9,26 @@ namespace MyCompany.Crm.Nuke.DotNet
 {
     public static class EntityFrameworkTargets
     {
-        // TODO: Automatic detecting all *.Database projects and DbContexts.
-        private static readonly (string WorkingDir, string Name)[] DbContexts =
+        private const string StartupProject = "Startup/Startup.csproj";
+        // TODO: Automatic detecting all projects with DbContexts.
+        private static readonly (string Project, string Name)[] DbContexts =
         {
-            ("Sales/Sales.Database", "SalesDbContext"),
-            ("Contacts/Contacts.Database", "ContactsCrudDbContext")
+            ("Sales/Sales.Adapters/Sales.Adapters.csproj", "SalesDbContext"),
+            ("Contacts/Contacts.Crud/Contacts.Crud.csproj", "ContactsCrudDbContext")
         };
 
         public static Target ApplyMigrationsOnLocalDockerInfrastructure => _ => _
             .DependsOn(StartLocalDockerInfrastructure)
             .Executes(() =>
             {
-                WaitForDatabase(Settings.Postgres.MigrationConnectionString);
-                foreach (var (workingDir, dbContextName) in DbContexts)
+                // TODO: Use connection string from main configuration.
+                WaitForDatabase(Settings.Postgres.ConnectionString);
+                foreach (var (project, dbContextName) in DbContexts)
                 {
                     EntityFrameworkTasks.EntityFrameworkDatabaseUpdate(settings => settings
-                        .SetProcessWorkingDirectory(SourcesDirectory / workingDir)
+                        .SetProcessWorkingDirectory(SourcesDirectory)
+                        .SetStartupProject(StartupProject)
+                        .SetProject(project)
                         .SetContext(dbContextName));
                 }
             });

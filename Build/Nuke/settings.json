@@ -8,6 +8,6 @@
     "Kibana01UserName": "kibana01"
   },
   "Postgres": {
-    "MigrationConnectionString": "Server=localhost;Port=5432;User Id=postgres;Password=password;Timeout=3;"
+    "ConnectionString": "Server=localhost;Port=5432;User Id=postgres;Password=password;Timeout=3;"
   }
 }

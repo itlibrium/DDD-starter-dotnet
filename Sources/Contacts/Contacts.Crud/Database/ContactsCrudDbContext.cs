@@ -4,7 +4,7 @@ using MyCompany.Crm.Contacts.Companies;
 using MyCompany.Crm.Contacts.Groups;
 using MyCompany.Crm.Contacts.Tags;
 
-namespace MyCompany.Crm.Contacts
+namespace MyCompany.Crm.Contacts.Database
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     public class ContactsCrudDbContext : DbContext

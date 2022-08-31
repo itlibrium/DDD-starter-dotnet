@@ -28,7 +28,8 @@ namespace MyCompany.Crm.DI.Modules
         {
             var connectionString = configuration.GetConnectionString("Sales");
             services.AddDbContextPool<SalesDbContext>(options => options
-                .UseNpgsql(connectionString));
+                .UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions
+                    .MigrationsHistoryTable("__Sales_Migrations")));
             services.AddSingleton(new SalesDb(connectionString));
             services.AddMarten(options =>
                 {

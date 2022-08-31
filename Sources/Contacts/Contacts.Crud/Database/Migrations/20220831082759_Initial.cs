@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyCompany.Crm.Contacts.Migrations
+#nullable disable
+
+namespace MyCompany.Crm.Contacts.Database.Migrations
 {
     public partial class Initial : Migration
     {
@@ -11,12 +13,13 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "Companies",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    AddedOn = table.Column<DateTime>(nullable: false),
-                    Address_Street = table.Column<string>(nullable: true),
-                    Address_ZipCode = table.Column<string>(nullable: true),
-                    Address_City = table.Column<string>(nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    AddedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Address_Street = table.Column<string>(type: "text", nullable: true),
+                    Address_ZipCode = table.Column<string>(type: "text", nullable: true),
+                    Address_City = table.Column<string>(type: "text", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +30,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,9 +44,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "Tags",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,8 +58,8 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "Phone",
                 columns: table => new
                 {
-                    Number = table.Column<string>(nullable: false),
-                    CompanyId = table.Column<Guid>(nullable: false)
+                    Number = table.Column<string>(type: "text", nullable: false),
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,8 +76,8 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "CompanyGroup",
                 columns: table => new
                 {
-                    CompanyId = table.Column<Guid>(nullable: false),
-                    GroupId = table.Column<Guid>(nullable: false)
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,8 +100,8 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "CompanyTag",
                 columns: table => new
                 {
-                    CompanyId = table.Column<Guid>(nullable: false),
-                    TagId = table.Column<Guid>(nullable: false)
+                    CompanyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TagId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,8 +124,8 @@ namespace MyCompany.Crm.Contacts.Migrations
                 name: "GroupTag",
                 columns: table => new
                 {
-                    GroupId = table.Column<Guid>(nullable: false),
-                    TagId = table.Column<Guid>(nullable: false)
+                    GroupId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TagId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {

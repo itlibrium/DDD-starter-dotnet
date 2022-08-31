@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Contacts;
+using MyCompany.Crm.Contacts.Database;
 
 namespace MyCompany.Crm.DI.Modules
 {
@@ -11,7 +12,8 @@ namespace MyCompany.Crm.DI.Modules
             IConfiguration configuration)
         {
             services.AddDbContextPool<ContactsCrudDbContext>(options => options
-                .UseNpgsql(configuration.GetConnectionString("Contacts")));
+                .UseNpgsql(configuration.GetConnectionString("Contacts"), npgsqlOptions => npgsqlOptions
+                    .MigrationsHistoryTable("__Contacts_Migrations")));
             services.AddScoped<ContactsCrudOperations, ContactsCrudEfDao>();
             return services;
         }

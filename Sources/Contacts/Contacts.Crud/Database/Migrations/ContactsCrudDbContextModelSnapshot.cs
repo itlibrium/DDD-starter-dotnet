@@ -2,24 +2,25 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.Contacts;
+using MyCompany.Crm.Contacts.Database;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace MyCompany.Crm.Contacts.Migrations
+#nullable disable
+
+namespace MyCompany.Crm.Contacts.Database.Migrations
 {
     [DbContext(typeof(ContactsCrudDbContext))]
-    [Migration("20200708085354_Initial")]
-    partial class Initial
+    partial class ContactsCrudDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
                 {
@@ -28,7 +29,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("AddedOn")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -75,6 +79,9 @@ namespace MyCompany.Crm.Contacts.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -107,6 +114,9 @@ namespace MyCompany.Crm.Contacts.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -137,6 +147,8 @@ namespace MyCompany.Crm.Contacts.Migrations
 
                             b1.WithOwner("Company")
                                 .HasForeignKey("CompanyId");
+
+                            b1.Navigation("Company");
                         });
 
                     b.OwnsMany("MyCompany.Crm.Contacts.Companies.Phone", "Phones", b1 =>
@@ -156,6 +168,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("CompanyId");
                         });
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Phones");
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyGroup", b =>
@@ -171,6 +187,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyTag", b =>
@@ -186,6 +206,10 @@ namespace MyCompany.Crm.Contacts.Migrations
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.GroupTag", b =>
@@ -201,6 +225,31 @@ namespace MyCompany.Crm.Contacts.Migrations
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
+                {
+                    b.Navigation("Groups");
+
+                    b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.Group", b =>
+                {
+                    b.Navigation("Companies");
+
+                    b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("MyCompany.Crm.Contacts.Tags.Tag", b =>
+                {
+                    b.Navigation("Companies");
+
+                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }
