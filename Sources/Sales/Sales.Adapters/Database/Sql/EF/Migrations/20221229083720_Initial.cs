@@ -65,7 +65,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                 columns: table => new
                 {
                     OrderId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id1 = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ProductAmount_ProductId = table.Column<Guid>(type: "uuid", nullable: false),
                     ProductAmount_Amount_Value = table.Column<int>(type: "integer", nullable: false),
@@ -77,7 +77,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => new { x.OrderId, x.Id });
+                    table.PrimaryKey("PK_OrderItems", x => new { x.OrderId, x.Id1 });
                     table.ForeignKey(
                         name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,

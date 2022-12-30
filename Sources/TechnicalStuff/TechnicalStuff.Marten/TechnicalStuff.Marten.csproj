@@ -8,7 +8,8 @@
 
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
-      <PackageReference Include="Marten" Version="5.8.0" />
+      <PackageReference Include="Marten" Version="5.11.0" />
+      <PackageReference Include="Npgsql" Version="6.0.7" />
     </ItemGroup>
 
 </Project>

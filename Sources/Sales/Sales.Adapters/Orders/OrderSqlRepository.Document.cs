@@ -13,7 +13,7 @@ namespace MyCompany.Crm.Sales.Orders
         [DddRepository]
         public class Document : OrderRepository
         {
-            private readonly Dictionary<OrderId, (DbOrder DbOrder, Guid Version)> _orders = new();
+            private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();
             private readonly IDocumentSession _session;
 
             public Document(IDocumentSession session) => _session = session;
@@ -44,7 +44,7 @@ namespace MyCompany.Crm.Sales.Orders
                 // TODO: document versioning
                 if (!_orders.TryGetValue(order.Id, out var tuple))
                     throw new DesignError(SaveOfUnknownAggregate);
-                _session.Store(tuple.DbOrder, tuple.Version);
+                _session.Store(tuple.OrderData, tuple.Version);
                 return _session.SaveChangesAsync();
             }
         }

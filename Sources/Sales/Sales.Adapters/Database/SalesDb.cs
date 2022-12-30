@@ -1,8 +1,8 @@
-using TechnicalStuff.Postgres;
+using MyCompany.Crm.TechnicalStuff.Postgres;
 
 namespace MyCompany.Crm.Sales.Database;
 
-public class SalesDb : PostgresConnectionFactory
+public class SalesDb : PostgresConnectionProvider
 {
     public SalesDb(string connectionString) : base(connectionString) { }
 }

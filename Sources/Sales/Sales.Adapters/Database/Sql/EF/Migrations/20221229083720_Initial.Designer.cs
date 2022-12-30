@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.Sales;
+using MyCompany.Crm.Sales.Database.Sql.EF;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -12,14 +12,14 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    [Migration("20220831081222_Initial")]
+    [Migration("20221229083720_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -97,13 +97,13 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uuid");
 
-                            b1.Property<int>("Id")
+                            b1.Property<int>("Id1")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer");
 
-                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id1"));
 
-                            b1.HasKey("OrderId", "Id");
+                            b1.HasKey("OrderId", "Id1");
 
                             b1.ToTable("OrderItems", (string)null);
 
@@ -115,7 +115,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.Property<Guid>("ItemOrderId")
                                         .HasColumnType("uuid");
 
-                                    b2.Property<int>("ItemId")
+                                    b2.Property<int>("ItemId1")
                                         .HasColumnType("integer");
 
                                     b2.Property<DateTime?>("ExpiresOn")
@@ -124,19 +124,19 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.Property<byte>("Type")
                                         .HasColumnType("smallint");
 
-                                    b2.HasKey("ItemOrderId", "ItemId");
+                                    b2.HasKey("ItemOrderId", "ItemId1");
 
                                     b2.ToTable("OrderItems");
 
                                     b2.WithOwner()
-                                        .HasForeignKey("ItemOrderId", "ItemId");
+                                        .HasForeignKey("ItemOrderId", "ItemId1");
 
                                     b2.OwnsOne("MyCompany.Crm.Sales.Commons.Money", "Price", b3 =>
                                         {
                                             b3.Property<Guid>("PriceAgreementItemOrderId")
                                                 .HasColumnType("uuid");
 
-                                            b3.Property<int>("PriceAgreementItemId")
+                                            b3.Property<int>("PriceAgreementItemId1")
                                                 .HasColumnType("integer");
 
                                             b3.Property<int>("Currency")
@@ -145,12 +145,12 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                             b3.Property<decimal>("Value")
                                                 .HasColumnType("numeric");
 
-                                            b3.HasKey("PriceAgreementItemOrderId", "PriceAgreementItemId");
+                                            b3.HasKey("PriceAgreementItemOrderId", "PriceAgreementItemId1");
 
                                             b3.ToTable("OrderItems");
 
                                             b3.WithOwner()
-                                                .HasForeignKey("PriceAgreementItemOrderId", "PriceAgreementItemId");
+                                                .HasForeignKey("PriceAgreementItemOrderId", "PriceAgreementItemId1");
                                         });
 
                                     b2.Navigation("Price");
@@ -161,25 +161,25 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.Property<Guid>("ItemOrderId")
                                         .HasColumnType("uuid");
 
-                                    b2.Property<int>("ItemId")
+                                    b2.Property<int>("ItemId1")
                                         .HasColumnType("integer");
 
                                     b2.Property<Guid>("ProductId")
                                         .HasColumnType("uuid");
 
-                                    b2.HasKey("ItemOrderId", "ItemId");
+                                    b2.HasKey("ItemOrderId", "ItemId1");
 
                                     b2.ToTable("OrderItems");
 
                                     b2.WithOwner()
-                                        .HasForeignKey("ItemOrderId", "ItemId");
+                                        .HasForeignKey("ItemOrderId", "ItemId1");
 
                                     b2.OwnsOne("MyCompany.Crm.Sales.Products.Amount", "Amount", b3 =>
                                         {
                                             b3.Property<Guid>("ProductAmountItemOrderId")
                                                 .HasColumnType("uuid");
 
-                                            b3.Property<int>("ProductAmountItemId")
+                                            b3.Property<int>("ProductAmountItemId1")
                                                 .HasColumnType("integer");
 
                                             b3.Property<int>("Unit")
@@ -188,12 +188,12 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                             b3.Property<int>("Value")
                                                 .HasColumnType("integer");
 
-                                            b3.HasKey("ProductAmountItemOrderId", "ProductAmountItemId");
+                                            b3.HasKey("ProductAmountItemOrderId", "ProductAmountItemId1");
 
                                             b3.ToTable("OrderItems");
 
                                             b3.WithOwner()
-                                                .HasForeignKey("ProductAmountItemOrderId", "ProductAmountItemId");
+                                                .HasForeignKey("ProductAmountItemOrderId", "ProductAmountItemId1");
                                         });
 
                                     b2.Navigation("Amount")

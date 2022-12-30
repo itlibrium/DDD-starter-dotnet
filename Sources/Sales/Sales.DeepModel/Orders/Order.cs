@@ -11,7 +11,7 @@ using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 namespace MyCompany.Crm.Sales.Orders
 {
     [DddAggregate]
-    public partial class Order : IEquatable<Order>
+    public partial class Order : IEquatable<Order>, DataEquals<Order>
     {
         public OrderId Id => _data.Id;
 
@@ -49,9 +49,9 @@ namespace MyCompany.Crm.Sales.Orders
         {
             var productUnit = productAmount.ProductUnit;
             if (_data.TryGetItem(productUnit, out var item))
-                item!.Add(productAmount);
+                item.Add(productAmount);
             else
-                _data.Items.Add(Item.New(productAmount));
+                _data.Add(Item.For(productAmount));
         }
 
         public void ConfirmPrices(Offer offer, PriceChangesPolicy priceChangesPolicy) =>
@@ -128,10 +128,10 @@ namespace MyCompany.Crm.Sales.Orders
         private bool AllItemsHaveValidPriceAgreementOn(DateTime date) =>
             _data.Items.All(item => item.PriceAgreement.IsValidOn(date));
 
-        public bool Equals(Order? other) => other is not null && _data.Equals(other._data);
-
         public override bool Equals(object? obj) => obj is Order other && Equals(other);
-
+        public bool Equals(Order? other) => other is not null && Id.Equals(other.Id);
         public override int GetHashCode() => Id.GetHashCode();
+
+        public bool HasSameDataAs(Order other) => _data.Equals(other._data);
     }
 }

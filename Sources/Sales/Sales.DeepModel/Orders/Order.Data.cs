@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using MyCompany.Crm.Sales.Products;
 
@@ -15,20 +16,23 @@ public partial class Order
 
     public interface Data : IEquatable<Data>
     {
-        OrderId Id { get; set; }
+        OrderId Id { get; }
         bool IsPlaced { get; set; }
-        List<Item> Items { get; }
+        IReadOnlyCollection<Item> Items { get; }
         
-        public bool TryGetItem(ProductUnit productUnit, out Item? item)
+        public bool TryGetItem(ProductUnit productUnit, [NotNullWhen(true)] out Item? item)
         {
             item = Items.SingleOrDefault(i => i.ProductAmount.ProductUnit.Equals(productUnit));
             return item != null;
         }
 
+        void Add(Item item);
+        void Remove(Item item);
+
         bool IEquatable<Data>.Equals(Data? other) =>
             other is not null &&
             Id.Equals(other.Id) &&
             IsPlaced == other.IsPlaced &&
-            Items.SequenceEqual(other.Items);
+            Items.All(item => other.Items.Contains(item));
     }
 }

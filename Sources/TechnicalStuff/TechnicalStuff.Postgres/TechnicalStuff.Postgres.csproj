@@ -2,10 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Postgres</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Postgres</RootNamespace>
+        <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Npgsql" Version="6.0.6" />
+      <PackageReference Include="Npgsql" Version="6.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.csproj" />
     </ItemGroup>
 
 </Project>

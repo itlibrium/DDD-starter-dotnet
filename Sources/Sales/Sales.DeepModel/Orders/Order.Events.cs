@@ -34,7 +34,7 @@ namespace MyCompany.Crm.Sales.Orders
             public void Apply(Order order)
             {
                 foreach (var item in Items)
-                    order._data.Items.Add(item);
+                    order._data.Add(item);
             }
         }
 

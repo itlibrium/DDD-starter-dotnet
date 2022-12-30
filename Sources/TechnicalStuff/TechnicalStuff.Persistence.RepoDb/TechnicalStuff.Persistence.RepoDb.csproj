@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Persistence.RepoDb</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Persistence.RepoDb</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="RepoDb" Version="1.13.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff.Persistence\TechnicalStuff.Persistence.csproj" />
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.csproj" />
+    </ItemGroup>
+
+</Project>

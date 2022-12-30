@@ -20,7 +20,7 @@ namespace MyCompany.Crm.Sales.Orders
             public Order New()
             {
                 var id = OrderId.New();
-                var dbOrder = new DbOrder { Id = id, Items = new List<Order.Item>()};
+                var dbOrder = new DbOrder { Id = id, Items = new List<Order.Item>() };
                 _orders.Add(id, dbOrder);
                 _dbContext.Orders.Add(dbOrder);
                 return Order.RestoreFrom(dbOrder);

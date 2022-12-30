@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using TechnicalStuff.Postgres;
+using MyCompany.Crm.TechnicalStuff.Postgres;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly]
     public class PostgresOutboxRepository<TConnectionFactory> : TransactionalOutboxRepository
-        where TConnectionFactory : PostgresConnectionFactory
+        where TConnectionFactory : PostgresConnectionProvider
     {
         private readonly TConnectionFactory _connectionFactory;
 

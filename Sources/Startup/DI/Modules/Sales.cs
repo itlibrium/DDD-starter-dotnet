@@ -8,12 +8,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales;
 using MyCompany.Crm.Sales.Database;
-using MyCompany.Crm.Sales.Database.Sql.Documents;
+using MyCompany.Crm.Sales.Database.Sql.EF;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.TechnicalStuff.Json.Json;
 using MyCompany.Crm.TechnicalStuff.Marten;
 using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;
+using RepoDb;
+using DbOrder = MyCompany.Crm.Sales.Database.Sql.Documents.DbOrder;
 
 namespace MyCompany.Crm.DI.Modules
 {
@@ -27,10 +29,11 @@ namespace MyCompany.Crm.DI.Modules
             IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Sales");
+            GlobalConfiguration.Setup().UsePostgreSql();
             services.AddDbContextPool<SalesDbContext>(options => options
                 .UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions
                     .MigrationsHistoryTable("__Sales_Migrations")));
-            services.AddSingleton(new SalesDb(connectionString));
+            services.AddScoped(_ => new SalesDb(connectionString));
             services.AddMarten(options =>
                 {
                     options.Connection(connectionString);
@@ -52,7 +55,7 @@ namespace MyCompany.Crm.DI.Modules
                     options.Schema.For<DbOrder>().UseOptimisticConcurrency(true);
                 })
                 .BuildSessionsWith<LightweightSessionFactory>()
-                .InitializeStore();
+                .InitializeWith();
             services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddMessageOutboxes(SalesAdapters);
             services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();

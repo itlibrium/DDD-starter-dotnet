@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+        <AssemblyName>MyCompany.Crm.TechnicalStuff.Persistence</AssemblyName>
+        <RootNamespace>MyCompany.Crm.TechnicalStuff.Persistence</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff\TechnicalStuff.csproj" />
+    </ItemGroup>
+
+</Project>

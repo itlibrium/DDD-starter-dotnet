@@ -67,9 +67,13 @@ namespace MyCompany.Crm.Sales.Orders
         
         private class Data : Order.Data
         {
-            public OrderId Id { get; set; }
+            public OrderId Id { get; init; }
             public bool IsPlaced { get; set; }
-            public List<Order.Item> Items { get; } = new();
+            private List<Order.Item> Items { get; } = new();
+
+            IReadOnlyCollection<Order.Item> Order.Data.Items => Items;
+            public void Add(Order.Item item) => Items.Add(item);
+            public void Remove(Order.Item item) => Items.Remove(item);
         }
     }
 }

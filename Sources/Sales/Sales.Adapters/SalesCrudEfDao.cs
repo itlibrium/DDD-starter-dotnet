@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using MyCompany.Crm.Sales.Database.Sql.EF;
 using MyCompany.Crm.TechnicalStuff.Crud.Ef;
 
 namespace MyCompany.Crm.Sales

@@ -1,11 +1,10 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.Sales.Database.Sql.EF;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.TechnicalStuff.Ef.ValueConverters;
 using MyCompany.Crm.TechnicalStuff.ValueObjects;
 
-namespace MyCompany.Crm.Sales
+namespace MyCompany.Crm.Sales.Database.Sql.EF
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     public class SalesDbContext : DbContext
@@ -31,9 +30,8 @@ namespace MyCompany.Crm.Sales
                 order.Property(o => o.Version).IsConcurrencyToken();
                 order.OwnsMany(o => o.Items, item =>
                 {
-                    const string orderIdColumnName = "OrderId";
                     item.ToTable("OrderItems");
-                    item.WithOwner().HasForeignKey(orderIdColumnName);
+                    item.WithOwner().HasForeignKey("OrderId");
                     item.OwnsOne(i => i.ProductAmount, productAmount =>
                     {
                         productAmount.WithOwner();
@@ -47,6 +45,7 @@ namespace MyCompany.Crm.Sales
                         priceAgreement.Property(pa => pa.ExpiresOn);
                         priceAgreement.OwnsOne(pa => pa.Price).WithOwner();
                     });
+                    item.Ignore(i => i.Id);
                 });
             });
             modelBuilder.Entity<OrderHeader>()

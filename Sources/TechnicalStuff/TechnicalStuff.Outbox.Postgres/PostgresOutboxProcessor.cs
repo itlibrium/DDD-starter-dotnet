@@ -5,13 +5,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
-using TechnicalStuff.Postgres;
+using MyCompany.Crm.TechnicalStuff.Postgres;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly]
     public class PostgresOutboxProcessor<TConnectionFactory> : TransactionalOutboxProcessor
-        where TConnectionFactory : PostgresConnectionFactory
+        where TConnectionFactory : PostgresConnectionProvider
     {
         private readonly PostgresOutboxRepository<TConnectionFactory> _repository;
         private readonly Dictionary<string, OutboxMessageProcessor> _processors;

@@ -11,5 +11,9 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF
         public bool IsPlaced { get; set; }
         public int Version { get; set; }
         public List<Order.Item> Items { get; set; }
+
+        IReadOnlyCollection<Order.Item> Order.Data.Items => Items;
+        public void Add(Order.Item item) => Items.Add(item);
+        public void Remove(Order.Item item) => Items.Remove(item);
     }
 }
