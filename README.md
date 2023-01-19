@@ -57,7 +57,7 @@ Chosen libraries and technologies are optimal choices from the perspective of  a
 This project is under development so we encourage you to follow:
 
 1. This site - give us a Star
-2. Our blog: https://itlibrium.com/tag/DDD-starter
+2. Our blog: https://itlibrium.com/blog?tag=DDD-starter
 3. Twitter: [ITLIBRIUM](https://twitter.com/itlibrium), [Marcin](https://twitter.com/technites_pl), [Szymon](https://twitter.com/szjanikowski)
 
 ## Table of contents
@@ -176,9 +176,9 @@ The solution we propose is to use flexible Hexagonal Architecture, but avoid usa
 
 1. CRUD Bounded Context with single layer architecture eg: [`Contacts`](https://github.com/itlibrium/DDD-starter-dotnet/tree/master/Sources/Contacts)
 2. Bounded Context with Deep Model and CRUD Model eg: [`Sales`](https://github.com/itlibrium/DDD-starter-dotnet/tree/master/Sources/Sales)
-   1. Separation rules (Aggregate) and simple data (Anemic Entity / Data Structure) eg: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.cs) - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/Orders/OrderHeader.cs)
-   2. Saving both Deep Model and CRUD Model in Command Handler (single transaction) eg: , [`PlaceOrderHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/OnlineSales/PlaceOrder/PlaceOrderHandler.cs), [`CreateOrderHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/CreateOrder/CreateOrderHandler.cs)
-   3. Reading CRUD Model in Command Handler eg: , [`ConfirmOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/ConfirmOffer/ConfirmOfferHandler.cs), [`GetOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/Wholesale/GetOffer/GetOfferHandler.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
+   1. Separation rules (Aggregate) and simple data (Anemic Entity / Data Structure) eg: [`Order`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/Order.cs) - [`OrderHeader`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.DeepModel/Orders/OrderHeader.cs)
+   2. Saving both Deep Model and CRUD Model in Command Handler (single transaction) eg: , [`PlaceOrderHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/OnlineSale/OrderPlacement/PlaceOrderHandler.cs), [`CreateOrderHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/Wholesale/OrderCreation/CreateOrderHandler.cs)
+   3. Reading CRUD Model in Command Handler eg: , [`ConfirmOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/Wholesale/OrderPricing/ConfirmOfferHandler.cs), [`GetOfferHandler`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/Wholesale/OrderPricing/GetOfferHandler.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/SalesCrudOperations.cs)
    4. Managing CRUD Model without Command Handler eg: [`WholesalesOrdersHeaderController`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.RestApi/Wholesales/WholesalesOrdersHeaderController.cs), [`WholesalesOrdersHeaderNotesController`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.RestApi/Wholesales/WholesalesOrdersHeaderNotesController.cs), [`SalesCrudOperations`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Crud.Contracts/SalesCrudOperations.cs)
 
 ### Persistence of Aggregates
@@ -188,12 +188,11 @@ Domain model can be persisted in a several ways using SQL and noSQL databases. H
 **Code:**
 
 1. SQL
-   1. Tables from snapshot: [`OrderSqlRepository.TablesFromSnapshot`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters.Sql/Orders/OrderSqlRepository.TablesFromSnapshot.cs)
-   2. Tables from events: [`OrderSqlRepository.TablesFromEvents`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters.Sql/Orders/OrderSqlRepository.TablesFromEvents.cs)
-   3. Document from snapshot: [`OrderSqlRepository.DocumentFromSnapshot`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters.Sql/Orders/OrderSqlRepository.DocumentFromSnapshot.cs)
-   4. Document from events: [`OrderSqlRepository.DocumentFromEvents`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters.Sql/Orders/OrderSqlRepository.DocumentFromEvents.cs)
-   5. Event Sourcing - coming soon
-2. Transactions: [`TransactionDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Transactions/TransactionDecorator.cs)
+   1. Entity Framework: [`OrderSqlRepository.EF`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters/Orders/OrderSqlRepository.EF.cs)
+   2. Raw SQL: [`OrderSqlRepository.Raw`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters/Orders/OrderSqlRepository.Raw.cs)
+   3. Document with Marten: [`OrderSqlRepository.Document`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters/Orders/OrderSqlRepository.Document.cs)
+   4. Event Sourcing with Marten: [`OrderSqlRepository.EventsSourcing`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters/Orders/OrderSqlRepository.EventsSourcing.cs)
+2. Transactions: [`AmbientTransactionDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Transactions/AmbientTransactionDecorator.cs), ['ExplicitTransactionDecorator'](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Transactions/ExplicitTransactionDecorator.cs)
 
 **Blog:**
 
@@ -204,20 +203,14 @@ Domain model can be persisted in a several ways using SQL and noSQL databases. H
 **Code:**
 
 1. In a single transaction with domain model using *Outbox Pattern*
-   1. Base abstractions: [`TransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/TransactionalOutbox.cs), [`TransactionalOutboxes`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/TransactionalOutboxes.cs)
-   2. Integration with Use Case lifetime: [`TransactionalMessageSendingDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/TransactionalMessageSendingDecorator.cs)
-   3. Particular Outbox as a Port in Use Cases layer: [`OrderEventsOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.UseCases/OrderEventsOutbox.cs)
-   4. Publishing Outbox to Event Broker: coming soon
-   5. Kafka:
-      1. Base abstractions [`KafkaTransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Kafka.Outbox/KafkaTransactionalOutbox.cs), [`KafkaOutboxWriter`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Kafka.Outbox/KafkaOutboxWriter.cs)
-      2. Adapters: [`KafkaOrderEventsOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.Adapters.Kafka/Orders/KafkaOrderEventsOutbox.cs)
+   1. Base abstractions: [`TransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/TransactionalOutbox.cs), [`TransactionalOutboxes`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/TransactionalOutboxes.cs)
+   2. Integration with Use Case lifetime: [`TransactionalMessageSendingDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/TransactionalMessageSendingDecorator.cs)
+   3. Particular Outbox as a Port in Use Cases layer: [`OrderEventsOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/Sales/Sales.ProcessModel/OrderEventsOutbox.cs)
+   4. Publishing Outbox to Event Broker: coming soon   
 2. Post Commit
-   1. Base abstractions: [`NonTransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/NonTransactionalOutbox.cs), [`NonTransactionalOutboxes`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/NonTransactionalOutboxes.cs)
-   2. Integration with *Use Case* lifetime: [`NonTransactionalMessageSendingDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.UseCases/Messages/NonTransactionalMessageSendingDecorator.cs)
-   3. Particular Outbox as a Port in Use Cases layer: coming soon
-   4. Kafka:
-      1. Base abstractions [`KafkaNonTransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Kafka.Outbox/KafkaNonTransactionalOutbox.cs)
-      2. Adapters: coming soon
+   1. Base abstractions: [`NonTransactionalOutbox`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/NonTransactionalOutbox.cs), [`NonTransactionalOutboxes`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/NonTransactionalOutboxes.cs)
+   2. Integration with *Use Case* lifetime: [`NonTransactionalMessageSendingDecorator`](https://github.com/itlibrium/DDD-starter-dotnet/blob/master/Sources/TechnicalStuff/TechnicalStuff.Outbox/NonTransactionalMessageSendingDecorator.cs)
+   3. Particular Outbox as a Port in Use Cases layer: coming soon   
 3. Pre Commit - In our  opinion it's not very useful approach in real world scenarios.
 
 ### Testing integration with infrastructure
