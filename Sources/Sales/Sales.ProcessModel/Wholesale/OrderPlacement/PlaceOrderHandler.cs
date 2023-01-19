@@ -10,12 +10,12 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
     [DddAppService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
         private readonly SalesCrudOperations _crudOperations;
         private readonly Clock _clock;
         private readonly OrderEventsOutbox _eventsOutbox;
 
-        public PlaceOrderHandler(OrderRepository orders, SalesCrudOperations crudOperations, Clock clock, 
+        public PlaceOrderHandler(Order.Repository orders, SalesCrudOperations crudOperations, Clock clock, 
             OrderEventsOutbox eventsOutbox)
         {
             _orders = orders;

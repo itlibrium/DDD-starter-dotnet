@@ -18,7 +18,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
     [DddAppService]
     public class ConfirmOfferHandler  : CommandHandler<ConfirmOffer, OfferConfirmed>
     {
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
         private readonly SalesCrudOperations _crudOperations;
         private readonly CalculatePrices _calculatePrices;
         private readonly PriceChangesPolicies _priceChangesPolicies;
@@ -26,7 +26,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
         private readonly Clock _clock;
         private readonly TimeSpan _offerExpirationTime = TimeSpan.FromHours(24);
 
-        public ConfirmOfferHandler(OrderRepository orders, 
+        public ConfirmOfferHandler(Order.Repository orders, 
             SalesCrudOperations crudOperations,
             CalculatePrices calculatePrices,
             PriceChangesPolicies priceChangesPolicies,

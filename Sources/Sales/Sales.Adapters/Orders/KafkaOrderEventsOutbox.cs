@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.Sales.Database;
 using MyCompany.Crm.TechnicalStuff.Outbox;
 using MyCompany.Crm.TechnicalStuff.Outbox.Kafka;
-using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Orders
@@ -12,7 +10,7 @@ namespace MyCompany.Crm.Sales.Orders
         protected override string Topic => "OrderEvents";
 
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Required by DI container")]
-        public KafkaOrderEventsOutbox(TransactionalOutboxes outboxes, PostgresOutboxRepository<SalesDb> repository,
+        public KafkaOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
             MessageTypes messageTypes)
             : base(outboxes, repository, messageTypes) { }
         

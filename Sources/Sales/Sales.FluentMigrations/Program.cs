@@ -9,13 +9,13 @@ var configuration = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .AddCommandLine(args)
     .Build();
-var salesConnectionString= configuration.GetConnectionString("Sales");
+var mainConnectionString = configuration.GetConnectionString("Crm");
 
 var serviceProvider = new ServiceCollection()
     .AddFluentMigratorCore()
     .ConfigureRunner(rb => rb
         .AddPostgres()
-        .WithGlobalConnectionString(salesConnectionString)
+        .WithGlobalConnectionString(mainConnectionString)
         .ScanIn(typeof(Program).Assembly).For.Migrations())
     .AddLogging(lb => lb.AddFluentMigratorConsole())
     .BuildServiceProvider(false);

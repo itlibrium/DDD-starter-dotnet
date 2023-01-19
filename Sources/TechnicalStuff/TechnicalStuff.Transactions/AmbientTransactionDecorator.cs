@@ -6,12 +6,12 @@ using MyCompany.Crm.TechnicalStuff.ProcessModel;
 namespace MyCompany.Crm.TechnicalStuff.Transactions
 {
     [PublicAPI]
-    public class TransactionDecorator<TCommand> : CommandHandler<TCommand>
+    public class AmbientTransactionDecorator<TCommand> : CommandHandler<TCommand>
         where TCommand : struct, Command
     {
         private readonly CommandHandler<TCommand> _decorated;
 
-        public TransactionDecorator(CommandHandler<TCommand> decorated) => _decorated = decorated;
+        public AmbientTransactionDecorator(CommandHandler<TCommand> decorated) => _decorated = decorated;
 
         public async Task Handle(TCommand command)
         {
@@ -25,12 +25,12 @@ namespace MyCompany.Crm.TechnicalStuff.Transactions
     }
     
     [PublicAPI]
-    public class TransactionDecorator<TCommand, TResult> : CommandHandler<TCommand, TResult>
+    public class AmbientTransactionDecorator<TCommand, TResult> : CommandHandler<TCommand, TResult>
         where TCommand : struct, Command
     {
         private readonly CommandHandler<TCommand, TResult> _decorated;
 
-        public TransactionDecorator(CommandHandler<TCommand, TResult> decorated) => _decorated = decorated;
+        public AmbientTransactionDecorator(CommandHandler<TCommand, TResult> decorated) => _decorated = decorated;
 
         public async Task<TResult> Handle(TCommand command)
         {

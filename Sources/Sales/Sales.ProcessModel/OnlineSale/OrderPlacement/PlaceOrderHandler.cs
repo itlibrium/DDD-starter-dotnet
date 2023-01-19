@@ -17,12 +17,13 @@ namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly CalculatePrices _calculatePrices;
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
+        private readonly Order.Factory _facotry;
         private readonly SalesCrudOperations _crudOperations;
         private readonly OrderEventsOutbox _eventsOutbox;
         private readonly Clock _clock;
-
-        public PlaceOrderHandler(CalculatePrices calculatePrices, OrderRepository orders, 
+        
+        public PlaceOrderHandler(CalculatePrices calculatePrices, Order.Repository orders, 
             SalesCrudOperations crudOperations, OrderEventsOutbox eventsOutbox, Clock clock)
         {
             _calculatePrices = calculatePrices;
@@ -40,8 +41,7 @@ namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
                 offer.ProductAmounts,
                 offer.Currency);
             if (!offer.Equals(currentOffer)) throw new DomainError();
-            var order = _orders.New();
-            order.ApplyOffer(offer);
+            var order = _facotry.ImmediatelyPlacedBasedOn(offer);
             var orderHeader = new OrderHeader
             {
                 Id = order.Id.Value, 

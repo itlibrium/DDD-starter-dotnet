@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Json;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.DI;
 using MyCompany.Crm.DI.Modules;
@@ -9,10 +10,12 @@ using MyCompany.Crm.Sales;
 using MyCompany.Crm.TechnicalStuff.Api.Docs;
 using MyCompany.Crm.TechnicalStuff.Api.Versioning;
 using MyCompany.Crm.TechnicalStuff.Json.Json;
+using MyCompany.Crm.TechnicalStuff.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureSerialization();
 ConfigureApiServices();
+ConfigureDatabases();
 ConfigureMessagingServices();
 ConfigureModulesServices();
 ConfigureDecorators();
@@ -57,6 +60,12 @@ Use REST API instead whenever possible.";
         options.Title = "REST API";
         options.UseEndpointVersioning = true;
     });
+}
+
+void ConfigureDatabases()
+{
+    var connectionString = builder.Configuration.GetConnectionString("Main");
+    builder.Services.AddScoped<MainDb>(_ => new CrmDb(connectionString));
 }
 
 void ConfigureMessagingServices()

@@ -33,8 +33,8 @@ namespace MyCompany.Crm.DI
         {
             services.TryDecorate(typeof(CommandHandler<>), typeof(TransactionalMessageSendingDecorator<>));
             services.TryDecorate(typeof(CommandHandler<,>), typeof(TransactionalMessageSendingDecorator<,>));
-            services.TryDecorate(typeof(CommandHandler<>), typeof(TransactionDecorator<>));
-            services.TryDecorate(typeof(CommandHandler<,>), typeof(TransactionDecorator<,>));
+            services.TryDecorate(typeof(CommandHandler<>), typeof(AmbientTransactionDecorator<>));
+            services.TryDecorate(typeof(CommandHandler<,>), typeof(AmbientTransactionDecorator<,>));
             services.TryDecorate(typeof(CommandHandler<>), typeof(NonTransactionalMessageSendingDecorator<>));
             services.TryDecorate(typeof(CommandHandler<,>), typeof(NonTransactionalMessageSendingDecorator<,>));
             return services;

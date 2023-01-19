@@ -11,11 +11,12 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
     [DddAppService]
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
     {
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
+        private readonly Order.Factory _orderFactory;
         private readonly SalesCrudOperations _crudOperations;
         private readonly OrderEventsOutbox _eventsOutbox;
 
-        public CreateOrderHandler(OrderRepository orders, SalesCrudOperations crudOperations, 
+        public CreateOrderHandler(Order.Repository orders, SalesCrudOperations crudOperations, 
             OrderEventsOutbox eventsOutbox)
         {
             _orders = orders;
@@ -25,8 +26,8 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
 
         public async Task<OrderCreated> Handle(CreateOrder command)
         {
-            var clientId = CreateDomainModelFrom(command);
-            var order = _orders.New();
+            var clientId = command.ClientId;
+            var order = await _orderFactory.NewWithMaxTotalCostFor(clientId);
             var orderHeader = new OrderHeader {Id = order.Id.Value, ClientId = clientId.Value};
             await _orders.Save(order);
             await _crudOperations.Create(orderHeader);
@@ -34,8 +35,6 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
             _eventsOutbox.Add(orderCreated);
             return orderCreated;
         }
-
-        private static ClientId CreateDomainModelFrom(CreateOrder command) => ClientId.From(command.ClientId);
 
         private static OrderCreated CreateEventFrom(Order order, ClientId clientId) =>
             new(order.Id.Value, clientId.Value, SalesChannel.Wholesales.ToCode());

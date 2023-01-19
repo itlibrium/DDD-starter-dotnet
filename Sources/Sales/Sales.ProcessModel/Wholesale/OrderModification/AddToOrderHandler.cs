@@ -10,10 +10,10 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderModification
     [DddAppService]
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>
     {
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
         private readonly OrderEventsOutbox _eventsOutbox;
 
-        public AddToOrderHandler(OrderRepository orders, OrderEventsOutbox eventsOutbox)
+        public AddToOrderHandler(Order.Repository orders, OrderEventsOutbox eventsOutbox)
         {
             _orders = orders;
             _eventsOutbox = eventsOutbox;

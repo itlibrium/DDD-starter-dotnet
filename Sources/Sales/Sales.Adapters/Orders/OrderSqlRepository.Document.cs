@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Marten;
+using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Database.Sql.Documents;
+using MyCompany.Crm.Sales.Integrations.RiskManagement;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
@@ -11,19 +14,19 @@ namespace MyCompany.Crm.Sales.Orders
     public static partial class OrderSqlRepository
     {
         [DddRepository]
-        public class Document : OrderRepository
+        public class Document : Order.Factory, Order.Repository
         {
             private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();
             private readonly IDocumentSession _session;
 
-            public Document(IDocumentSession session) => _session = session;
+            public Document([NotNull] RiskManagement riskManagement, IDocumentSession session) : base(riskManagement) => 
+                _session = session;
 
-            public Order New()
+            protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
             {
-                var id = OrderId.New();
-                var orderDoc = new DbOrder { Id = id.Value, Items = new List<Order.Item>() };
-                _orders.Add(id, (orderDoc, Guid.Empty));
-                return Order.RestoreFrom(orderDoc);
+                var dbOrder = new DbOrder { Id = id.Value, Items = new List<Order.Item>() };
+                _orders.Add(id, (dbOrder, Guid.Empty));
+                return dbOrder;
             }
 
             public async Task<Order> GetBy(OrderId id)

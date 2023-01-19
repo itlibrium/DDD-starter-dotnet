@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
 
 namespace MyCompany.Crm.Sales.Orders;
@@ -17,6 +18,7 @@ public partial class Order
     public interface Data : IEquatable<Data>
     {
         OrderId Id { get; }
+        Money MaxTotalCost { get; }
         bool IsPlaced { get; set; }
         IReadOnlyCollection<Item> Items { get; }
         

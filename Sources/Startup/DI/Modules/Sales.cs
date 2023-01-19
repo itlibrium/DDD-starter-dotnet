@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales;
-using MyCompany.Crm.Sales.Database;
 using MyCompany.Crm.Sales.Database.Sql.EF;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
@@ -28,12 +27,12 @@ namespace MyCompany.Crm.DI.Modules
         public static IServiceCollection AddSalesModule(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("Sales");
+            var connectionString = configuration.GetConnectionString("Main");
             GlobalConfiguration.Setup().UsePostgreSql();
+            // TODO: Same connection provider for all data access libraries (EF, Marten, RepoDB) 
             services.AddDbContextPool<SalesDbContext>(options => options
                 .UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions
                     .MigrationsHistoryTable("__Sales_Migrations")));
-            services.AddScoped(_ => new SalesDb(connectionString));
             services.AddMarten(options =>
                 {
                     options.Connection(connectionString);
@@ -59,9 +58,9 @@ namespace MyCompany.Crm.DI.Modules
             services.AddScoped<SalesCrudOperations, SalesCrudEfDao>();
             services.AddMessageOutboxes(SalesAdapters);
             services.AddScoped<OrderEventsOutbox, FakeOrderEventOutbox>();
-            services.AddScoped<PostgresOutboxRepository<SalesDb>>();
+            services.AddScoped<PostgresOutboxRepository>();
             services.AddStatelessComponentsFrom(SalesDeepModel, SalesProcessModel, SalesAdapters);
-            services.AddScoped<OrderRepository, OrderSqlRepository.EF>();
+            services.AddScoped<Order.Repository, OrderSqlRepository.Raw>();
             services.AddScoped<AllowAnyPriceChanges>();
             services.AddScoped<AllowPriceChangesIfTotalPriceIsLower>();
             return services;

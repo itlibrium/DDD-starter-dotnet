@@ -1,7 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.Sales.Database;
 using MyCompany.Crm.TechnicalStuff.Outbox;
-using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Orders
@@ -10,7 +8,7 @@ namespace MyCompany.Crm.Sales.Orders
     {
         [SuppressMessage("ReSharper", "SuggestBaseTypeForParameterInConstructor",
             Justification = "Required by DI container")]
-        public InPLaceOrderEventsOutbox(TransactionalOutboxes outboxes, PostgresOutboxRepository<SalesDb> repository,
+        public InPLaceOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
             MessageTypes messageTypes)
             : base(outboxes, repository, messageTypes) { }
 

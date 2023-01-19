@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Database;
 using MyCompany.Crm.Sales.Orders.PriceChanges;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.Sales.Time;
 using MyCompany.Crm.TechnicalStuff.Persistence;
+using MyCompany.Crm.TechnicalStuff.Postgres;
 using Xunit;
 
 namespace MyCompany.Crm.Sales.Orders
@@ -27,7 +27,7 @@ namespace MyCompany.Crm.Sales.Orders
         
         public OrderSqlRepositoryTests(WebApplicationFactory<Program> appFactory) => 
             _serviceProvider = appFactory.Services;
-
+        
         [Theory]
         [InlineData(nameof(OrderSqlRepository.Raw))]
         [InlineData(nameof(OrderSqlRepository.EF))]
@@ -60,15 +60,12 @@ namespace MyCompany.Crm.Sales.Orders
         {
             _repositoryImplementation = repositoryImplementation;
             using var scope0 = CreateScope();
-            await scope0.SalesDb.BeginTransaction();
-            var order = scope0.OrderRepository.New();
+            var order = scope0.OrderFactory.NewWith(Money.Of(decimal.MaxValue, Currency.PLN));
             await scope0.OrderRepository.Save(order);
-            await scope0.SalesDb.CommitTransaction();
+            await scope0.TransactionProvider.CommitCurrentTransaction();
             
             using var scope1 = CreateScope();
-            await scope1.SalesDb.BeginTransaction();
             using var scope2 = CreateScope();
-            await scope2.SalesDb.BeginTransaction();
             var order1 = await scope1.OrderRepository.GetBy(order.Id);
             var order2 = await scope2.OrderRepository.GetBy(order.Id);
             order1.Add(ProductAmount.Of(ProductId.New(), Amount.Of(3, AmountUnit.Box)));
@@ -76,12 +73,12 @@ namespace MyCompany.Crm.Sales.Orders
             var action1 = async () =>
             {
                 await scope1.OrderRepository.Save(order1);
-                await scope1.SalesDb.CommitTransaction();
+                await scope1.TransactionProvider.CommitCurrentTransaction();
             };
             var action2 = async () =>
             {
                 await scope2.OrderRepository.Save(order2);
-                await scope2.SalesDb.CommitTransaction();
+                await scope2.TransactionProvider.CommitCurrentTransaction();
             };
             await action1.Should().NotThrowAsync();
             switch (repositoryImplementation)
@@ -130,10 +127,9 @@ namespace MyCompany.Crm.Sales.Orders
         private async Task<OrderId> TestRestoreForNewOrder()
         {
             using var scope = CreateScope();
-            await scope.SalesDb.BeginTransaction();
-            var order = scope.OrderRepository.New();
+            var order = scope.OrderFactory.NewWith(Money.Of(decimal.MaxValue, Currency.PLN));
             await scope.OrderRepository.Save(order);
-            await scope.SalesDb.CommitTransaction();
+            await scope.TransactionProvider.CommitCurrentTransaction();
             await TestRestore(order);
             return order.Id;
         }
@@ -141,22 +137,19 @@ namespace MyCompany.Crm.Sales.Orders
         private async Task TestRestoreForOrderFromOffer(Offer offer)
         {
             using var scope = CreateScope();
-            await scope.SalesDb.BeginTransaction();
-            var order = scope.OrderRepository.New();
-            order.ApplyOffer(offer);
+            var order = scope.OrderFactory.ImmediatelyPlacedBasedOn(offer);
             await scope.OrderRepository.Save(order);
-            await scope.SalesDb.CommitTransaction();
+            await scope.TransactionProvider.CommitCurrentTransaction();
             await TestRestore(order);
         }
 
         private async Task TestRestoreAfter(OrderId orderId, Action<Order> action)
         {
             using var scope = CreateScope();
-            await scope.SalesDb.BeginTransaction();
             var order = await scope.OrderRepository.GetBy(orderId);
             action(order);
             await scope.OrderRepository.Save(order);
-            await scope.SalesDb.CommitTransaction();
+            await scope.TransactionProvider.CommitCurrentTransaction();
             await TestRestore(order);
         }
 
@@ -172,23 +165,41 @@ namespace MyCompany.Crm.Sales.Orders
         private class Scope : IDisposable
         {
             private readonly IServiceScope _scope;
-            public SalesDb SalesDb { get; }
-            public OrderRepository OrderRepository { get; }
+            public PostgresTransactionProvider TransactionProvider { get; }
+            public Order.Repository OrderRepository { get; }
+            public Order.Factory OrderFactory { get; }
             
             public Scope(IServiceProvider serviceProvider, string repositoryImplementation)
             {
                 _scope = serviceProvider.CreateScope();
-                SalesDb = _scope.ServiceProvider.GetRequiredService<SalesDb>();
+                TransactionProvider = _scope.ServiceProvider.GetRequiredService<PostgresTransactionProvider>();
                 OrderRepository = CreateRepository(_scope, repositoryImplementation);
+                OrderFactory = CreateFactory(_scope, repositoryImplementation);
             }
             
             public void Dispose()
             {
-                SalesDb.Dispose();
+                TransactionProvider.Dispose();
                 _scope.Dispose();
             }
 
-            private static OrderRepository CreateRepository(IServiceScope scope, string repositoryImplementation) =>
+            private static Order.Repository CreateRepository(IServiceScope scope, string repositoryImplementation) =>
+                repositoryImplementation switch
+                {
+                    nameof(OrderSqlRepository.Raw) => scope.ServiceProvider
+                        .GetRequiredService<OrderSqlRepository.Raw>(),
+                    nameof(OrderSqlRepository.EF) => scope.ServiceProvider
+                        .GetRequiredService<OrderSqlRepository.EF>(),
+                    nameof(OrderSqlRepository.Document) => scope.ServiceProvider
+                        .GetRequiredService<OrderSqlRepository.Document>(),
+                    nameof(OrderSqlRepository.EventsSourcing) => scope.ServiceProvider
+                        .GetRequiredService<OrderSqlRepository.EventsSourcing>(),
+                    _ => throw new ArgumentOutOfRangeException(nameof(_repositoryImplementation),
+                        repositoryImplementation,
+                        null)
+                };
+            
+            private static Order.Factory CreateFactory(IServiceScope scope, string repositoryImplementation) =>
                 repositoryImplementation switch
                 {
                     nameof(OrderSqlRepository.Raw) => scope.ServiceProvider

@@ -1,12 +1,12 @@
-using System;
+using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
 {
     public readonly struct CreateOrder : Command
     {
-        public Guid ClientId { get; }
+        public ClientId ClientId { get; }
 
-        public CreateOrder(Guid clientId) => ClientId = clientId;
+        public CreateOrder(ClientId clientId) => ClientId = clientId;
     }
 }

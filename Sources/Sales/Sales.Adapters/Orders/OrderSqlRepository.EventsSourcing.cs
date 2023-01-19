@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Marten;
+using MyCompany.Crm.Sales.Commons;
+using MyCompany.Crm.Sales.Integrations.RiskManagement;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
@@ -11,7 +14,7 @@ namespace MyCompany.Crm.Sales.Orders
     public static partial class OrderSqlRepository
     {
         [DddRepository]
-        public class EventsSourcing : OrderRepository
+        public partial class EventsSourcing : Order.Factory, Order.Repository
         {
             public static readonly IEnumerable<(Type Type, string Name)> Events = new[]
             {
@@ -24,15 +27,11 @@ namespace MyCompany.Crm.Sales.Orders
             private readonly Dictionary<OrderId, long> _orderVersions = new();
             private readonly IDocumentSession _session;
 
-            public EventsSourcing(IDocumentSession documentSession) => _session = documentSession;
+            public EventsSourcing([NotNull] RiskManagement riskManagement, IDocumentSession session) 
+                : base(riskManagement) => _session = session;
 
-            public Order New()
-            {
-                var id = OrderId.New();
-                var order = Create(id);
-                return order;
-            }
-            
+            protected override Order.Data CreateData(OrderId id, Money maxTotalCost) => new Data { Id = id };
+
             public async Task<Order> GetBy(OrderId id)
             {
                 if (_orderVersions.ContainsKey(id))
@@ -43,7 +42,7 @@ namespace MyCompany.Crm.Sales.Orders
                 var orderEvents = events
                     .Select(e => e.Data)
                     .Cast<Order.Event>();
-                var order = Create(id);
+                var order = Order.RestoreFrom(new Data { Id = id });
                 foreach (var orderEvent in orderEvents)
                     orderEvent.Apply(order);
                 return order;
@@ -54,26 +53,13 @@ namespace MyCompany.Crm.Sales.Orders
                 // TODO: event versioning
                 _session.Events.Append(
                     order.Id.Value,
-                    CalculateExpectedVersionFor(order), 
+                    CalculateExpectedVersionFor(order),
                     order.NewEvents);
                 await _session.SaveChangesAsync();
             }
-            
-            private static Order Create(OrderId id) => Order.RestoreFrom(new Data { Id = id });
 
             private long CalculateExpectedVersionFor(Order order) =>
                 (_orderVersions.TryGetValue(order.Id, out var version) ? version : 0) + order.NewEvents.Count;
-        }
-        
-        private class Data : Order.Data
-        {
-            public OrderId Id { get; init; }
-            public bool IsPlaced { get; set; }
-            private List<Order.Item> Items { get; } = new();
-
-            IReadOnlyCollection<Order.Item> Order.Data.Items => Items;
-            public void Add(Order.Item item) => Items.Add(item);
-            public void Remove(Order.Item item) => Items.Remove(item);
         }
     }
 }

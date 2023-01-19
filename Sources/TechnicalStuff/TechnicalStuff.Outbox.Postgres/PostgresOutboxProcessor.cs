@@ -13,13 +13,13 @@ namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
     public class PostgresOutboxProcessor<TConnectionFactory> : TransactionalOutboxProcessor
         where TConnectionFactory : PostgresConnectionProvider
     {
-        private readonly PostgresOutboxRepository<TConnectionFactory> _repository;
+        private readonly PostgresOutboxRepository _repository;
         private readonly Dictionary<string, OutboxMessageProcessor> _processors;
         private readonly PostgresOutboxProcessorSettings _processorSettings;
         private readonly ILogger<PostgresOutboxProcessor<TConnectionFactory>> _logger;
 
         protected PostgresOutboxProcessor(
-            PostgresOutboxRepository<TConnectionFactory> repository,
+            PostgresOutboxRepository repository,
             IEnumerable<OutboxMessageProcessor> messageProcessors,
             PostgresOutboxProcessorSettings processorSettings,
             ILogger<PostgresOutboxProcessor<TConnectionFactory>> logger)

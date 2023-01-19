@@ -12,7 +12,7 @@ namespace MyCompany.Crm.DI.Modules
             IConfiguration configuration)
         {
             services.AddDbContextPool<ContactsDbContext>(options => options
-                .UseNpgsql(configuration.GetConnectionString("Contacts"), npgsqlOptions => npgsqlOptions
+                .UseNpgsql(configuration.GetConnectionString("Main"), npgsqlOptions => npgsqlOptions
                     .MigrationsHistoryTable("__Contacts_Migrations")));
             services.AddScoped<ContactsCrudOperations, ContactsEfDao>();
             return services;

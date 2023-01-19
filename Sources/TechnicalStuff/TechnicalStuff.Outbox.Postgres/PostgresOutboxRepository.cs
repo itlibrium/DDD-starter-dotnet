@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.Postgres;
+using MyCompany.Crm.TechnicalStuff.Persistence;
 
 namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly]
-    public class PostgresOutboxRepository<TConnectionFactory> : TransactionalOutboxRepository
-        where TConnectionFactory : PostgresConnectionProvider
+    public class PostgresOutboxRepository : TransactionalOutboxRepository
     {
-        private readonly TConnectionFactory _connectionFactory;
+        private readonly MainDb _db;
 
-        public PostgresOutboxRepository(TConnectionFactory connectionFactory) =>
-            _connectionFactory = connectionFactory;
+        public PostgresOutboxRepository(MainDb db) => _db = db;
 
         public Task Save(IEnumerable<OutboxMessage> messages)
         {

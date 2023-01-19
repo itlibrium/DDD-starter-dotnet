@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Database.Sql.EF;
+using MyCompany.Crm.Sales.Integrations.RiskManagement;
 using MyCompany.Crm.TechnicalStuff;
 using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 
@@ -10,20 +13,25 @@ namespace MyCompany.Crm.Sales.Orders
     public static partial class OrderSqlRepository
     {
         [DddRepository]
-        public class EF : OrderRepository
+        public class EF : Order.Factory, Order.Repository
         {
             private readonly Dictionary<OrderId, DbOrder> _orders = new();
             private readonly SalesDbContext _dbContext;
 
-            public EF(SalesDbContext dbContext) => _dbContext = dbContext;
+            public EF([NotNull] RiskManagement riskManagement, SalesDbContext dbContext) : base(riskManagement) => 
+                _dbContext = dbContext;
 
-            public Order New()
+            protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
             {
-                var id = OrderId.New();
-                var dbOrder = new DbOrder { Id = id, Items = new List<Order.Item>() };
+                var dbOrder = new DbOrder
+                {
+                    Id = id,
+                    MaxTotalCost = maxTotalCost,
+                    Items = new List<Order.Item>()
+                };
                 _orders.Add(id, dbOrder);
                 _dbContext.Orders.Add(dbOrder);
-                return Order.RestoreFrom(dbOrder);
+                return dbOrder;
             }
 
             public async Task<Order> GetBy(OrderId id)
@@ -33,7 +41,8 @@ namespace MyCompany.Crm.Sales.Orders
                 var dbOrder = await _dbContext.Orders
                     .Include(o => o.Items)
                     .SingleOrDefaultAsync(o => o.Id.Equals(id));
-                if (dbOrder is null) throw new DomainError();
+                if (dbOrder is null) 
+                    throw new DomainError();
                 var order = Order.RestoreFrom(dbOrder);
                 _orders.Add(id, dbOrder);
                 return order;

@@ -15,11 +15,11 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
     [DddAppService]
     public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
     {
-        private readonly OrderRepository _orders;
+        private readonly Order.Repository _orders;
         private readonly SalesCrudOperations _crudOperations;
         private readonly CalculatePrices _calculatePrices;
 
-        public GetOfferHandler(OrderRepository orders, SalesCrudOperations crudOperations,
+        public GetOfferHandler(Order.Repository orders, SalesCrudOperations crudOperations,
             CalculatePrices calculatePrices)
         {
             _orders = orders;

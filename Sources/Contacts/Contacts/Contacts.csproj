@@ -17,15 +17,7 @@
     
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Reference Include="Microsoft.EntityFrameworkCore.Relational">
-        <HintPath>..\..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.relational\6.0.7\lib\net6.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
-      </Reference>
-      <Reference Include="Npgsql.EntityFrameworkCore.PostgreSQL">
-        <HintPath>..\..\..\..\..\..\.nuget\packages\npgsql.entityframeworkcore.postgresql\6.0.5\lib\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll</HintPath>
-      </Reference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />      
     </ItemGroup>
 
 </Project>

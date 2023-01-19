@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TechnicalStuff.Persistence\TechnicalStuff.Persistence.csproj" />
       <ProjectReference Include="..\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
     </ItemGroup>
 

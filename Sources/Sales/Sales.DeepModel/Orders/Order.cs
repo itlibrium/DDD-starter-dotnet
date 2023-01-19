@@ -17,24 +17,6 @@ namespace MyCompany.Crm.Sales.Orders
 
         public IEnumerable<ProductAmount> ProductAmounts => _data.Items.Select(item => item.ProductAmount);
 
-        public void ApplyOffer(Offer offer)
-        {
-            var items = offer.Quotes
-                .Select(quote => new Item(quote.ProductAmount, PriceAgreement.Final(quote.Price)))
-                .ToImmutableArray();
-            AddAndApply(new CreatedFromOffer(items));
-            AddAndApply(new Placed());
-
-            // Version without events:
-            // foreach (var quote in offer.Quotes)
-            // {
-            //     var item = Item.New(quote.ProductAmount);
-            //     item.ConfirmPrice(quote.Price);
-            //     _data.Items.Add(item);
-            //     _data.IsPlaced = true;
-            // }
-        }
-
         public void Add(ProductAmount productAmount)
         {
             if (_data.IsPlaced)
@@ -55,12 +37,12 @@ namespace MyCompany.Crm.Sales.Orders
         }
 
         public void ConfirmPrices(Offer offer, PriceChangesPolicy priceChangesPolicy) =>
-            ConfirmPrice(offer.Quotes, priceChangesPolicy, PriceAgreementType.Final, default);
+            ConfirmPrices(offer.Quotes, priceChangesPolicy, PriceAgreementType.Final, default);
 
         public void ConfirmPrices(Offer offer, PriceChangesPolicy priceChangesPolicy, DateTime agreementExpiresOn) =>
-            ConfirmPrice(offer.Quotes, priceChangesPolicy, PriceAgreementType.Temporary, agreementExpiresOn);
+            ConfirmPrices(offer.Quotes, priceChangesPolicy, PriceAgreementType.Temporary, agreementExpiresOn);
 
-        private void ConfirmPrice(ImmutableArray<Quote> newQuotes,
+        private void ConfirmPrices(ImmutableArray<Quote> newQuotes,
             PriceChangesPolicy priceChangesPolicy,
             PriceAgreementType agreementType,
             DateTime? agreementExpiresOn)
