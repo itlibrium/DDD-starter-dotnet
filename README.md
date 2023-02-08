@@ -114,7 +114,7 @@ This architecture style is best for Deep Model with high business complexity. It
 
 **Blog:**
 
-1. [[PL] Jak zaimplementować Vlue Object z DDD w C#](https://itlibrium.com/value-object-w-csharp/)
+1. [[PL] Jak zaimplementować Value Object z DDD w C#](https://itlibrium.com/value-object-w-csharp/)
 
 #### Policy
 
