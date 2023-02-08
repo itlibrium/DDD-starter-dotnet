@@ -72,7 +72,7 @@ To create this solution we used an architectural approach called *screaming arch
 
 **Blog:**
 
-1. [How to use c# projects and *namespaces* in a DDD project](https://itlibrium.com/en/how-to-use-c-projects-and-namespaces-in-a-ddd-project/)
+1. [How to use c# projects and *namespaces* in a DDD project](https://itlibrium.com/en/blog/how-to-use-csharp-projects-and-namespaces-in-a-ddd-project)
 
 ### Hexagonal Architecture
 
