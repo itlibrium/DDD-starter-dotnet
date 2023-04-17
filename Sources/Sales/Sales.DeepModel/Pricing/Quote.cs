@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {

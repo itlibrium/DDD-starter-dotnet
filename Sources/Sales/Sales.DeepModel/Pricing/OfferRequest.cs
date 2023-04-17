@@ -5,7 +5,7 @@ using MyCompany.Crm.Sales.Clients;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {

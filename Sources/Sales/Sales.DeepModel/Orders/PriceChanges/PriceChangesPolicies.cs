@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Orders.PriceChanges
 {

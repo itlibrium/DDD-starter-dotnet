@@ -2,12 +2,12 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using P3Model.Annotations.Domain.DynamicModel.DDD;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderModification
 {
-    [DddAppService]
+    [DddApplicationService]
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>
     {
         private readonly Order.Repository _orders;

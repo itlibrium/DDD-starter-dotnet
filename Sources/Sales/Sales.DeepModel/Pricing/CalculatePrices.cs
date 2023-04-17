@@ -8,7 +8,7 @@ using MyCompany.Crm.Sales.ExchangeRates;
 using MyCompany.Crm.Sales.Pricing.PriceLists;
 using MyCompany.Crm.Sales.Products;
 using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {

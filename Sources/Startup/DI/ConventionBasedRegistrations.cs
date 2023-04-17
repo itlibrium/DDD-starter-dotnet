@@ -3,7 +3,8 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.Crm.TechnicalStuff.Metadata;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.DynamicModel.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 using Scrutor;
 
 namespace MyCompany.Crm.DI
@@ -20,7 +21,7 @@ namespace MyCompany.Crm.DI
                         typeof(DddRepositoryAttribute),
                         typeof(DddFactoryAttribute),
                         typeof(DddDomainServiceAttribute),
-                        typeof(DddAppServiceAttribute)),
+                        typeof(DddApplicationServiceAttribute)),
                     false)
                 .AsSelfWithInterfaces()
                 .WithScopedLifetime());

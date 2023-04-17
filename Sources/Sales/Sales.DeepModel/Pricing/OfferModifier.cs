@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
-    [DddPolicy]
+    [DddDomainService]
     public interface OfferModifier
     {
         [Pure]
         Offer ApplyOn(Offer offer);
     }
 
-    [DddPolicy]
+    [DddDomainService]
     public delegate Offer OfferModifier2(Offer offer);
 
     public class AggregatedModifier : OfferModifier

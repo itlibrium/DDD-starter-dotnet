@@ -1,9 +1,9 @@
 using System.Diagnostics.Contracts;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {
-    [DddPolicy]
+    [DddDomainService]
     internal interface QuoteModifier
     {
         [Pure]

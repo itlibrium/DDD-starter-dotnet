@@ -6,8 +6,8 @@ using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Database.Sql.Raw;
 using MyCompany.Crm.Sales.Integrations.RiskManagement;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.Persistence;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 using RepoDb;
 
 namespace MyCompany.Crm.Sales.Orders;

@@ -1,10 +1,10 @@
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Orders.PriceChanges
 {
-    [DddPolicy]
+    [DddDomainService]
     public interface PriceChangesPolicy
     {
         bool CanChangePrices(ImmutableArray<Quote> oldQuotes, ImmutableArray<Quote> newQuotes);

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Pricing.Discounts;
 using MyCompany.Crm.Sales.Pricing.SpecialOffers;
 using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing
 {

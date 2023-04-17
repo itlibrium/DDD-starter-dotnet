@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
-    [DddPolicy]
+    [DddDomainService]
     public class ProductLevelDiscounts : OfferModifier, QuoteModifier
     {
         private readonly ImmutableDictionary<ProductUnit, Discount> _discounts;

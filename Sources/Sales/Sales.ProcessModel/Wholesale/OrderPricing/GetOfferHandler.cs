@@ -7,12 +7,12 @@ using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Pricing;
 using MyCompany.Crm.Sales.SalesChannels;
 using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using P3Model.Annotations.Domain.DynamicModel.DDD;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
 {
-    [DddAppService]
+    [DddApplicationService]
     public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
     {
         private readonly Order.Repository _orders;

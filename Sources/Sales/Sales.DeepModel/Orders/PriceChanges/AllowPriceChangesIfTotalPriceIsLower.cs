@@ -3,11 +3,11 @@ using System.Collections.Immutable;
 using System.Linq;
 using MyCompany.Crm.Sales.Commons;
 using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Orders.PriceChanges
 {
-    [DddPolicy]
+    [DddDomainService]
     public class AllowPriceChangesIfTotalPriceIsLower : PriceChangesPolicy
     {
         public bool CanChangePrices(ImmutableArray<Quote> oldQuotes, ImmutableArray<Quote> newQuotes) =>

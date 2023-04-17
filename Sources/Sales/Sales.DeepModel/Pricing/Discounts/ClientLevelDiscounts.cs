@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.Discounts
 {
-    [DddPolicy]
+    [DddDomainService]
     public class ClientLevelDiscounts : OfferModifier, QuoteModifier
     {
         private readonly PercentageDiscount _baseDiscount;

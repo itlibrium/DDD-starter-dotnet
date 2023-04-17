@@ -2,12 +2,12 @@ using System;
 using System.Threading.Tasks;
 using MyCompany.Crm.Sales.Orders;
 using MyCompany.Crm.Sales.Time;
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
 using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using P3Model.Annotations.Domain.DynamicModel.DDD;
 
 namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
 {
-    [DddAppService]
+    [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly Order.Repository _orders;

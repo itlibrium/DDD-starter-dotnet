@@ -1,8 +1,8 @@
-using MyCompany.Crm.TechnicalStuff.Metadata.DDD;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
 {
-    [DddPolicy]
+    [DddDomainService]
     public class SpecialOffer : OfferModifier
     {
         private readonly OfferModifier _fallbackModifier;
