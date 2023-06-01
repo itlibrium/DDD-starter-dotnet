@@ -1,6 +1,6 @@
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Commons
+namespace MyCompany.ECommerce.Sales.Commons
 {
     [DddValueObject]
     public enum Currency

@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.Persistence;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.TechnicalStuff.Transactions;
+namespace MyCompany.ECommerce.TechnicalStuff.Transactions;
 
 [PublicAPI]
 public class ExplicitTransactionDecorator<TCommand> : CommandHandler<TCommand>

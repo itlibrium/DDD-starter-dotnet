@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.TechnicalStuff.Crud.Operations.Results
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations.Results
 {
     public static class CrudResult
     {

@@ -1,21 +1,21 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.Crud;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.TechnicalStuff.Crud;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("/rest/wholesales/orders/{orderId}/header/notes")]
+    [Route("/rest/wholesale/orders/{orderId}/header/notes")]
     [ApiVersion("1")]
-    public class WholesalesOrdersHeaderNotesController : ControllerBase
+    public class WholesaleOrdersHeaderNotesController : ControllerBase
     {
         private readonly SalesCrudOperations _operations;
 
-        public WholesalesOrdersHeaderNotesController(SalesCrudOperations operations) => _operations = operations;
+        public WholesaleOrdersHeaderNotesController(SalesCrudOperations operations) => _operations = operations;
 
         [HttpPost]
         public async Task<ActionResult<OrderNote>> Create(Guid orderId, OrderNote note)

@@ -2,7 +2,7 @@ using System;
 using Npgsql;
 using Polly;
 
-namespace MyCompany.Crm.Nuke.Postgres
+namespace MyCompany.ECommerce.Nuke.Postgres
 {
     public static class PostgresTasks
     {

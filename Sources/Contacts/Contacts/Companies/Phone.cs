@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.ECommerce.Contacts.Companies
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class Phone

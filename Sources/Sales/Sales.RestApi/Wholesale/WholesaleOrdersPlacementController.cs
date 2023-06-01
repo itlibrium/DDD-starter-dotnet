@@ -1,19 +1,19 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Wholesale.OrderPlacement;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Wholesale.OrderPlacement;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/orders/{id}/placement")]
+    [Route("rest/wholesale/orders/{id}/placement")]
     [ApiVersion("1")]
-    public class WholesalesOrdersPlacementController : ControllerBase
+    public class WholesaleOrdersPlacementController : ControllerBase
     {
         private readonly CommandHandler<PlaceOrder, OrderPlaced> _placeOrderHandler;
 
-        public WholesalesOrdersPlacementController(CommandHandler<PlaceOrder, OrderPlaced> placeOrderHandler) =>
+        public WholesaleOrdersPlacementController(CommandHandler<PlaceOrder, OrderPlaced> placeOrderHandler) =>
             _placeOrderHandler = placeOrderHandler;
 
         [HttpPut]

@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>default</LangVersion>
         <OutputType>Library</OutputType>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Crud</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Crud</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Crud</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Crud</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

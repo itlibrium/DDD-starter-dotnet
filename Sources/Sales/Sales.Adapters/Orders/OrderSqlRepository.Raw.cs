@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Database.Sql.Raw;
-using MyCompany.Crm.Sales.Integrations.RiskManagement;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Database.Sql.Raw;
+using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 using RepoDb;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {

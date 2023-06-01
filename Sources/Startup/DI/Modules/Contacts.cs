@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.Contacts;
-using MyCompany.Crm.Contacts.Database;
+using MyCompany.ECommerce.Contacts;
+using MyCompany.ECommerce.Contacts.Database;
 
-namespace MyCompany.Crm.DI.Modules
+namespace MyCompany.ECommerce.DI.Modules
 {
     internal static class ContactsRegistrations
     {

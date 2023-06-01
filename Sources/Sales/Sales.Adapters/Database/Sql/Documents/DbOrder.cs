@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Orders;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Orders;
 
-namespace MyCompany.Crm.Sales.Database.Sql.Documents;
+namespace MyCompany.ECommerce.Sales.Database.Sql.Documents;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class DbOrder : Order.Data

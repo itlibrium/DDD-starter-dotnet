@@ -4,19 +4,19 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Wholesale.OrderModification;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Wholesale.OrderModification;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/orders/{orderId}/items")]
+    [Route("rest/wholesale/orders/{orderId}/items")]
     [ApiVersion("1")]
-    public class WholesalesOrdersItemsController : ControllerBase
+    public class WholesaleOrdersItemsController : ControllerBase
     {
         private readonly CommandHandler<AddToOrder, AddedToOrder> _addToOrderHandler;
         
-        public WholesalesOrdersItemsController(CommandHandler<AddToOrder, AddedToOrder> addToOrderHandler) => 
+        public WholesaleOrdersItemsController(CommandHandler<AddToOrder, AddedToOrder> addToOrderHandler) => 
             _addToOrderHandler = addToOrderHandler;
 
         [HttpPut]

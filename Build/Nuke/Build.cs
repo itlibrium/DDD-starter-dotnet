@@ -2,7 +2,7 @@ using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.ProjectModel;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     [UnsetVisualStudioEnvironmentVariables]
     public partial class Build : NukeBuild

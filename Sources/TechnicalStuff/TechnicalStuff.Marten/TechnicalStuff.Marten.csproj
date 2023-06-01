@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Marten</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Marten</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Marten</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Marten</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

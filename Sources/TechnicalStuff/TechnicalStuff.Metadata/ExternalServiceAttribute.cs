@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.TechnicalStuff.Metadata
+namespace MyCompany.ECommerce.TechnicalStuff.Metadata
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class ExternalServiceAttribute : Attribute

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations.Results;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations.Results;
 
-namespace MyCompany.Crm.TechnicalStuff.Crud.Ef
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Ef
 {
     public class EfCrudDao : CrudOperations
     {

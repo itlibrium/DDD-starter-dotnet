@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
 
-namespace MyCompany.Crm.Contacts.Groups.RestApi
+namespace MyCompany.ECommerce.Contacts.Groups.RestApi
 {
     [ApiController]
     [Route("/rest/groups")]

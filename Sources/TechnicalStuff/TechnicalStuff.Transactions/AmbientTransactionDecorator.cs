@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using System.Transactions;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.TechnicalStuff.Transactions
+namespace MyCompany.ECommerce.TechnicalStuff.Transactions
 {
     [PublicAPI]
     public class AmbientTransactionDecorator<TCommand> : CommandHandler<TCommand>

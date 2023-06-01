@@ -1,10 +1,10 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.Contacts.Companies;
-using MyCompany.Crm.Contacts.Groups;
-using MyCompany.Crm.Contacts.Tags;
+using MyCompany.ECommerce.Contacts.Companies;
+using MyCompany.ECommerce.Contacts.Groups;
+using MyCompany.ECommerce.Contacts.Tags;
 
-namespace MyCompany.Crm.Contacts.Database
+namespace MyCompany.ECommerce.Contacts.Database
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     public class ContactsDbContext : DbContext

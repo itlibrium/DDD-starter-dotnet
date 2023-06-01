@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Immutable;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.OnlineSale.OrderPlacement
+namespace MyCompany.ECommerce.Sales.OnlineSale.OrderPlacement
 {
     public readonly struct PlaceOrder : Command
     {

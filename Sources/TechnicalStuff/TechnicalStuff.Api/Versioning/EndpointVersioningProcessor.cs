@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
 
-namespace MyCompany.Crm.TechnicalStuff.Api.Versioning
+namespace MyCompany.ECommerce.TechnicalStuff.Api.Versioning
 {
     internal class EndpointVersioningProcessor : IOperationProcessor
     {

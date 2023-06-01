@@ -1,8 +1,8 @@
-using MyCompany.Crm.TechnicalStuff.Kafka;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.Kafka;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Kafka
 {
     public abstract class TransactionalKafkaOutbox<TMessage> : TransactionalOutbox<TMessage>
         where TMessage : Message

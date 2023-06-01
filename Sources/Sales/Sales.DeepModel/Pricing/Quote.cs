@@ -1,10 +1,10 @@
 using System;
 using System.Text.Json.Serialization;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Products;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Products;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddValueObject]
     public readonly struct Quote : IEquatable<Quote>

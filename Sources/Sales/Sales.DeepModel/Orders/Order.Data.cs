@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Products;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Products;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public partial class Order
 {

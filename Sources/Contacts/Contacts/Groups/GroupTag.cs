@@ -1,8 +1,8 @@
 using System;
 using JetBrains.Annotations;
-using MyCompany.Crm.Contacts.Tags;
+using MyCompany.ECommerce.Contacts.Tags;
 
-namespace MyCompany.Crm.Contacts.Groups
+namespace MyCompany.ECommerce.Contacts.Groups
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class GroupTag

@@ -5,8 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>default</LangVersion>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Persistence</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Persistence</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Persistence</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Persistence</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

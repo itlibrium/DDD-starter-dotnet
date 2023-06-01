@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Kafka
 {
     internal static class OutboxMessageProcessors
     {

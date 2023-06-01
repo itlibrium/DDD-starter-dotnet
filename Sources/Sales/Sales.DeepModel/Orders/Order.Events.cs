@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     public partial class Order
     {

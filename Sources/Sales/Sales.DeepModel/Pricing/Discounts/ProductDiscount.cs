@@ -1,8 +1,8 @@
 using System;
-using MyCompany.Crm.Sales.Products;
+using MyCompany.ECommerce.Sales.Products;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing.Discounts
+namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {
     [DddValueObject]
     public readonly struct ProductDiscount : IEquatable<ProductDiscount>

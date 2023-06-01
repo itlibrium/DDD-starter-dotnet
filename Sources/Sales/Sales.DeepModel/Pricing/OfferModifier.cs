@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddDomainService]
     public interface OfferModifier

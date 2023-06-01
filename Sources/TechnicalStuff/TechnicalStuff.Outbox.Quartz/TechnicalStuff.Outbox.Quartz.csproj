@@ -3,6 +3,8 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>default</LangVersion>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

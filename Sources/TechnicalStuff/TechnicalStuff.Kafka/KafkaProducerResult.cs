@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Kafka
 {
     public enum KafkaProducerResult
     {

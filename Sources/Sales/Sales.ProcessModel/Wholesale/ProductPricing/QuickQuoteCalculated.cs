@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.Wholesale.ProductPricing
+namespace MyCompany.ECommerce.Sales.Wholesale.ProductPricing
 {
     public class QuickQuoteCalculated
     {

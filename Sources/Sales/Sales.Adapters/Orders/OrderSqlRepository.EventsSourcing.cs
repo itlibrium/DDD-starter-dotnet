@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Marten;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Integrations.RiskManagement;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace MyCompany.Crm.TechnicalStuff.Api.Docs
+namespace MyCompany.ECommerce.TechnicalStuff.Api.Docs
 {
     public static class DocsApplicationBuilderExtensions
     {

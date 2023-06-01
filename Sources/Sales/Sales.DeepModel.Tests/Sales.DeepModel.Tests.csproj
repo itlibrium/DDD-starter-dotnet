@@ -5,9 +5,9 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
 
-        <AssemblyName>MyCompany.Crm.Sales.DeepModel.Tests</AssemblyName>
+        <AssemblyName>MyCompany.ECommerce.Sales.DeepModel.Tests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

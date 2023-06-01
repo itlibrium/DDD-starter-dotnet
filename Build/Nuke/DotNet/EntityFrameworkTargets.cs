@@ -1,11 +1,11 @@
 using Nuke.Common;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.EntityFramework;
-using static MyCompany.Crm.Nuke.DockerCompose.DockerComposeTargets;
-using static MyCompany.Crm.Nuke.Postgres.PostgresTasks;
-using static MyCompany.Crm.Nuke.Paths;
+using static MyCompany.ECommerce.Nuke.DockerCompose.DockerComposeTargets;
+using static MyCompany.ECommerce.Nuke.Postgres.PostgresTasks;
+using static MyCompany.ECommerce.Nuke.Paths;
 
-namespace MyCompany.Crm.Nuke.DotNet
+namespace MyCompany.ECommerce.Nuke.DotNet
 {
     public static class EntityFrameworkTargets
     {

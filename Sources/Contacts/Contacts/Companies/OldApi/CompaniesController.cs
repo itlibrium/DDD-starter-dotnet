@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
 
-namespace MyCompany.Crm.Contacts.Companies.OldApi
+namespace MyCompany.ECommerce.Contacts.Companies.OldApi
 {
     [ApiController]
     [Route("/api/companies")]

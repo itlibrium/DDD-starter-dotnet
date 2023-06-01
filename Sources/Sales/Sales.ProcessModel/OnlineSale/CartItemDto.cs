@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.OnlineSale
+namespace MyCompany.ECommerce.Sales.OnlineSale
 {
     public readonly struct CartItemDto
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Time;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.Time;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderPlacement
 {
     [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>

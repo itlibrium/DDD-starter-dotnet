@@ -1,9 +1,9 @@
-using MyCompany.Crm.Payments;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Payments;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Integration.Payments
+namespace MyCompany.ECommerce.Sales.Integrations.Payments
 {
     public class PaymentsInMemoryCalls : PaymentsModule
     {

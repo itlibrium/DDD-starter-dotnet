@@ -6,17 +6,17 @@ using Marten.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.Sales;
-using MyCompany.Crm.Sales.Database.Sql.EF;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Orders.PriceChanges;
-using MyCompany.Crm.TechnicalStuff.Json.Json;
-using MyCompany.Crm.TechnicalStuff.Marten;
-using MyCompany.Crm.TechnicalStuff.Outbox.Postgres;
+using MyCompany.ECommerce.Sales;
+using MyCompany.ECommerce.Sales.Database.Sql.EF;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.Orders.PriceChanges;
+using MyCompany.ECommerce.TechnicalStuff.Json.Json;
+using MyCompany.ECommerce.TechnicalStuff.Marten;
+using MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres;
 using RepoDb;
-using DbOrder = MyCompany.Crm.Sales.Database.Sql.Documents.DbOrder;
+using DbOrder = MyCompany.ECommerce.Sales.Database.Sql.Documents.DbOrder;
 
-namespace MyCompany.Crm.DI.Modules
+namespace MyCompany.ECommerce.DI.Modules
 {
     internal static class Sales
     {

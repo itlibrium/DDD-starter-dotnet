@@ -1,7 +1,7 @@
-using MyCompany.Crm.Sales.Pricing.Discounts;
+using MyCompany.ECommerce.Sales.Pricing.Discounts;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddDomainService]
     internal class IndividualSalesConditions : OfferModifier, QuoteModifier

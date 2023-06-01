@@ -1,7 +1,7 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderModification
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderModification
 {
     public readonly struct AddToOrder : Command
     {

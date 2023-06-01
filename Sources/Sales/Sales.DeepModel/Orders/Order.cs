@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using MyCompany.Crm.Sales.Orders.PriceChanges;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.Sales.Orders.PriceChanges;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     [DddAggregate]
     public partial class Order : IEquatable<Order>, DataEquals<Order>

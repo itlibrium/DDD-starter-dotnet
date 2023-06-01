@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MyCompany.Crm.TechnicalStuff.Crud;
+using MyCompany.ECommerce.TechnicalStuff.Crud;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.ECommerce.Contacts.Companies
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class Company : CrudEntity

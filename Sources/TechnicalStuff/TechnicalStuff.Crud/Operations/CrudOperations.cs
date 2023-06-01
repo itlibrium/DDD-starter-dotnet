@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.JsonPatch;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations.Results;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations.Results;
 
-namespace MyCompany.Crm.TechnicalStuff.Crud.Operations
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations
 {
     public interface CrudOperations
     {

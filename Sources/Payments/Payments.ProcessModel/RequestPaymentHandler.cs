@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Payments
+namespace MyCompany.ECommerce.Payments
 {
     public class RequestPaymentHandler : CommandHandler<RequestPayment>
     {

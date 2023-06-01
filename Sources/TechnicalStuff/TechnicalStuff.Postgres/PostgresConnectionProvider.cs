@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Threading.Tasks;
-using MyCompany.Crm.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
 using Npgsql;
 
-namespace MyCompany.Crm.TechnicalStuff.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Postgres
 {
     // TODO: Upgrade to Npgsql 7.x when possible (now Marten is incompatible) and use NpgsqlDataSource
     //  https://www.npgsql.org/doc/basic-usage.html#connections

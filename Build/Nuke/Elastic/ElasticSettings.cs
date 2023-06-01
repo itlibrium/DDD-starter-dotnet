@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.Nuke.Elastic
+namespace MyCompany.ECommerce.Nuke.Elastic
 {
     public class ElasticSettings
     {

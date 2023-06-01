@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Kafka</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Kafka</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Kafka</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Kafka</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

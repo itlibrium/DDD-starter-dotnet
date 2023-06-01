@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class PostgresOutboxProcessorSettings

@@ -1,8 +1,8 @@
 using System;
 using JetBrains.Annotations;
-using MyCompany.Crm.Contacts.Groups;
+using MyCompany.ECommerce.Contacts.Groups;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.ECommerce.Contacts.Companies
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class CompanyGroup

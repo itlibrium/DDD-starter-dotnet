@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace MyCompany.Crm.TechnicalStuff.Persistence;
+namespace MyCompany.ECommerce.TechnicalStuff.Persistence;
 
 public class TrackedSet<TItem, TDbItem> : IReadOnlySet<TItem>
     where TItem : IEquatable<TItem>

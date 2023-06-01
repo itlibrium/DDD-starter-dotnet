@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace MyCompany.Crm.Sales.OnlineSale
+namespace MyCompany.ECommerce.Sales.OnlineSale
 {
     public interface OrderDetailsFinder
     {

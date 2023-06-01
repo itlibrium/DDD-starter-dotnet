@@ -5,24 +5,23 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
-using static MyCompany.Crm.Nuke.Build;
-using static MyCompany.Crm.Nuke.Certs.CertsTargets;
-using static MyCompany.Crm.Nuke.DockerCompose.DockerComposeTargets;
+using static MyCompany.ECommerce.Nuke.Build;
+using static MyCompany.ECommerce.Nuke.Certs.CertsTargets;
+using static MyCompany.ECommerce.Nuke.DockerCompose.DockerComposeTargets;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static MyCompany.Crm.Nuke.DotNet.EntityFrameworkTargets;
-using static MyCompany.Crm.Nuke.Elastic.ElasticTargets;
-using static MyCompany.Crm.Nuke.Paths;
+using static MyCompany.ECommerce.Nuke.DotNet.EntityFrameworkTargets;
+using static MyCompany.ECommerce.Nuke.Elastic.ElasticTargets;
+using static MyCompany.ECommerce.Nuke.Paths;
 
-namespace MyCompany.Crm.Nuke.DotNet
+namespace MyCompany.ECommerce.Nuke.DotNet
 {
     public static class DotNetTargets
     {
         private static readonly ISet<string> RootProjects = new HashSet<string>
         {
             "Startup",
-            "Contacts.Database",
-            "Sales.Database"
+            "Sales.FluentMigrations"
         };
 
         public static Target CleanBin => _ => _

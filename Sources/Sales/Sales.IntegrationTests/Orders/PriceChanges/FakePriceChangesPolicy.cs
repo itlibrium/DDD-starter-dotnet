@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
-using MyCompany.Crm.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Pricing;
 
-namespace MyCompany.Crm.Sales.Orders.PriceChanges
+namespace MyCompany.ECommerce.Sales.Orders.PriceChanges
 {
     public class FakePriceChangesPolicy : PriceChangesPolicy
     {

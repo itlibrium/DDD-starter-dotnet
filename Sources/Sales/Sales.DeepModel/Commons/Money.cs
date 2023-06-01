@@ -1,10 +1,10 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Commons
+namespace MyCompany.ECommerce.Sales.Commons
 {
     [DddValueObject]
     public record Money(decimal Value, Currency Currency)

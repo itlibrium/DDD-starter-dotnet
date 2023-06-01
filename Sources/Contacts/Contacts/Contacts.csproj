@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Contacts.Crud</AssemblyName>
-        <RootNamespace>MyCompany.Crm.Contacts</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.Contacts.Crud</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Contacts</RootNamespace>
         <LangVersion>latest</LangVersion>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
         <OutputType>Library</OutputType>
     </PropertyGroup>
     

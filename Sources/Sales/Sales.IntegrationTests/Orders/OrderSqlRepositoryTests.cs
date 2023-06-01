@@ -6,16 +6,16 @@ using Marten.Exceptions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Orders.PriceChanges;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.Sales.Time;
-using MyCompany.Crm.TechnicalStuff.Persistence;
-using MyCompany.Crm.TechnicalStuff.Postgres;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Orders.PriceChanges;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.Sales.Time;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.Postgres;
 using Xunit;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     public class OrderSqlRepositoryTests : IClassFixture<WebApplicationFactory<Program>>
     {

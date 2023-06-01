@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyCompany.Crm.TechnicalStuff
+namespace MyCompany.ECommerce.TechnicalStuff
 {
     public static class EqualsExtensions
     {

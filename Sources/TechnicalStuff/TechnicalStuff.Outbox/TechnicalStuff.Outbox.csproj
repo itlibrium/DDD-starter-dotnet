@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Outbox</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Outbox</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Outbox</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Outbox</RootNamespace>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 

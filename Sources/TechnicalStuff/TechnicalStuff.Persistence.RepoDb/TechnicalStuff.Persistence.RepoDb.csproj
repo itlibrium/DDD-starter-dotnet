@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Persistence.RepoDb</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Persistence.RepoDb</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb</RootNamespace>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 

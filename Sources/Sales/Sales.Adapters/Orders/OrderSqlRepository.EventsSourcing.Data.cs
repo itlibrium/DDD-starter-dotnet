@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using MyCompany.Crm.Sales.Commons;
+using MyCompany.ECommerce.Sales.Commons;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {

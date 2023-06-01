@@ -5,8 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <NoWarn>CS0649;CS0169</NoWarn>
     <UserSecretsId>MyCompanyCrm</UserSecretsId>
-    <AssemblyName>MyCompany.Crm.Nuke</AssemblyName>
-    <RootNamespace>MyCompany.Crm.Nuke</RootNamespace>
+    <AssemblyName>MyCompany.ECommerce.Nuke</AssemblyName>
+    <RootNamespace>MyCompany.ECommerce.Nuke</RootNamespace>
     <NukeTelemetryVersion>1</NukeTelemetryVersion>
   </PropertyGroup>
 

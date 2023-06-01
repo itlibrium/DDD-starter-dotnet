@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     // TODO: implementation for all persistence options used for OrderRepository
     [Dao]

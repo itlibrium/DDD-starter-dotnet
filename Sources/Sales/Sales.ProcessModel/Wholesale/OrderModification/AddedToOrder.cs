@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderModification
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderModification
 {
     public class AddedToOrder : OrderEvent
     {

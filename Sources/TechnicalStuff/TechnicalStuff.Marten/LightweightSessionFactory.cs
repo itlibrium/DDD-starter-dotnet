@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Marten;
 using Marten.Services;
 
-namespace MyCompany.Crm.TechnicalStuff.Marten
+namespace MyCompany.ECommerce.TechnicalStuff.Marten
 {
     [UsedImplicitly]
     public class LightweightSessionFactory : ISessionFactory

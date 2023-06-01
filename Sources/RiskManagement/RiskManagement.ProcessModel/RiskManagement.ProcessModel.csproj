@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.RiscManagement.ProcessModel</AssemblyName>
-        <RootNamespace>MyCompany.Crm.RiscManagement</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.RiskManagement.ProcessModel</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.RiskManagement</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>    
 

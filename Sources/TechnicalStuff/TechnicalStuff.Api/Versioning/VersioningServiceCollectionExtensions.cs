@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MyCompany.Crm.TechnicalStuff.Api.Versioning
+namespace MyCompany.ECommerce.TechnicalStuff.Api.Versioning
 {
     public static class VersioningServiceCollectionExtensions
     {

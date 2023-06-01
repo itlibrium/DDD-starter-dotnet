@@ -1,7 +1,7 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales
+namespace MyCompany.ECommerce.Sales
 {
     public interface OrderEvent : DomainEvent
     {

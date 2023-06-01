@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace MyCompany.Crm.TechnicalStuff.ProcessModel
+namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel
 {
     public interface DomainEventHandler<in TEvent> : MessageHandler
         where TEvent : DomainEvent

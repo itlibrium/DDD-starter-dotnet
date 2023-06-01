@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Crud.Ef</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Crud.Ef</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Crud.Ef</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Crud.Ef</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

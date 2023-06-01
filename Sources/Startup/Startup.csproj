@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Startup</AssemblyName>
-        <RootNamespace>MyCompany.Crm</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.Startup</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce</RootNamespace>
         <LangVersion>latest</LangVersion>
         <UserSecretsId>MyCompanyCrm</UserSecretsId>
         <Nullable>enable</Nullable>
@@ -24,7 +24,7 @@
       <ProjectReference Include="..\Contacts\Contacts\Contacts.csproj" />
       <ProjectReference Include="..\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj" />
       <ProjectReference Include="..\ProductsDelivery\ProductsDelivery.ProcessModel\ProductsDelivery.ProcessModel.csproj" />
-      <ProjectReference Include="..\RiscManagement\RiscManagement.ProcessModel\RiscManagement.ProcessModel.csproj" />
+      <ProjectReference Include="..\RiskManagement\RiskManagement.ProcessModel\RiskManagement.ProcessModel.csproj" />
       <ProjectReference Include="..\Sales\Sales.Adapters\Sales.Adapters.csproj" />
       <ProjectReference Include="..\Sales\Sales.DeepModel\Sales.DeepModel.csproj" />
       <ProjectReference Include="..\Sales\Sales.ProcessModel\Sales.ProcessModel.csproj" />

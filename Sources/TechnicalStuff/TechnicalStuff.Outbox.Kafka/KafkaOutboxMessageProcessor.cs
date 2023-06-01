@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using MyCompany.Crm.TechnicalStuff.Kafka;
+using MyCompany.ECommerce.TechnicalStuff.Kafka;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Kafka
 {
     public class KafkaOutboxMessageProcessor : OutboxMessageProcessor
     {

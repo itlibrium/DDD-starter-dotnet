@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using MyCompany.Crm.TechnicalStuff.Outbox;
+using MyCompany.ECommerce.TechnicalStuff.Outbox;
 using Quartz;
 
 namespace TechnicalStuff.Outbox.Quartz

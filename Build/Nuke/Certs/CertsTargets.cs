@@ -2,10 +2,10 @@ using System;
 using Nuke.Common;
 using Nuke.Common.IO;
 using static Nuke.Common.IO.FileSystemTasks;
-using static MyCompany.Crm.Nuke.Environment;
-using static MyCompany.Crm.Nuke.Paths;
+using static MyCompany.ECommerce.Nuke.Environment;
+using static MyCompany.ECommerce.Nuke.Paths;
 
-namespace MyCompany.Crm.Nuke.Certs
+namespace MyCompany.ECommerce.Nuke.Certs
 {
     public static class CertsTargets
     {

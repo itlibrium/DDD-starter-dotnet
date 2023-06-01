@@ -2,16 +2,16 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.Sales.SalesChannels;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
+namespace MyCompany.ECommerce.Sales.OnlineSale.CartPricing
 {
     [DddApplicationService]
     public class PriceCartHandler : CommandHandler<PriceCart, CartPriced>
@@ -23,7 +23,7 @@ namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
         public async Task<CartPriced> Handle(PriceCart command)
         {
             var (clientId, currency, productAmounts) = CreateDomainModelFrom(command);
-            var offer = await _calculatePrices.For(clientId, SalesChannel.OnlineSales, productAmounts, currency);
+            var offer = await _calculatePrices.For(clientId, SalesChannel.OnlineSale, productAmounts, currency);
             var cartPriced = CreateEventFrom(clientId, offer);
             return cartPriced;
         }

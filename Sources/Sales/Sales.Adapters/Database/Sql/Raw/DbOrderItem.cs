@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyCompany.Crm.Sales.Database.Sql.Raw;
+namespace MyCompany.ECommerce.Sales.Database.Sql.Raw;
 
 [Table("Sales_RawSql.OrderItems")]
 public record DbOrderItem

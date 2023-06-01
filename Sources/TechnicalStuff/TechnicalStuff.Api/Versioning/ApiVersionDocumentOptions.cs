@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff.Api.Versioning
+namespace MyCompany.ECommerce.TechnicalStuff.Api.Versioning
 {
     public class ApiVersionDocumentOptions
     {

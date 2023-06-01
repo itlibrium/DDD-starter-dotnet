@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Api</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Api</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Api</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

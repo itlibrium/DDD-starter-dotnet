@@ -1,6 +1,6 @@
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing.SpecialOffers
+namespace MyCompany.ECommerce.Sales.Pricing.SpecialOffers
 {
     [DddDomainService]
     public class SpecialOffer : OfferModifier

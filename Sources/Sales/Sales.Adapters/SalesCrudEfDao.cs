@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.Sales.Database.Sql.EF;
-using MyCompany.Crm.TechnicalStuff.Crud.Ef;
+using MyCompany.ECommerce.Sales.Database.Sql.EF;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Ef;
 
-namespace MyCompany.Crm.Sales
+namespace MyCompany.ECommerce.Sales
 {
     public class SalesCrudEfDao : EfCrudDao, SalesCrudOperations
     {

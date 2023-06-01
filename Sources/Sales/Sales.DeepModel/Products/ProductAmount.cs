@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Products
+namespace MyCompany.ECommerce.Sales.Products
 {
     [DddValueObject]
     public record ProductAmount(ProductId ProductId, Amount Amount)

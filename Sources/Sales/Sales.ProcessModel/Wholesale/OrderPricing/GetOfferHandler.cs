@@ -1,16 +1,16 @@
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.SalesChannels;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderPricing
 {
     [DddApplicationService]
     public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
@@ -32,7 +32,7 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
             var (orderId, currency) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
             var clientId = await GetClient(orderId);
-            var offer = await _calculatePrices.For(clientId, SalesChannel.Wholesales, order.ProductAmounts, currency);
+            var offer = await _calculatePrices.For(clientId, SalesChannel.Wholesale, order.ProductAmounts, currency);
             return CreateEventFrom(orderId, offer);
         }
 

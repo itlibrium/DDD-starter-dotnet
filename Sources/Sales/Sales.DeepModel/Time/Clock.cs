@@ -1,7 +1,7 @@
 using System;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Time
+namespace MyCompany.ECommerce.Sales.Time
 {
     [DddDomainService]
     public interface Clock

@@ -1,14 +1,14 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.Sales.SalesChannels;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.Wholesale.ProductPricing
+namespace MyCompany.ECommerce.Sales.Wholesale.ProductPricing
 {
     [DddApplicationService]
     public class GetQuickQuoteHandler : CommandHandler<GetQuickQuote, QuickQuoteCalculated>
@@ -20,7 +20,7 @@ namespace MyCompany.Crm.Sales.Wholesale.ProductPricing
         public async Task<QuickQuoteCalculated> Handle(GetQuickQuote command)
         {
             var (clientId, productAmount, currency) = CreateDomainModelFrom(command);
-            var quote = await _calculatePrices.For(clientId, SalesChannel.Wholesales, productAmount, currency);
+            var quote = await _calculatePrices.For(clientId, SalesChannel.Wholesale, productAmount, currency);
             return CreateEventFrom(clientId, quote);
         }
 

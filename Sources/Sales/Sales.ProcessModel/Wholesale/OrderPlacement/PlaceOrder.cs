@@ -1,7 +1,7 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderPlacement
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderPlacement
 {
     public readonly struct PlaceOrder : Command
     {

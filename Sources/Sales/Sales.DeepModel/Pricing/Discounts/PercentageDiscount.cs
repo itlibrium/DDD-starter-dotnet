@@ -1,8 +1,8 @@
 using System;
-using MyCompany.Crm.Sales.Commons;
+using MyCompany.ECommerce.Sales.Commons;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing.Discounts
+namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {
     [DddDomainService]
     [DddValueObject]

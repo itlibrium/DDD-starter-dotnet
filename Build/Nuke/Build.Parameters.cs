@@ -1,7 +1,7 @@
 using System;
 using Nuke.Common;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     public partial class Build
     {

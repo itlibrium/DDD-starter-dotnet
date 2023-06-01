@@ -1,9 +1,9 @@
 using System;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.TechnicalStuff.ValueObjects;
+using MyCompany.ECommerce.TechnicalStuff.ValueObjects;
 
-namespace MyCompany.Crm.TechnicalStuff.Ef.ValueConverters;
+namespace MyCompany.ECommerce.TechnicalStuff.Ef.ValueConverters;
 
 public class ValueObjectConverter<TValueObject, TValue> : ValueConverter<TValueObject, TValue>
     where TValueObject : ValueObject<TValue>, new()

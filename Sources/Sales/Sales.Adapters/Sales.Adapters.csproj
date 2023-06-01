@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.Adapters</AssemblyName>
-        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.Sales.Adapters</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
@@ -32,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Integration\ProductsDelivery" />
+      <Folder Include="Integrations\ProductsDelivery" />
     </ItemGroup>
 
 </Project>

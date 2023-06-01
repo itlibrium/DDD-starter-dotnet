@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Ef</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Ef</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Ef</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Ef</RootNamespace>
         <LangVersion>default</LangVersion>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

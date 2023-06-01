@@ -1,10 +1,10 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Products;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Products;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public partial class Order
 {

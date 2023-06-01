@@ -3,10 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     public class InPlaceOutboxMessageProcessor : OutboxMessageProcessor
     {

@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.DI;
-using MyCompany.Crm.DI.Modules;
-using MyCompany.Crm.Infrastructure;
-using MyCompany.Crm.Sales;
-using MyCompany.Crm.TechnicalStuff.Api.Docs;
-using MyCompany.Crm.TechnicalStuff.Api.Versioning;
-using MyCompany.Crm.TechnicalStuff.Json.Json;
-using MyCompany.Crm.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.DI;
+using MyCompany.ECommerce.DI.Modules;
+using MyCompany.ECommerce.Infrastructure;
+using MyCompany.ECommerce.Sales;
+using MyCompany.ECommerce.TechnicalStuff.Api.Docs;
+using MyCompany.ECommerce.TechnicalStuff.Api.Versioning;
+using MyCompany.ECommerce.TechnicalStuff.Json.Json;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureSerialization();
@@ -87,7 +87,7 @@ void ConfigureDecorators()
     builder.Services.DecorateCommandHandlers();
 }
 
-namespace MyCompany.Crm
+namespace MyCompany.ECommerce
 {
     public partial class Program { }
 }

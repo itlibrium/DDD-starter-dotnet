@@ -2,20 +2,20 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("/rest/wholesales/orders/{id}/header")]
+    [Route("/rest/wholesale/orders/{id}/header")]
     [ApiVersion("1")]
-    public class WholesalesOrdersHeaderController : ControllerBase
+    public class WholesaleOrdersHeaderController : ControllerBase
     {
         private readonly SalesCrudOperations _operations;
 
-        public WholesalesOrdersHeaderController(SalesCrudOperations operations) => _operations = operations;
+        public WholesaleOrdersHeaderController(SalesCrudOperations operations) => _operations = operations;
 
         [HttpGet]
         public async Task<ActionResult<OrderHeader>> Read(Guid id) => await _operations

@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Nuke.Common.Tooling;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     [TypeConverter(typeof(TypeConverter<Environment>))]
     public class Environment : Enumeration

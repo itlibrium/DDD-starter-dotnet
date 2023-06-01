@@ -1,6 +1,6 @@
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.Crm.Sales.OnlineSale
+namespace MyCompany.ECommerce.Sales.OnlineSale
 {
     [DataStructure]
     public class OrderDetails

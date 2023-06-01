@@ -1,7 +1,7 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.ProductsDelivery
+namespace MyCompany.ECommerce.ProductsDelivery
 {
     public readonly struct RequestDelivery : Command
     {

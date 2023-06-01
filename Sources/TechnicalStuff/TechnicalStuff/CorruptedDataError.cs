@@ -1,5 +1,5 @@
 using System;
 
-namespace MyCompany.Crm.TechnicalStuff;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
 public class CorruptedDataError : Exception{}

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Database.Sql.Raw;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.Persistence;
-using MyCompany.Crm.TechnicalStuff.Persistence.RepoDb;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Database.Sql.Raw;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb;
 using RepoDb;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {

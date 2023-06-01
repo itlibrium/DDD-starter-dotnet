@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
 
-namespace MyCompany.Crm.Sales.Integrations.RiskManagement;
+namespace MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 
 public interface RiskManagement
 {

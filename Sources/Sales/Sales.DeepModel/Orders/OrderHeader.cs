@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MyCompany.Crm.TechnicalStuff.Crud;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.TechnicalStuff.Crud;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     [DataStructure]
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]

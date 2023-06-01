@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderModification
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderModification
 {
     [DddApplicationService]
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>

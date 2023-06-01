@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Immutable;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
+namespace MyCompany.ECommerce.Sales.OnlineSale.CartPricing
 {
     public readonly struct PriceCart : Command
     {

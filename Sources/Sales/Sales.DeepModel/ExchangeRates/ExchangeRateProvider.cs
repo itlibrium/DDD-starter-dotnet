@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Commons;
+using MyCompany.ECommerce.Sales.Commons;
 
-namespace MyCompany.Crm.Sales.ExchangeRates
+namespace MyCompany.ECommerce.Sales.ExchangeRates
 {
     public interface ExchangeRateProvider
     {

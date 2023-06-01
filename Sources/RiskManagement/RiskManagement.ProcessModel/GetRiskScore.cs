@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.RiscManagement
+namespace MyCompany.ECommerce.RiskManagement
 {
     public readonly struct GetRiskScore
     {

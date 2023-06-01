@@ -1,8 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
-using MyCompany.Crm.Contacts.Database;
-using MyCompany.Crm.TechnicalStuff.Crud.Ef;
+using MyCompany.ECommerce.Contacts.Database;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Ef;
 
-namespace MyCompany.Crm.Contacts
+namespace MyCompany.ECommerce.Contacts
 {
     public class ContactsEfDao : EfCrudDao, ContactsCrudOperations
     {

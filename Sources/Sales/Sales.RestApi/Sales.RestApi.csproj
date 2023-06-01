@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.RestApi</AssemblyName>
-        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.Sales.RestApi</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
         <LangVersion>default</LangVersion>
         <OutputType>Library</OutputType>
     </PropertyGroup>

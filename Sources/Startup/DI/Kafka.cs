@@ -1,9 +1,9 @@
 using Confluent.Kafka;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.TechnicalStuff.Kafka;
+using MyCompany.ECommerce.TechnicalStuff.Kafka;
 
-namespace MyCompany.Crm.DI
+namespace MyCompany.ECommerce.DI
 {
     public static class Kafka
     {

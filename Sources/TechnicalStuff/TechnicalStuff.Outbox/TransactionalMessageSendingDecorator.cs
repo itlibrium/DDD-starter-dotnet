@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     public class TransactionalMessageSendingDecorator<TCommand> : CommandHandler<TCommand>
         where TCommand : struct, Command

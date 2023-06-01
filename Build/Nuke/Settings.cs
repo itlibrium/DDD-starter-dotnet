@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Configuration;
-using MyCompany.Crm.Nuke.Elastic;
-using MyCompany.Crm.Nuke.Helpers;
-using MyCompany.Crm.Nuke.Postgres;
-using static MyCompany.Crm.Nuke.Paths;
+using MyCompany.ECommerce.Nuke.Elastic;
+using MyCompany.ECommerce.Nuke.Helpers;
+using MyCompany.ECommerce.Nuke.Postgres;
+using static MyCompany.ECommerce.Nuke.Paths;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     public static class Settings
     {

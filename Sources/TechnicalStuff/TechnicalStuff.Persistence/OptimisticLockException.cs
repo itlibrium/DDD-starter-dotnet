@@ -1,3 +1,3 @@
-namespace MyCompany.Crm.TechnicalStuff.Persistence;
+namespace MyCompany.ECommerce.TechnicalStuff.Persistence;
 
 public class OptimisticLockException : Exception { }

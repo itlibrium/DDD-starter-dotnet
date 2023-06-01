@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace MyCompany.Crm.Sales.OnlineSale.CartPricing
+namespace MyCompany.ECommerce.Sales.OnlineSale.CartPricing
 {
     public readonly struct CartPriced
     {

@@ -1,7 +1,7 @@
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Products
+namespace MyCompany.ECommerce.Sales.Products
 {
     [DddValueObject]
     public record Amount(int Value, AmountUnit Unit)

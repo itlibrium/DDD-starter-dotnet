@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     internal static class OutboxMessageProcessors
     {

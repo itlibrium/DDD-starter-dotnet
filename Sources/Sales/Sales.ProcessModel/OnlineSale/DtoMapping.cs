@@ -1,9 +1,9 @@
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff;
 
-namespace MyCompany.Crm.Sales.OnlineSale
+namespace MyCompany.ECommerce.Sales.OnlineSale
 {
     public static class DtoMapping
     {

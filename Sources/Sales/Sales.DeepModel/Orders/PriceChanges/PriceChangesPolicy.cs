@@ -1,8 +1,8 @@
 using System.Collections.Immutable;
-using MyCompany.Crm.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Pricing;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders.PriceChanges
+namespace MyCompany.ECommerce.Sales.Orders.PriceChanges
 {
     [DddDomainService]
     public interface PriceChangesPolicy

@@ -1,22 +1,21 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.Wholesale;
-using MyCompany.Crm.Sales.Wholesale.OrderCreation;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.Wholesale.OrderCreation;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/orders")]
+    [Route("rest/wholesale/orders")]
     [ApiVersion("1")]
-    public class WholesalesOrdersController : ControllerBase
+    public class WholesaleOrdersController : ControllerBase
     {
         private readonly CommandHandler<CreateOrder, OrderCreated> _createOrderHandler;
         private readonly OrderDetailsFinder _orderDetailsFinder;
 
-        public WholesalesOrdersController(CommandHandler<CreateOrder, OrderCreated> createOrderHandler,
+        public WholesaleOrdersController(CommandHandler<CreateOrder, OrderCreated> createOrderHandler,
             OrderDetailsFinder orderDetailsFinder)
         {
             _createOrderHandler = createOrderHandler;

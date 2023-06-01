@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly]
     public class PostgresOutboxRepository : TransactionalOutboxRepository

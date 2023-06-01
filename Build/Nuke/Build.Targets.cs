@@ -1,11 +1,11 @@
 using JetBrains.Annotations;
-using MyCompany.Crm.Nuke.Certs;
-using MyCompany.Crm.Nuke.DockerCompose;
-using MyCompany.Crm.Nuke.DotNet;
-using MyCompany.Crm.Nuke.Elastic;
+using MyCompany.ECommerce.Nuke.Certs;
+using MyCompany.ECommerce.Nuke.DockerCompose;
+using MyCompany.ECommerce.Nuke.DotNet;
+using MyCompany.ECommerce.Nuke.Elastic;
 using Nuke.Common;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     public partial class Build
     {

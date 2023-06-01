@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.Sales.SalesChannels;
-using MyCompany.Crm.TechnicalStuff;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.Sales.SalesChannels;
+using MyCompany.ECommerce.TechnicalStuff;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderCreation
 {
     [DddApplicationService]
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
@@ -37,6 +37,6 @@ namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
         }
 
         private static OrderCreated CreateEventFrom(Order order, ClientId clientId) =>
-            new(order.Id.Value, clientId.Value, SalesChannel.Wholesales.ToCode());
+            new(order.Id.Value, clientId.Value, SalesChannel.Wholesale.ToCode());
     }
 }

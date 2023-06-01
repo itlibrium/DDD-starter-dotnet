@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.Wholesale
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     public readonly struct QuoteDto
     {

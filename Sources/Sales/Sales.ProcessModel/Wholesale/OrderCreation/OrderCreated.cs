@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderCreation
 {
     public class OrderCreated : OrderEvent
     {

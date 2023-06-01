@@ -1,8 +1,8 @@
 using System;
 using JetBrains.Annotations;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.Crm.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders
 {
     [DataStructure]
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]

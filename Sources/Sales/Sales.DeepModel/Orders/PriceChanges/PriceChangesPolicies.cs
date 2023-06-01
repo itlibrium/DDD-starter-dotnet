@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
+using MyCompany.ECommerce.Sales.Clients;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders.PriceChanges
+namespace MyCompany.ECommerce.Sales.Orders.PriceChanges
 {
     [DddFactory]
     public class PriceChangesPolicies

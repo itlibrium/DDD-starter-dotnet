@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.Contacts.Tags;
-using MyCompany.Crm.TechnicalStuff.Crud.Api;
+using MyCompany.ECommerce.Contacts.Tags;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
 
-namespace MyCompany.Crm.Contacts.Companies.RestApi
+namespace MyCompany.ECommerce.Contacts.Companies.RestApi
 {
     [ApiController]
     [Route("/rest/companies/{companyId}/tags")]

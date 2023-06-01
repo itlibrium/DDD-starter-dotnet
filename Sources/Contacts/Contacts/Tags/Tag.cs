@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using MyCompany.Crm.Contacts.Companies;
-using MyCompany.Crm.Contacts.Groups;
-using MyCompany.Crm.TechnicalStuff.Crud;
+using MyCompany.ECommerce.Contacts.Companies;
+using MyCompany.ECommerce.Contacts.Groups;
+using MyCompany.ECommerce.TechnicalStuff.Crud;
 
-namespace MyCompany.Crm.Contacts.Tags
+namespace MyCompany.ECommerce.Contacts.Tags
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class Tag : CrudEntity

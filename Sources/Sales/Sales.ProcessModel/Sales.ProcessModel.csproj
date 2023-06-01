@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.Sales.ProcessModel</AssemblyName>
-        <RootNamespace>MyCompany.Crm.Sales</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.Sales.ProcessModel</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 

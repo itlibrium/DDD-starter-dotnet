@@ -1,20 +1,19 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Wholesale;
-using MyCompany.Crm.Sales.Wholesale.ProductPricing;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Wholesale.ProductPricing;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/quotes")]
+    [Route("rest/wholesale/quotes")]
     [ApiVersion("1")]
-    public class WholesalesQuotesController : ControllerBase
+    public class WholesaleQuotesController : ControllerBase
     {
         private readonly CommandHandler<GetQuickQuote, QuickQuoteCalculated> _getQuickQuoteHandler;
 
-        public WholesalesQuotesController(CommandHandler<GetQuickQuote, QuickQuoteCalculated> getQuickQuoteHandler) =>
+        public WholesaleQuotesController(CommandHandler<GetQuickQuote, QuickQuoteCalculated> getQuickQuoteHandler) =>
             _getQuickQuoteHandler = getQuickQuoteHandler;
 
         [HttpGet]

@@ -1,7 +1,7 @@
 using Nuke.Common;
 using Nuke.Common.IO;
 
-namespace MyCompany.Crm.Nuke
+namespace MyCompany.ECommerce.Nuke
 {
     public static class Paths
     {

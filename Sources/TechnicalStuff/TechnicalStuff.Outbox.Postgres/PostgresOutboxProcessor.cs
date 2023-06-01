@@ -5,9 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
-using MyCompany.Crm.TechnicalStuff.Postgres;
+using MyCompany.ECommerce.TechnicalStuff.Postgres;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres
 {
     [UsedImplicitly]
     public class PostgresOutboxProcessor<TConnectionFactory> : TransactionalOutboxProcessor

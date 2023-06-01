@@ -1,7 +1,7 @@
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     public abstract class InPlaceTransactionalOutbox<TMessage> : TransactionalOutbox<TMessage>
         where TMessage : Message

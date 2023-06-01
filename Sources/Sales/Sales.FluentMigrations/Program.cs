@@ -16,7 +16,7 @@ var serviceProvider = new ServiceCollection()
     .ConfigureRunner(rb => rb
         .AddPostgres()
         .WithGlobalConnectionString(mainConnectionString)
-        .ScanIn(typeof(Program).Assembly).For.Migrations())
+        .ScanIn(typeof(Sales.FluentMigrations.Program).Assembly).For.Migrations())
     .AddLogging(lb => lb.AddFluentMigratorConsole())
     .BuildServiceProvider(false);
 
@@ -24,4 +24,7 @@ using var scope = serviceProvider.CreateScope();
 var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
 runner.MigrateUp();
 
-public partial class Program { }
+namespace Sales.FluentMigrations
+{
+    public partial class Program { }
+}

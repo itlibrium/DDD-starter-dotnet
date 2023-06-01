@@ -1,7 +1,7 @@
 using System.Data;
 using RepoDb;
 
-namespace MyCompany.Crm.TechnicalStuff.Persistence.RepoDb;
+namespace MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb;
 
 public abstract class RootEntityData<TDbEntity, TId>
     where TDbEntity : class, DbRootEntity<TId>

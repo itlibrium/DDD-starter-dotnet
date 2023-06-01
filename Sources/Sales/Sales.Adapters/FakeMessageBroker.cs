@@ -2,9 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales
+namespace MyCompany.ECommerce.Sales
 {
     public class FakeMessageBroker
     {

@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 using Scrutor;
 
-namespace MyCompany.Crm.DI
+namespace MyCompany.ECommerce.DI
 {
     public static class ConventionBasedRegistrations
     {

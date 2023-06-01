@@ -1,8 +1,8 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ValueObjects;
+using MyCompany.ECommerce.TechnicalStuff.ValueObjects;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 [DddValueObject]
 public readonly record struct OrderId(Guid Value) : ValueObject<Guid>

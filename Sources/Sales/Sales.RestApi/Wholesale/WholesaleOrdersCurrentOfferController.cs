@@ -2,20 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Wholesale;
-using MyCompany.Crm.Sales.Wholesale.OrderPricing;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Wholesale.OrderPricing;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/orders/{id}/current-offer")]
+    [Route("rest/wholesale/orders/{id}/current-offer")]
     [ApiVersion("1")]
-    public class WholesalesOrdersCurrentOfferController : ControllerBase
+    public class WholesaleOrdersCurrentOfferController : ControllerBase
     {
         private readonly CommandHandler<GetOffer, OfferCalculated> _getOfferHandler;
 
-        public WholesalesOrdersCurrentOfferController(CommandHandler<GetOffer, OfferCalculated> getOfferHandler) =>
+        public WholesaleOrdersCurrentOfferController(CommandHandler<GetOffer, OfferCalculated> getOfferHandler) =>
             _getOfferHandler = getOfferHandler;
 
         [HttpGet]

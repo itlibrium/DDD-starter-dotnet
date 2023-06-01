@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using MyCompany.Crm.TechnicalStuff.ValueObjects;
+using MyCompany.ECommerce.TechnicalStuff.ValueObjects;
 
-namespace MyCompany.Crm.TechnicalStuff.Json.Json;
+namespace MyCompany.ECommerce.TechnicalStuff.Json.Json;
 
 public class StringValueObjectJsonConverter<TValueObject> : JsonConverter<TValueObject>
     where TValueObject : struct, ValueObject<string>

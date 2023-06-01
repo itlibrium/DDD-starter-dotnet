@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Confluent.Kafka;
 using Microsoft.Extensions.Logging;
 
-namespace MyCompany.Crm.TechnicalStuff.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Kafka
 {
     public class KafkaMessageProducer : IDisposable
     {

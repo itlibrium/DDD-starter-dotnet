@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing.PriceLists;
-using MyCompany.Crm.Sales.Products;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing.PriceLists;
+using MyCompany.ECommerce.Sales.Products;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddRepository]
     public class PriceListSqlRepository : PriceListRepository

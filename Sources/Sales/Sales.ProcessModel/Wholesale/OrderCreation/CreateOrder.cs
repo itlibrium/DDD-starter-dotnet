@@ -1,7 +1,7 @@
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderCreation
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderCreation
 {
     public readonly struct CreateOrder : Command
     {

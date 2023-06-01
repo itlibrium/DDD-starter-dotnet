@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.TechnicalStuff.Metadata;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.Crm.Sales.ExchangeRates
+namespace MyCompany.ECommerce.Sales.ExchangeRates
 {
     [ExternalService]
     internal class FakeExchangeRateProvider : ExchangeRateProvider

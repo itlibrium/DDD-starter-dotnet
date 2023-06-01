@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff.Persistence.RepoDb;
+namespace MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb;
 
 public interface DbRootEntity<out TId>
 {

@@ -1,7 +1,7 @@
 using System;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesale.OrderPricing
+namespace MyCompany.ECommerce.Sales.Wholesale.OrderPricing
 {
     public readonly struct GetOffer : Command
     {

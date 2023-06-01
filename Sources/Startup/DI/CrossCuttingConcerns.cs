@@ -1,10 +1,10 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using MyCompany.Crm.TechnicalStuff.Outbox;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
-using MyCompany.Crm.TechnicalStuff.Transactions;
+using MyCompany.ECommerce.TechnicalStuff.Outbox;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.TechnicalStuff.Transactions;
 
-namespace MyCompany.Crm.DI
+namespace MyCompany.ECommerce.DI
 {
     public static class CrossCuttingConcerns
     {

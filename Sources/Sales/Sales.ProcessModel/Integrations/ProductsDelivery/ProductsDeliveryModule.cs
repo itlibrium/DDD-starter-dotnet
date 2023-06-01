@@ -1,6 +1,6 @@
-using MyCompany.Crm.Sales.Orders;
+using MyCompany.ECommerce.Sales.Orders;
 
-namespace MyCompany.Crm.Sales.Integration.ProductsDelivery
+namespace MyCompany.ECommerce.Sales.Integrations.ProductsDelivery
 {
     public interface ProductsDeliveryModule
     {

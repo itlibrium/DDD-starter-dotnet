@@ -2,9 +2,9 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tools.Docker;
 using static Nuke.Common.IO.FileSystemTasks;
-using static MyCompany.Crm.Nuke.Paths;
+using static MyCompany.ECommerce.Nuke.Paths;
 
-namespace MyCompany.Crm.Nuke.Elastic
+namespace MyCompany.ECommerce.Nuke.Elastic
 {
     public static class ElasticTargets
     {

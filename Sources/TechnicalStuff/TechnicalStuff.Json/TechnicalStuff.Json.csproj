@@ -4,8 +4,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>default</LangVersion>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Json</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Json</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Json</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Json</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

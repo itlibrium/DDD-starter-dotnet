@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.Sales
+namespace MyCompany.ECommerce.Sales
 {
     public static class SalesAdaptersAssemblyInfo { }
 }

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders.PriceChanges
+namespace MyCompany.ECommerce.Sales.Orders.PriceChanges
 {
     [DddDomainService]
     public class AllowPriceChangesIfTotalPriceIsLower : PriceChangesPolicy

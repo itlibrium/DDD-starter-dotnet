@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     public class TransactionalOutboxes
     {

@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Pricing.PriceLists;
-using MyCompany.Crm.Sales.Products;
-using MyCompany.Crm.TechnicalStuff;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Pricing.PriceLists;
+using MyCompany.ECommerce.Sales.Products;
+using MyCompany.ECommerce.TechnicalStuff;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddValueObject]
     public readonly struct Offer : IEquatable<Offer>

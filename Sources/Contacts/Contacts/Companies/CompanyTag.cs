@@ -1,8 +1,8 @@
 using System;
 using JetBrains.Annotations;
-using MyCompany.Crm.Contacts.Tags;
+using MyCompany.ECommerce.Contacts.Tags;
 
-namespace MyCompany.Crm.Contacts.Companies
+namespace MyCompany.ECommerce.Contacts.Companies
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class CompanyTag

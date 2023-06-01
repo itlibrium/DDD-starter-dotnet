@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox
 {
     public abstract class NonTransactionalOutbox
     {

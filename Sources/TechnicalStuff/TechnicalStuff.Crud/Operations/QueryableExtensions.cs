@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace MyCompany.Crm.TechnicalStuff.Crud.Operations
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations
 {
     public static class QueryableExtensions
     {

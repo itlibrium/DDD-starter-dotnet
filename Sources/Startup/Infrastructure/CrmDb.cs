@@ -1,7 +1,7 @@
-using MyCompany.Crm.TechnicalStuff.Persistence;
-using MyCompany.Crm.TechnicalStuff.Postgres;
+using MyCompany.ECommerce.TechnicalStuff.Persistence;
+using MyCompany.ECommerce.TechnicalStuff.Postgres;
 
-namespace MyCompany.Crm.Infrastructure;
+namespace MyCompany.ECommerce.Infrastructure;
 
 public class CrmDb : PostgresTransactionProvider, MainDb
 {

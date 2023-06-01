@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Metadata</RootNamespace>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Metadata</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Metadata</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Metadata</AssemblyName>
     </PropertyGroup>
 
 </Project>

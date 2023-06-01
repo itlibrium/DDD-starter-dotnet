@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace MyCompany.Crm.TechnicalStuff.ValueObjects;
+namespace MyCompany.ECommerce.TechnicalStuff.ValueObjects;
 
 public static class ValueObjectExtensions
 {

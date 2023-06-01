@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.ProcessModel</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.ProcessModel</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.ProcessModel</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.ProcessModel</RootNamespace>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 

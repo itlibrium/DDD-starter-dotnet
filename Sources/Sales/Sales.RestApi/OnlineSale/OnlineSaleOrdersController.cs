@@ -1,22 +1,21 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.OnlineSale;
-using MyCompany.Crm.Sales.Wholesale.OrderPlacement;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
-using PlaceOrder = MyCompany.Crm.Sales.OnlineSale.OrderPlacement.PlaceOrder;
+using MyCompany.ECommerce.Sales.Wholesale.OrderPlacement;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
+using PlaceOrder = MyCompany.ECommerce.Sales.OnlineSale.OrderPlacement.PlaceOrder;
 
-namespace MyCompany.Crm.Sales.OnlineSales
+namespace MyCompany.ECommerce.Sales.OnlineSale
 {
     [ApiController]
     [Route("rest/online-sales/orders")]
     [ApiVersion("1")]
-    public class OnlineSalesOrdersController : ControllerBase
+    public class OnlineSaleOrdersController : ControllerBase
     {
         private readonly CommandHandler<PlaceOrder, OrderPlaced> _placeOrderHandler;
         private readonly OrderDetailsFinder _orderDetailsFinder;
 
-        public OnlineSalesOrdersController(CommandHandler<PlaceOrder, OrderPlaced> placeOrderHandler,
+        public OnlineSaleOrdersController(CommandHandler<PlaceOrder, OrderPlaced> placeOrderHandler,
             OrderDetailsFinder orderDetailsFinder)
         {
             _placeOrderHandler = placeOrderHandler;

@@ -1,10 +1,10 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
-using MyCompany.Crm.Sales.Orders;
-using MyCompany.Crm.TechnicalStuff.Ef.ValueConverters;
-using MyCompany.Crm.TechnicalStuff.ValueObjects;
+using MyCompany.ECommerce.Sales.Orders;
+using MyCompany.ECommerce.TechnicalStuff.Ef.ValueConverters;
+using MyCompany.ECommerce.TechnicalStuff.ValueObjects;
 
-namespace MyCompany.Crm.Sales.Database.Sql.EF
+namespace MyCompany.ECommerce.Sales.Database.Sql.EF
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     public class SalesDbContext : DbContext

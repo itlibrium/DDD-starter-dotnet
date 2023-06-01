@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Orders;
+using MyCompany.ECommerce.Sales.Orders;
 
-namespace MyCompany.Crm.Sales.Wholesale
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     public interface OrderDetailsFinder
     {

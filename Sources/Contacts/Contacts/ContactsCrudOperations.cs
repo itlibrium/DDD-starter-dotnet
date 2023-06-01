@@ -1,6 +1,6 @@
-using MyCompany.Crm.TechnicalStuff.Crud.Operations;
+using MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
 
-namespace MyCompany.Crm.Contacts
+namespace MyCompany.ECommerce.Contacts
 {
     public interface ContactsCrudOperations : CrudOperations { }
 }

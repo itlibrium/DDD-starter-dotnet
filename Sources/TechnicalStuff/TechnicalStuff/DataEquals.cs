@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.TechnicalStuff;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
 public interface DataEquals<in T>
 {

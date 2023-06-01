@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Pricing.Discounts;
-using MyCompany.Crm.Sales.Pricing.SpecialOffers;
-using MyCompany.Crm.Sales.SalesChannels;
+using MyCompany.ECommerce.Sales.Pricing.Discounts;
+using MyCompany.ECommerce.Sales.Pricing.SpecialOffers;
+using MyCompany.ECommerce.Sales.SalesChannels;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing
 {
     [DddFactory]
     public class OfferModifiers
@@ -21,7 +21,7 @@ namespace MyCompany.Crm.Sales.Pricing
                         : await GetProductLevelDiscounts(offerRequest)));
 
         private static bool CanApplyIndividualSalesConditions(OfferRequest offerRequest) =>
-            offerRequest.SalesChannel == SalesChannel.Wholesales;
+            offerRequest.SalesChannel == SalesChannel.Wholesale;
         
         private async Task<OfferModifier> GetIndividualSalesConditions(OfferRequest offerRequest)
         {

@@ -6,12 +6,12 @@ using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Docker;
 using Nuke.DockerCompose;
-using static MyCompany.Crm.Nuke.Paths;
-using static MyCompany.Crm.Nuke.Environment;
-using static MyCompany.Crm.Nuke.Certs.CertsTargets;
-using static MyCompany.Crm.Nuke.Elastic.ElasticTargets;
+using static MyCompany.ECommerce.Nuke.Paths;
+using static MyCompany.ECommerce.Nuke.Environment;
+using static MyCompany.ECommerce.Nuke.Certs.CertsTargets;
+using static MyCompany.ECommerce.Nuke.Elastic.ElasticTargets;
 
-namespace MyCompany.Crm.Nuke.DockerCompose
+namespace MyCompany.ECommerce.Nuke.DockerCompose
 {
     public static class DockerComposeTargets
     {

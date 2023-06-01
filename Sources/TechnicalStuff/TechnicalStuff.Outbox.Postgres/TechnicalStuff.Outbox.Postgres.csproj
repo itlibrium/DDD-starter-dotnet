@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>MyCompany.Crm.TechnicalStuff.Outbox.Postgres</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff.Outbox.Postgres</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

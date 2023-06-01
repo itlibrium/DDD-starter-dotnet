@@ -1,6 +1,6 @@
 using Nuke.Common.Tooling;
 
-namespace MyCompany.Crm.Nuke.Helpers
+namespace MyCompany.ECommerce.Nuke.Helpers
 {
     public static class EnumerationExtensions
     {

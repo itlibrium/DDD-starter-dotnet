@@ -1,4 +1,4 @@
-namespace MyCompany.Crm.Nuke.Postgres
+namespace MyCompany.ECommerce.Nuke.Postgres
 {
     public class PostgresSettings
     {

@@ -1,7 +1,7 @@
 using System;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Commons
+namespace MyCompany.ECommerce.Sales.Commons
 {
     [DddValueObject]
     public readonly struct Percentage : IEquatable<Percentage>

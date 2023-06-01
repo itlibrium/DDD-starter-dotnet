@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using MyCompany.Crm.Sales.Clients;
-using MyCompany.Crm.Sales.Commons;
-using MyCompany.Crm.Sales.Integrations.RiskManagement;
-using MyCompany.Crm.Sales.Pricing;
+using MyCompany.ECommerce.Sales.Clients;
+using MyCompany.ECommerce.Sales.Commons;
+using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
+using MyCompany.ECommerce.Sales.Pricing;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 
-namespace MyCompany.Crm.Sales.Orders;
+namespace MyCompany.ECommerce.Sales.Orders;
 
 public partial class Order
 {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyCompany.Crm.TechnicalStuff.Outbox.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres
 {
     public readonly struct Batch : IEnumerable<Batch.Item>
     {

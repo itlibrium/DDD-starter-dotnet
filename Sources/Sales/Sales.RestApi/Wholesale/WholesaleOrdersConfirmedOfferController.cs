@@ -5,20 +5,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.Crm.Sales.Wholesale;
-using MyCompany.Crm.Sales.Wholesale.OrderPricing;
-using MyCompany.Crm.TechnicalStuff.ProcessModel;
+using MyCompany.ECommerce.Sales.Wholesale.OrderPricing;
+using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.Crm.Sales.Wholesales
+namespace MyCompany.ECommerce.Sales.Wholesale
 {
     [ApiController]
-    [Route("rest/wholesales/orders/{id}/confirmed-offer")]
+    [Route("rest/wholesale/orders/{id}/confirmed-offer")]
     [ApiVersion("1")]
-    public class WholesalesOrdersConfirmedOfferController : ControllerBase
+    public class WholesaleOrdersConfirmedOfferController : ControllerBase
     {
         private readonly CommandHandler<ConfirmOffer, OfferConfirmed> _confirmOfferHandler;
 
-        public WholesalesOrdersConfirmedOfferController(
+        public WholesaleOrdersConfirmedOfferController(
             CommandHandler<ConfirmOffer, OfferConfirmed> confirmOfferHandler) =>
             _confirmOfferHandler = confirmOfferHandler;
 

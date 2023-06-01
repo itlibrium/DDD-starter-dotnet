@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>        
-        <AssemblyName>MyCompany.Crm.TechnicalStuff</AssemblyName>
-        <RootNamespace>MyCompany.Crm.TechnicalStuff</RootNamespace>
+        <AssemblyName>MyCompany.ECommerce.TechnicalStuff</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.TechnicalStuff</RootNamespace>
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>

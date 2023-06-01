@@ -1,6 +1,6 @@
 using System;
 
-namespace MyCompany.Crm.Sales.Integration.Payments
+namespace MyCompany.ECommerce.Sales.Integrations.Payments
 {
     public class PaymentRequestFulfilled : OrderEvent
     {

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using MyCompany.Crm.Contacts.Companies;
-using MyCompany.Crm.TechnicalStuff.Crud;
+using MyCompany.ECommerce.Contacts.Companies;
+using MyCompany.ECommerce.TechnicalStuff.Crud;
 using Newtonsoft.Json;
 
-namespace MyCompany.Crm.Contacts.Groups
+namespace MyCompany.ECommerce.Contacts.Groups
 {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     public class Group : CrudEntity
