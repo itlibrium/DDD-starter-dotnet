@@ -20,9 +20,9 @@ namespace MyCompany.ECommerce.DI.Modules
 {
     internal static class Sales
     {
-        private static readonly Assembly SalesDeepModel = typeof(SalesDeepModel).Assembly;
-        private static readonly Assembly SalesProcessModel = typeof(SalesProcessModelAssemblyInfo).Assembly;
-        private static readonly Assembly SalesAdapters = typeof(SalesAdaptersAssemblyInfo).Assembly;
+        private static readonly Assembly SalesDeepModel = typeof(SalesDeepModelLayerInfo).Assembly;
+        private static readonly Assembly SalesProcessModel = typeof(SalesProcessModelLayerInfo).Assembly;
+        private static readonly Assembly SalesAdapters = typeof(SalesAdaptersLayerInfo).Assembly;
 
         public static IServiceCollection AddSalesModule(this IServiceCollection services,
             IConfiguration configuration)

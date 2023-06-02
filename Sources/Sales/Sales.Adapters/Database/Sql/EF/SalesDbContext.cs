@@ -17,7 +17,7 @@ namespace MyCompany.ECommerce.Sales.Database.Sql.EF
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
         {
-            foreach (var (type, valueType) in SalesDeepModel.Assembly.GetValueObjectsMeta())
+            foreach (var (type, valueType) in SalesDeepModelLayerInfo.Assembly.GetValueObjectsMeta())
                 configuration.Properties(type)
                     .HaveConversion(typeof(ValueObjectConverter<,>).MakeGenericType(type, valueType));
         }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TechnicalStuff.Outbox.Quartz
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz
 {
     public class OutboxBackgroundServiceSettings
     {

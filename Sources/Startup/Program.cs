@@ -11,6 +11,10 @@ using MyCompany.ECommerce.TechnicalStuff.Api.Docs;
 using MyCompany.ECommerce.TechnicalStuff.Api.Versioning;
 using MyCompany.ECommerce.TechnicalStuff.Json.Json;
 using MyCompany.ECommerce.TechnicalStuff.Persistence;
+using P3Model.Annotations.Technology;
+
+[assembly: DeployableUnit("ecommerce-monolith")]
+[assembly: Tier("Application")]
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureSerialization();

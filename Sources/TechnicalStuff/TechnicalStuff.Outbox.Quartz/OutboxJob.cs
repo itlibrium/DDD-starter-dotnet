@@ -1,10 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using MyCompany.ECommerce.TechnicalStuff.Outbox;
 using Quartz;
 
-namespace TechnicalStuff.Outbox.Quartz
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz
 {
     // TODO: deleting processed messages in separate Job
     [DisallowConcurrentExecution]
