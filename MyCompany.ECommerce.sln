@@ -30,6 +30,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Crud", "Sources\TechnicalStuff\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj", "{7366E7E8-283D-4772-9807-BDC55917B9F3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{109EBFC9-4414-4331-AD7B-5C19A87CBF8B}"
+	ProjectSection(SolutionItems) = preProject
+		Sources\DomainVisionStatement.md = Sources\DomainVisionStatement.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{2F88D996-6A05-4BE0-A064-F7748E584090}"
 EndProject

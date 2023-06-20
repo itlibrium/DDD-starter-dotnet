@@ -16,7 +16,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />
-        <PackageReference Include="P3Model.Annotations" Version="0.2.0-preview2" />
+        <PackageReference Include="P3Model.Annotations" Version="0.2.0-preview3" />
         <PackageReference Include="Quartz" Version="3.4.0" />
         <PackageReference Include="Scrutor" Version="4.2.0" />
     </ItemGroup>

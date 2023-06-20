@@ -1,4 +1,4 @@
-using MyCompany.ECommerce.Payments;
+using MyCompany.ECommerce.Payments.Requesting;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;

@@ -2,8 +2,8 @@ using P3Model.Annotations.Domain.DynamicModel;
 
 namespace MyCompany.ECommerce.Sales;
 
-[Process(Name)]
-public class SaleProcess
+[Process(Name, ApplyOnNamespace = true)]
+public static class SaleProcess
 {
-    public const string Name = "Online ordering";
+    public const string Name = "Sale";
 }
