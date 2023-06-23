@@ -6,5 +6,5 @@ namespace MyCompany.ECommerce.RiskManagement.Calculation;
 public static class RiskScoreCalculationProcess
 {
     public const string Name = "Risk score calculation";
-    public const string FullName = RiskManagementProcess.Name + "." + Name;
+    public const string FullName = RiskManagementProcess.FullName + "." + Name;
 }

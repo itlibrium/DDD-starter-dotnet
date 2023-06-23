@@ -11,9 +11,12 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification
 {
-    [ProcessStep(nameof(AddToOrder), WholesaleOrderingProcess.Name, 
-        nameof(AddedToOrder),
-        nameof(GetOffer))]
+    [ProcessStep(nameof(AddToOrder), WholesaleOrderingProcess.FullName,
+        NextSteps = new[]
+        {
+            nameof(AddedToOrder),
+            nameof(GetOffer)
+        })]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class AddToOrderHandler : CommandHandler<AddToOrder, AddedToOrder>
@@ -46,14 +49,14 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification
         private static (OrderId, ProductAmount) CreateDomainModelFrom(AddToOrder command) => (
             OrderId.From(command.OrderId),
             ProductAmount.Of(
-                ProductId.From(command.ProductId), 
-                command.Amount, 
+                ProductId.From(command.ProductId),
+                command.Amount,
                 command.UnitCode.ToDomainModel<AmountUnit>()));
-        
-        private static AddedToOrder CreateEventFrom(OrderId orderId, ProductAmount productAmount) => 
-            new(orderId.Value, 
-                productAmount.ProductId.Value, 
-                productAmount.Amount.Value, 
+
+        private static AddedToOrder CreateEventFrom(OrderId orderId, ProductAmount productAmount) =>
+            new(orderId.Value,
+                productAmount.ProductId.Value,
+                productAmount.Amount.Value,
                 productAmount.Amount.Unit.ToCode());
     }
 }

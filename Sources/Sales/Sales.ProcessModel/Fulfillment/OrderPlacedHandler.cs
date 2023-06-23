@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.DynamicModel;
@@ -7,7 +8,8 @@ using P3Model.Annotations.Domain.DynamicModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Fulfillment;
 
-[ProcessStep(nameof(OrderPlaced), FulfillmentProcess.Name)]
+[UsedImplicitly]
+[ProcessStep(nameof(OrderPlaced), Process = FulfillmentProcess.FullName)]
 [DddApplicationService]
 public class OrderPlacedHandler : DomainEventHandler<OrderPlaced>, DomainEventHandler<MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement.OrderPlaced>
 {

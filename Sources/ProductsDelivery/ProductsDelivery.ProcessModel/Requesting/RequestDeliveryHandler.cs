@@ -7,7 +7,7 @@ using P3Model.Annotations.Domain.DynamicModel;
 namespace MyCompany.ECommerce.ProductsDelivery.Requesting;
 
 [UsedImplicitly]
-[ProcessStep(nameof(RequestDelivery), ProductsDeliveryProcess.FullName)]
+[ProcessStep(nameof(RequestDelivery), Process = ProductsDeliveryProcess.FullName)]
 public class RequestDeliveryHandler : CommandHandler<RequestDelivery>
 {
     public Task Handle(RequestDelivery command)

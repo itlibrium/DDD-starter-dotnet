@@ -16,7 +16,8 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing
 {
-    [ProcessStep(nameof(PriceCart), OnlineOrderingProcess.Name, nameof(PlaceOrder))]
+    [ProcessStep(nameof(PriceCart), Process = OnlineOrderingProcess.FullName,
+        NextSteps = new[] { nameof(PlaceOrder) })]
     [Actor(Actors.RetailClient)]
     [DddApplicationService]
     public class PriceCartHandler : CommandHandler<PriceCart, CartPriced>

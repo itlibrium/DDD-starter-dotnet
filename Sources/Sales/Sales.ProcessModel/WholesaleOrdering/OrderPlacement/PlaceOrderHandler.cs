@@ -9,7 +9,7 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement
 {
-    [ProcessStep(nameof(PlaceOrder), WholesaleOrderingProcess.Name)]
+    [ProcessStep(nameof(PlaceOrder), Process = WholesaleOrderingProcess.FullName)]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>

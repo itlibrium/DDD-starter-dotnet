@@ -19,12 +19,15 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 {
-    [ProcessStep(nameof(ConfirmOffer), WholesaleOrderingProcess.Name, 
-        nameof(AddedToOrder), 
-        nameof(PlaceOrder))]
+    [ProcessStep(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.FullName,
+        NextSteps = new[]
+        {
+            nameof(AddedToOrder),
+            nameof(PlaceOrder)
+        })]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
-    public class ConfirmOfferHandler  : CommandHandler<ConfirmOffer, OfferConfirmed>
+    public class ConfirmOfferHandler : CommandHandler<ConfirmOffer, OfferConfirmed>
     {
         private readonly Order.Repository _orders;
         private readonly SalesCrudOperations _crudOperations;
@@ -34,7 +37,7 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
         private readonly Clock _clock;
         private readonly TimeSpan _offerExpirationTime = TimeSpan.FromHours(24);
 
-        public ConfirmOfferHandler(Order.Repository orders, 
+        public ConfirmOfferHandler(Order.Repository orders,
             SalesCrudOperations crudOperations,
             CalculatePrices calculatePrices,
             PriceChangesPolicies priceChangesPolicies,
@@ -54,7 +57,7 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
             var (orderId, offer) = CreateDomainModelFrom(command);
             var order = await _orders.GetBy(orderId);
             var clientId = await GetClient(orderId);
-            var currentOffer = await _calculatePrices.For(clientId, 
+            var currentOffer = await _calculatePrices.For(clientId,
                 SalesChannel.Wholesale,
                 offer.ProductAmounts,
                 offer.Currency);
@@ -79,7 +82,7 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
             var orderHeader = await _crudOperations.Read<OrderHeader>(orderId.Value);
             return ClientId.From(orderHeader.ClientId);
         }
-        
+
         private static OfferConfirmed CreateEventFrom(OrderId orderId, Offer offer) => new(
             orderId.Value, offer.Quotes
                 .Select(quote => quote.ToDto())

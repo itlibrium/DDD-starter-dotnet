@@ -1,7 +1,9 @@
 using System;
+using P3Model.Annotations.Domain.DynamicModel;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
+    [ProcessStepContract]
     public class OrderPlaced : OrderEvent
     {
         public Guid OrderId { get; }

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;
@@ -15,7 +16,8 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
-    [ProcessStep(nameof(PlaceOrder), OnlineOrderingProcess.Name)]
+    [UsedImplicitly]
+    [ProcessStep(nameof(PlaceOrder), Process = OnlineOrderingProcess.FullName)]
     [Actor(Actors.RetailClient)]
     [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>

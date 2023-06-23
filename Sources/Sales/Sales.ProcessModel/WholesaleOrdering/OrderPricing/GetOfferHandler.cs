@@ -14,8 +14,8 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 {
-    [ProcessStep(nameof(GetOffer), WholesaleOrderingProcess.Name,
-        nameof(ConfirmOffer))]
+    [ProcessStep(nameof(GetOffer), Process = WholesaleOrderingProcess.FullName,
+        NextSteps = new[] { nameof(ConfirmOffer) })]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
@@ -43,7 +43,7 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 
         private static (OrderId, Currency) CreateDomainModelFrom(GetOffer command) => (
             OrderId.From(command.OrderId), command.CurrencyCode.ToDomainModel<Currency>());
-        
+
         private async Task<ClientId> GetClient(OrderId orderId)
         {
             var orderHeader = await _crudOperations.Read<OrderHeader>(orderId.Value);

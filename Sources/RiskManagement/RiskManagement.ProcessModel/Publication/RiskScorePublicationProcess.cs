@@ -6,5 +6,5 @@ namespace MyCompany.ECommerce.RiskManagement.Publication;
 public class RiskScorePublicationProcess
 {
     public const string Name = "Risk score publication";
-    public const string FullName = RiskManagementProcess.Name + "." + Name;
+    public const string FullName = RiskManagementProcess.FullName + "." + Name;
 }

@@ -7,7 +7,7 @@ using P3Model.Annotations.Domain.DynamicModel;
 namespace MyCompany.ECommerce.RiskManagement.Publication;
 
 [UsedImplicitly]
-[ProcessStep(nameof(GetRiskScore), RiskScorePublicationProcess.FullName)]
+[ProcessStep(nameof(GetRiskScore), Process = RiskScorePublicationProcess.FullName)]
 public class GetRiskScoreHandler : QueryHandler<GetRiskScore, decimal>
 {
     public Task<decimal> Handle(GetRiskScore query)

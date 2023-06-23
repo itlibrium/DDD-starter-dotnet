@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Pricing;
@@ -13,7 +14,8 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing
 {
-    [ProcessStep(nameof(CreateOrder), WholesaleOrderingProcess.Name)]
+    [UsedImplicitly]
+    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.FullName)]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class GetQuickQuoteHandler : CommandHandler<GetQuickQuote, QuickQuoteCalculated>
