@@ -21,12 +21,12 @@ This view contains details information about ValueDiscount building block, inclu
       1(ValueDiscount)
       class 1 DomainPerspective
     end
-    subgraph 2["Discounts"]
-      3([ValueDiscount])
+    subgraph 2["Commons"]
+      3([Money])
       class 3 DomainPerspective
     end
-    subgraph 4["Commons"]
-      5([Money])
+    subgraph 4["Discounts"]
+      5([ValueDiscount])
       class 5 DomainPerspective
     end
     0-->|depends on|2
@@ -49,8 +49,8 @@ ValueDiscount is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
 - [[*Domain building block*] Money](../../Commons/Money.md)
+- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
 
 ---
 

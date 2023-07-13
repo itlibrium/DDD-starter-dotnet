@@ -38,16 +38,16 @@ This view contains details information about PlaceOrder business processes step,
   flowchart TB
     0(PlaceOrder)
     class 0 DomainPerspective
-    1([Repository])
+    1([Clock])
     class 1 DomainPerspective
     0-->|uses|1
-    2([Clock])
+    2([Order])
     class 2 DomainPerspective
     0-->|uses|2
     3([OrderId])
     class 3 DomainPerspective
     0-->|uses|3
-    4([Order])
+    4([Repository])
     class 4 DomainPerspective
     0-->|uses|4
     classDef DomainPerspective stroke:#009900
@@ -98,8 +98,8 @@ This view contains details information about PlaceOrder business processes step,
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] OrderPlacement](../../../Modules/Sales/WholesaleOrdering/OrderPlacement/OrderPlacement.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)

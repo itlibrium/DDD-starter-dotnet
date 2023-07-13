@@ -38,25 +38,25 @@ This view contains details information about GetOffer business processes step, i
   flowchart TB
     0(GetOffer)
     class 0 DomainPerspective
-    1([Repository])
+    1([CalculatePrices])
     class 1 DomainPerspective
     0-->|uses|1
-    2([OrderId])
+    2([ClientId])
     class 2 DomainPerspective
     0-->|uses|2
-    3([Order])
+    3([Offer])
     class 3 DomainPerspective
     0-->|uses|3
-    4([Quote])
+    4([Order])
     class 4 DomainPerspective
     0-->|uses|4
-    5([Offer])
+    5([OrderId])
     class 5 DomainPerspective
     0-->|uses|5
-    6([ClientId])
+    6([Quote])
     class 6 DomainPerspective
     0-->|uses|6
-    7([CalculatePrices])
+    7([Repository])
     class 7 DomainPerspective
     0-->|uses|7
     classDef DomainPerspective stroke:#009900
@@ -107,8 +107,8 @@ This view contains details information about GetOffer business processes step, i
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] OrderPricing](../../../Modules/Sales/WholesaleOrdering/OrderPricing/OrderPricing.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)

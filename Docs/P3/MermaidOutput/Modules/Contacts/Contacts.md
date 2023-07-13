@@ -21,10 +21,10 @@ This view contains details information about Contacts domain module, including:
   flowchart TB
     0(Contacts)
     class 0 DomainPerspective
-    1([Groups])
+    1([Companies])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Companies])
+    2([Groups])
     class 2 DomainPerspective
     0-->|contains|2
     3([Tags])

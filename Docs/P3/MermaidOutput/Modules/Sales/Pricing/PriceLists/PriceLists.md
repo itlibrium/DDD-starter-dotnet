@@ -101,9 +101,9 @@ This view contains details information about PriceLists domain module, including
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] PriceListRepository](../../../../BuildingBlocks/Sales/Pricing/PriceLists/PriceListRepository.md)
 - [[*Domain building block*] BasePrices](../../../../BuildingBlocks/Sales/Pricing/PriceLists/BasePrices.md)
 - [[*Domain building block*] BasePrice](../../../../BuildingBlocks/Sales/Pricing/PriceLists/BasePrice.md)
+- [[*Domain building block*] PriceListRepository](../../../../BuildingBlocks/Sales/Pricing/PriceLists/PriceListRepository.md)
 
 ---
 

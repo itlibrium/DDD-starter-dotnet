@@ -55,10 +55,10 @@ This view contains details information about Products domain module, including:
     2([ProductAmount])
     class 2 DomainPerspective
     0-->|contains|2
-    3([ProductUnit])
+    3([ProductId])
     class 3 DomainPerspective
     0-->|contains|3
-    4([ProductId])
+    4([ProductUnit])
     class 4 DomainPerspective
     0-->|contains|4
     classDef DomainPerspective stroke:#009900
@@ -107,10 +107,10 @@ This view contains details information about Products domain module, including:
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] ProductId](../../../BuildingBlocks/Sales/Products/ProductId.md)
-- [[*Domain building block*] ProductUnit](../../../BuildingBlocks/Sales/Products/ProductUnit.md)
 - [[*Domain building block*] Amount](../../../BuildingBlocks/Sales/Products/Amount.md)
+- [[*Domain building block*] ProductId](../../../BuildingBlocks/Sales/Products/ProductId.md)
 - [[*Domain building block*] ProductAmount](../../../BuildingBlocks/Sales/Products/ProductAmount.md)
+- [[*Domain building block*] ProductUnit](../../../BuildingBlocks/Sales/Products/ProductUnit.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 
 ---

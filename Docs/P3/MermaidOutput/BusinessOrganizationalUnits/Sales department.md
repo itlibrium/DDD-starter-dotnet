@@ -20,10 +20,10 @@ This view contains details information about Sales department, including:
     1([Payments])
     class 1 DomainPerspective
     0-->|owns|1
-    2([Sales])
+    2([RiskManagement])
     class 2 DomainPerspective
     0-->|owns|2
-    3([RiskManagement])
+    3([Sales])
     class 3 DomainPerspective
     0-->|owns|3
     classDef DomainPerspective stroke:#009900

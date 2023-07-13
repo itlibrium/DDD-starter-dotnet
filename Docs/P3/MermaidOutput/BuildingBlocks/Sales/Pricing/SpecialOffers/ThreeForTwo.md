@@ -46,8 +46,8 @@ ThreeForTwo is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] OfferModifier](../OfferModifier.md)
 - [[*Domain building block*] Offer](../Offer.md)
+- [[*Domain building block*] OfferModifier](../OfferModifier.md)
 
 ---
 

@@ -26,10 +26,10 @@ This view contains details information about Online ordering business process, i
     1---0
     1-->|is part of|0
     0---1
-    2([PriceCart])
+    2([PlaceOrder])
     class 2 DomainPerspective
     0-->|contains|2
-    3([PlaceOrder])
+    3([PriceCart])
     class 3 DomainPerspective
     0-->|contains|3
     linkStyle 0,2 stroke:none
@@ -111,8 +111,8 @@ This view contains details information about Online ordering business process, i
 
 ### Zoom-in
 
-- [[*Process Step*] PriceCart](../../../ProcessSteps/Sale/Online ordering/PriceCart.md)
 - [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Online ordering/PlaceOrder.md)
+- [[*Process Step*] PriceCart](../../../ProcessSteps/Sale/Online ordering/PriceCart.md)
 
 ### Zoom-out
 
@@ -120,11 +120,11 @@ This view contains details information about Online ordering business process, i
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
-- [[*Process Step*] PriceCart](../../../ProcessSteps/Sale/Online ordering/PriceCart.md)
 - [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Online ordering/PlaceOrder.md)
+- [[*Process Step*] PriceCart](../../../ProcessSteps/Sale/Online ordering/PriceCart.md)
 
 ---
 

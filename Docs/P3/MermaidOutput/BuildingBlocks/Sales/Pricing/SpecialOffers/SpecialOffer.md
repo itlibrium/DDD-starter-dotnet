@@ -22,9 +22,9 @@ This view contains details information about SpecialOffer building block, includ
       class 1 DomainPerspective
     end
     subgraph 2["Pricing"]
-      3([OfferModifier])
+      3([Offer])
       class 3 DomainPerspective
-      4([Offer])
+      4([OfferModifier])
       class 4 DomainPerspective
     end
     0-->|depends on|2
@@ -46,8 +46,8 @@ SpecialOffer is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] OfferModifier](../OfferModifier.md)
 - [[*Domain building block*] Offer](../Offer.md)
+- [[*Domain building block*] OfferModifier](../OfferModifier.md)
 
 ---
 

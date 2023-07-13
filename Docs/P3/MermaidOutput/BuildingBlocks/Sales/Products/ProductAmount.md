@@ -22,11 +22,11 @@ This view contains details information about ProductAmount building block, inclu
       class 1 DomainPerspective
     end
     subgraph 2["Products"]
-      3([ProductUnit])
+      3([Amount])
       class 3 DomainPerspective
       4([ProductId])
       class 4 DomainPerspective
-      5([Amount])
+      5([ProductUnit])
       class 5 DomainPerspective
     end
     0-->|depends on|2
@@ -58,9 +58,9 @@ This view contains details information about ProductAmount building block, inclu
 
 ### Change perspective
 
+- [[*Domain building block*] Amount](Amount.md)
 - [[*Domain building block*] ProductId](ProductId.md)
 - [[*Domain building block*] ProductUnit](ProductUnit.md)
-- [[*Domain building block*] Amount](Amount.md)
 
 ---
 

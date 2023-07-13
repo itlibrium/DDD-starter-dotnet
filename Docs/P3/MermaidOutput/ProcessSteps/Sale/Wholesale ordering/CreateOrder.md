@@ -38,13 +38,13 @@ This view contains details information about CreateOrder business processes step
   flowchart TB
     0(CreateOrder)
     class 0 DomainPerspective
-    1([Factory])
+    1([CalculatePrices])
     class 1 DomainPerspective
     0-->|uses|1
-    2([CalculatePrices])
+    2([ClientId])
     class 2 DomainPerspective
     0-->|uses|2
-    3([Repository])
+    3([Factory])
     class 3 DomainPerspective
     0-->|uses|3
     4([Order])
@@ -53,7 +53,7 @@ This view contains details information about CreateOrder business processes step
     5([Quote])
     class 5 DomainPerspective
     0-->|uses|5
-    6([ClientId])
+    6([Repository])
     class 6 DomainPerspective
     0-->|uses|6
     classDef DomainPerspective stroke:#009900
@@ -104,8 +104,8 @@ This view contains details information about CreateOrder business processes step
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] OrderCreation](../../../Modules/Sales/WholesaleOrdering/OrderCreation/OrderCreation.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)

@@ -49,10 +49,10 @@ This view contains details information about Commons domain module, including:
     1([Money])
     class 1 DomainPerspective
     0-->|contains|1
-    2([TaxId])
+    2([Percentage])
     class 2 DomainPerspective
     0-->|contains|2
-    3([Percentage])
+    3([TaxId])
     class 3 DomainPerspective
     0-->|contains|3
     classDef DomainPerspective stroke:#009900
@@ -101,9 +101,9 @@ This view contains details information about Commons domain module, including:
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] Percentage](../../../BuildingBlocks/Sales/Commons/Percentage.md)
 - [[*Domain building block*] TaxId](../../../BuildingBlocks/Sales/Commons/TaxId.md)
 - [[*Domain building block*] Money](../../../BuildingBlocks/Sales/Commons/Money.md)
+- [[*Domain building block*] Percentage](../../../BuildingBlocks/Sales/Commons/Percentage.md)
 
 ---
 

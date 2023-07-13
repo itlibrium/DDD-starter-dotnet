@@ -7,9 +7,9 @@
 ```mermaid
   flowchart TB
     0(MyCompany e-commerce)
-    1((RetailClient))
+    1((WholesaleClient))
     1-->0
-    2((WholesaleClient))
+    2((RetailClient))
     2-->0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -18,7 +18,7 @@
 
 ## Domain Vision Statement
 
-[Link](/home/marcin/ITLIBRIUM/OpenSource/DDD-starter-dotnet/Sources/DomainVisionStatement.md)
+[Link](DomainVisionStatement.md)
 ## Next steps
 
 
@@ -27,7 +27,7 @@
 - [Business organizational units](Business_Organizational_Units.md)
 - [Deployable units](Deployable_Units.md)
 - [Development teams](Development_Teams.md)
-- [Domain Glossary](Domain_Glossary.md)
+- [Domain Glossary](Glossary/Domain_Glossary.md)
 - [Domain Modules](Modules.md)
 - [Business processes](Business_Processes.md)
 

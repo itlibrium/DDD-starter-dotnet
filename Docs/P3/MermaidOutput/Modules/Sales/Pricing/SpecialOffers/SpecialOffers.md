@@ -49,10 +49,10 @@ This view contains details information about SpecialOffers domain module, includ
     1([EverySecondBoxForHalfPrice])
     class 1 DomainPerspective
     0-->|contains|1
-    2([ThreeForTwo])
+    2([SpecialOffer])
     class 2 DomainPerspective
     0-->|contains|2
-    3([SpecialOffer])
+    3([ThreeForTwo])
     class 3 DomainPerspective
     0-->|contains|3
     classDef DomainPerspective stroke:#009900
@@ -101,8 +101,8 @@ This view contains details information about SpecialOffers domain module, includ
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] ThreeForTwo](../../../../BuildingBlocks/Sales/Pricing/SpecialOffers/ThreeForTwo.md)
 - [[*Domain building block*] EverySecondBoxForHalfPrice](../../../../BuildingBlocks/Sales/Pricing/SpecialOffers/EverySecondBoxForHalfPrice.md)
+- [[*Domain building block*] ThreeForTwo](../../../../BuildingBlocks/Sales/Pricing/SpecialOffers/ThreeForTwo.md)
 - [[*Domain building block*] SpecialOffer](../../../../BuildingBlocks/Sales/Pricing/SpecialOffers/SpecialOffer.md)
 
 ---

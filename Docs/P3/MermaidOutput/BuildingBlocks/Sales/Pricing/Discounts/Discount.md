@@ -22,21 +22,21 @@ This view contains details information about Discount building block, including:
       class 1 DomainPerspective
     end
     subgraph 2["Commons"]
-      3([Percentage])
+      3([Money])
       class 3 DomainPerspective
-      4([Money])
+      4([Percentage])
       class 4 DomainPerspective
     end
     subgraph 5["Discounts"]
       6([Discount])
       class 6 DomainPerspective
-      7([ValueDiscount])
+      7([PercentageDiscount])
       class 7 DomainPerspective
-      8([ValueDiscount])
+      8([PercentageDiscount])
       class 8 DomainPerspective
-      9([PercentageDiscount])
+      9([ValueDiscount])
       class 9 DomainPerspective
-      10([PercentageDiscount])
+      10([ValueDiscount])
       class 10 DomainPerspective
     end
     0-->|depends on|2
@@ -59,13 +59,13 @@ Discount is not used in any process step.
 
 ### Change perspective
 
+- [[*Domain building block*] Discount](Discount.md)
+- [[*Domain building block*] Money](../../Commons/Money.md)
+- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
+- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
 - [[*Domain building block*] Percentage](../../Commons/Percentage.md)
 - [[*Domain building block*] PercentageDiscount](PercentageDiscount.md)
 - [[*Domain building block*] PercentageDiscount](PercentageDiscount.md)
-- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
-- [[*Domain building block*] ValueDiscount](ValueDiscount.md)
-- [[*Domain building block*] Discount](Discount.md)
-- [[*Domain building block*] Money](../../Commons/Money.md)
 
 ---
 

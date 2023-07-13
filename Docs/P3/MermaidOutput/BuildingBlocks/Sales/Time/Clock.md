@@ -23,13 +23,13 @@ Clock has no dependencies.
   flowchart TB
     0(Clock)
     class 0 DomainPerspective
-    1([PlaceOrder])
+    1([ConfirmOffer])
     class 1 DomainPerspective
     0-->|is used in|1
     2([PlaceOrder])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([ConfirmOffer])
+    3([PlaceOrder])
     class 3 DomainPerspective
     0-->|is used in|3
     classDef DomainPerspective stroke:#009900

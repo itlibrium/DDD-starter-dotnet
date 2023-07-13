@@ -114,7 +114,7 @@ This view contains definitions of key domain terms.
 
 **Factory**
 
-**Order** - [Long description](/home/marcin/ITLIBRIUM/OpenSource/DDD-starter-dotnet/Sources/Sales/Sales.DeepModel/Orders/Order.md)
+**Order** - [Long description](Order.md)
 
 
 **OrderId**
@@ -238,7 +238,7 @@ This view contains definitions of key domain terms.
 
 ### Zoom-out
 
-- [Main page](README.md)
+- [Main page](../README.md)
 
 ---
 

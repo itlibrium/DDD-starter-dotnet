@@ -22,9 +22,9 @@ This view contains details information about Repository building block, includin
       class 1 DomainPerspective
     end
     subgraph 2["Orders"]
-      3([OrderId])
+      3([Order])
       class 3 DomainPerspective
-      4([Order])
+      4([OrderId])
       class 4 DomainPerspective
     end
     0-->|depends on|2
@@ -39,22 +39,22 @@ This view contains details information about Repository building block, includin
   flowchart TB
     0(Repository)
     class 0 DomainPerspective
-    1([PlaceOrder])
+    1([AddToOrder])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([GetOffer])
+    2([ConfirmOffer])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([PlaceOrder])
+    3([CreateOrder])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([CreateOrder])
+    4([GetOffer])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([AddToOrder])
+    5([PlaceOrder])
     class 5 DomainPerspective
     0-->|is used in|5
-    6([ConfirmOffer])
+    6([PlaceOrder])
     class 6 DomainPerspective
     0-->|is used in|6
     classDef DomainPerspective stroke:#009900

@@ -21,10 +21,10 @@ This view contains details information about RiskManagement domain module, inclu
   flowchart TB
     0(RiskManagement)
     class 0 DomainPerspective
-    1([Publication])
+    1([Calculation])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Calculation])
+    2([Publication])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -93,8 +93,8 @@ Module doesn't contain direct building blocks.
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../Teams/Core team.md)
 
 ---

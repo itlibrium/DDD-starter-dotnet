@@ -47,16 +47,16 @@ This view contains details information about Quote building block, including:
   flowchart TB
     0(Quote)
     class 0 DomainPerspective
-    1([PriceCart])
+    1([ConfirmOffer])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([ConfirmOffer])
+    2([CreateOrder])
     class 2 DomainPerspective
     0-->|is used in|2
     3([GetOffer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([CreateOrder])
+    4([PriceCart])
     class 4 DomainPerspective
     0-->|is used in|4
     classDef DomainPerspective stroke:#009900

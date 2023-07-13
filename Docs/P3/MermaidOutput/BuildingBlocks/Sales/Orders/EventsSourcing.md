@@ -21,18 +21,18 @@ This view contains details information about EventsSourcing building block, incl
       1(EventsSourcing)
       class 1 DomainPerspective
     end
-    subgraph 2["Orders"]
-      3([OrderId])
+    subgraph 2["Commons"]
+      3([Money])
       class 3 DomainPerspective
-      4([Order])
-      class 4 DomainPerspective
     end
-    subgraph 5["Commons"]
-      6([Money])
+    subgraph 4["Orders"]
+      5([Order])
+      class 5 DomainPerspective
+      6([OrderId])
       class 6 DomainPerspective
     end
     0-->|depends on|2
-    0-->|depends on|5
+    0-->|depends on|4
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -52,8 +52,8 @@ EventsSourcing is not used in any process step.
 ### Change perspective
 
 - [[*Domain building block*] OrderId](OrderId.md)
-- [[*Domain building block*] Order](Order.md)
 - [[*Domain building block*] Money](../Commons/Money.md)
+- [[*Domain building block*] Order](Order.md)
 
 ---
 

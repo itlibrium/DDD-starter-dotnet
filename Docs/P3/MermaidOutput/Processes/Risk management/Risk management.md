@@ -21,10 +21,10 @@ This view contains details information about Risk management business process, i
   flowchart TB
     0(Risk management)
     class 0 DomainPerspective
-    1([Risk score publication])
+    1([Risk score calculation])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Risk score calculation])
+    2([Risk score publication])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -112,8 +112,8 @@ This view contains details information about Risk management business process, i
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../Teams/Core team.md)
 - [[*Business process*] Risk score publication](Risk score publication/Risk score publication.md)
 - [[*Business process*] Risk score calculation](Risk score calculation/Risk score calculation.md)

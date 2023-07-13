@@ -35,10 +35,10 @@ This view contains details information about Time domain module, including:
   flowchart TB
     0(Time)
     class 0 DomainPerspective
-    1([Wholesale ordering])
+    1([Online ordering])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Online ordering])
+    2([Wholesale ordering])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -106,8 +106,8 @@ This view contains details information about Time domain module, including:
 - [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Domain building block*] Clock](../../../BuildingBlocks/Sales/Time/Clock.md)
 - [[*Domain building block*] SystemClock](../../../BuildingBlocks/Sales/Time/SystemClock.md)
-- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 - [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
+- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 
 ---
 

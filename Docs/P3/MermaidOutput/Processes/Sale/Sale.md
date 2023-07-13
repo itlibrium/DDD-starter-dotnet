@@ -21,19 +21,19 @@ This view contains details information about Sale business process, including:
   flowchart TB
     0(Sale)
     class 0 DomainPerspective
-    1([Wholesale ordering])
+    1([Fulfillment])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Payment])
+    2([Online ordering])
     class 2 DomainPerspective
     0-->|contains|2
-    3([Online ordering])
+    3([Payment])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Fulfillment])
+    4([Products delivery])
     class 4 DomainPerspective
     0-->|contains|4
-    5([Products delivery])
+    5([Wholesale ordering])
     class 5 DomainPerspective
     0-->|contains|5
     classDef DomainPerspective stroke:#009900
@@ -47,13 +47,13 @@ This view contains details information about Sale business process, including:
   flowchart TB
     0(Sale)
     class 0 DomainPerspective
-    1([Sales])
+    1([Payments])
     class 1 DomainPerspective
     0-->|belongs to|1
     2([ProductsDelivery])
     class 2 DomainPerspective
     0-->|belongs to|2
-    3([Payments])
+    3([Sales])
     class 3 DomainPerspective
     0-->|belongs to|3
     classDef DomainPerspective stroke:#009900
@@ -87,9 +87,9 @@ This view contains details information about Sale business process, including:
   flowchart LR
     subgraph 0["Actors"]
       direction TB
-      1([WholesaleClient])
+      1([RetailClient])
       class 1 PeoplePerspective
-      2([RetailClient])
+      2([WholesaleClient])
       class 2 PeoplePerspective
       1---2
     end
@@ -112,9 +112,9 @@ This view contains details information about Sale business process, including:
     3---4
     subgraph 8["Business"]
       direction TB
-      9([Sales department])
+      9([Inventory department])
       class 9 PeoplePerspective
-      10([Inventory department])
+      10([Sales department])
       class 10 PeoplePerspective
       9---10
     end
@@ -144,17 +144,17 @@ This view contains details information about Sale business process, including:
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Inventory department](../../BusinessOrganizationalUnits/Inventory department.md)
 - [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../Teams/Core team.md)
-- [[*Development team*] Inventory team](../../Teams/Inventory team.md)
 - [[*Development team*] Supporting team](../../Teams/Supporting team.md)
-- [[*Business process*] Payment](Payment/Payment.md)
+- [[*Development team*] Inventory team](../../Teams/Inventory team.md)
 - [[*Business process*] Products delivery](Products delivery/Products delivery.md)
-- [[*Business process*] Wholesale ordering](Wholesale ordering/Wholesale ordering.md)
-- [[*Business process*] Fulfillment](Fulfillment/Fulfillment.md)
+- [[*Business process*] Payment](Payment/Payment.md)
 - [[*Business process*] Online ordering](Online ordering/Online ordering.md)
+- [[*Business process*] Fulfillment](Fulfillment/Fulfillment.md)
+- [[*Business process*] Wholesale ordering](Wholesale ordering/Wholesale ordering.md)
 
 ---
 

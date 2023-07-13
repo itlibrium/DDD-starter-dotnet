@@ -21,18 +21,18 @@ This view contains details information about ProductLevelDiscounts building bloc
       1(ProductLevelDiscounts)
       class 1 DomainPerspective
     end
-    subgraph 2["Pricing"]
-      3([Quote])
+    subgraph 2["Discounts"]
+      3([ProductDiscount])
       class 3 DomainPerspective
-      4([Offer])
-      class 4 DomainPerspective
     end
-    subgraph 5["Discounts"]
-      6([ProductDiscount])
+    subgraph 4["Pricing"]
+      5([Offer])
+      class 5 DomainPerspective
+      6([Quote])
       class 6 DomainPerspective
     end
     0-->|depends on|2
-    0-->|depends on|5
+    0-->|depends on|4
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -51,9 +51,9 @@ ProductLevelDiscounts is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] Quote](../Quote.md)
-- [[*Domain building block*] ProductDiscount](ProductDiscount.md)
 - [[*Domain building block*] Offer](../Offer.md)
+- [[*Domain building block*] ProductDiscount](ProductDiscount.md)
+- [[*Domain building block*] Quote](../Quote.md)
 
 ---
 

@@ -38,34 +38,34 @@ This view contains details information about ConfirmOffer business processes ste
   flowchart TB
     0(ConfirmOffer)
     class 0 DomainPerspective
-    1([Order])
+    1([CalculatePrices])
     class 1 DomainPerspective
     0-->|uses|1
-    2([Quote])
+    2([ClientId])
     class 2 DomainPerspective
     0-->|uses|2
-    3([Offer])
+    3([Clock])
     class 3 DomainPerspective
     0-->|uses|3
-    4([PriceChangesPolicies])
+    4([Offer])
     class 4 DomainPerspective
     0-->|uses|4
-    5([ClientId])
+    5([Order])
     class 5 DomainPerspective
     0-->|uses|5
-    6([PriceChangesPolicy])
+    6([OrderId])
     class 6 DomainPerspective
     0-->|uses|6
-    7([CalculatePrices])
+    7([PriceChangesPolicies])
     class 7 DomainPerspective
     0-->|uses|7
-    8([Repository])
+    8([PriceChangesPolicy])
     class 8 DomainPerspective
     0-->|uses|8
-    9([Clock])
+    9([Quote])
     class 9 DomainPerspective
     0-->|uses|9
-    10([OrderId])
+    10([Repository])
     class 10 DomainPerspective
     0-->|uses|10
     classDef DomainPerspective stroke:#009900
@@ -116,8 +116,8 @@ This view contains details information about ConfirmOffer business processes ste
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] OrderPricing](../../../Modules/Sales/WholesaleOrdering/OrderPricing/OrderPricing.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)

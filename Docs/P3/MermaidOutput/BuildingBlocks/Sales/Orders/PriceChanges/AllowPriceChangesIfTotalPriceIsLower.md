@@ -21,12 +21,12 @@ This view contains details information about AllowPriceChangesIfTotalPriceIsLowe
       1(AllowPriceChangesIfTotalPriceIsLower)
       class 1 DomainPerspective
     end
-    subgraph 2["Pricing"]
-      3([Quote])
+    subgraph 2["Commons"]
+      3([Money])
       class 3 DomainPerspective
     end
-    subgraph 4["Commons"]
-      5([Money])
+    subgraph 4["Pricing"]
+      5([Quote])
       class 5 DomainPerspective
     end
     0-->|depends on|2
@@ -49,8 +49,8 @@ AllowPriceChangesIfTotalPriceIsLower is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] Quote](../../Pricing/Quote.md)
 - [[*Domain building block*] Money](../../Commons/Money.md)
+- [[*Domain building block*] Quote](../../Pricing/Quote.md)
 
 ---
 

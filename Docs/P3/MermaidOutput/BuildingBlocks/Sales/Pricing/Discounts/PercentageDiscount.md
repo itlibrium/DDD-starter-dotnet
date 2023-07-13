@@ -21,18 +21,18 @@ This view contains details information about PercentageDiscount building block, 
       1(PercentageDiscount)
       class 1 DomainPerspective
     end
-    subgraph 2["Discounts"]
-      3([PercentageDiscount])
+    subgraph 2["Commons"]
+      3([Money])
       class 3 DomainPerspective
+      4([Percentage])
+      class 4 DomainPerspective
     end
-    subgraph 4["Commons"]
-      5([Percentage])
-      class 5 DomainPerspective
-      6([Money])
+    subgraph 5["Discounts"]
+      6([PercentageDiscount])
       class 6 DomainPerspective
     end
     0-->|depends on|2
-    0-->|depends on|4
+    0-->|depends on|5
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -51,9 +51,9 @@ PercentageDiscount is not used in any process step.
 
 ### Change perspective
 
+- [[*Domain building block*] Money](../../Commons/Money.md)
 - [[*Domain building block*] Percentage](../../Commons/Percentage.md)
 - [[*Domain building block*] PercentageDiscount](PercentageDiscount.md)
-- [[*Domain building block*] Money](../../Commons/Money.md)
 
 ---
 

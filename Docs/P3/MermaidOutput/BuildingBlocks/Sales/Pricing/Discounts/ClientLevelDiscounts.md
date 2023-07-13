@@ -22,17 +22,17 @@ This view contains details information about ClientLevelDiscounts building block
       class 1 DomainPerspective
     end
     subgraph 2["Discounts"]
-      3([ProductDiscount])
+      3([PercentageDiscount])
       class 3 DomainPerspective
       4([PercentageDiscount])
       class 4 DomainPerspective
-      5([PercentageDiscount])
+      5([ProductDiscount])
       class 5 DomainPerspective
     end
     subgraph 6["Pricing"]
-      7([Quote])
+      7([Offer])
       class 7 DomainPerspective
-      8([Offer])
+      8([Quote])
       class 8 DomainPerspective
     end
     0-->|depends on|2
@@ -55,9 +55,9 @@ ClientLevelDiscounts is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] Quote](../Quote.md)
-- [[*Domain building block*] ProductDiscount](ProductDiscount.md)
 - [[*Domain building block*] Offer](../Offer.md)
+- [[*Domain building block*] ProductDiscount](ProductDiscount.md)
+- [[*Domain building block*] Quote](../Quote.md)
 - [[*Domain building block*] PercentageDiscount](PercentageDiscount.md)
 - [[*Domain building block*] PercentageDiscount](PercentageDiscount.md)
 

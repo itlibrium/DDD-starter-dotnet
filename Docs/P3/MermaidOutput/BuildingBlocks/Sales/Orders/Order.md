@@ -21,30 +21,30 @@ This view contains details information about Order building block, including:
       1(Order)
       class 1 DomainPerspective
     end
-    subgraph 2["PriceChanges"]
-      3([PriceChangesPolicy])
+    subgraph 2["Orders"]
+      3([OrderId])
       class 3 DomainPerspective
     end
-    subgraph 4["Pricing"]
-      5([Quote])
+    subgraph 4["PriceChanges"]
+      5([PriceChangesPolicy])
       class 5 DomainPerspective
-      6([Offer])
-      class 6 DomainPerspective
     end
-    subgraph 7["Products"]
-      8([ProductAmount])
+    subgraph 6["Pricing"]
+      7([Offer])
+      class 7 DomainPerspective
+      8([Quote])
       class 8 DomainPerspective
-      9([ProductUnit])
-      class 9 DomainPerspective
     end
-    subgraph 10["Orders"]
-      11([OrderId])
+    subgraph 9["Products"]
+      10([ProductAmount])
+      class 10 DomainPerspective
+      11([ProductUnit])
       class 11 DomainPerspective
     end
     0-->|depends on|2
     0-->|depends on|4
-    0-->|depends on|7
-    0-->|depends on|10
+    0-->|depends on|6
+    0-->|depends on|9
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -56,22 +56,22 @@ This view contains details information about Order building block, including:
   flowchart TB
     0(Order)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([AddToOrder])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([GetOffer])
+    2([ConfirmOffer])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([PlaceOrder])
+    3([CreateOrder])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([PlaceOrder])
+    4([GetOffer])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([CreateOrder])
+    5([PlaceOrder])
     class 5 DomainPerspective
     0-->|is used in|5
-    6([AddToOrder])
+    6([PlaceOrder])
     class 6 DomainPerspective
     0-->|is used in|6
     classDef DomainPerspective stroke:#009900
@@ -88,11 +88,11 @@ This view contains details information about Order building block, including:
 
 ### Change perspective
 
+- [[*Domain building block*] Offer](../Pricing/Offer.md)
+- [[*Domain building block*] OrderId](OrderId.md)
+- [[*Domain building block*] ProductAmount](../Products/ProductAmount.md)
 - [[*Domain building block*] ProductUnit](../Products/ProductUnit.md)
 - [[*Domain building block*] Quote](../Pricing/Quote.md)
-- [[*Domain building block*] OrderId](OrderId.md)
-- [[*Domain building block*] Offer](../Pricing/Offer.md)
-- [[*Domain building block*] ProductAmount](../Products/ProductAmount.md)
 - [[*Domain building block*] PriceChangesPolicy](PriceChanges/PriceChangesPolicy.md)
 
 ---

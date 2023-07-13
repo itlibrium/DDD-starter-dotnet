@@ -21,16 +21,16 @@ This view contains details information about IndividualSalesConditions building 
       1(IndividualSalesConditions)
       class 1 DomainPerspective
     end
-    subgraph 2["Pricing"]
-      3([Quote])
+    subgraph 2["Discounts"]
+      3([ClientLevelDiscounts])
       class 3 DomainPerspective
-      4([Offer])
+      4([ProductLevelDiscounts])
       class 4 DomainPerspective
     end
-    subgraph 5["Discounts"]
-      6([ProductLevelDiscounts])
+    subgraph 5["Pricing"]
+      6([Offer])
       class 6 DomainPerspective
-      7([ClientLevelDiscounts])
+      7([Quote])
       class 7 DomainPerspective
     end
     0-->|depends on|2
@@ -53,10 +53,10 @@ IndividualSalesConditions is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] ProductLevelDiscounts](Discounts/ProductLevelDiscounts.md)
-- [[*Domain building block*] Quote](Quote.md)
-- [[*Domain building block*] ClientLevelDiscounts](Discounts/ClientLevelDiscounts.md)
 - [[*Domain building block*] Offer](Offer.md)
+- [[*Domain building block*] ClientLevelDiscounts](Discounts/ClientLevelDiscounts.md)
+- [[*Domain building block*] Quote](Quote.md)
+- [[*Domain building block*] ProductLevelDiscounts](Discounts/ProductLevelDiscounts.md)
 
 ---
 

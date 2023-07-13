@@ -90,8 +90,8 @@ Module doesn't contain direct building blocks.
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Inventory department](../../BusinessOrganizationalUnits/Inventory department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Inventory team](../../Teams/Inventory team.md)
 
 ---

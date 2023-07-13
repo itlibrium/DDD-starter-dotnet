@@ -76,8 +76,8 @@ No building blocks are used. Maybe this process step is not implemented yet?
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] Publication](../../../Modules/RiskManagement/Publication/Publication.md)
 - [[*Business process*] Risk score publication](../../../Processes/Risk management/Risk score publication/Risk score publication.md)

@@ -28,9 +28,9 @@ This view contains details information about PriceChangesPolicies building block
       class 4 DomainPerspective
     end
     subgraph 5["PriceChanges"]
-      6([AllowPriceChangesIfTotalPriceIsLower])
+      6([AllowAnyPriceChanges])
       class 6 DomainPerspective
-      7([AllowAnyPriceChanges])
+      7([AllowPriceChangesIfTotalPriceIsLower])
       class 7 DomainPerspective
     end
     0-->|depends on|2
@@ -63,10 +63,10 @@ This view contains details information about PriceChangesPolicies building block
 
 ### Change perspective
 
-- [[*Domain building block*] ClientId](../../Clients/ClientId.md)
-- [[*Domain building block*] AllowPriceChangesIfTotalPriceIsLower](AllowPriceChangesIfTotalPriceIsLower.md)
 - [[*Domain building block*] ClientRepository](../../Clients/ClientRepository.md)
 - [[*Domain building block*] AllowAnyPriceChanges](AllowAnyPriceChanges.md)
+- [[*Domain building block*] ClientId](../../Clients/ClientId.md)
+- [[*Domain building block*] AllowPriceChangesIfTotalPriceIsLower](AllowPriceChangesIfTotalPriceIsLower.md)
 
 ---
 

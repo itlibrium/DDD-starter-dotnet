@@ -19,19 +19,19 @@ This view contains details information about ecommerce-monolith deployable unit,
     subgraph 0["Application"]
       1(ecommerce-monolith)
       class 1 TechnologyPerspective
-      2([Sales])
+      2([Contacts])
       class 2 DomainPerspective
       2-->|is deployed in|1
-      3([ProductsDelivery])
+      3([Payments])
       class 3 DomainPerspective
       3-->|is deployed in|1
-      4([Payments])
+      4([ProductsDelivery])
       class 4 DomainPerspective
       4-->|is deployed in|1
-      5([Contacts])
+      5([RiskManagement])
       class 5 DomainPerspective
       5-->|is deployed in|1
-      6([RiskManagement])
+      6([Sales])
       class 6 DomainPerspective
       6-->|is deployed in|1
     end
@@ -49,13 +49,13 @@ This view contains details information about ecommerce-monolith deployable unit,
   flowchart TB
     0(ecommerce-monolith)
     class 0 TechnologyPerspective
-    1([Supporting team])
+    1([Core team])
     class 1 PeoplePerspective
     1-->|maintains|0
-    2([Core team])
+    2([Inventory team])
     class 2 PeoplePerspective
     2-->|maintains|0
-    3([Inventory team])
+    3([Supporting team])
     class 3 PeoplePerspective
     3-->|maintains|0
     classDef DomainPerspective stroke:#009900

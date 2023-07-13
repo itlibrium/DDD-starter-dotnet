@@ -24,16 +24,16 @@ This view contains details information about WholesaleOrdering domain module, in
     1([Sales])
     class 1 DomainPerspective
     0-->|is part of|1
-    2([OrderModification])
+    2([OrderCreation])
     class 2 DomainPerspective
     0-->|contains|2
-    3([OrderPricing])
+    3([OrderModification])
     class 3 DomainPerspective
     0-->|contains|3
     4([OrderPlacement])
     class 4 DomainPerspective
     0-->|contains|4
-    5([OrderCreation])
+    5([OrderPricing])
     class 5 DomainPerspective
     0-->|contains|5
     6([ProductPricing])

@@ -26,16 +26,16 @@ This view contains details information about Wholesale ordering business process
     1---0
     1-->|is part of|0
     0---1
-    2([CreateOrder])
+    2([AddToOrder])
     class 2 DomainPerspective
     0-->|contains|2
-    3([AddToOrder])
+    3([ConfirmOffer])
     class 3 DomainPerspective
     0-->|contains|3
-    4([GetOffer])
+    4([CreateOrder])
     class 4 DomainPerspective
     0-->|contains|4
-    5([ConfirmOffer])
+    5([GetOffer])
     class 5 DomainPerspective
     0-->|contains|5
     6([PlaceOrder])
@@ -120,11 +120,11 @@ This view contains details information about Wholesale ordering business process
 
 ### Zoom-in
 
-- [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Wholesale ordering/PlaceOrder.md)
-- [[*Process Step*] ConfirmOffer](../../../ProcessSteps/Sale/Wholesale ordering/ConfirmOffer.md)
-- [[*Process Step*] CreateOrder](../../../ProcessSteps/Sale/Wholesale ordering/CreateOrder.md)
-- [[*Process Step*] GetOffer](../../../ProcessSteps/Sale/Wholesale ordering/GetOffer.md)
 - [[*Process Step*] AddToOrder](../../../ProcessSteps/Sale/Wholesale ordering/AddToOrder.md)
+- [[*Process Step*] ConfirmOffer](../../../ProcessSteps/Sale/Wholesale ordering/ConfirmOffer.md)
+- [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Wholesale ordering/PlaceOrder.md)
+- [[*Process Step*] GetOffer](../../../ProcessSteps/Sale/Wholesale ordering/GetOffer.md)
+- [[*Process Step*] CreateOrder](../../../ProcessSteps/Sale/Wholesale ordering/CreateOrder.md)
 
 ### Zoom-out
 
@@ -132,14 +132,14 @@ This view contains details information about Wholesale ordering business process
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
-- [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Wholesale ordering/PlaceOrder.md)
-- [[*Process Step*] ConfirmOffer](../../../ProcessSteps/Sale/Wholesale ordering/ConfirmOffer.md)
-- [[*Process Step*] CreateOrder](../../../ProcessSteps/Sale/Wholesale ordering/CreateOrder.md)
-- [[*Process Step*] GetOffer](../../../ProcessSteps/Sale/Wholesale ordering/GetOffer.md)
 - [[*Process Step*] AddToOrder](../../../ProcessSteps/Sale/Wholesale ordering/AddToOrder.md)
+- [[*Process Step*] ConfirmOffer](../../../ProcessSteps/Sale/Wholesale ordering/ConfirmOffer.md)
+- [[*Process Step*] PlaceOrder](../../../ProcessSteps/Sale/Wholesale ordering/PlaceOrder.md)
+- [[*Process Step*] GetOffer](../../../ProcessSteps/Sale/Wholesale ordering/GetOffer.md)
+- [[*Process Step*] CreateOrder](../../../ProcessSteps/Sale/Wholesale ordering/CreateOrder.md)
 
 ---
 

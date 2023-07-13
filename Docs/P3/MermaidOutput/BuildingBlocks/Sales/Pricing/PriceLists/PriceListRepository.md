@@ -21,12 +21,12 @@ This view contains details information about PriceListRepository building block,
       1(PriceListRepository)
       class 1 DomainPerspective
     end
-    subgraph 2["Products"]
-      3([ProductAmount])
+    subgraph 2["Clients"]
+      3([ClientId])
       class 3 DomainPerspective
     end
-    subgraph 4["Clients"]
-      5([ClientId])
+    subgraph 4["Products"]
+      5([ProductAmount])
       class 5 DomainPerspective
     end
     0-->|depends on|2
@@ -49,8 +49,8 @@ PriceListRepository is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] ClientId](../../Clients/ClientId.md)
 - [[*Domain building block*] ProductAmount](../../Products/ProductAmount.md)
+- [[*Domain building block*] ClientId](../../Clients/ClientId.md)
 
 ---
 

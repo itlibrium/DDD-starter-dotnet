@@ -21,20 +21,20 @@ This view contains details information about Factory building block, including:
       1(Factory)
       class 1 DomainPerspective
     end
-    subgraph 2["Pricing"]
-      3([Offer])
+    subgraph 2["Clients"]
+      3([ClientId])
       class 3 DomainPerspective
     end
     subgraph 4["Commons"]
       5([Money])
       class 5 DomainPerspective
     end
-    subgraph 6["Clients"]
-      7([ClientId])
+    subgraph 6["Orders"]
+      7([OrderId])
       class 7 DomainPerspective
     end
-    subgraph 8["Orders"]
-      9([OrderId])
+    subgraph 8["Pricing"]
+      9([Offer])
       class 9 DomainPerspective
     end
     0-->|depends on|2
@@ -72,10 +72,10 @@ This view contains details information about Factory building block, including:
 
 ### Change perspective
 
-- [[*Domain building block*] ClientId](../Clients/ClientId.md)
-- [[*Domain building block*] OrderId](OrderId.md)
 - [[*Domain building block*] Offer](../Pricing/Offer.md)
+- [[*Domain building block*] OrderId](OrderId.md)
 - [[*Domain building block*] Money](../Commons/Money.md)
+- [[*Domain building block*] ClientId](../Clients/ClientId.md)
 
 ---
 

@@ -21,40 +21,40 @@ This view contains details information about Sales domain module, including:
   flowchart TB
     0(Sales)
     class 0 DomainPerspective
-    1([Products])
+    1([Clients])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Orders])
+    2([Commons])
     class 2 DomainPerspective
     0-->|contains|2
-    3([SalesChannels])
+    3([ExchangeRates])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Commons])
+    4([Fulfillment])
     class 4 DomainPerspective
     0-->|contains|4
-    5([OnlineOrdering])
+    5([Integrations])
     class 5 DomainPerspective
     0-->|contains|5
-    6([Time])
+    6([OnlineOrdering])
     class 6 DomainPerspective
     0-->|contains|6
-    7([Integrations])
+    7([Orders])
     class 7 DomainPerspective
     0-->|contains|7
-    8([ExchangeRates])
+    8([Pricing])
     class 8 DomainPerspective
     0-->|contains|8
-    9([Fulfillment])
+    9([Products])
     class 9 DomainPerspective
     0-->|contains|9
-    10([WholesaleOrdering])
+    10([SalesChannels])
     class 10 DomainPerspective
     0-->|contains|10
-    11([Pricing])
+    11([Time])
     class 11 DomainPerspective
     0-->|contains|11
-    12([Clients])
+    12([WholesaleOrdering])
     class 12 DomainPerspective
     0-->|contains|12
     classDef DomainPerspective stroke:#009900
@@ -68,10 +68,10 @@ This view contains details information about Sales domain module, including:
   flowchart TB
     0(Sales)
     class 0 DomainPerspective
-    1([Wholesale ordering])
+    1([Online ordering])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Online ordering])
+    2([Wholesale ordering])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -129,11 +129,11 @@ Module doesn't contain direct building blocks.
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../Teams/Core team.md)
-- [[*Business process*] Wholesale ordering](../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 - [[*Business process*] Online ordering](../../Processes/Sale/Online ordering/Online ordering.md)
+- [[*Business process*] Wholesale ordering](../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 
 ---
 

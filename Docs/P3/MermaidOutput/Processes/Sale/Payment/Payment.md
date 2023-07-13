@@ -114,8 +114,8 @@ This view contains details information about Payment business process, including
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Supporting team](../../../Teams/Supporting team.md)
 - [[*Process Step*] RequestPayment](../../../ProcessSteps/Sale/Payment/RequestPayment.md)
 

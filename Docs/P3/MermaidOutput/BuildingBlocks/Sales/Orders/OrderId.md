@@ -23,16 +23,16 @@ OrderId has no dependencies.
   flowchart TB
     0(OrderId)
     class 0 DomainPerspective
-    1([GetOffer])
+    1([AddToOrder])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([PlaceOrder])
+    2([ConfirmOffer])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([AddToOrder])
+    3([GetOffer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([ConfirmOffer])
+    4([PlaceOrder])
     class 4 DomainPerspective
     0-->|is used in|4
     classDef DomainPerspective stroke:#009900

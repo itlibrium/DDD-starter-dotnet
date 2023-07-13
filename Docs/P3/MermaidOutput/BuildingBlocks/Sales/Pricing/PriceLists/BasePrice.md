@@ -49,8 +49,8 @@ BasePrice is not used in any process step.
 
 ### Change perspective
 
-- [[*Domain building block*] ProductUnit](../../Products/ProductUnit.md)
 - [[*Domain building block*] Money](../../Commons/Money.md)
+- [[*Domain building block*] ProductUnit](../../Products/ProductUnit.md)
 
 ---
 

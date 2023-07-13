@@ -38,10 +38,10 @@ This view contains details information about Orders domain module, including:
   flowchart TB
     0(Orders)
     class 0 DomainPerspective
-    1([Wholesale ordering])
+    1([Online ordering])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Online ordering])
+    2([Wholesale ordering])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -55,31 +55,31 @@ This view contains details information about Orders domain module, including:
   flowchart TB
     0(Orders)
     class 0 DomainPerspective
-    1([PriceAgreement])
+    1([Document])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Order])
+    2([EF])
     class 2 DomainPerspective
     0-->|contains|2
     3([EventsSourcing])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Document])
+    4([Factory])
     class 4 DomainPerspective
     0-->|contains|4
-    5([Raw])
+    5([Order])
     class 5 DomainPerspective
     0-->|contains|5
-    6([Factory])
+    6([OrderId])
     class 6 DomainPerspective
     0-->|contains|6
-    7([Repository])
+    7([PriceAgreement])
     class 7 DomainPerspective
     0-->|contains|7
-    8([OrderId])
+    8([Raw])
     class 8 DomainPerspective
     0-->|contains|8
-    9([EF])
+    9([Repository])
     class 9 DomainPerspective
     0-->|contains|9
     classDef DomainPerspective stroke:#009900
@@ -128,17 +128,17 @@ This view contains details information about Orders domain module, including:
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] Factory](../../../BuildingBlocks/Sales/Orders/Factory.md)
-- [[*Domain building block*] EF](../../../BuildingBlocks/Sales/Orders/EF.md)
-- [[*Domain building block*] PriceAgreement](../../../BuildingBlocks/Sales/Orders/PriceAgreement.md)
-- [[*Domain building block*] Document](../../../BuildingBlocks/Sales/Orders/Document.md)
-- [[*Domain building block*] EventsSourcing](../../../BuildingBlocks/Sales/Orders/EventsSourcing.md)
 - [[*Domain building block*] Raw](../../../BuildingBlocks/Sales/Orders/Raw.md)
 - [[*Domain building block*] OrderId](../../../BuildingBlocks/Sales/Orders/OrderId.md)
-- [[*Domain building block*] Order](../../../BuildingBlocks/Sales/Orders/Order.md)
+- [[*Domain building block*] PriceAgreement](../../../BuildingBlocks/Sales/Orders/PriceAgreement.md)
+- [[*Domain building block*] Factory](../../../BuildingBlocks/Sales/Orders/Factory.md)
 - [[*Domain building block*] Repository](../../../BuildingBlocks/Sales/Orders/Repository.md)
-- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+- [[*Domain building block*] Document](../../../BuildingBlocks/Sales/Orders/Document.md)
+- [[*Domain building block*] EF](../../../BuildingBlocks/Sales/Orders/EF.md)
+- [[*Domain building block*] EventsSourcing](../../../BuildingBlocks/Sales/Orders/EventsSourcing.md)
+- [[*Domain building block*] Order](../../../BuildingBlocks/Sales/Orders/Order.md)
 - [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
+- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 
 ---
 

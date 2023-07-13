@@ -24,13 +24,13 @@ This view contains details information about Integrations domain module, includi
     1([Sales])
     class 1 DomainPerspective
     0-->|is part of|1
-    2([ProductsDelivery])
+    2([Payments])
     class 2 DomainPerspective
     0-->|contains|2
-    3([RiskManagement])
+    3([ProductsDelivery])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Payments])
+    4([RiskManagement])
     class 4 DomainPerspective
     0-->|contains|4
     classDef DomainPerspective stroke:#009900

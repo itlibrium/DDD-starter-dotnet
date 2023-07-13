@@ -21,28 +21,28 @@ This view contains details information about CalculatePrices building block, inc
       1(CalculatePrices)
       class 1 DomainPerspective
     end
-    subgraph 2["Products"]
-      3([ProductAmount])
+    subgraph 2["Clients"]
+      3([ClientId])
       class 3 DomainPerspective
     end
-    subgraph 4["Clients"]
-      5([ClientId])
+    subgraph 4["PriceLists"]
+      5([PriceListRepository])
       class 5 DomainPerspective
     end
-    subgraph 6["PriceLists"]
-      7([PriceListRepository])
+    subgraph 6["Pricing"]
+      7([OfferModifiers])
       class 7 DomainPerspective
+      8([OfferRequest])
+      class 8 DomainPerspective
     end
-    subgraph 8["Pricing"]
-      9([OfferModifiers])
-      class 9 DomainPerspective
-      10([OfferRequest])
+    subgraph 9["Products"]
+      10([ProductAmount])
       class 10 DomainPerspective
     end
     0-->|depends on|2
     0-->|depends on|4
     0-->|depends on|6
-    0-->|depends on|8
+    0-->|depends on|9
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -54,19 +54,19 @@ This view contains details information about CalculatePrices building block, inc
   flowchart TB
     0(CalculatePrices)
     class 0 DomainPerspective
-    1([CreateOrder])
+    1([ConfirmOffer])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([PriceCart])
+    2([CreateOrder])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([ConfirmOffer])
+    3([GetOffer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([GetOffer])
+    4([PlaceOrder])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([PlaceOrder])
+    5([PriceCart])
     class 5 DomainPerspective
     0-->|is used in|5
     classDef DomainPerspective stroke:#009900
@@ -83,11 +83,11 @@ This view contains details information about CalculatePrices building block, inc
 
 ### Change perspective
 
+- [[*Domain building block*] OfferRequest](OfferRequest.md)
+- [[*Domain building block*] ProductAmount](../Products/ProductAmount.md)
 - [[*Domain building block*] PriceListRepository](PriceLists/PriceListRepository.md)
 - [[*Domain building block*] OfferModifiers](OfferModifiers.md)
 - [[*Domain building block*] ClientId](../Clients/ClientId.md)
-- [[*Domain building block*] OfferRequest](OfferRequest.md)
-- [[*Domain building block*] ProductAmount](../Products/ProductAmount.md)
 
 ---
 

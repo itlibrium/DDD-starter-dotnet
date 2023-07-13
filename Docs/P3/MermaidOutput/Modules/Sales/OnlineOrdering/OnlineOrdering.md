@@ -24,10 +24,10 @@ This view contains details information about OnlineOrdering domain module, inclu
     1([Sales])
     class 1 DomainPerspective
     0-->|is part of|1
-    2([OrderPlacement])
+    2([CartPricing])
     class 2 DomainPerspective
     0-->|contains|2
-    3([CartPricing])
+    3([OrderPlacement])
     class 3 DomainPerspective
     0-->|contains|3
     classDef DomainPerspective stroke:#009900

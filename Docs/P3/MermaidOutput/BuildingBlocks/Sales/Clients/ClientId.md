@@ -23,10 +23,10 @@ ClientId has no dependencies.
   flowchart TB
     0(ClientId)
     class 0 DomainPerspective
-    1([PriceCart])
+    1([ConfirmOffer])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([ConfirmOffer])
+    2([CreateOrder])
     class 2 DomainPerspective
     0-->|is used in|2
     3([GetOffer])
@@ -35,7 +35,7 @@ ClientId has no dependencies.
     4([PlaceOrder])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([CreateOrder])
+    5([PriceCart])
     class 5 DomainPerspective
     0-->|is used in|5
     classDef DomainPerspective stroke:#009900

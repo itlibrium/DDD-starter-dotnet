@@ -38,16 +38,16 @@ This view contains details information about PriceCart business processes step, 
   flowchart TB
     0(PriceCart)
     class 0 DomainPerspective
-    1([Quote])
+    1([CalculatePrices])
     class 1 DomainPerspective
     0-->|uses|1
-    2([CalculatePrices])
+    2([ClientId])
     class 2 DomainPerspective
     0-->|uses|2
-    3([ClientId])
+    3([Offer])
     class 3 DomainPerspective
     0-->|uses|3
-    4([Offer])
+    4([Quote])
     class 4 DomainPerspective
     0-->|uses|4
     classDef DomainPerspective stroke:#009900
@@ -98,8 +98,8 @@ This view contains details information about PriceCart business processes step, 
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] CartPricing](../../../Modules/Sales/OnlineOrdering/CartPricing/CartPricing.md)
 - [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)

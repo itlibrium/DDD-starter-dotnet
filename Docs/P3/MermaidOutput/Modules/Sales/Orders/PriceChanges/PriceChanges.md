@@ -55,10 +55,10 @@ This view contains details information about PriceChanges domain module, includi
     2([AllowPriceChangesIfTotalPriceIsLower])
     class 2 DomainPerspective
     0-->|contains|2
-    3([PriceChangesPolicy])
+    3([PriceChangesPolicies])
     class 3 DomainPerspective
     0-->|contains|3
-    4([PriceChangesPolicies])
+    4([PriceChangesPolicy])
     class 4 DomainPerspective
     0-->|contains|4
     classDef DomainPerspective stroke:#009900
@@ -107,10 +107,10 @@ This view contains details information about PriceChanges domain module, includi
 ### Change perspective
 
 - [[*Deployable unit*] ecommerce-monolith](../../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] PriceChangesPolicies](../../../../BuildingBlocks/Sales/Orders/PriceChanges/PriceChangesPolicies.md)
-- [[*Domain building block*] AllowPriceChangesIfTotalPriceIsLower](../../../../BuildingBlocks/Sales/Orders/PriceChanges/AllowPriceChangesIfTotalPriceIsLower.md)
-- [[*Domain building block*] AllowAnyPriceChanges](../../../../BuildingBlocks/Sales/Orders/PriceChanges/AllowAnyPriceChanges.md)
 - [[*Domain building block*] PriceChangesPolicy](../../../../BuildingBlocks/Sales/Orders/PriceChanges/PriceChangesPolicy.md)
+- [[*Domain building block*] PriceChangesPolicies](../../../../BuildingBlocks/Sales/Orders/PriceChanges/PriceChangesPolicies.md)
+- [[*Domain building block*] AllowAnyPriceChanges](../../../../BuildingBlocks/Sales/Orders/PriceChanges/AllowAnyPriceChanges.md)
+- [[*Domain building block*] AllowPriceChangesIfTotalPriceIsLower](../../../../BuildingBlocks/Sales/Orders/PriceChanges/AllowPriceChangesIfTotalPriceIsLower.md)
 - [[*Business process*] Wholesale ordering](../../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
 
 ---

@@ -76,8 +76,8 @@ No building blocks are used. Maybe this process step is not implemented yet?
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Supporting team](../../../Teams/Supporting team.md)
 - [[*Domain module*] Requesting](../../../Modules/Payments/Requesting/Requesting.md)
 - [[*Business process*] Payment](../../../Processes/Sale/Payment/Payment.md)

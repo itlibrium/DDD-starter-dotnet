@@ -21,12 +21,12 @@ This view contains details information about BasePrices building block, includin
       1(BasePrices)
       class 1 DomainPerspective
     end
-    subgraph 2["Products"]
-      3([ProductAmount])
+    subgraph 2["PriceLists"]
+      3([BasePrice])
       class 3 DomainPerspective
     end
-    subgraph 4["PriceLists"]
-      5([BasePrice])
+    subgraph 4["Products"]
+      5([ProductAmount])
       class 5 DomainPerspective
     end
     0-->|depends on|2

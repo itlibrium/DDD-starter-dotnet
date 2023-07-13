@@ -18,10 +18,10 @@ This view contains details information about Core team team, including:
   flowchart TB
     0(Core team)
     class 0 PeoplePerspective
-    1([Sales])
+    1([RiskManagement])
     class 1 DomainPerspective
     0-->|develops & maintains|1
-    2([RiskManagement])
+    2([Sales])
     class 2 DomainPerspective
     0-->|develops & maintains|2
     classDef DomainPerspective stroke:#009900

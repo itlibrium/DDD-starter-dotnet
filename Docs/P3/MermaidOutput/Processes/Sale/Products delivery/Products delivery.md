@@ -114,8 +114,8 @@ This view contains details information about Products delivery business process,
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Inventory department](../../../BusinessOrganizationalUnits/Inventory department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Inventory team](../../../Teams/Inventory team.md)
 - [[*Process Step*] RequestDelivery](../../../ProcessSteps/Sale/Products delivery/RequestDelivery.md)
 

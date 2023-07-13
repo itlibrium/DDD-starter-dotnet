@@ -7,6 +7,23 @@ This view contains all business processes with their sub-processes.
 
 
 
+## Risk management
+
+```mermaid
+  flowchart TB
+    0(Risk management)
+    class 0 DomainPerspective
+    1(Risk score calculation)
+    class 1 DomainPerspective
+    0-->|contains|1
+    2(Risk score publication)
+    class 2 DomainPerspective
+    0-->|contains|2
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
+
 ## Sale
 
 ```mermaid
@@ -28,23 +45,6 @@ This view contains all business processes with their sub-processes.
     5(Wholesale ordering)
     class 5 DomainPerspective
     0-->|contains|5
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
-
-## Risk management
-
-```mermaid
-  flowchart TB
-    0(Risk management)
-    class 0 DomainPerspective
-    1(Risk score calculation)
-    class 1 DomainPerspective
-    0-->|contains|1
-    2(Risk score publication)
-    class 2 DomainPerspective
-    0-->|contains|2
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014

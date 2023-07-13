@@ -114,8 +114,8 @@ This view contains details information about Fulfillment business process, inclu
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Process Step*] OrderPlaced](../../../ProcessSteps/Sale/Fulfillment/OrderPlaced.md)
 

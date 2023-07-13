@@ -76,8 +76,8 @@ No building blocks are used. Maybe this process step is not implemented yet?
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Inventory department](../../../BusinessOrganizationalUnits/Inventory department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Inventory team](../../../Teams/Inventory team.md)
 - [[*Domain module*] Requesting](../../../Modules/ProductsDelivery/Requesting/Requesting.md)
 - [[*Business process*] Products delivery](../../../Processes/Sale/Products delivery/Products delivery.md)

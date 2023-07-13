@@ -38,16 +38,16 @@ This view contains details information about AddToOrder business processes step,
   flowchart TB
     0(AddToOrder)
     class 0 DomainPerspective
-    1([ProductAmount])
+    1([Order])
     class 1 DomainPerspective
     0-->|uses|1
-    2([Repository])
+    2([OrderId])
     class 2 DomainPerspective
     0-->|uses|2
-    3([Order])
+    3([ProductAmount])
     class 3 DomainPerspective
     0-->|uses|3
-    4([OrderId])
+    4([Repository])
     class 4 DomainPerspective
     0-->|uses|4
     classDef DomainPerspective stroke:#009900
@@ -98,8 +98,8 @@ This view contains details information about AddToOrder business processes step,
 
 ### Change perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
+- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
 - [[*Development team*] Core team](../../../Teams/Core team.md)
 - [[*Domain module*] OrderModification](../../../Modules/Sales/WholesaleOrdering/OrderModification/OrderModification.md)
 - [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
