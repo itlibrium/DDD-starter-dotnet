@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.Contacts.Database;
+using MyCompany.ECommerce.Contacts.Database;
 using MyCompany.ECommerce.Contacts.Database;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MyCompany.Crm.Contacts.Database.Migrations
+namespace MyCompany.ECommerce.Contacts.Database.Migrations
 {
     [DbContext(typeof(ContactsDbContext))]
     [Migration("20220831085231_Initial")]
@@ -25,7 +25,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyGroup", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.CompanyGroup", b =>
                 {
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uuid");
@@ -58,7 +58,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("CompanyGroup");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyTag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.CompanyTag", b =>
                 {
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uuid");
@@ -73,7 +73,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("CompanyTag");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.Group", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Groups.Group", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,7 +93,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.GroupTag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Groups.GroupTag", b =>
                 {
                     b.Property<Guid>("GroupId")
                         .HasColumnType("uuid");
@@ -108,7 +108,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("GroupTag");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Tags.Tag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Tags.Tag", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,9 +128,9 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.Company", b =>
                 {
-                    b.OwnsOne("MyCompany.Crm.Contacts.Companies.Address", "Address", b1 =>
+                    b.OwnsOne("MyCompany.ECommerce.Contacts.Companies.Address", "Address", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
                                 .HasColumnType("uuid");
@@ -154,7 +154,7 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                             b1.Navigation("Company");
                         });
 
-                    b.OwnsMany("MyCompany.Crm.Contacts.Companies.Phone", "Phones", b1 =>
+                    b.OwnsMany("MyCompany.ECommerce.Contacts.Companies.Phone", "Phones", b1 =>
                         {
                             b1.Property<string>("Number")
                                 .HasColumnType("text");
@@ -177,15 +177,15 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.Navigation("Phones");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyGroup", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.CompanyGroup", b =>
                 {
-                    b.HasOne("MyCompany.Crm.Contacts.Companies.Company", "Company")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Companies.Company", "Company")
                         .WithMany("Groups")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyCompany.Crm.Contacts.Groups.Group", "Group")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Groups.Group", "Group")
                         .WithMany("Companies")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -196,15 +196,15 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.CompanyTag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.CompanyTag", b =>
                 {
-                    b.HasOne("MyCompany.Crm.Contacts.Companies.Company", "Company")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Companies.Company", "Company")
                         .WithMany("Tags")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyCompany.Crm.Contacts.Tags.Tag", "Tag")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Tags.Tag", "Tag")
                         .WithMany("Companies")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -215,15 +215,15 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.GroupTag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Groups.GroupTag", b =>
                 {
-                    b.HasOne("MyCompany.Crm.Contacts.Groups.Group", "Group")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Groups.Group", "Group")
                         .WithMany("Tags")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyCompany.Crm.Contacts.Tags.Tag", "Tag")
+                    b.HasOne("MyCompany.ECommerce.Contacts.Tags.Tag", "Tag")
                         .WithMany("Groups")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -234,21 +234,21 @@ namespace MyCompany.Crm.Contacts.Database.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Companies.Company", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Companies.Company", b =>
                 {
                     b.Navigation("Groups");
 
                     b.Navigation("Tags");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Groups.Group", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Groups.Group", b =>
                 {
                     b.Navigation("Companies");
 
                     b.Navigation("Tags");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Contacts.Tags.Tag", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Contacts.Tags.Tag", b =>
                 {
                     b.Navigation("Companies");
 

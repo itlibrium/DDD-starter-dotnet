@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MyCompany.Crm.Contacts.Database.Migrations
+namespace MyCompany.ECommerce.Contacts.Database.Migrations
 {
     public partial class Initial : Migration
     {
