@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyCompany.ECommerce.TechnicalStuff.Metadata;
 using P3Model.Annotations.Domain.DynamicModel.DDD;
 using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Technology;
 using Scrutor;
 
 namespace MyCompany.ECommerce.DI
@@ -16,12 +17,12 @@ namespace MyCompany.ECommerce.DI
             services.Scan(selector => selector
                 .FromAssemblies(assemblies)
                 .AddClasses(filter => filter.WithAnyAttribute(
-                        typeof(ExternalServiceAttribute),
                         typeof(DaoAttribute),
                         typeof(DddRepositoryAttribute),
                         typeof(DddFactoryAttribute),
                         typeof(DddDomainServiceAttribute),
-                        typeof(DddApplicationServiceAttribute)),
+                        typeof(DddApplicationServiceAttribute),
+                        typeof(ExternalSoftwareSystemAttribute)),
                     false)
                 .AsSelfWithInterfaces()
                 .WithScopedLifetime());
