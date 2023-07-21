@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using P3Model.Annotations.Domain;
+using P3Model.Annotations.Domain.DynamicModel;
 using P3Model.Parser.Configuration;
 
 var configuration = new ConfigurationBuilder()
@@ -15,15 +17,8 @@ await P3
     .Analyzers(analyzers => analyzers
         .UseDefaults(options => options
             .TreatNamespacesAsDomainModules(namespaces => namespaces
-                .Exclude("TechnicalStuff")
-                .Exclude("Infrastructure")
-                .Exclude("Adapters")
-                .Exclude("RestApi")
-                .Exclude("OldApi")
-                .Exclude("Database")
-                .Exclude("FluentMigrations")
-                .Exclude("DI")
-                .Exclude("Nuke")
+                .OnlyFromAssembliesAnnotatedWith<DomainModelAttribute>()
+                .ExcludeAnnotatedWith<ProcessAttribute>()
                 .RemoveRootNamespace("MyCompany.ECommerce"))))
     .OutputFormat(formatters => formatters
         .UseMermaid(options => options
