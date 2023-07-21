@@ -55,19 +55,31 @@ This view contains all business processes with their sub-processes.
 
 ### Zoom-in
 
-- [[*Business process*] Risk management](Processes/Risk management/Risk management.md)
-  - [[*Business process*] Risk score calculation](Processes/Risk management/Risk score calculation/Risk score calculation.md)
-  - [[*Business process*] Risk score publication](Processes/Risk management/Risk score publication/Risk score publication.md)
-- [[*Business process*] Sale](Processes/Sale/Sale.md)
-  - [[*Business process*] Fulfillment](Processes/Sale/Fulfillment/Fulfillment.md)
-  - [[*Business process*] Online ordering](Processes/Sale/Online ordering/Online ordering.md)
-  - [[*Business process*] Payment](Processes/Sale/Payment/Payment.md)
-  - [[*Business process*] Products delivery](Processes/Sale/Products delivery/Products delivery.md)
-  - [[*Business process*] Wholesale ordering](Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+
+#### Domain perspective
+
+
+##### Processes
+
+[Fulfillment](Processes/Sale/Fulfillment/Fulfillment.md)  
+[Online ordering](Processes/Sale/Online ordering/Online ordering.md)  
+[Payment](Processes/Sale/Payment/Payment.md)  
+[Products delivery](Processes/Sale/Products delivery/Products delivery.md)  
+[Risk management](Processes/Risk management/Risk management.md)  
+[Risk score calculation](Processes/Risk management/Risk score calculation/Risk score calculation.md)  
+[Risk score publication](Processes/Risk management/Risk score publication/Risk score publication.md)  
+[Sale](Processes/Sale/Sale.md)  
+[Wholesale ordering](Processes/Sale/Wholesale ordering/Wholesale ordering.md)  
 
 ### Zoom-out
 
-- [Main page](README.md)
+
+#### Multi perspectives
+
+
+##### Cross elements
+
+[Main page](README.md)  
 
 ---
 

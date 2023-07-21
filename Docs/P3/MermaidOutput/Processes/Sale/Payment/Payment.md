@@ -1,5 +1,5 @@
 ﻿
-# [*Business process*] Payment
+# Payment
 
 This view contains details information about Payment business process, including:
 - other related processes
@@ -23,9 +23,9 @@ This view contains details information about Payment business process, including
     class 0 DomainPerspective
     1([Sale])
     class 1 DomainPerspective
-    1---0
-    1-->|is part of|0
     0---1
+    1-->|is part of|0
+    1---0
     2([RequestPayment])
     class 2 DomainPerspective
     0-->|contains|2
@@ -41,9 +41,6 @@ This view contains details information about Payment business process, including
   flowchart TB
     0(Payment)
     class 0 DomainPerspective
-    1([Payments])
-    class 1 DomainPerspective
-    0-->|belongs to|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -58,9 +55,6 @@ This view contains details information about Payment business process, including
   flowchart TB
     0(Payment)
     class 0 DomainPerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|is deployed in|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -81,20 +75,16 @@ This view contains details information about Payment business process, including
     0-->|uses|1
     subgraph 2["Teams"]
       direction TB
-      3([Supporting team])
-      class 3 PeoplePerspective
     end
-    2---1
-    2-->|develops & maintains|1
     1---2
-    subgraph 4["Business"]
+    2-->|develops & maintains|1
+    2---1
+    subgraph 3["Business"]
       direction TB
-      5([Sales department])
-      class 5 PeoplePerspective
     end
-    4---1
-    4-->|owns|1
-    1---4
+    1---3
+    3-->|owns|1
+    3---1
     linkStyle 1,3,4,6 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -106,18 +96,23 @@ This view contains details information about Payment business process, including
 
 ### Zoom-in
 
-- [[*Process Step*] RequestPayment](../../../ProcessSteps/Sale/Payment/RequestPayment.md)
+
+#### Domain perspective
+
+
+##### Process steps
+
+[RequestPayment](../../../ProcessSteps/Sale/Payment/RequestPayment.md)  
 
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Development team*] Supporting team](../../../Teams/Supporting team.md)
-- [[*Process Step*] RequestPayment](../../../ProcessSteps/Sale/Payment/RequestPayment.md)
+
+##### Cross elements
+
+[Business processes](../../../Business_Processes.md)  
 
 ---
 

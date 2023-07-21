@@ -2,34 +2,70 @@
 # P3 Model documentation for MyCompany e-commerce
 
 
-## Product Landscape
+## System Landscape
 
 ```mermaid
   flowchart TB
     0(MyCompany e-commerce)
-    1((WholesaleClient))
-    1-->0
-    2((RetailClient))
-    2-->0
+    subgraph 1["Actors"]
+      2([WholesaleClient])
+      3([RetailClient])
+    end
+    1-->|uses|0
+    subgraph 4["External Systems"]
+      5([Forex])
+    end
+    4<-->|are integrated with|0
+    subgraph 6["Development Teams"]
+      7([Inventory team])
+      8([Supporting team])
+      9([Core team])
+    end
+    0---6
+    6-->|develops & maintains|0
+    6---0
+    subgraph 10["Business Units"]
+      11([Inventory department])
+      12([Sales department])
+    end
+    0---10
+    10-->|owns|0
+    10---0
+    linkStyle 2,4,5,7 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Domain Vision Statement
-
-[Link](DomainVisionStatement.md)
 ## Next steps
 
 
 ### Zoom-in
 
-- [Business organizational units](Business_Organizational_Units.md)
-- [Deployable units](Deployable_Units.md)
-- [Development teams](Development_Teams.md)
-- [Domain Glossary](Glossary/Domain_Glossary.md)
-- [Domain Modules](Modules.md)
-- [Business processes](Business_Processes.md)
+
+#### Domain perspective
+
+
+##### Cross elements
+
+[Business processes](Business_Processes.md)  
+[Domain Glossary](Glossary/Domain_Glossary.md)  
+[Domain Modules](Modules.md)  
+
+#### Technology perspective
+
+
+##### Cross elements
+
+[Deployable units](Deployable_Units.md)  
+
+#### People perspective
+
+
+##### Cross elements
+
+[Business organizational units](Business_Organizational_Units.md)  
+[Development teams](Development_Teams.md)  
 
 ---
 

@@ -1,685 +1,1174 @@
 {
   "$id": "1",
+  "System": {
+    "$id": "2",
+    "Name": "MyCompany e-commerce"
+  },
   "Elements": [
     {
       "$type": "DevelopmentTeam",
-      "$id": "2",
-      "Name": "Core team"
-    },
-    {
-      "$type": "DevelopmentTeam",
       "$id": "3",
-      "Name": "Supporting team"
+      "Name": "Inventory team",
+      "Perspective": 2
+    },
+    {
+      "$type": "BusinessOrganizationalUnit",
+      "$id": "4",
+      "Name": "Inventory department",
+      "Perspective": 2
     },
     {
       "$type": "DevelopmentTeam",
-      "$id": "4",
-      "Name": "Inventory team"
-    },
-    {
-      "$type": "Product",
       "$id": "5",
-      "Name": "MyCompany e-commerce"
+      "Name": "Supporting team",
+      "Perspective": 2
     },
     {
       "$type": "BusinessOrganizationalUnit",
       "$id": "6",
-      "Name": "Inventory department"
+      "Name": "Sales department",
+      "Perspective": 2
     },
     {
-      "$type": "BusinessOrganizationalUnit",
+      "$type": "DevelopmentTeam",
       "$id": "7",
-      "Name": "Sales department"
+      "Name": "Core team",
+      "Perspective": 2
     },
     {
       "$type": "DddDomainService",
       "$id": "8",
-      "Name": "EverySecondBoxForHalfPrice",
-      "DescriptionFile": null
+      "Name": "Three for Two",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "ProcessStep",
       "$id": "9",
-      "Name": "ClientSqlRepository",
-      "DescriptionFile": null
+      "Id": "Sale.Wholesale ordering.ConfirmOffer",
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "DomainModule",
       "$id": "10",
-      "Name": "Raw",
-      "DescriptionFile": null
+      "Id": "Sales.SalesChannels",
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "DddFactory",
       "$id": "11",
-      "Id": "Sales.Integrations.Payments"
+      "Name": "Factory",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "ProcessStep",
+      "$id": "12",
+      "Id": "Sale.Fulfillment.OrderPlaced",
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
-      "$id": "12",
-      "Id": "Payments.Requesting"
-    },
-    {
-      "$type": "DddDomainService",
       "$id": "13",
-      "Name": "QuoteModifier",
-      "DescriptionFile": null
+      "Id": "Contacts.Tags",
+      "Perspective": 0
     },
     {
-      "$type": "DddValueObject",
+      "$type": "DomainModule",
       "$id": "14",
-      "Name": "BasePrices",
-      "DescriptionFile": null
+      "Id": "Sales.Pricing.SpecialOffers",
+      "Perspective": 0
     },
     {
-      "$type": "DddValueObject",
+      "$type": "Process",
       "$id": "15",
-      "Name": "Offer",
-      "DescriptionFile": null
+      "Id": "Sale.Payment",
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "16",
-      "Id": "Sales.WholesaleOrdering.OrderCreation"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "17",
-      "Name": "OfferModifier",
-      "DescriptionFile": null
+      "Id": "Sales.Pricing",
+      "Perspective": 0
     },
     {
       "$type": "DddValueObject",
-      "$id": "18",
-      "Name": "OfferRequest",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "19",
-      "Id": "Sales.Pricing.SpecialOffers"
+      "$id": "17",
+      "Name": "Base Price",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddDomainService",
-      "$id": "20",
-      "Name": "ClientLevelDiscounts",
-      "DescriptionFile": null
+      "$id": "18",
+      "Name": "Client Level Discounts",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "Process",
+      "$type": "DddRepository",
+      "$id": "19",
+      "Name": "Discounts Sql Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "ProcessStep",
+      "$id": "20",
+      "Id": "Sale.Online ordering.PlaceOrder",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
       "$id": "21",
-      "Id": "Sale.Products delivery"
+      "Name": "Offer",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddValueObject",
       "$id": "22",
-      "Name": "OrderId",
-      "DescriptionFile": null
+      "Name": "Base Prices",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "DddDomainService",
       "$id": "23",
-      "Id": "Sales.WholesaleOrdering.OrderPricing"
+      "Name": "Individual Sales Conditions",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "ProcessStep",
       "$id": "24",
-      "Id": "Sale.Payment.RequestPayment"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "25",
-      "Id": "RiskManagement.Publication"
-    },
-    {
-      "$type": "Process",
-      "$id": "26",
-      "Id": "Sale"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "27",
-      "Id": "Payments"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "28",
-      "Id": "Sales.WholesaleOrdering.ProductPricing"
-    },
-    {
-      "$type": "Process",
-      "$id": "29",
-      "Id": "Risk management.Risk score publication"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "30",
-      "Id": "Contacts"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "31",
-      "Name": "OfferModifier2",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "32",
-      "Id": "Sales.Orders"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "33",
-      "Name": "ThreeForTwo",
-      "DescriptionFile": null
+      "Id": "Sale.Wholesale ordering.CreateOrder",
+      "Perspective": 0
     },
     {
       "$type": "DddValueObject",
+      "$id": "25",
+      "Name": "Tax Id",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "ProcessStep",
+      "$id": "26",
+      "Id": "Risk management.Risk score publication.GetRiskScore",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "27",
+      "Name": "Calculate Prices",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "28",
+      "Name": "Client Id",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DomainModule",
+      "$id": "29",
+      "Id": "Sales.Commons",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "30",
+      "Name": "Product Id",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "Process",
+      "$id": "31",
+      "Id": "Sale.Online ordering",
+      "Perspective": 0
+    },
+    {
+      "$type": "Process",
+      "$id": "32",
+      "Id": "Sale.Products delivery",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "33",
+      "Name": "Exchange Rate",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
       "$id": "34",
-      "Name": "Amount",
-      "DescriptionFile": null
+      "Name": "Special Offer",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "35",
-      "Id": "Sales"
+      "Id": "Sales.Pricing.PriceLists",
+      "Perspective": 0
     },
     {
-      "$type": "DddDomainService",
+      "$type": "ProcessStep",
       "$id": "36",
-      "Name": "PriceModifier",
-      "DescriptionFile": null
+      "Id": "Sale.Wholesale ordering.PlaceOrder",
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "ProcessStep",
       "$id": "37",
-      "Name": "PriceListSqlRepository",
-      "DescriptionFile": null
+      "Id": "Sale.Products delivery.RequestDelivery",
+      "Perspective": 0
     },
     {
-      "$type": "Process",
+      "$type": "ExternalSoftwareSystem",
       "$id": "38",
-      "Id": "Sale.Payment"
+      "Name": "Forex",
+      "Perspective": 1
     },
     {
       "$type": "Process",
       "$id": "39",
-      "Id": "Sale.Online ordering"
+      "Id": "Sale",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "40",
+      "Name": "Offer Modifier 2",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
-      "$id": "40",
-      "Id": "Sales.Products"
-    },
-    {
-      "$type": "DddValueObject",
       "$id": "41",
-      "Name": "ProductId",
-      "DescriptionFile": null
+      "Id": "Sales.Time",
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "42",
-      "Id": "RiskManagement.Calculation"
-    },
-    {
-      "$type": "Process",
-      "$id": "43",
-      "Id": "Risk management"
+      "Id": "Contacts",
+      "Perspective": 0
     },
     {
       "$type": "DddDomainService",
-      "$id": "44",
-      "Name": "Clock",
-      "DescriptionFile": null
+      "$id": "43",
+      "Name": "Price Modifier",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "ProcessStep",
-      "$id": "45",
-      "Id": "Sale.Fulfillment.OrderPlaced"
+      "$type": "DddRepository",
+      "$id": "44",
+      "Name": "Client Sql Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
+      "$id": "45",
+      "Id": "Sales.Orders.PriceChanges",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddRepository",
       "$id": "46",
-      "Id": "Sales.Time"
+      "Name": "Raw",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "47",
-      "Id": "Sales.Pricing.Discounts"
+      "Id": "Contacts.Companies",
+      "Perspective": 0
     },
     {
-      "$type": "DddValueObject",
+      "$type": "DddDomainService",
       "$id": "48",
-      "Name": "PriceAgreement",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddFactory",
-      "$id": "49",
-      "Name": "Factory",
-      "DescriptionFile": null
+      "Name": "Value Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddValueObject",
+      "$id": "49",
+      "Name": "Value Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddRepository",
       "$id": "50",
-      "Name": "ExchangeRate",
-      "DescriptionFile": null
+      "Name": "Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddRepository",
+      "$id": "51",
+      "Name": "Price List Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DomainModule",
+      "$id": "52",
+      "Id": "Sales.Orders",
+      "Perspective": 0
+    },
+    {
+      "$type": "DomainModule",
+      "$id": "53",
+      "Id": "Sales.Pricing.Discounts",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "54",
+      "Name": "Quote",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "55",
+      "Name": "Product Level Discounts",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DomainModule",
+      "$id": "56",
+      "Id": "Sales.Clients",
+      "Perspective": 0
     },
     {
       "$type": "Actor",
-      "$id": "51",
-      "Name": "RetailClient"
-    },
-    {
-      "$type": "ProcessStep",
-      "$id": "52",
-      "Id": "Sale.Online ordering.PlaceOrder"
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "53",
-      "Name": "TaxId",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "54",
-      "Id": "Sales.WholesaleOrdering"
-    },
-    {
-      "$type": "ProcessStep",
-      "$id": "55",
-      "Id": "Risk management.Risk score publication.GetRiskScore"
-    },
-    {
-      "$type": "Tier",
-      "$id": "56",
-      "Name": "Application"
-    },
-    {
-      "$type": "DomainModule",
       "$id": "57",
-      "Id": "Sales.Clients"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "58",
-      "Id": "Contacts.Tags"
+      "Name": "WholesaleClient",
+      "Perspective": 2
     },
     {
       "$type": "DddValueObject",
-      "$id": "59",
-      "Name": "ProductDiscount",
-      "DescriptionFile": null
+      "$id": "58",
+      "Name": "Offer Request",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "Process",
+      "$id": "59",
+      "Id": "Risk management.Risk score publication",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
       "$id": "60",
-      "Id": "Sales.OnlineOrdering.CartPricing"
+      "Name": "Percentage Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddValueObject",
       "$id": "61",
-      "Name": "Discount",
-      "DescriptionFile": null
+      "Name": "Percentage Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DddDomainService",
+      "$type": "DddValueObject",
       "$id": "62",
-      "Name": "Discount",
-      "DescriptionFile": null
+      "Name": "Order Id",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddRepository",
       "$id": "63",
-      "Name": "DiscountsRepository",
-      "DescriptionFile": null
+      "Name": "Document",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "Process",
       "$id": "64",
-      "Id": "Contacts.Companies"
+      "Id": "Sale.Wholesale ordering",
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "DddValueObject",
       "$id": "65",
-      "Name": "ClientRepository",
-      "DescriptionFile": null
+      "Name": "Percentage",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "ProcessStep",
       "$id": "66",
-      "Id": "Sale.Wholesale ordering.AddToOrder"
+      "Id": "Sale.Wholesale ordering.GetOffer",
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "ProcessStep",
       "$id": "67",
-      "Id": "Contacts.Groups"
+      "Id": "Sale.Wholesale ordering.AddToOrder",
+      "Perspective": 0
     },
     {
-      "$type": "DddDomainService",
+      "$type": "DddFactory",
       "$id": "68",
-      "Name": "SystemClock",
-      "DescriptionFile": null
+      "Name": "Offer Modifiers",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "69",
+      "Name": "Price Agreement",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddRepository",
-      "$id": "69",
-      "Name": "Repository",
-      "DescriptionFile": null
+      "$id": "70",
+      "Name": "Events Sourcing",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddFactory",
+      "$id": "71",
+      "Name": "Price Changes Policies",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DeployableUnit",
+      "$id": "72",
+      "Name": "ecommerce-monolith",
+      "Perspective": 1
+    },
+    {
+      "$type": "DddAggregate",
+      "$id": "73",
+      "Name": "Order",
+      "DescriptionFile": {
+        "FileType": "md",
+        "Content": "Order lorem ipsum"
+      },
+      "Perspective": 0
+    },
+    {
+      "$type": "DddRepository",
+      "$id": "74",
+      "Name": "EF",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddDomainService",
-      "$id": "70",
-      "Name": "CalculatePrices",
-      "DescriptionFile": null
+      "$id": "75",
+      "Name": "Allow Any Price Changes",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "ProcessStep",
-      "$id": "71",
-      "Id": "Sale.Wholesale ordering.ConfirmOffer"
+      "$type": "DddDomainService",
+      "$id": "76",
+      "Name": "Price Changes Policy",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DddValueObject",
-      "$id": "72",
-      "Name": "ProductAmount",
-      "DescriptionFile": null
+      "$type": "DomainModule",
+      "$id": "77",
+      "Id": "Sales.Products",
+      "Perspective": 0
     },
     {
-      "$type": "DddValueObject",
-      "$id": "73",
-      "Name": "Money",
-      "DescriptionFile": null
+      "$type": "Tier",
+      "$id": "78",
+      "Name": "Application",
+      "Perspective": 1
     },
     {
-      "$type": "DddValueObject",
-      "$id": "74",
-      "Name": "ProductUnit",
-      "DescriptionFile": null
+      "$type": "DddDomainService",
+      "$id": "79",
+      "Name": "Allow Price Changes if Total Price Is Lower",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddRepository",
-      "$id": "75",
-      "Name": "DiscountsSqlRepository",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "Process",
-      "$id": "76",
-      "Id": "Sale.Fulfillment"
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "77",
-      "Name": "Quote",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "78",
-      "Name": "BasePrice",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "79",
-      "Id": "Sales.Commons"
-    },
-    {
-      "$type": "DomainModule",
       "$id": "80",
-      "Id": "Sales.Integrations.RiskManagement"
+      "Name": "Discounts Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "ProcessStep",
+      "$type": "DddValueObject",
       "$id": "81",
-      "Id": "Sale.Wholesale ordering.PlaceOrder"
+      "Name": "Product Amount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "82",
-      "Id": "Sales.WholesaleOrdering.OrderPlacement"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "83",
-      "Name": "PriceChangesPolicy",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "84",
-      "Id": "Sales.Pricing.PriceLists"
-    },
-    {
-      "$type": "DddFactory",
-      "$id": "85",
-      "Name": "PriceChangesPolicies",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "86",
-      "Id": "ProductsDelivery.Requesting"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "87",
-      "Name": "AllowAnyPriceChanges",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "88",
-      "Id": "Sales.WholesaleOrdering.OrderModification"
+      "Id": "Sales.Integrations",
+      "Perspective": 0
     },
     {
       "$type": "Process",
-      "$id": "89",
-      "Id": "Risk management.Risk score calculation"
+      "$id": "83",
+      "Id": "Sale.Fulfillment",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddRepository",
+      "$id": "84",
+      "Name": "Price List Sql Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "85",
+      "Name": "Every Second Box for Half Price",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "86",
+      "Name": "Offer Modifier",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "ProcessStep",
-      "$id": "90",
-      "Id": "Sale.Online ordering.PriceCart"
+      "$id": "87",
+      "Id": "Sale.Online ordering.PriceCart",
+      "Perspective": 0
     },
     {
-      "$type": "ProcessStep",
-      "$id": "91",
-      "Id": "Sale.Products delivery.RequestDelivery"
+      "$type": "DddValueObject",
+      "$id": "88",
+      "Name": "Amount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
+      "$id": "89",
+      "Id": "Sales.ExchangeRates",
+      "Perspective": 0
+    },
+    {
+      "$type": "DomainModule",
+      "$id": "90",
+      "Id": "Sales.Integrations.RiskManagement",
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "91",
+      "Name": "Money",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
       "$id": "92",
-      "Id": "Sales.Orders.PriceChanges"
+      "Name": "Product Unit",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddRepository",
       "$id": "93",
-      "Name": "PriceListRepository",
-      "DescriptionFile": null
+      "Name": "Client Repository",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
-      "$type": "DomainModule",
+      "$type": "Process",
       "$id": "94",
-      "Id": "ProductsDelivery"
+      "Id": "Risk management",
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "95",
-      "Id": "Sales.ExchangeRates"
+      "Id": "Contacts.Groups",
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "ProcessStep",
       "$id": "96",
-      "Name": "Document",
-      "DescriptionFile": null
+      "Id": "Sale.Payment.RequestPayment",
+      "Perspective": 0
     },
     {
-      "$type": "DddRepository",
+      "$type": "DddDomainService",
       "$id": "97",
-      "Name": "EF",
-      "DescriptionFile": null
+      "Name": "Clock",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DomainModule",
       "$id": "98",
-      "Id": "Sales.OnlineOrdering"
+      "Id": "Sales",
+      "Perspective": 0
     },
     {
-      "$type": "DddFactory",
+      "$type": "Process",
       "$id": "99",
-      "Name": "OfferModifiers",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "ProcessStep",
-      "$id": "100",
-      "Id": "Sale.Wholesale ordering.GetOffer"
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "101",
-      "Name": "ValueDiscount",
-      "DescriptionFile": null
+      "Id": "Risk management.Risk score calculation",
+      "Perspective": 0
     },
     {
       "$type": "DddDomainService",
+      "$id": "100",
+      "Name": "System Clock",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddDomainService",
+      "$id": "101",
+      "Name": "Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
       "$id": "102",
-      "Name": "ValueDiscount",
-      "DescriptionFile": null
+      "Name": "Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "DddDomainService",
       "$id": "103",
-      "Name": "ProductLevelDiscounts",
-      "DescriptionFile": null
+      "Name": "Quote Modifier",
+      "DescriptionFile": null,
+      "Perspective": 0
+    },
+    {
+      "$type": "DddValueObject",
+      "$id": "104",
+      "Name": "Product Discount",
+      "DescriptionFile": null,
+      "Perspective": 0
     },
     {
       "$type": "Actor",
-      "$id": "104",
-      "Name": "WholesaleClient"
-    },
-    {
-      "$type": "DddDomainService",
       "$id": "105",
-      "Name": "SpecialOffer",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "106",
-      "Name": "Percentage",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddRepository",
-      "$id": "107",
-      "Name": "EventsSourcing",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "108",
-      "Id": "Sales.Pricing"
-    },
-    {
-      "$type": "DddAggregate",
-      "$id": "109",
-      "Name": "Order",
-      "DescriptionFile": "/home/marcin/ITLIBRIUM/OpenSource/DDD-starter-dotnet/Sources/Sales/Sales.DeepModel/Orders/Order.md"
-    },
-    {
-      "$type": "Process",
-      "$id": "110",
-      "Id": "Sale.Wholesale ordering"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "111",
-      "Name": "IndividualSalesConditions",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "112",
-      "Id": "RiskManagement"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "113",
-      "Id": "Sales.OnlineOrdering.OrderPlacement"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "114",
-      "Id": "Sales.Integrations"
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "115",
-      "Name": "ClientId",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddValueObject",
-      "$id": "116",
-      "Name": "PercentageDiscount",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "117",
-      "Name": "PercentageDiscount",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "118",
-      "Id": "Sales.SalesChannels"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "119",
-      "Id": "Sales.Fulfillment"
-    },
-    {
-      "$type": "DeployableUnit",
-      "$id": "120",
-      "Name": "ecommerce-monolith"
-    },
-    {
-      "$type": "DomainModule",
-      "$id": "121",
-      "Id": "Sales.Integrations.ProductsDelivery"
-    },
-    {
-      "$type": "DddDomainService",
-      "$id": "122",
-      "Name": "AllowPriceChangesIfTotalPriceIsLower",
-      "DescriptionFile": null
-    },
-    {
-      "$type": "ProcessStep",
-      "$id": "123",
-      "Id": "Sale.Wholesale ordering.CreateOrder"
+      "Name": "RetailClient",
+      "Perspective": 2
     }
   ],
   "Relations": [
     {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "124",
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "106",
       "Source": {
-        "$ref": "66"
+        "$ref": "47"
       },
       "Destination": {
-        "$ref": "22"
+        "$ref": "72"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
+      "$id": "107",
+      "Source": {
+        "$ref": "67"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "108",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "84"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "109",
+      "Source": {
+        "$ref": "55"
+      },
+      "Destination": {
+        "$ref": "104"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "110",
+      "Source": {
+        "$ref": "34"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "111",
+      "Source": {
+        "$ref": "21"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "OwnsDomainModule",
+      "$id": "112",
+      "Source": {
+        "$ref": "6"
+      },
+      "Destination": {
+        "$id": "113",
+        "Id": "Payments",
+        "Perspective": 0
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "114",
+      "Source": {
+        "$ref": "77"
+      },
+      "Destination": {
+        "$ref": "30"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "115",
+      "Source": {
+        "$ref": "101"
+      },
+      "Destination": {
+        "$ref": "102"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "116",
+      "Source": {
+        "$ref": "102"
+      },
+      "Destination": {
+        "$ref": "101"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "117",
+      "Source": {
+        "$ref": "24"
+      },
+      "Destination": {
+        "$ref": "54"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "118",
+      "Source": {
+        "$ref": "34"
+      },
+      "Destination": {
+        "$ref": "86"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "119",
+      "Source": {
+        "$ref": "55"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "120",
+      "Source": {
+        "$ref": "45"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "121",
+      "Source": {
+        "$ref": "41"
+      },
+      "Destination": {
+        "$ref": "97"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "122",
+      "Source": {
+        "$ref": "71"
+      },
+      "Destination": {
+        "$ref": "79"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "123",
+      "Source": {
+        "$ref": "46"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "124",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "50"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
       "$id": "125",
+      "Source": {
+        "$ref": "95"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "126",
+      "Source": {
+        "$ref": "42"
+      },
+      "Destination": {
+        "$ref": "13"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "127",
+      "Source": {
+        "$ref": "20"
+      },
+      "Destination": {
+        "$ref": "11"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "128",
+      "Source": {
+        "$ref": "64"
+      },
+      "Destination": {
+        "$ref": "36"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "129",
+      "Source": {
+        "$ref": "50"
+      },
+      "Destination": {
+        "$ref": "73"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "130",
+      "Source": {
+        "$ref": "52"
+      },
+      "Destination": {
+        "$ref": "70"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "131",
+      "Source": {
+        "$ref": "67"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "132",
+      "Source": {
+        "$ref": "77"
+      },
+      "Destination": {
+        "$ref": "92"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "133",
+      "Source": {
+        "$ref": "60"
+      },
+      "Destination": {
+        "$ref": "61"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "134",
+      "Source": {
+        "$ref": "61"
+      },
+      "Destination": {
+        "$ref": "60"
+      }
+    },
+    {
+      "$type": "OwnsDomainModule",
+      "$id": "135",
+      "Source": {
+        "$ref": "4"
+      },
+      "Destination": {
+        "$id": "136",
+        "Id": "ProductsDelivery",
+        "Perspective": 0
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "137",
+      "Source": {
+        "$ref": "55"
+      },
+      "Destination": {
+        "$ref": "54"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "138",
+      "Source": {
+        "$ref": "42"
+      },
+      "Destination": {
+        "$ref": "47"
+      }
+    },
+    {
+      "$type": "UsesProcessStep",
+      "$id": "139",
+      "Source": {
+        "$ref": "57"
+      },
+      "Destination": {
+        "$ref": "9"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "140",
+      "Source": {
+        "$ref": "98"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "OwnsDomainModule",
+      "$id": "141",
+      "Source": {
+        "$ref": "7"
+      },
+      "Destination": {
+        "$ref": "98"
+      }
+    },
+    {
+      "$type": "UsesProcessStep",
+      "$id": "142",
+      "Source": {
+        "$ref": "57"
+      },
+      "Destination": {
+        "$ref": "36"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "143",
+      "Source": {
+        "$ref": "17"
+      },
+      "Destination": {
+        "$ref": "92"
+      }
+    },
+    {
+      "$type": "ContainsSubProcess",
+      "$id": "144",
+      "Source": {
+        "$ref": "94"
+      },
+      "Destination": {
+        "$ref": "59"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "145",
+      "Source": {
+        "$ref": "66"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "146",
+      "Source": {
+        "$ref": "84"
+      },
+      "Destination": {
+        "$ref": "28"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "147",
+      "Source": {
+        "$ref": "63"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "148",
+      "Source": {
+        "$ref": "8"
+      },
+      "Destination": {
+        "$ref": "86"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "149",
+      "Source": {
+        "$ref": "32"
+      },
+      "Destination": {
+        "$ref": "37"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "150",
+      "Source": {
+        "$ref": "17"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "151",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "27"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "152",
+      "Source": {
+        "$ref": "14"
+      },
+      "Destination": {
+        "$ref": "8"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "153",
+      "Source": {
+        "$ref": "71"
+      },
+      "Destination": {
+        "$ref": "75"
+      }
+    },
+    {
+      "$type": "OwnsDomainModule",
+      "$id": "154",
+      "Source": {
+        "$ref": "6"
+      },
+      "Destination": {
+        "$ref": "98"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "155",
+      "Source": {
+        "$ref": "36"
+      },
+      "Destination": {
+        "$ref": "97"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "156",
       "Source": {
         "$ref": "36"
       },
@@ -688,460 +1177,122 @@
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "126",
+      "$type": "ContainsBuildingBlock",
+      "$id": "157",
       "Source": {
-        "$ref": "79"
+        "$ref": "89"
       },
       "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "127",
-      "Source": {
-        "$ref": "110"
-      },
-      "Destination": {
-        "$ref": "100"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "128",
-      "Source": {
-        "$ref": "30"
-      },
-      "Destination": {
-        "$ref": "64"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "129",
-      "Source": {
-        "$ref": "13"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "130",
-      "Source": {
-        "$ref": "15"
-      },
-      "Destination": {
-        "$ref": "72"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "131",
-      "Source": {
-        "$ref": "96"
-      },
-      "Destination": {
-        "$ref": "22"
+        "$ref": "33"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "132",
+      "$id": "158",
       "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "107"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "133",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "98"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "134",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "135",
-      "Source": {
-        "$ref": "81"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "136",
-      "Source": {
-        "$ref": "95"
-      },
-      "Destination": {
-        "$ref": "50"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "137",
-      "Source": {
-        "$ref": "30"
-      },
-      "Destination": {
-        "$ref": "67"
-      }
-    },
-    {
-      "$type": "OwnsDomainModule",
-      "$id": "138",
-      "Source": {
-        "$ref": "6"
-      },
-      "Destination": {
-        "$ref": "94"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "139",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "61"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "140",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "62"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "141",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "142",
-      "Source": {
-        "$ref": "15"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "143",
-      "Source": {
-        "$ref": "40"
-      },
-      "Destination": {
-        "$ref": "72"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "144",
-      "Source": {
-        "$ref": "10"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "145",
-      "Source": {
-        "$ref": "52"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "146",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "147",
-      "Source": {
-        "$ref": "15"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "148",
-      "Source": {
-        "$ref": "40"
-      },
-      "Destination": {
-        "$ref": "74"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "149",
-      "Source": {
-        "$ref": "17"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "150",
-      "Source": {
-        "$ref": "111"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "151",
-      "Source": {
-        "$ref": "107"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "152",
-      "Source": {
-        "$ref": "121"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "153",
-      "Source": {
-        "$ref": "123"
-      },
-      "Destination": {
-        "$ref": "49"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "154",
-      "Source": {
-        "$ref": "100"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "OwnsDomainModule",
-      "$id": "155",
-      "Source": {
-        "$ref": "3"
+        "$ref": "16"
       },
       "Destination": {
         "$ref": "27"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "156",
-      "Source": {
-        "$ref": "82"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "157",
-      "Source": {
-        "$ref": "90"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "158",
-      "Source": {
-        "$ref": "67"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
       "$type": "DependsOnBuildingBlock",
       "$id": "159",
       "Source": {
-        "$ref": "109"
+        "$ref": "20"
       },
       "Destination": {
-        "$ref": "72"
+        "$ref": "73"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "160",
       "Source": {
-        "$ref": "18"
+        "$ref": "52"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "11"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "161",
       "Source": {
-        "$ref": "111"
+        "$ref": "66"
       },
       "Destination": {
-        "$ref": "20"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "162",
-      "Source": {
-        "$ref": "123"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "163",
-      "Source": {
-        "$ref": "104"
-      },
-      "Destination": {
-        "$ref": "100"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "164",
-      "Source": {
-        "$ref": "98"
-      },
-      "Destination": {
-        "$ref": "60"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "165",
-      "Source": {
-        "$ref": "70"
-      },
-      "Destination": {
-        "$ref": "18"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "166",
-      "Source": {
-        "$ref": "20"
-      },
-      "Destination": {
-        "$ref": "59"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "167",
-      "Source": {
-        "$ref": "97"
-      },
-      "Destination": {
-        "$ref": "73"
+        "$ref": "54"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "168",
+      "$id": "162",
       "Source": {
-        "$ref": "47"
+        "$ref": "16"
       },
       "Destination": {
-        "$ref": "75"
+        "$ref": "43"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
-      "$id": "169",
+      "$type": "OwnsDomainModule",
+      "$id": "163",
       "Source": {
-        "$ref": "71"
+        "$ref": "7"
+      },
+      "Destination": {
+        "$id": "164",
+        "Id": "RiskManagement",
+        "Perspective": 0
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "165",
+      "Source": {
+        "$ref": "98"
+      },
+      "Destination": {
+        "$ref": "89"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "166",
+      "Source": {
+        "$ref": "16"
       },
       "Destination": {
         "$ref": "23"
       }
     },
     {
-      "$type": "OwnsDomainModule",
-      "$id": "170",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "167",
       "Source": {
-        "$ref": "7"
+        "$ref": "23"
       },
       "Destination": {
-        "$ref": "112"
+        "$ref": "55"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "171",
+      "$type": "ContainsDomainModule",
+      "$id": "168",
       "Source": {
-        "$ref": "66"
+        "$ref": "42"
+      },
+      "Destination": {
+        "$ref": "95"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "169",
+      "Source": {
+        "$ref": "90"
       },
       "Destination": {
         "$ref": "72"
@@ -1149,149 +1300,169 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "172",
+      "$id": "170",
       "Source": {
-        "$ref": "59"
+        "$ref": "70"
       },
       "Destination": {
-        "$ref": "74"
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "171",
+      "Source": {
+        "$ref": "64"
+      },
+      "Destination": {
+        "$ref": "9"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "172",
+      "Source": {
+        "$ref": "104"
+      },
+      "Destination": {
+        "$ref": "101"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "173",
       "Source": {
-        "$ref": "65"
+        "$ref": "104"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "102"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "174",
       "Source": {
-        "$ref": "78"
+        "$ref": "24"
       },
       "Destination": {
-        "$ref": "73"
+        "$ref": "28"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "175",
       "Source": {
-        "$ref": "117"
+        "$ref": "79"
       },
       "Destination": {
-        "$ref": "116"
+        "$ref": "54"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsDomainModule",
       "$id": "176",
       "Source": {
-        "$ref": "116"
-      },
-      "Destination": {
-        "$ref": "117"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "177",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "178",
-      "Source": {
-        "$ref": "78"
-      },
-      "Destination": {
-        "$ref": "74"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "179",
-      "Source": {
-        "$ref": "122"
+        "$ref": "98"
       },
       "Destination": {
         "$ref": "77"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
-      "$id": "180",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "177",
       "Source": {
-        "$ref": "19"
+        "$ref": "81"
       },
       "Destination": {
-        "$ref": "105"
+        "$ref": "30"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "181",
+      "$type": "OwnsDomainModule",
+      "$id": "178",
       "Source": {
-        "$ref": "54"
+        "$ref": "6"
       },
       "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "182",
-      "Source": {
-        "$ref": "114"
-      },
-      "Destination": {
-        "$ref": "80"
+        "$ref": "164"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "183",
+      "$id": "179",
       "Source": {
-        "$ref": "52"
+        "$ref": "21"
       },
       "Destination": {
-        "$ref": "15"
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "180",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "71"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "181",
+      "Source": {
+        "$ref": "87"
+      },
+      "Destination": {
+        "$ref": "54"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "182",
+      "Source": {
+        "$ref": "74"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "183",
+      "Source": {
+        "$ref": "31"
+      },
+      "Destination": {
+        "$ref": "87"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "184",
       "Source": {
-        "$ref": "100"
+        "$ref": "21"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "103"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsDomainModule",
       "$id": "185",
       "Source": {
-        "$ref": "10"
+        "$ref": "98"
       },
       "Destination": {
-        "$ref": "109"
+        "$ref": "56"
       }
     },
     {
       "$type": "ContainsProcessStep",
       "$id": "186",
       "Source": {
-        "$ref": "38"
+        "$ref": "64"
       },
       "Destination": {
         "$ref": "24"
@@ -1301,7 +1472,67 @@
       "$type": "DependsOnBuildingBlock",
       "$id": "187",
       "Source": {
-        "$ref": "48"
+        "$ref": "81"
+      },
+      "Destination": {
+        "$ref": "92"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "188",
+      "Source": {
+        "$ref": "22"
+      },
+      "Destination": {
+        "$ref": "17"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "189",
+      "Source": {
+        "$ref": "89"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "190",
+      "Source": {
+        "$ref": "98"
+      },
+      "Destination": {
+        "$ref": "82"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "191",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "97"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "192",
+      "Source": {
+        "$ref": "80"
+      },
+      "Destination": {
+        "$ref": "28"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "193",
+      "Source": {
+        "$ref": "9"
       },
       "Destination": {
         "$ref": "73"
@@ -1309,199 +1540,159 @@
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "188",
+      "$id": "194",
       "Source": {
-        "$ref": "47"
+        "$ref": "45"
       },
       "Destination": {
-        "$ref": "59"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "189",
-      "Source": {
-        "$ref": "29"
-      },
-      "Destination": {
-        "$ref": "55"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "190",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "114"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "191",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "192",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "118"
+        "$ref": "79"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "193",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "63"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "194",
+      "$id": "195",
       "Source": {
         "$ref": "35"
       },
       "Destination": {
-        "$ref": "119"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "195",
-      "Source": {
-        "$ref": "27"
-      },
-      "Destination": {
-        "$ref": "12"
+        "$ref": "17"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
       "$id": "196",
       "Source": {
-        "$ref": "32"
+        "$ref": "52"
       },
       "Destination": {
-        "$ref": "10"
+        "$ref": "73"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "197",
       "Source": {
-        "$ref": "62"
+        "$ref": "67"
       },
       "Destination": {
-        "$ref": "106"
+        "$ref": "50"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "198",
       "Source": {
-        "$ref": "61"
+        "$ref": "8"
       },
       "Destination": {
-        "$ref": "106"
+        "$ref": "21"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "199",
       "Source": {
-        "$ref": "107"
+        "$ref": "103"
       },
       "Destination": {
-        "$ref": "109"
+        "$ref": "54"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
+      "$type": "ContainsSubProcess",
       "$id": "200",
       "Source": {
-        "$ref": "92"
+        "$ref": "39"
       },
       "Destination": {
-        "$ref": "85"
+        "$ref": "31"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "201",
       "Source": {
-        "$ref": "99"
+        "$ref": "27"
       },
       "Destination": {
-        "$ref": "18"
+        "$ref": "58"
       }
     },
     {
-      "$type": "ContainsProcessStep",
+      "$type": "ContainsBuildingBlock",
       "$id": "202",
       "Source": {
-        "$ref": "110"
+        "$ref": "53"
       },
       "Destination": {
-        "$ref": "123"
+        "$ref": "48"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "203",
       "Source": {
-        "$ref": "77"
+        "$ref": "44"
       },
       "Destination": {
-        "$ref": "13"
+        "$ref": "28"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "204",
       "Source": {
-        "$ref": "123"
+        "$ref": "53"
       },
       "Destination": {
-        "$ref": "69"
+        "$ref": "49"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "205",
       "Source": {
-        "$ref": "123"
+        "$ref": "66"
       },
       "Destination": {
-        "$ref": "70"
+        "$ref": "62"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
+      "$type": "UsesProcessStep",
       "$id": "206",
       "Source": {
-        "$ref": "108"
+        "$ref": "57"
       },
       "Destination": {
-        "$ref": "99"
+        "$ref": "24"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "207",
+      "Source": {
+        "$ref": "52"
+      },
+      "Destination": {
+        "$ref": "45"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "207",
+      "$id": "208",
       "Source": {
-        "$ref": "79"
+        "$ref": "56"
+      },
+      "Destination": {
+        "$ref": "93"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "209",
+      "Source": {
+        "$ref": "16"
       },
       "Destination": {
         "$ref": "53"
@@ -1509,142 +1700,122 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "208",
-      "Source": {
-        "$ref": "90"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "209",
-      "Source": {
-        "$ref": "20"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
       "$id": "210",
       "Source": {
-        "$ref": "75"
+        "$ref": "46"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "91"
       }
     },
     {
-      "$type": "ContainsSubProcess",
+      "$type": "ContainsBuildingBlock",
       "$id": "211",
       "Source": {
-        "$ref": "26"
+        "$ref": "53"
       },
       "Destination": {
-        "$ref": "76"
+        "$ref": "80"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "212",
       "Source": {
-        "$ref": "97"
+        "$ref": "11"
       },
       "Destination": {
-        "$ref": "109"
+        "$ref": "21"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "ContainsDomainModule",
       "$id": "213",
       "Source": {
-        "$ref": "32"
+        "$ref": "98"
       },
       "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "214",
-      "Source": {
-        "$ref": "45"
-      },
-      "Destination": {
-        "$ref": "119"
+        "$ref": "29"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "215",
+      "$id": "214",
       "Source": {
-        "$ref": "84"
+        "$ref": "52"
       },
       "Destination": {
-        "$ref": "78"
+        "$ref": "69"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "215",
+      "Source": {
+        "$ref": "15"
+      },
+      "Destination": {
+        "$ref": "96"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "216",
       "Source": {
-        "$ref": "15"
+        "$ref": "11"
       },
       "Destination": {
-        "$ref": "106"
+        "$ref": "62"
       }
     },
     {
-      "$type": "ContainsDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "217",
       "Source": {
-        "$ref": "35"
+        "$ref": "63"
       },
       "Destination": {
-        "$ref": "108"
+        "$ref": "73"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
+      "$type": "ContainsBuildingBlock",
       "$id": "218",
       "Source": {
-        "$ref": "24"
+        "$ref": "14"
       },
       "Destination": {
-        "$ref": "12"
+        "$ref": "34"
       }
     },
     {
       "$type": "IsDeployedInDeployableUnit",
       "$id": "219",
       "Source": {
-        "$ref": "86"
+        "$ref": "29"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "72"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "ContainsBuildingBlock",
       "$id": "220",
       "Source": {
-        "$ref": "25"
+        "$ref": "35"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "51"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "221",
       "Source": {
-        "$ref": "100"
+        "$ref": "48"
       },
       "Destination": {
-        "$ref": "23"
+        "$ref": "91"
       }
     },
     {
@@ -1654,64 +1825,354 @@
         "$ref": "49"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "91"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "DependsOnBuildingBlock",
       "$id": "223",
       "Source": {
-        "$ref": "60"
+        "$ref": "21"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "65"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "DependsOnBuildingBlock",
       "$id": "224",
       "Source": {
-        "$ref": "64"
+        "$ref": "73"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "76"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "225",
       "Source": {
-        "$ref": "81"
+        "$ref": "87"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "226",
+      "Source": {
+        "$ref": "35"
       },
       "Destination": {
         "$ref": "22"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "226",
-      "Source": {
-        "$ref": "66"
-      },
-      "Destination": {
-        "$ref": "69"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "227",
       "Source": {
-        "$ref": "93"
+        "$ref": "45"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "75"
+      }
+    },
+    {
+      "$type": "ContainsSubProcess",
+      "$id": "228",
+      "Source": {
+        "$ref": "39"
+      },
+      "Destination": {
+        "$ref": "15"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "229",
+      "Source": {
+        "$ref": "82"
+      },
+      "Destination": {
+        "$ref": "90"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "230",
+      "Source": {
+        "$ref": "59"
+      },
+      "Destination": {
+        "$ref": "26"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "228",
+      "$id": "231",
       "Source": {
-        "$ref": "109"
+        "$ref": "20"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "232",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "58"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "233",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "76"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "234",
+      "Source": {
+        "$ref": "98"
+      },
+      "Destination": {
+        "$ref": "10"
+      }
+    },
+    {
+      "$type": "UsesProcessStep",
+      "$id": "235",
+      "Source": {
+        "$ref": "57"
+      },
+      "Destination": {
+        "$ref": "67"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "236",
+      "Source": {
+        "$ref": "70"
+      },
+      "Destination": {
+        "$ref": "73"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "237",
+      "Source": {
+        "$ref": "71"
+      },
+      "Destination": {
+        "$ref": "93"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "238",
+      "Source": {
+        "$ref": "54"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "UsesProcessStep",
+      "$id": "239",
+      "Source": {
+        "$ref": "57"
+      },
+      "Destination": {
+        "$ref": "66"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "240",
+      "Source": {
+        "$ref": "31"
+      },
+      "Destination": {
+        "$ref": "20"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "241",
+      "Source": {
+        "$ref": "52"
+      },
+      "Destination": {
+        "$ref": "46"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "242",
+      "Source": {
+        "$ref": "41"
+      },
+      "Destination": {
+        "$ref": "100"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "243",
+      "Source": {
+        "$ref": "24"
+      },
+      "Destination": {
+        "$ref": "50"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "244",
+      "Source": {
+        "$ref": "13"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "245",
+      "Source": {
+        "$ref": "86"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "246",
+      "Source": {
+        "$ref": "104"
+      },
+      "Destination": {
+        "$ref": "92"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "247",
+      "Source": {
+        "$ref": "73"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "248",
+      "Source": {
+        "$ref": "29"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "249",
+      "Source": {
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "104"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "250",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "35"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "251",
+      "Source": {
+        "$ref": "50"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "252",
+      "Source": {
+        "$ref": "101"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "253",
+      "Source": {
+        "$ref": "102"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "OwnsDomainModule",
+      "$id": "254",
+      "Source": {
+        "$ref": "3"
+      },
+      "Destination": {
+        "$ref": "136"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "255",
+      "Source": {
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "19"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "256",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "14"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "257",
+      "Source": {
+        "$ref": "52"
       },
       "Destination": {
         "$ref": "74"
@@ -1719,9 +2180,39 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "229",
+      "$id": "258",
       "Source": {
-        "$ref": "122"
+        "$ref": "54"
+      },
+      "Destination": {
+        "$ref": "103"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "259",
+      "Source": {
+        "$ref": "45"
+      },
+      "Destination": {
+        "$ref": "76"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "260",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "261",
+      "Source": {
+        "$ref": "67"
       },
       "Destination": {
         "$ref": "73"
@@ -1729,129 +2220,189 @@
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "230",
+      "$id": "262",
       "Source": {
-        "$ref": "32"
+        "$ref": "45"
       },
       "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "231",
-      "Source": {
-        "$ref": "100"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "232",
-      "Source": {
-        "$ref": "23"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "233",
-      "Source": {
         "$ref": "71"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "263",
+      "Source": {
+        "$ref": "53"
       },
       "Destination": {
-        "$ref": "44"
+        "$ref": "102"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "264",
+      "Source": {
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "101"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "234",
+      "$id": "265",
       "Source": {
-        "$ref": "9"
+        "$ref": "73"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "54"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "235",
+      "$type": "ContainsSubProcess",
+      "$id": "266",
       "Source": {
-        "$ref": "109"
+        "$ref": "39"
       },
       "Destination": {
-        "$ref": "77"
+        "$ref": "64"
       }
     },
     {
-      "$type": "UsesProcessStep",
-      "$id": "236",
-      "Source": {
-        "$ref": "104"
-      },
-      "Destination": {
-        "$ref": "123"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "237",
-      "Source": {
-        "$ref": "27"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "238",
+      "$type": "ContainsBuildingBlock",
+      "$id": "267",
       "Source": {
         "$ref": "52"
       },
       "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "268",
+      "Source": {
+        "$ref": "14"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "269",
+      "Source": {
+        "$ref": "10"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "270",
+      "Source": {
+        "$ref": "33"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "271",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "272",
+      "Source": {
+        "$ref": "18"
+      },
+      "Destination": {
+        "$ref": "104"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "273",
+      "Source": {
+        "$ref": "56"
+      },
+      "Destination": {
         "$ref": "44"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "239",
+      "$id": "274",
       "Source": {
-        "$ref": "96"
+        "$ref": "66"
       },
       "Destination": {
-        "$ref": "73"
+        "$ref": "28"
       }
     },
     {
-      "$type": "ContainsDomainModule",
-      "$id": "240",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "275",
       "Source": {
-        "$ref": "54"
+        "$ref": "68"
       },
       "Destination": {
-        "$ref": "82"
+        "$ref": "80"
       }
     },
     {
-      "$type": "UsesProduct",
-      "$id": "241",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "276",
       "Source": {
-        "$ref": "104"
+        "$ref": "24"
       },
       "Destination": {
-        "$ref": "5"
+        "$ref": "27"
       }
     },
     {
-      "$type": "ContainsDomainModule",
-      "$id": "242",
+      "$type": "ContainsDeployableUnit",
+      "$id": "277",
       "Source": {
-        "$ref": "94"
+        "$ref": "78"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "278",
+      "Source": {
+        "$ref": "74"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "279",
+      "Source": {
+        "$ref": "64"
+      },
+      "Destination": {
+        "$ref": "67"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "280",
+      "Source": {
+        "$ref": "16"
       },
       "Destination": {
         "$ref": "86"
@@ -1859,189 +2410,69 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "243",
+      "$id": "281",
       "Source": {
-        "$ref": "100"
+        "$ref": "27"
       },
       "Destination": {
-        "$ref": "22"
+        "$ref": "51"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "244",
-      "Source": {
-        "$ref": "92"
-      },
-      "Destination": {
-        "$ref": "83"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "245",
-      "Source": {
-        "$ref": "62"
-      },
-      "Destination": {
-        "$ref": "102"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "246",
-      "Source": {
-        "$ref": "62"
-      },
-      "Destination": {
-        "$ref": "101"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "247",
-      "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "102"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "248",
-      "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "101"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "249",
-      "Source": {
-        "$ref": "62"
-      },
-      "Destination": {
-        "$ref": "117"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "250",
-      "Source": {
-        "$ref": "62"
-      },
-      "Destination": {
-        "$ref": "116"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "251",
-      "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "117"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "252",
-      "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "116"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "253",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "111"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "254",
+      "$id": "282",
       "Source": {
         "$ref": "52"
       },
       "Destination": {
-        "$ref": "49"
+        "$ref": "63"
       }
     },
     {
-      "$type": "OwnsDomainModule",
-      "$id": "255",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "283",
       "Source": {
-        "$ref": "7"
+        "$ref": "18"
       },
       "Destination": {
-        "$ref": "27"
+        "$ref": "21"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
-      "$id": "256",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "284",
       "Source": {
-        "$ref": "79"
+        "$ref": "46"
       },
       "Destination": {
         "$ref": "73"
       }
     },
     {
-      "$type": "OwnsDomainModule",
-      "$id": "257",
+      "$type": "ContainsProcessStep",
+      "$id": "285",
       "Source": {
-        "$ref": "4"
+        "$ref": "64"
       },
       "Destination": {
-        "$ref": "94"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "258",
-      "Source": {
         "$ref": "66"
-      },
-      "Destination": {
-        "$ref": "88"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
-      "$id": "259",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "286",
       "Source": {
-        "$ref": "84"
+        "$ref": "9"
       },
       "Destination": {
-        "$ref": "93"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "260",
-      "Source": {
-        "$ref": "92"
-      },
-      "Destination": {
-        "$ref": "87"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "261",
-      "Source": {
         "$ref": "54"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "287",
+      "Source": {
+        "$ref": "77"
       },
       "Destination": {
         "$ref": "88"
@@ -2049,19 +2480,139 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "262",
+      "$id": "288",
       "Source": {
-        "$ref": "109"
+        "$ref": "51"
       },
       "Destination": {
-        "$ref": "83"
+        "$ref": "28"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "289",
+      "Source": {
+        "$ref": "36"
+      },
+      "Destination": {
+        "$ref": "62"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "263",
+      "$id": "290",
       "Source": {
-        "$ref": "57"
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "61"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "291",
+      "Source": {
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "60"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "292",
+      "Source": {
+        "$ref": "16"
+      },
+      "Destination": {
+        "$ref": "54"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "293",
+      "Source": {
+        "$ref": "11"
+      },
+      "Destination": {
+        "$ref": "28"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "294",
+      "Source": {
+        "$ref": "51"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "295",
+      "Source": {
+        "$ref": "68"
+      },
+      "Destination": {
+        "$ref": "58"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "296",
+      "Source": {
+        "$ref": "66"
+      },
+      "Destination": {
+        "$ref": "50"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "297",
+      "Source": {
+        "$ref": "35"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "298",
+      "Source": {
+        "$ref": "18"
+      },
+      "Destination": {
+        "$ref": "54"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "299",
+      "Source": {
+        "$ref": "69"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "300",
+      "Source": {
+        "$ref": "87"
+      },
+      "Destination": {
+        "$ref": "28"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "301",
+      "Source": {
+        "$ref": "29"
       },
       "Destination": {
         "$ref": "65"
@@ -2069,209 +2620,109 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "264",
+      "$id": "302",
       "Source": {
-        "$ref": "123"
+        "$ref": "101"
       },
       "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "265",
-      "Source": {
-        "$ref": "19"
-      },
-      "Destination": {
-        "$ref": "8"
+        "$ref": "65"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "266",
+      "$id": "303",
       "Source": {
-        "$ref": "81"
+        "$ref": "102"
       },
       "Destination": {
-        "$ref": "44"
+        "$ref": "65"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "304",
+      "Source": {
+        "$ref": "41"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "IsDeployedInDeployableUnit",
+      "$id": "305",
+      "Source": {
+        "$ref": "56"
+      },
+      "Destination": {
+        "$ref": "72"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "306",
+      "Source": {
+        "$ref": "18"
+      },
+      "Destination": {
+        "$ref": "60"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "307",
+      "Source": {
+        "$ref": "18"
+      },
+      "Destination": {
+        "$ref": "61"
+      }
+    },
+    {
+      "$type": "ContainsSubProcess",
+      "$id": "308",
+      "Source": {
+        "$ref": "94"
+      },
+      "Destination": {
+        "$ref": "99"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "309",
+      "Source": {
+        "$ref": "20"
+      },
+      "Destination": {
+        "$ref": "28"
       }
     },
     {
       "$type": "ContainsDomainModule",
-      "$id": "267",
+      "$id": "310",
       "Source": {
         "$ref": "98"
-      },
-      "Destination": {
-        "$ref": "113"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "268",
-      "Source": {
-        "$ref": "19"
-      },
-      "Destination": {
-        "$ref": "33"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "269",
-      "Source": {
-        "$ref": "51"
       },
       "Destination": {
         "$ref": "52"
       }
     },
     {
-      "$type": "OwnsDomainModule",
-      "$id": "270",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "311",
       "Source": {
-        "$ref": "7"
+        "$ref": "48"
       },
       "Destination": {
-        "$ref": "35"
+        "$ref": "49"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "271",
+      "$id": "312",
       "Source": {
         "$ref": "49"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "272",
-      "Source": {
-        "$ref": "105"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "273",
-      "Source": {
-        "$ref": "114"
-      },
-      "Destination": {
-        "$ref": "11"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "274",
-      "Source": {
-        "$ref": "105"
-      },
-      "Destination": {
-        "$ref": "17"
-      }
-    },
-    {
-      "$type": "OwnsDomainModule",
-      "$id": "275",
-      "Source": {
-        "$ref": "2"
-      },
-      "Destination": {
-        "$ref": "35"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "276",
-      "Source": {
-        "$ref": "69"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "277",
-      "Source": {
-        "$ref": "58"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "278",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "32"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "279",
-      "Source": {
-        "$ref": "72"
-      },
-      "Destination": {
-        "$ref": "34"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "280",
-      "Source": {
-        "$ref": "63"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "281",
-      "Source": {
-        "$ref": "79"
-      },
-      "Destination": {
-        "$ref": "106"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "282",
-      "Source": {
-        "$ref": "42"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "283",
-      "Source": {
-        "$ref": "113"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "284",
-      "Source": {
-        "$ref": "32"
       },
       "Destination": {
         "$ref": "48"
@@ -2279,169 +2730,49 @@
     },
     {
       "$type": "ContainsDomainModule",
-      "$id": "285",
+      "$id": "313",
       "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "19"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "286",
-      "Source": {
-        "$ref": "19"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "287",
-      "Source": {
-        "$ref": "12"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "288",
-      "Source": {
-        "$ref": "70"
-      },
-      "Destination": {
-        "$ref": "72"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "289",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "49"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "290",
-      "Source": {
-        "$ref": "49"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "291",
-      "Source": {
-        "$ref": "46"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "292",
-      "Source": {
-        "$ref": "72"
+        "$ref": "98"
       },
       "Destination": {
         "$ref": "41"
       }
     },
     {
-      "$type": "ContainsDomainModule",
-      "$id": "293",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "314",
       "Source": {
-        "$ref": "35"
+        "$ref": "60"
       },
       "Destination": {
-        "$ref": "40"
+        "$ref": "91"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "294",
+      "$id": "315",
       "Source": {
-        "$ref": "14"
+        "$ref": "61"
       },
       "Destination": {
-        "$ref": "72"
+        "$ref": "91"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "295",
+      "$id": "316",
       "Source": {
-        "$ref": "37"
+        "$ref": "79"
       },
       "Destination": {
-        "$ref": "72"
+        "$ref": "91"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "296",
+      "$type": "ContainsBuildingBlock",
+      "$id": "317",
       "Source": {
-        "$ref": "111"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "297",
-      "Source": {
-        "$ref": "96"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "298",
-      "Source": {
-        "$ref": "123"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "299",
-      "Source": {
-        "$ref": "85"
-      },
-      "Destination": {
-        "$ref": "65"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "300",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "69"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "301",
-      "Source": {
-        "$ref": "55"
+        "$ref": "29"
       },
       "Destination": {
         "$ref": "25"
@@ -2449,309 +2780,109 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "302",
+      "$id": "318",
       "Source": {
-        "$ref": "71"
+        "$ref": "54"
       },
       "Destination": {
-        "$ref": "70"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "303",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "46"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "304",
-      "Source": {
-        "$ref": "103"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "305",
-      "Source": {
-        "$ref": "76"
-      },
-      "Destination": {
-        "$ref": "45"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "306",
-      "Source": {
-        "$ref": "99"
-      },
-      "Destination": {
-        "$ref": "63"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "307",
-      "Source": {
         "$ref": "91"
-      },
-      "Destination": {
-        "$ref": "86"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "308",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "102"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "309",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "101"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "310",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "103"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "311",
+      "$id": "319",
+      "Source": {
+        "$ref": "22"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "320",
+      "Source": {
+        "$ref": "73"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "321",
+      "Source": {
+        "$ref": "27"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "322",
       "Source": {
         "$ref": "85"
       },
       "Destination": {
-        "$ref": "87"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "312",
-      "Source": {
-        "$ref": "52"
-      },
-      "Destination": {
-        "$ref": "70"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "313",
-      "Source": {
-        "$ref": "114"
-      },
-      "Destination": {
-        "$ref": "121"
+        "$ref": "21"
       }
     },
     {
       "$type": "ContainsBuildingBlock",
-      "$id": "314",
-      "Source": {
-        "$ref": "92"
-      },
-      "Destination": {
-        "$ref": "122"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "315",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "13"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "316",
-      "Source": {
-        "$ref": "97"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "317",
-      "Source": {
-        "$ref": "14"
-      },
-      "Destination": {
-        "$ref": "78"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "318",
-      "Source": {
-        "$ref": "51"
-      },
-      "Destination": {
-        "$ref": "90"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "319",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "320",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "321",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "17"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "322",
-      "Source": {
-        "$ref": "123"
-      },
-      "Destination": {
-        "$ref": "16"
-      }
-    },
-    {
-      "$type": "ContainsSubProcess",
       "$id": "323",
       "Source": {
-        "$ref": "43"
+        "$ref": "56"
       },
       "Destination": {
-        "$ref": "89"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "324",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "18"
+        "$ref": "28"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "325",
+      "$id": "324",
       "Source": {
-        "$ref": "15"
+        "$ref": "24"
       },
       "Destination": {
-        "$ref": "13"
+        "$ref": "73"
+      }
+    },
+    {
+      "$type": "ContainsProcessStep",
+      "$id": "325",
+      "Source": {
+        "$ref": "83"
+      },
+      "Destination": {
+        "$ref": "12"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "326",
       "Source": {
-        "$ref": "15"
+        "$ref": "20"
       },
       "Destination": {
-        "$ref": "14"
+        "$ref": "50"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "327",
       "Source": {
-        "$ref": "71"
+        "$ref": "66"
       },
       "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "ContainsSubProcess",
-      "$id": "328",
-      "Source": {
-        "$ref": "26"
-      },
-      "Destination": {
-        "$ref": "110"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "329",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "54"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "330",
-      "Source": {
-        "$ref": "81"
-      },
-      "Destination": {
-        "$ref": "69"
+        "$ref": "27"
       }
     },
     {
       "$type": "IsDeployedInDeployableUnit",
-      "$id": "331",
+      "$id": "328",
       "Source": {
-        "$ref": "40"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "332",
-      "Source": {
-        "$ref": "77"
+        "$ref": "52"
       },
       "Destination": {
         "$ref": "72"
@@ -2759,92 +2890,132 @@
     },
     {
       "$type": "IsDeployedInDeployableUnit",
-      "$id": "333",
+      "$id": "329",
       "Source": {
-        "$ref": "16"
+        "$ref": "42"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "72"
       }
     },
     {
-      "$type": "ContainsProcessStep",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "330",
+      "Source": {
+        "$ref": "85"
+      },
+      "Destination": {
+        "$ref": "86"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "331",
+      "Source": {
+        "$ref": "9"
+      },
+      "Destination": {
+        "$ref": "62"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "332",
+      "Source": {
+        "$ref": "92"
+      },
+      "Destination": {
+        "$ref": "30"
+      }
+    },
+    {
+      "$type": "ContainsDomainModule",
+      "$id": "333",
+      "Source": {
+        "$ref": "98"
+      },
+      "Destination": {
+        "$ref": "16"
+      }
+    },
+    {
+      "$type": "ContainsSubProcess",
       "$id": "334",
+      "Source": {
+        "$ref": "39"
+      },
+      "Destination": {
+        "$ref": "83"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "335",
       "Source": {
         "$ref": "21"
       },
       "Destination": {
-        "$ref": "91"
+        "$ref": "86"
       }
     },
     {
-      "$type": "ContainsProcessStep",
-      "$id": "335",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "336",
       "Source": {
-        "$ref": "110"
+        "$ref": "73"
       },
       "Destination": {
         "$ref": "81"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
-      "$id": "336",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "69"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "DependsOnBuildingBlock",
       "$id": "337",
       "Source": {
-        "$ref": "119"
+        "$ref": "21"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "54"
       }
     },
     {
-      "$type": "ContainsDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "338",
       "Source": {
-        "$ref": "35"
+        "$ref": "24"
       },
       "Destination": {
-        "$ref": "57"
+        "$ref": "11"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "339",
       "Source": {
-        "$ref": "77"
+        "$ref": "101"
       },
       "Destination": {
-        "$ref": "73"
+        "$ref": "48"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
+      "$type": "DependsOnBuildingBlock",
       "$id": "340",
       "Source": {
-        "$ref": "35"
+        "$ref": "101"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "49"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "341",
       "Source": {
-        "$ref": "10"
+        "$ref": "102"
       },
       "Destination": {
-        "$ref": "22"
+        "$ref": "48"
       }
     },
     {
@@ -2854,744 +3025,184 @@
         "$ref": "102"
       },
       "Destination": {
-        "$ref": "73"
+        "$ref": "49"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "343",
       "Source": {
-        "$ref": "101"
+        "$ref": "53"
       },
       "Destination": {
-        "$ref": "73"
+        "$ref": "18"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "344",
       "Source": {
-        "$ref": "20"
+        "$ref": "14"
       },
       "Destination": {
-        "$ref": "117"
+        "$ref": "85"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
       "$id": "345",
       "Source": {
-        "$ref": "20"
+        "$ref": "87"
       },
       "Destination": {
-        "$ref": "116"
+        "$ref": "27"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "346",
       "Source": {
-        "$ref": "90"
+        "$ref": "58"
       },
       "Destination": {
-        "$ref": "60"
+        "$ref": "28"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "347",
+      "Source": {
+        "$ref": "74"
+      },
+      "Destination": {
+        "$ref": "73"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "348",
       "Source": {
         "$ref": "81"
       },
       "Destination": {
-        "$ref": "82"
+        "$ref": "88"
       }
     },
     {
-      "$type": "ContainsProcessStep",
-      "$id": "348",
-      "Source": {
-        "$ref": "110"
-      },
-      "Destination": {
-        "$ref": "66"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
+      "$type": "DependsOnBuildingBlock",
       "$id": "349",
       "Source": {
-        "$ref": "108"
+        "$ref": "71"
       },
       "Destination": {
-        "$ref": "47"
+        "$ref": "28"
       }
     },
     {
-      "$type": "ContainsBuildingBlock",
+      "$type": "DependsOnBuildingBlock",
       "$id": "350",
       "Source": {
-        "$ref": "46"
+        "$ref": "63"
       },
       "Destination": {
-        "$ref": "44"
+        "$ref": "62"
       }
     },
     {
-      "$type": "DependsOnBuildingBlock",
+      "$type": "ContainsBuildingBlock",
       "$id": "351",
       "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "83"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "352",
-      "Source": {
-        "$ref": "90"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "353",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "31"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "354",
-      "Source": {
-        "$ref": "66"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "355",
-      "Source": {
-        "$ref": "70"
-      },
-      "Destination": {
-        "$ref": "93"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "356",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "85"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "357",
-      "Source": {
-        "$ref": "39"
-      },
-      "Destination": {
-        "$ref": "52"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "358",
-      "Source": {
-        "$ref": "100"
-      },
-      "Destination": {
-        "$ref": "70"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "359",
-      "Source": {
-        "$ref": "107"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "360",
-      "Source": {
-        "$ref": "28"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "361",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "36"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "362",
-      "Source": {
-        "$ref": "117"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "363",
-      "Source": {
-        "$ref": "116"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "364",
-      "Source": {
-        "$ref": "110"
-      },
-      "Destination": {
-        "$ref": "71"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "365",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "37"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "366",
-      "Source": {
-        "$ref": "112"
-      },
-      "Destination": {
-        "$ref": "25"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "367",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "20"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "368",
-      "Source": {
-        "$ref": "111"
-      },
-      "Destination": {
-        "$ref": "103"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "369",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "116"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "370",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "117"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "371",
-      "Source": {
-        "$ref": "52"
-      },
-      "Destination": {
-        "$ref": "69"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "372",
-      "Source": {
-        "$ref": "57"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "373",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "92"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "374",
-      "Source": {
-        "$ref": "8"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "375",
-      "Source": {
-        "$ref": "8"
-      },
-      "Destination": {
-        "$ref": "17"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "376",
-      "Source": {
-        "$ref": "73"
-      },
-      "Destination": {
-        "$ref": "106"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "377",
-      "Source": {
-        "$ref": "112"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "378",
-      "Source": {
-        "$ref": "69"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "379",
-      "Source": {
-        "$ref": "40"
-      },
-      "Destination": {
-        "$ref": "34"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "380",
-      "Source": {
-        "$ref": "70"
-      },
-      "Destination": {
-        "$ref": "99"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "381",
-      "Source": {
-        "$ref": "100"
-      },
-      "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "382",
-      "Source": {
-        "$ref": "118"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "383",
-      "Source": {
-        "$ref": "30"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "384",
-      "Source": {
-        "$ref": "72"
-      },
-      "Destination": {
-        "$ref": "74"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "385",
-      "Source": {
-        "$ref": "33"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "386",
-      "Source": {
-        "$ref": "95"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "387",
-      "Source": {
-        "$ref": "40"
-      },
-      "Destination": {
-        "$ref": "41"
-      }
-    },
-    {
-      "$type": "ContainsSubProcess",
-      "$id": "388",
-      "Source": {
-        "$ref": "26"
-      },
-      "Destination": {
-        "$ref": "39"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "389",
-      "Source": {
-        "$ref": "104"
-      },
-      "Destination": {
-        "$ref": "66"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "390",
-      "Source": {
-        "$ref": "114"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "391",
-      "Source": {
-        "$ref": "15"
-      },
-      "Destination": {
-        "$ref": "17"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "392",
-      "Source": {
-        "$ref": "112"
-      },
-      "Destination": {
-        "$ref": "42"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "393",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "84"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "394",
-      "Source": {
-        "$ref": "20"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "395",
-      "Source": {
-        "$ref": "11"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "396",
-      "Source": {
-        "$ref": "90"
-      },
-      "Destination": {
-        "$ref": "70"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "397",
-      "Source": {
-        "$ref": "84"
-      },
-      "Destination": {
-        "$ref": "14"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "398",
-      "Source": {
-        "$ref": "84"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "399",
-      "Source": {
-        "$ref": "57"
-      },
-      "Destination": {
-        "$ref": "9"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "400",
-      "Source": {
-        "$ref": "104"
-      },
-      "Destination": {
-        "$ref": "71"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "401",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "79"
-      }
-    },
-    {
-      "$type": "ContainsProcessStep",
-      "$id": "402",
-      "Source": {
-        "$ref": "39"
-      },
-      "Destination": {
-        "$ref": "90"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "403",
-      "Source": {
-        "$ref": "85"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "404",
-      "Source": {
-        "$ref": "103"
-      },
-      "Destination": {
-        "$ref": "59"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "405",
-      "Source": {
-        "$ref": "59"
-      },
-      "Destination": {
-        "$ref": "62"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "406",
-      "Source": {
-        "$ref": "59"
-      },
-      "Destination": {
-        "$ref": "61"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "407",
-      "Source": {
-        "$ref": "93"
-      },
-      "Destination": {
-        "$ref": "72"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "408",
-      "Source": {
-        "$ref": "62"
-      },
-      "Destination": {
-        "$ref": "61"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "409",
-      "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "62"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "410",
-      "Source": {
-        "$ref": "92"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "411",
-      "Source": {
-        "$ref": "54"
-      },
-      "Destination": {
         "$ref": "16"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "412",
-      "Source": {
-        "$ref": "49"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "413",
-      "Source": {
-        "$ref": "46"
       },
       "Destination": {
         "$ref": "68"
       }
     },
     {
-      "$type": "BelongsToDomainModule",
-      "$id": "414",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "352",
       "Source": {
-        "$ref": "123"
+        "$ref": "60"
       },
       "Destination": {
-        "$ref": "28"
+        "$ref": "65"
       }
     },
     {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "415",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "353",
       "Source": {
-        "$ref": "80"
+        "$ref": "61"
       },
       "Destination": {
-        "$ref": "120"
+        "$ref": "65"
       }
     },
     {
-      "$type": "ContainsSubProcess",
-      "$id": "416",
+      "$type": "DependsOnBuildingBlock",
+      "$id": "354",
       "Source": {
-        "$ref": "26"
+        "$ref": "20"
+      },
+      "Destination": {
+        "$ref": "27"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "355",
+      "Source": {
+        "$ref": "77"
+      },
+      "Destination": {
+        "$ref": "81"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "356",
+      "Source": {
+        "$ref": "43"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "357",
+      "Source": {
+        "$ref": "53"
+      },
+      "Destination": {
+        "$ref": "55"
+      }
+    },
+    {
+      "$type": "ContainsBuildingBlock",
+      "$id": "358",
+      "Source": {
+        "$ref": "52"
+      },
+      "Destination": {
+        "$ref": "50"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "359",
+      "Source": {
+        "$ref": "11"
+      },
+      "Destination": {
+        "$ref": "91"
+      }
+    },
+    {
+      "$type": "DependsOnBuildingBlock",
+      "$id": "360",
+      "Source": {
+        "$ref": "23"
       },
       "Destination": {
         "$ref": "21"
@@ -3599,219 +3210,9 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "417",
+      "$id": "361",
       "Source": {
-        "$ref": "50"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "418",
-      "Source": {
-        "$ref": "47"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "419",
-      "Source": {
-        "$ref": "85"
-      },
-      "Destination": {
-        "$ref": "122"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "420",
-      "Source": {
-        "$ref": "100"
-      },
-      "Destination": {
-        "$ref": "69"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "421",
-      "Source": {
-        "$ref": "57"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "422",
-      "Source": {
-        "$ref": "109"
-      },
-      "Destination": {
-        "$ref": "15"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "423",
-      "Source": {
-        "$ref": "98"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "424",
-      "Source": {
-        "$ref": "71"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "425",
-      "Source": {
-        "$ref": "102"
-      },
-      "Destination": {
-        "$ref": "101"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "426",
-      "Source": {
-        "$ref": "101"
-      },
-      "Destination": {
-        "$ref": "102"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "427",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "97"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "428",
-      "Source": {
-        "$ref": "32"
-      },
-      "Destination": {
-        "$ref": "96"
-      }
-    },
-    {
-      "$type": "UsesProduct",
-      "$id": "429",
-      "Source": {
-        "$ref": "51"
-      },
-      "Destination": {
-        "$ref": "5"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "430",
-      "Source": {
-        "$ref": "54"
-      },
-      "Destination": {
-        "$ref": "23"
-      }
-    },
-    {
-      "$type": "BelongsToDomainModule",
-      "$id": "431",
-      "Source": {
-        "$ref": "52"
-      },
-      "Destination": {
-        "$ref": "113"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "432",
-      "Source": {
-        "$ref": "52"
-      },
-      "Destination": {
-        "$ref": "109"
-      }
-    },
-    {
-      "$type": "ContainsDeployableUnit",
-      "$id": "433",
-      "Source": {
-        "$ref": "56"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "ContainsSubProcess",
-      "$id": "434",
-      "Source": {
-        "$ref": "43"
-      },
-      "Destination": {
-        "$ref": "29"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "435",
-      "Source": {
-        "$ref": "94"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "UsesProcessStep",
-      "$id": "436",
-      "Source": {
-        "$ref": "104"
-      },
-      "Destination": {
-        "$ref": "81"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "437",
-      "Source": {
-        "$ref": "109"
-      },
-      "Destination": {
-        "$ref": "22"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "438",
-      "Source": {
-        "$ref": "62"
+        "$ref": "66"
       },
       "Destination": {
         "$ref": "73"
@@ -3819,69 +3220,9 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "439",
+      "$id": "362",
       "Source": {
-        "$ref": "61"
-      },
-      "Destination": {
-        "$ref": "73"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "440",
-      "Source": {
-        "$ref": "30"
-      },
-      "Destination": {
-        "$ref": "58"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "441",
-      "Source": {
-        "$ref": "70"
-      },
-      "Destination": {
-        "$ref": "115"
-      }
-    },
-    {
-      "$type": "ContainsBuildingBlock",
-      "$id": "442",
-      "Source": {
-        "$ref": "108"
-      },
-      "Destination": {
-        "$ref": "70"
-      }
-    },
-    {
-      "$type": "IsDeployedInDeployableUnit",
-      "$id": "443",
-      "Source": {
-        "$ref": "88"
-      },
-      "Destination": {
-        "$ref": "120"
-      }
-    },
-    {
-      "$type": "OwnsDomainModule",
-      "$id": "444",
-      "Source": {
-        "$ref": "2"
-      },
-      "Destination": {
-        "$ref": "112"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "445",
-      "Source": {
-        "$ref": "54"
+        "$ref": "27"
       },
       "Destination": {
         "$ref": "28"
@@ -3889,103 +3230,51 @@
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "446",
+      "$id": "363",
       "Source": {
-        "$ref": "31"
+        "$ref": "102"
       },
       "Destination": {
-        "$ref": "15"
+        "$ref": "61"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "447",
+      "$id": "364",
       "Source": {
-        "$ref": "37"
+        "$ref": "102"
       },
       "Destination": {
-        "$ref": "115"
+        "$ref": "60"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "448",
+      "$id": "365",
       "Source": {
-        "$ref": "74"
+        "$ref": "101"
       },
       "Destination": {
-        "$ref": "41"
+        "$ref": "61"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "449",
+      "$id": "366",
       "Source": {
-        "$ref": "33"
+        "$ref": "101"
       },
       "Destination": {
-        "$ref": "17"
-      }
-    },
-    {
-      "$type": "ContainsDomainModule",
-      "$id": "450",
-      "Source": {
-        "$ref": "35"
-      },
-      "Destination": {
-        "$ref": "95"
-      }
-    },
-    {
-      "$type": "ContainsSubProcess",
-      "$id": "451",
-      "Source": {
-        "$ref": "26"
-      },
-      "Destination": {
-        "$ref": "38"
+        "$ref": "60"
       }
     },
     {
       "$type": "DependsOnBuildingBlock",
-      "$id": "452",
+      "$id": "367",
       "Source": {
-        "$ref": "103"
+        "$ref": "21"
       },
       "Destination": {
-        "$ref": "77"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "453",
-      "Source": {
-        "$ref": "117"
-      },
-      "Destination": {
-        "$ref": "106"
-      }
-    },
-    {
-      "$type": "DependsOnBuildingBlock",
-      "$id": "454",
-      "Source": {
-        "$ref": "116"
-      },
-      "Destination": {
-        "$ref": "106"
+        "$ref": "22"
       }
     }
-  ],
-  "Traits": [
-    {
-      "$type": "DomainVisionStatement",
-      "$id": "455",
-      "Element": {
-        "$ref": "5"
-      },
-      "SourceFile": "/home/marcin/ITLIBRIUM/OpenSource/DDD-starter-dotnet/Sources/DomainVisionStatement.md"
-    }
-  ]
-}

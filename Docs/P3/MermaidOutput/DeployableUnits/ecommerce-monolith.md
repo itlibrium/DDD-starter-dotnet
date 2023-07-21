@@ -1,5 +1,5 @@
 ﻿
-# [*Deployable unit*] ecommerce-monolith
+# ecommerce-monolith
 
 This view contains details information about ecommerce-monolith deployable unit, including:
 - related domain modules
@@ -22,18 +22,9 @@ This view contains details information about ecommerce-monolith deployable unit,
       2([Contacts])
       class 2 DomainPerspective
       2-->|is deployed in|1
-      3([Payments])
+      3([Sales])
       class 3 DomainPerspective
       3-->|is deployed in|1
-      4([ProductsDelivery])
-      class 4 DomainPerspective
-      4-->|is deployed in|1
-      5([RiskManagement])
-      class 5 DomainPerspective
-      5-->|is deployed in|1
-      6([Sales])
-      class 6 DomainPerspective
-      6-->|is deployed in|1
     end
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -52,12 +43,6 @@ This view contains details information about ecommerce-monolith deployable unit,
     1([Core team])
     class 1 PeoplePerspective
     1-->|maintains|0
-    2([Inventory team])
-    class 2 PeoplePerspective
-    2-->|maintains|0
-    3([Supporting team])
-    class 3 PeoplePerspective
-    3-->|maintains|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -68,7 +53,13 @@ This view contains details information about ecommerce-monolith deployable unit,
 
 ### Zoom-out
 
-- [Deployable units](../Deployable_Units.md)
+
+#### Technology perspective
+
+
+##### Cross elements
+
+[Deployable units](../Deployable_Units.md)  
 
 ---
 

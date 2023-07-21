@@ -1,5 +1,5 @@
 ﻿
-# [*Business organizational unit*] Inventory department
+# Inventory department
 
 This view contains details information about Inventory department, including:
 - related domain modules  
@@ -30,7 +30,13 @@ This view contains details information about Inventory department, including:
 
 ### Zoom-out
 
-- [Business organizational units](../Business_Organizational_Units.md)
+
+#### People perspective
+
+
+##### Cross elements
+
+[Business organizational units](../Business_Organizational_Units.md)  
 
 ---
 

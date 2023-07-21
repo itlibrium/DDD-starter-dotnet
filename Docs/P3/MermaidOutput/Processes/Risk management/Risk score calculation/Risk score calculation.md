@@ -1,5 +1,5 @@
 ﻿
-# [*Business process*] Risk score calculation
+# Risk score calculation
 
 This view contains details information about Risk score calculation business process, including:
 - other related processes
@@ -23,9 +23,9 @@ This view contains details information about Risk score calculation business pro
     class 0 DomainPerspective
     1([Risk management])
     class 1 DomainPerspective
-    1---0
-    1-->|is part of|0
     0---1
+    1-->|is part of|0
+    1---0
     linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -73,15 +73,15 @@ This view contains details information about Risk score calculation business pro
     subgraph 2["Teams"]
       direction TB
     end
-    2---1
-    2-->|develops & maintains|1
     1---2
+    2-->|develops & maintains|1
+    2---1
     subgraph 3["Business"]
       direction TB
     end
-    3---1
-    3-->|owns|1
     1---3
+    3-->|owns|1
+    3---1
     linkStyle 1,3,4,6 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -93,7 +93,13 @@ This view contains details information about Risk score calculation business pro
 
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
+
+#### Domain perspective
+
+
+##### Cross elements
+
+[Business processes](../../../Business_Processes.md)  
 
 ---
 

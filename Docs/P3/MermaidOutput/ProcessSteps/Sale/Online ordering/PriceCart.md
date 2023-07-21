@@ -1,5 +1,5 @@
 ﻿
-# [*Process Step*] PriceCart
+# PriceCart
 
 This view contains details information about PriceCart business processes step, including:
 - related process
@@ -24,9 +24,6 @@ This view contains details information about PriceCart business processes step, 
     1([Online ordering])
     class 1 DomainPerspective
     0-->|is part of process|1
-    2([CartPricing])
-    class 2 DomainPerspective
-    0-->|belongs to module|2
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -38,10 +35,10 @@ This view contains details information about PriceCart business processes step, 
   flowchart TB
     0(PriceCart)
     class 0 DomainPerspective
-    1([CalculatePrices])
+    1([Calculate Prices])
     class 1 DomainPerspective
     0-->|uses|1
-    2([ClientId])
+    2([Client Id])
     class 2 DomainPerspective
     0-->|uses|2
     3([Offer])
@@ -61,9 +58,6 @@ This view contains details information about PriceCart business processes step, 
   flowchart TB
     0(PriceCart)
     class 0 DomainPerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|is deployed in|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -78,12 +72,6 @@ This view contains details information about PriceCart business processes step, 
     1([RetailClient])
     class 1 PeoplePerspective
     1-->|uses|0
-    2([Core team])
-    class 2 PeoplePerspective
-    2-->|develops & maintains|0
-    3([Sales department])
-    class 3 PeoplePerspective
-    3-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -92,17 +80,25 @@ This view contains details information about PriceCart business processes step, 
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Processes
+
+[Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)  
+
 ### Zoom-out
 
-- [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Business organizational unit*] Sales department](../../../BusinessOrganizationalUnits/Sales department.md)
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Development team*] Core team](../../../Teams/Core team.md)
-- [[*Domain module*] CartPricing](../../../Modules/Sales/OnlineOrdering/CartPricing/CartPricing.md)
-- [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
+
+##### Processes
+
+[Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)  
 
 ---
 

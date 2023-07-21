@@ -25,12 +25,24 @@ This view contains all business organizational units that owns MyCompany e-comme
 
 ### Zoom-in
 
-- [[*Business organizational unit*] Inventory department](BusinessOrganizationalUnits/Inventory department.md)
-- [[*Business organizational unit*] Sales department](BusinessOrganizationalUnits/Sales department.md)
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Inventory department](BusinessOrganizationalUnits/Inventory department.md)  
+[Sales department](BusinessOrganizationalUnits/Sales department.md)  
 
 ### Zoom-out
 
-- [Main page](README.md)
+
+#### Multi perspectives
+
+
+##### Cross elements
+
+[Main page](README.md)  
 
 ---
 

@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Contacts
+# Contacts
 
 This view contains details information about Contacts domain module, including:
 - other related modules
@@ -84,13 +84,34 @@ Module doesn't contain direct building blocks.
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain modules
+
+[Companies](Companies/Companies.md)  
+[Groups](Groups/Groups.md)  
+[Tags](Tags/Tags.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)  
+
 ### Zoom-out
 
-- [Business processes](../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
+
+##### Cross elements
+
+[Domain Modules](../../Modules.md)  
 
 ---
 

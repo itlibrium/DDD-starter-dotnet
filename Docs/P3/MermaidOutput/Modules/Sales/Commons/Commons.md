@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Commons
+# Commons
 
 This view contains details information about Commons domain module, including:
 - other related modules
@@ -19,11 +19,14 @@ This view contains details information about Commons domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Commons)
+    0([Sales])
     class 0 DomainPerspective
-    1([Sales])
+    1(Commons)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -52,7 +55,7 @@ This view contains details information about Commons domain module, including:
     2([Percentage])
     class 2 DomainPerspective
     0-->|contains|2
-    3([TaxId])
+    3([Tax Id])
     class 3 DomainPerspective
     0-->|contains|3
     classDef DomainPerspective stroke:#009900
@@ -86,6 +89,12 @@ This view contains details information about Commons domain module, including:
   flowchart TB
     0(Commons)
     class 0 DomainPerspective
+    1([Core team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Sales department])
+    class 2 PeoplePerspective
+    2-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -94,16 +103,45 @@ This view contains details information about Commons domain module, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Ddd value objects
+
+[Money](Money.md)  
+[Percentage](Percentage.md)  
+[Tax Id](Tax Id.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] TaxId](../../../BuildingBlocks/Sales/Commons/TaxId.md)
-- [[*Domain building block*] Money](../../../BuildingBlocks/Sales/Commons/Money.md)
-- [[*Domain building block*] Percentage](../../../BuildingBlocks/Sales/Commons/Percentage.md)
+
+##### Domain modules
+
+[Sales](../Sales.md)  
 
 ---
 

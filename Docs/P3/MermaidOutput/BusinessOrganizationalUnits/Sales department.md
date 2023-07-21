@@ -1,5 +1,5 @@
 ﻿
-# [*Business organizational unit*] Sales department
+# Sales department
 
 This view contains details information about Sales department, including:
 - related domain modules  
@@ -36,7 +36,13 @@ This view contains details information about Sales department, including:
 
 ### Zoom-out
 
-- [Business organizational units](../Business_Organizational_Units.md)
+
+#### People perspective
+
+
+##### Cross elements
+
+[Business organizational units](../Business_Organizational_Units.md)  
 
 ---
 

@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Discounts
+# Discounts
 
 This view contains details information about Discounts domain module, including:
 - other related modules
@@ -19,11 +19,14 @@ This view contains details information about Discounts domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Discounts)
+    0([Pricing])
     class 0 DomainPerspective
-    1([Pricing])
+    1(Discounts)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -46,7 +49,7 @@ This view contains details information about Discounts domain module, including:
   flowchart TB
     0(Discounts)
     class 0 DomainPerspective
-    1([ClientLevelDiscounts])
+    1([Client Level Discounts])
     class 1 DomainPerspective
     0-->|contains|1
     2([Discount])
@@ -55,28 +58,28 @@ This view contains details information about Discounts domain module, including:
     3([Discount])
     class 3 DomainPerspective
     0-->|contains|3
-    4([DiscountsRepository])
+    4([Discounts Repository])
     class 4 DomainPerspective
     0-->|contains|4
-    5([DiscountsSqlRepository])
+    5([Discounts Sql Repository])
     class 5 DomainPerspective
     0-->|contains|5
-    6([PercentageDiscount])
+    6([Percentage Discount])
     class 6 DomainPerspective
     0-->|contains|6
-    7([PercentageDiscount])
+    7([Percentage Discount])
     class 7 DomainPerspective
     0-->|contains|7
-    8([ProductDiscount])
+    8([Product Discount])
     class 8 DomainPerspective
     0-->|contains|8
-    9([ProductLevelDiscounts])
+    9([Product Level Discounts])
     class 9 DomainPerspective
     0-->|contains|9
-    10([ValueDiscount])
+    10([Value Discount])
     class 10 DomainPerspective
     0-->|contains|10
-    11([ValueDiscount])
+    11([Value Discount])
     class 11 DomainPerspective
     0-->|contains|11
     classDef DomainPerspective stroke:#009900
@@ -110,6 +113,12 @@ This view contains details information about Discounts domain module, including:
   flowchart TB
     0(Discounts)
     class 0 DomainPerspective
+    1([Core team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Sales department])
+    class 2 PeoplePerspective
+    2-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -118,24 +127,59 @@ This view contains details information about Discounts domain module, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Ddd domain services
+
+[Client Level Discounts](Client Level Discounts.md)  
+[Discount](Discount.md)  
+[Percentage Discount](Percentage Discount.md)  
+[Product Level Discounts](Product Level Discounts.md)  
+[Value Discount](Value Discount.md)  
+
+##### Ddd repositories
+
+[Discounts Repository](Discounts Repository.md)  
+[Discounts Sql Repository](Discounts Sql Repository.md)  
+
+##### Ddd value objects
+
+[Discount](Discount.md)  
+[Percentage Discount](Percentage Discount.md)  
+[Product Discount](Product Discount.md)  
+[Value Discount](Value Discount.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] ClientLevelDiscounts](../../../../BuildingBlocks/Sales/Pricing/Discounts/ClientLevelDiscounts.md)
-- [[*Domain building block*] ProductDiscount](../../../../BuildingBlocks/Sales/Pricing/Discounts/ProductDiscount.md)
-- [[*Domain building block*] Discount](../../../../BuildingBlocks/Sales/Pricing/Discounts/Discount.md)
-- [[*Domain building block*] Discount](../../../../BuildingBlocks/Sales/Pricing/Discounts/Discount.md)
-- [[*Domain building block*] DiscountsRepository](../../../../BuildingBlocks/Sales/Pricing/Discounts/DiscountsRepository.md)
-- [[*Domain building block*] DiscountsSqlRepository](../../../../BuildingBlocks/Sales/Pricing/Discounts/DiscountsSqlRepository.md)
-- [[*Domain building block*] ValueDiscount](../../../../BuildingBlocks/Sales/Pricing/Discounts/ValueDiscount.md)
-- [[*Domain building block*] ValueDiscount](../../../../BuildingBlocks/Sales/Pricing/Discounts/ValueDiscount.md)
-- [[*Domain building block*] ProductLevelDiscounts](../../../../BuildingBlocks/Sales/Pricing/Discounts/ProductLevelDiscounts.md)
-- [[*Domain building block*] PercentageDiscount](../../../../BuildingBlocks/Sales/Pricing/Discounts/PercentageDiscount.md)
-- [[*Domain building block*] PercentageDiscount](../../../../BuildingBlocks/Sales/Pricing/Discounts/PercentageDiscount.md)
+
+##### Domain modules
+
+[Pricing](../Pricing.md)  
 
 ---
 

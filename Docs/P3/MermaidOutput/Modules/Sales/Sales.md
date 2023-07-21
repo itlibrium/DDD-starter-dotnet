@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Sales
+# Sales
 
 This view contains details information about Sales domain module, including:
 - other related modules
@@ -30,33 +30,24 @@ This view contains details information about Sales domain module, including:
     3([ExchangeRates])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Fulfillment])
+    4([Integrations])
     class 4 DomainPerspective
     0-->|contains|4
-    5([Integrations])
+    5([Orders])
     class 5 DomainPerspective
     0-->|contains|5
-    6([OnlineOrdering])
+    6([Pricing])
     class 6 DomainPerspective
     0-->|contains|6
-    7([Orders])
+    7([Products])
     class 7 DomainPerspective
     0-->|contains|7
-    8([Pricing])
+    8([SalesChannels])
     class 8 DomainPerspective
     0-->|contains|8
-    9([Products])
+    9([Time])
     class 9 DomainPerspective
     0-->|contains|9
-    10([SalesChannels])
-    class 10 DomainPerspective
-    0-->|contains|10
-    11([Time])
-    class 11 DomainPerspective
-    0-->|contains|11
-    12([WholesaleOrdering])
-    class 12 DomainPerspective
-    0-->|contains|12
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -123,17 +114,56 @@ Module doesn't contain direct building blocks.
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain modules
+
+[Clients](Clients/Clients.md)  
+[Commons](Commons/Commons.md)  
+[ExchangeRates](ExchangeRates/ExchangeRates.md)  
+[Integrations](Integrations/Integrations.md)  
+[Orders](Orders/Orders.md)  
+[Pricing](Pricing/Pricing.md)  
+[Products](Products/Products.md)  
+[SalesChannels](SalesChannels/SalesChannels.md)  
+[Time](Time/Time.md)  
+
+##### Processes
+
+[Online ordering](../../Processes/Sale/Online ordering/Online ordering.md)  
+[Wholesale ordering](../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
-- [[*Development team*] Core team](../../Teams/Core team.md)
-- [[*Business process*] Online ordering](../../Processes/Sale/Online ordering/Online ordering.md)
-- [[*Business process*] Wholesale ordering](../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+
+##### Cross elements
+
+[Domain Modules](../../Modules.md)  
 
 ---
 

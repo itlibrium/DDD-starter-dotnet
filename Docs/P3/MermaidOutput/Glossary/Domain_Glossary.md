@@ -22,37 +22,16 @@ This view contains definitions of key domain terms.
 ### Tags
 
 
-## Payments
-
-
-### Requesting
-
-
-## ProductsDelivery
-
-
-### Requesting
-
-
-## RiskManagement
-
-
-### Calculation
-
-
-### Publication
-
-
 ## Sales
 
 
 ### Clients
 
-**ClientId**
+**Client Id**
 
-**ClientRepository**
+**Client Repository**
 
-**ClientSqlRepository**
+**Client Sql Repository**
 
 
 ### Commons
@@ -61,36 +40,18 @@ This view contains definitions of key domain terms.
 
 **Percentage**
 
-**TaxId**
+**Tax Id**
 
 
 ### ExchangeRates
 
-**ExchangeRate**
-
-
-### Fulfillment
+**Exchange Rate**
 
 
 ### Integrations
 
 
-#### Payments
-
-
-#### ProductsDelivery
-
-
 #### RiskManagement
-
-
-### OnlineOrdering
-
-
-#### CartPricing
-
-
-#### OrderPlacement
 
 
 ### Orders
@@ -98,28 +59,28 @@ This view contains definitions of key domain terms.
 
 #### PriceChanges
 
-**AllowAnyPriceChanges**
+**Allow Any Price Changes**
 
-**AllowPriceChangesIfTotalPriceIsLower**
+**Allow Price Changes if Total Price Is Lower**
 
-**PriceChangesPolicies**
+**Price Changes Policies**
 
-**PriceChangesPolicy**
+**Price Changes Policy**
 
 **Document**
 
 **EF**
 
-**EventsSourcing**
+**Events Sourcing**
 
 **Factory**
 
 **Order** - [Long description](Order.md)
 
 
-**OrderId**
+**Order Id**
 
-**PriceAgreement**
+**Price Agreement**
 
 **Raw**
 
@@ -131,78 +92,78 @@ This view contains definitions of key domain terms.
 
 #### Discounts
 
-**ClientLevelDiscounts**
+**Client Level Discounts**
 
 **Discount**
 
 **Discount**
 
-**DiscountsRepository**
+**Discounts Repository**
 
-**DiscountsSqlRepository**
+**Discounts Sql Repository**
 
-**PercentageDiscount**
+**Percentage Discount**
 
-**PercentageDiscount**
+**Percentage Discount**
 
-**ProductDiscount**
+**Product Discount**
 
-**ProductLevelDiscounts**
+**Product Level Discounts**
 
-**ValueDiscount**
+**Value Discount**
 
-**ValueDiscount**
+**Value Discount**
 
 
 #### PriceLists
 
-**BasePrice**
+**Base Price**
 
-**BasePrices**
+**Base Prices**
 
-**PriceListRepository**
+**Price List Repository**
 
 
 #### SpecialOffers
 
-**EverySecondBoxForHalfPrice**
+**Every Second Box for Half Price**
 
-**SpecialOffer**
+**Special Offer**
 
-**ThreeForTwo**
+**Three for Two**
 
-**CalculatePrices**
+**Calculate Prices**
 
-**IndividualSalesConditions**
+**Individual Sales Conditions**
 
 **Offer**
 
-**OfferModifier**
+**Offer Modifier**
 
-**OfferModifier2**
+**Offer Modifier 2**
 
-**OfferModifiers**
+**Offer Modifiers**
 
-**OfferRequest**
+**Offer Request**
 
-**PriceListSqlRepository**
+**Price List Sql Repository**
 
-**PriceModifier**
+**Price Modifier**
 
 **Quote**
 
-**QuoteModifier**
+**Quote Modifier**
 
 
 ### Products
 
 **Amount**
 
-**ProductAmount**
+**Product Amount**
 
-**ProductId**
+**Product Id**
 
-**ProductUnit**
+**Product Unit**
 
 
 ### SalesChannels
@@ -212,25 +173,7 @@ This view contains definitions of key domain terms.
 
 **Clock**
 
-**SystemClock**
-
-
-### WholesaleOrdering
-
-
-#### OrderCreation
-
-
-#### OrderModification
-
-
-#### OrderPlacement
-
-
-#### OrderPricing
-
-
-#### ProductPricing
+**System Clock**
 
 
 ## Next steps
@@ -238,7 +181,13 @@ This view contains definitions of key domain terms.
 
 ### Zoom-out
 
-- [Main page](../README.md)
+
+#### Multi perspectives
+
+
+##### Cross elements
+
+[Main page](../README.md)  
 
 ---
 

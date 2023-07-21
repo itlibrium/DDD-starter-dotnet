@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Groups
+# Groups
 
 This view contains details information about Groups domain module, including:
 - other related modules
@@ -19,11 +19,14 @@ This view contains details information about Groups domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Groups)
+    0([Contacts])
     class 0 DomainPerspective
-    1([Contacts])
+    1(Groups)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -78,13 +81,25 @@ Module doesn't contain direct building blocks.
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
+
+##### Domain modules
+
+[Contacts](../Contacts.md)  
 
 ---
 

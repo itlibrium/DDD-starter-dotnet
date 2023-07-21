@@ -25,11 +25,23 @@ This view contains all deployable units for MyCompany e-commerce product.
 
 ### Zoom-in
 
-- [[*Deployable unit*] ecommerce-monolith](DeployableUnits/ecommerce-monolith.md)
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](DeployableUnits/ecommerce-monolith.md)  
 
 ### Zoom-out
 
-- [Main page](README.md)
+
+#### Multi perspectives
+
+
+##### Cross elements
+
+[Main page](README.md)  
 
 ---
 

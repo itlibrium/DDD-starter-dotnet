@@ -1,5 +1,5 @@
 ﻿
-# [*Development team*] Core team
+# Core team
 
 This view contains details information about Core team team, including:
 - related domain modules
@@ -51,7 +51,13 @@ This view contains details information about Core team team, including:
 
 ### Zoom-out
 
-- [Development teams](../Development_Teams.md)
+
+#### People perspective
+
+
+##### Cross elements
+
+[Development teams](../Development_Teams.md)  
 
 ---
 

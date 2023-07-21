@@ -27,13 +27,25 @@ This view contains all development teams that build and maintain MyCompany e-com
 
 ### Zoom-in
 
-- [[*Development team*] Core team](Teams/Core team.md)
-- [[*Development team*] Supporting team](Teams/Supporting team.md)
-- [[*Development team*] Inventory team](Teams/Inventory team.md)
+
+#### People perspective
+
+
+##### Development teams
+
+[Core team](Teams/Core team.md)  
+[Inventory team](Teams/Inventory team.md)  
+[Supporting team](Teams/Supporting team.md)  
 
 ### Zoom-out
 
-- [Main page](README.md)
+
+#### Multi perspectives
+
+
+##### Cross elements
+
+[Main page](README.md)  
 
 ---
 

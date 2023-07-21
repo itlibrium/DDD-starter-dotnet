@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Orders
+# Orders
 
 This view contains details information about Orders domain module, including:
 - other related modules
@@ -19,14 +19,17 @@ This view contains details information about Orders domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Orders)
+    0([Sales])
     class 0 DomainPerspective
-    1([Sales])
+    1(Orders)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
     2([PriceChanges])
     class 2 DomainPerspective
-    0-->|contains|2
+    1-->|contains|2
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -61,7 +64,7 @@ This view contains details information about Orders domain module, including:
     2([EF])
     class 2 DomainPerspective
     0-->|contains|2
-    3([EventsSourcing])
+    3([Events Sourcing])
     class 3 DomainPerspective
     0-->|contains|3
     4([Factory])
@@ -70,10 +73,10 @@ This view contains details information about Orders domain module, including:
     5([Order])
     class 5 DomainPerspective
     0-->|contains|5
-    6([OrderId])
+    6([Order Id])
     class 6 DomainPerspective
     0-->|contains|6
-    7([PriceAgreement])
+    7([Price Agreement])
     class 7 DomainPerspective
     0-->|contains|7
     8([Raw])
@@ -113,6 +116,12 @@ This view contains details information about Orders domain module, including:
   flowchart TB
     0(Orders)
     class 0 DomainPerspective
+    1([Core team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Sales department])
+    class 2 PeoplePerspective
+    2-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -121,24 +130,69 @@ This view contains details information about Orders domain module, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Ddd aggregates
+
+[Order](Order.md)  
+
+##### Ddd factories
+
+[Factory](Factory.md)  
+
+##### Ddd repositories
+
+[Document](Document.md)  
+[EF](EF.md)  
+[Events Sourcing](Events Sourcing.md)  
+[Raw](Raw.md)  
+[Repository](Repository.md)  
+
+##### Ddd value objects
+
+[Order Id](Order Id.md)  
+[Price Agreement](Price Agreement.md)  
+
+##### Domain modules
+
+[PriceChanges](PriceChanges/PriceChanges.md)  
+
+##### Processes
+
+[Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)  
+[Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] Raw](../../../BuildingBlocks/Sales/Orders/Raw.md)
-- [[*Domain building block*] OrderId](../../../BuildingBlocks/Sales/Orders/OrderId.md)
-- [[*Domain building block*] PriceAgreement](../../../BuildingBlocks/Sales/Orders/PriceAgreement.md)
-- [[*Domain building block*] Factory](../../../BuildingBlocks/Sales/Orders/Factory.md)
-- [[*Domain building block*] Repository](../../../BuildingBlocks/Sales/Orders/Repository.md)
-- [[*Domain building block*] Document](../../../BuildingBlocks/Sales/Orders/Document.md)
-- [[*Domain building block*] EF](../../../BuildingBlocks/Sales/Orders/EF.md)
-- [[*Domain building block*] EventsSourcing](../../../BuildingBlocks/Sales/Orders/EventsSourcing.md)
-- [[*Domain building block*] Order](../../../BuildingBlocks/Sales/Orders/Order.md)
-- [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
-- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+
+##### Domain modules
+
+[Sales](../Sales.md)  
 
 ---
 

@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Products
+# Products
 
 This view contains details information about Products domain module, including:
 - other related modules
@@ -19,11 +19,14 @@ This view contains details information about Products domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Products)
+    0([Sales])
     class 0 DomainPerspective
-    1([Sales])
+    1(Products)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -52,13 +55,13 @@ This view contains details information about Products domain module, including:
     1([Amount])
     class 1 DomainPerspective
     0-->|contains|1
-    2([ProductAmount])
+    2([Product Amount])
     class 2 DomainPerspective
     0-->|contains|2
-    3([ProductId])
+    3([Product Id])
     class 3 DomainPerspective
     0-->|contains|3
-    4([ProductUnit])
+    4([Product Unit])
     class 4 DomainPerspective
     0-->|contains|4
     classDef DomainPerspective stroke:#009900
@@ -92,6 +95,12 @@ This view contains details information about Products domain module, including:
   flowchart TB
     0(Products)
     class 0 DomainPerspective
+    1([Core team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Sales department])
+    class 2 PeoplePerspective
+    2-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -100,18 +109,50 @@ This view contains details information about Products domain module, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Ddd value objects
+
+[Amount](Amount.md)  
+[Product Amount](Product Amount.md)  
+[Product Id](Product Id.md)  
+[Product Unit](Product Unit.md)  
+
+##### Processes
+
+[Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] Amount](../../../BuildingBlocks/Sales/Products/Amount.md)
-- [[*Domain building block*] ProductId](../../../BuildingBlocks/Sales/Products/ProductId.md)
-- [[*Domain building block*] ProductAmount](../../../BuildingBlocks/Sales/Products/ProductAmount.md)
-- [[*Domain building block*] ProductUnit](../../../BuildingBlocks/Sales/Products/ProductUnit.md)
-- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+
+##### Domain modules
+
+[Sales](../Sales.md)  
 
 ---
 

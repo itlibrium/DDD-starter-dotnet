@@ -1,5 +1,5 @@
 ﻿
-# [*Business process*] Products delivery
+# Products delivery
 
 This view contains details information about Products delivery business process, including:
 - other related processes
@@ -23,9 +23,9 @@ This view contains details information about Products delivery business process,
     class 0 DomainPerspective
     1([Sale])
     class 1 DomainPerspective
-    1---0
-    1-->|is part of|0
     0---1
+    1-->|is part of|0
+    1---0
     2([RequestDelivery])
     class 2 DomainPerspective
     0-->|contains|2
@@ -41,9 +41,6 @@ This view contains details information about Products delivery business process,
   flowchart TB
     0(Products delivery)
     class 0 DomainPerspective
-    1([ProductsDelivery])
-    class 1 DomainPerspective
-    0-->|belongs to|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -58,9 +55,6 @@ This view contains details information about Products delivery business process,
   flowchart TB
     0(Products delivery)
     class 0 DomainPerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|is deployed in|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -81,20 +75,16 @@ This view contains details information about Products delivery business process,
     0-->|uses|1
     subgraph 2["Teams"]
       direction TB
-      3([Inventory team])
-      class 3 PeoplePerspective
     end
-    2---1
-    2-->|develops & maintains|1
     1---2
-    subgraph 4["Business"]
+    2-->|develops & maintains|1
+    2---1
+    subgraph 3["Business"]
       direction TB
-      5([Inventory department])
-      class 5 PeoplePerspective
     end
-    4---1
-    4-->|owns|1
-    1---4
+    1---3
+    3-->|owns|1
+    3---1
     linkStyle 1,3,4,6 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -106,18 +96,23 @@ This view contains details information about Products delivery business process,
 
 ### Zoom-in
 
-- [[*Process Step*] RequestDelivery](../../../ProcessSteps/Sale/Products delivery/RequestDelivery.md)
+
+#### Domain perspective
+
+
+##### Process steps
+
+[RequestDelivery](../../../ProcessSteps/Sale/Products delivery/RequestDelivery.md)  
 
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Business organizational unit*] Inventory department](../../../BusinessOrganizationalUnits/Inventory department.md)
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Development team*] Inventory team](../../../Teams/Inventory team.md)
-- [[*Process Step*] RequestDelivery](../../../ProcessSteps/Sale/Products delivery/RequestDelivery.md)
+
+##### Cross elements
+
+[Business processes](../../../Business_Processes.md)  
 
 ---
 

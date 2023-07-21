@@ -1,5 +1,5 @@
 ﻿
-# [*Domain module*] Time
+# Time
 
 This view contains details information about Time domain module, including:
 - other related modules
@@ -19,11 +19,14 @@ This view contains details information about Time domain module, including:
 
 ```mermaid
   flowchart TB
-    0(Time)
+    0([Sales])
     class 0 DomainPerspective
-    1([Sales])
+    1(Time)
     class 1 DomainPerspective
-    0-->|is part of|1
+    0---1
+    1-->|is part of|0
+    1---0
+    linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -55,7 +58,7 @@ This view contains details information about Time domain module, including:
     1([Clock])
     class 1 DomainPerspective
     0-->|contains|1
-    2([SystemClock])
+    2([System Clock])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -89,6 +92,12 @@ This view contains details information about Time domain module, including:
   flowchart TB
     0(Time)
     class 0 DomainPerspective
+    1([Core team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Sales department])
+    class 2 PeoplePerspective
+    2-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -97,17 +106,49 @@ This view contains details information about Time domain module, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Ddd domain services
+
+[Clock](Clock.md)  
+[System Clock](System Clock.md)  
+
+##### Processes
+
+[Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)  
+[Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)  
+
+#### Technology perspective
+
+
+##### Deployable units
+
+[ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)  
+
+#### People perspective
+
+
+##### Business organizational units
+
+[Sales department](../../../BusinessOrganizationalUnits/Sales department.md)  
+
+##### Development teams
+
+[Core team](../../../Teams/Core team.md)  
+
 ### Zoom-out
 
-- [Business processes](../../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Deployable unit*] ecommerce-monolith](../../../DeployableUnits/ecommerce-monolith.md)
-- [[*Domain building block*] Clock](../../../BuildingBlocks/Sales/Time/Clock.md)
-- [[*Domain building block*] SystemClock](../../../BuildingBlocks/Sales/Time/SystemClock.md)
-- [[*Business process*] Online ordering](../../../Processes/Sale/Online ordering/Online ordering.md)
-- [[*Business process*] Wholesale ordering](../../../Processes/Sale/Wholesale ordering/Wholesale ordering.md)
+
+##### Domain modules
+
+[Sales](../Sales.md)  
 
 ---
 

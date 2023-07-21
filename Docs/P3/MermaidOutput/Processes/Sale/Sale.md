@@ -1,5 +1,5 @@
 ﻿
-# [*Business process*] Sale
+# Sale
 
 This view contains details information about Sale business process, including:
 - other related processes
@@ -47,15 +47,6 @@ This view contains details information about Sale business process, including:
   flowchart TB
     0(Sale)
     class 0 DomainPerspective
-    1([Payments])
-    class 1 DomainPerspective
-    0-->|belongs to|1
-    2([ProductsDelivery])
-    class 2 DomainPerspective
-    0-->|belongs to|2
-    3([Sales])
-    class 3 DomainPerspective
-    0-->|belongs to|3
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -70,9 +61,6 @@ This view contains details information about Sale business process, including:
   flowchart TB
     0(Sale)
     class 0 DomainPerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|is deployed in|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -98,30 +86,17 @@ This view contains details information about Sale business process, including:
     0-->|uses|3
     subgraph 4["Teams"]
       direction TB
-      5([Core team])
-      class 5 PeoplePerspective
-      6([Inventory team])
-      class 6 PeoplePerspective
-      5---6
-      7([Supporting team])
-      class 7 PeoplePerspective
-      6---7
     end
-    4---3
-    4-->|develops & maintains|3
     3---4
-    subgraph 8["Business"]
+    4-->|develops & maintains|3
+    4---3
+    subgraph 5["Business"]
       direction TB
-      9([Inventory department])
-      class 9 PeoplePerspective
-      10([Sales department])
-      class 10 PeoplePerspective
-      9---10
     end
-    8---3
-    8-->|owns|3
-    3---8
-    linkStyle 0,2,3,4,6,7,8,10 stroke:none
+    3---5
+    5-->|owns|3
+    5---3
+    linkStyle 0,2,4,5,7 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -132,29 +107,27 @@ This view contains details information about Sale business process, including:
 
 ### Zoom-in
 
-  - [[*Business process*] Fulfillment](Fulfillment/Fulfillment.md)
-  - [[*Business process*] Online ordering](Online ordering/Online ordering.md)
-  - [[*Business process*] Payment](Payment/Payment.md)
-  - [[*Business process*] Products delivery](Products delivery/Products delivery.md)
-  - [[*Business process*] Wholesale ordering](Wholesale ordering/Wholesale ordering.md)
+
+#### Domain perspective
+
+
+##### Processes
+
+[Fulfillment](Fulfillment/Fulfillment.md)  
+[Online ordering](Online ordering/Online ordering.md)  
+[Payment](Payment/Payment.md)  
+[Products delivery](Products delivery/Products delivery.md)  
+[Wholesale ordering](Wholesale ordering/Wholesale ordering.md)  
 
 ### Zoom-out
 
-- [Business processes](../../Business_Processes.md)
 
-### Change perspective
+#### Domain perspective
 
-- [[*Business organizational unit*] Inventory department](../../BusinessOrganizationalUnits/Inventory department.md)
-- [[*Business organizational unit*] Sales department](../../BusinessOrganizationalUnits/Sales department.md)
-- [[*Deployable unit*] ecommerce-monolith](../../DeployableUnits/ecommerce-monolith.md)
-- [[*Development team*] Core team](../../Teams/Core team.md)
-- [[*Development team*] Supporting team](../../Teams/Supporting team.md)
-- [[*Development team*] Inventory team](../../Teams/Inventory team.md)
-- [[*Business process*] Products delivery](Products delivery/Products delivery.md)
-- [[*Business process*] Payment](Payment/Payment.md)
-- [[*Business process*] Online ordering](Online ordering/Online ordering.md)
-- [[*Business process*] Fulfillment](Fulfillment/Fulfillment.md)
-- [[*Business process*] Wholesale ordering](Wholesale ordering/Wholesale ordering.md)
+
+##### Cross elements
+
+[Business processes](../../Business_Processes.md)  
 
 ---
 
