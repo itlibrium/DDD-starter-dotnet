@@ -7,51 +7,50 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.ECommerce.Contacts.Tags;
 using MyCompany.ECommerce.TechnicalStuff.Crud.Api;
 
-namespace MyCompany.ECommerce.Contacts.Companies.RestApi
+namespace MyCompany.ECommerce.Contacts.Companies.RestApi;
+
+[ApiController]
+[Route("/rest/companies/{companyId}/tags")]
+[ApiVersion("1")]
+public class CompaniesTagsController : ControllerBase
 {
-    [ApiController]
-    [Route("/rest/companies/{companyId}/tags")]
-    [ApiVersion("1")]
-    public class CompaniesTagsController : ControllerBase
-    {
-        private readonly ContactsCrudOperations _operations;
+    private readonly ContactsCrudOperations _operations;
 
-        public CompaniesTagsController(ContactsCrudOperations operations) => _operations = operations;
+    public CompaniesTagsController(ContactsCrudOperations operations) => _operations = operations;
 
-        [HttpGet]
-        public IAsyncEnumerable<Tag> Read(Guid companyId) => _operations
-            .Read<CompanyTag, Tag>(query => query
-                .Include(companyTag => companyTag.Tag)
-                .Where(companyTag => companyTag.CompanyId == companyId)
-                .Select(companyTag => companyTag.Tag));
+    [HttpGet]
+    public IAsyncEnumerable<Tag> Read(Guid companyId) => _operations
+        .Read<CompanyTag, Tag>(query => query
+            .Include(companyTag => companyTag.Tag)
+            .Where(companyTag => companyTag.CompanyId == companyId)
+            .Select(companyTag => companyTag.Tag));
 
-        [HttpPut("{tagId}")]
-        public Task<NoContentResult> Add(Guid companyId, Guid tagId) => _operations
-            .Update<Company>(companyId,
-                query => query.Include(company => company.Tags),
-                company =>
+    [HttpPut("{tagId}")]
+    public Task<NoContentResult> Add(Guid companyId, Guid tagId) => _operations
+        .Update<Company>(companyId,
+            query => query.Include(company => company.Tags),
+            company =>
+            {
+                if (company.Tags.Any(tag => tag.TagId == tagId))
+                    return;
+                company.Tags.Add(new CompanyTag
                 {
-                    if (company.Tags.Any(tag => tag.TagId == tagId))
-                        return;
-                    company.Tags.Add(new CompanyTag
-                    {
-                        CompanyId = companyId,
-                        TagId = tagId
-                    });
-                })
-            .ToNoContentResult();
+                    CompanyId = companyId,
+                    TagId = tagId
+                });
+            })
+        .ToNoContentResult();
 
-        [HttpDelete("{tagId}")]
-        public Task<NoContentResult> Remove(Guid companyId, Guid tagId) => _operations
-            .Update<Company>(companyId,
-                query => query.Include(company => company.Tags),
-                company =>
-                {
-                    var tagToRemove = company.Tags.FirstOrDefault(tag => tag.TagId == tagId);
-                    if (tagToRemove is null)
-                        return;
-                    company.Tags.Remove(tagToRemove);
-                })
-            .ToNoContentResult();
-    }
+    [HttpDelete("{tagId}")]
+    public Task<NoContentResult> Remove(Guid companyId, Guid tagId) => _operations
+        .Update<Company>(companyId,
+            query => query.Include(company => company.Tags),
+            company =>
+            {
+                var tagToRemove = company.Tags.FirstOrDefault(tag => tag.TagId == tagId);
+                if (tagToRemove is null)
+                    return;
+                company.Tags.Remove(tagToRemove);
+            })
+        .ToNoContentResult();
 }
