@@ -1,5 +1,5 @@
 using System;
-using P3Model.Annotations.Domain.DynamicModel;
+using P3Model.Annotations.Domain.StaticModel;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {

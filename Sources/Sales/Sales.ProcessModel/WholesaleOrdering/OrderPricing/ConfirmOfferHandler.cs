@@ -13,8 +13,8 @@ using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification;
 using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.DynamicModel;
-using P3Model.Annotations.Domain.DynamicModel.DDD;
+using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing

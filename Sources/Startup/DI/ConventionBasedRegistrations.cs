@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.ECommerce.TechnicalStuff.Metadata;
-using P3Model.Annotations.Domain.DynamicModel.DDD;
 using P3Model.Annotations.Domain.StaticModel.DDD;
 using P3Model.Annotations.Technology;
 using Scrutor;

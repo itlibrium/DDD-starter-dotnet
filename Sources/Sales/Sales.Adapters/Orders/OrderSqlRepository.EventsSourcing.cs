@@ -7,13 +7,11 @@ using Marten;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 using MyCompany.ECommerce.TechnicalStuff;
-using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {
-        [DddRepository]
         public partial class EventsSourcing : Order.Factory, Order.Repository
         {
             public static readonly IEnumerable<(Type Type, string Name)> Events = new[]

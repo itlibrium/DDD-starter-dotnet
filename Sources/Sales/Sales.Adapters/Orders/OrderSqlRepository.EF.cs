@@ -6,13 +6,11 @@ using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.EF;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 using MyCompany.ECommerce.TechnicalStuff;
-using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {
-        [DddRepository]
         public class EF : Order.Factory, Order.Repository
         {
             private readonly Dictionary<OrderId, DbOrder> _orders = new();

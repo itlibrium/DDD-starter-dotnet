@@ -7,14 +7,12 @@ using MyCompany.ECommerce.Sales.Database.Sql.Raw;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.Persistence;
-using P3Model.Annotations.Domain.StaticModel.DDD;
 using RepoDb;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    [DddRepository]
     public partial class Raw : Order.Factory, Order.Repository
     {
         private readonly MainDb _db;

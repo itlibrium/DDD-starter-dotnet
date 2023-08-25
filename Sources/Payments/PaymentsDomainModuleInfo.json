@@ -1,5 +1,5 @@
 {
-  "Module": "Payments",
+  "DomainModule": "Payments",
   "BusinessOwner": "Sales department",
   "DevelopmentOwner": "Supporting team"
 }

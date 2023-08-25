@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Products;
-using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {
-    [DddRepository]
+    [UsedImplicitly]
     public class DiscountsSqlRepository : DiscountsRepository
     {
         public Task<ClientLevelDiscounts> GetFor(ClientId clientId) =>

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.Time;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.DynamicModel;
-using P3Model.Annotations.Domain.DynamicModel.DDD;
+using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain.StaticModel.DDD;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement

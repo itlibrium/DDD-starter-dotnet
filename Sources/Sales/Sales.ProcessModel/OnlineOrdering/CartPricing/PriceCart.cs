@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Immutable;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.DynamicModel;
+using P3Model.Annotations.Domain.StaticModel;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing
 {

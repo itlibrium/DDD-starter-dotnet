@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Payments.Requesting;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;
@@ -5,6 +6,7 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Sales.Integrations.Payments
 {
+    [UsedImplicitly]
     public class PaymentsInMemoryCalls : PaymentsModule
     {
         private readonly CommandHandler<RequestPayment> _handler;

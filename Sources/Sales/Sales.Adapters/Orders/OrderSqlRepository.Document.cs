@@ -7,13 +7,11 @@ using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.Documents;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 using MyCompany.ECommerce.TechnicalStuff;
-using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders
 {
     public static partial class OrderSqlRepository
     {
-        [DddRepository]
         public class Document : Order.Factory, Order.Repository
         {
             private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();

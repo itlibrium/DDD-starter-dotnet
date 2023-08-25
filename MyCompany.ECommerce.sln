@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{B442AF5F-B127-45EF-B835-714A187D3F0A}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\Sales\SalesModuleInfo.json = Sources\Sales\SalesModuleInfo.json
+		Sources\Sales\SalesDomainModuleInfo.json = Sources\Sales\SalesDomainModuleInfo.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contacts", "Contacts", "{6114F446-78E7-49DC-BA34-C9904FE7838B}"
@@ -70,7 +70,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Postgres", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{BFB7ABD8-A1AC-41A9-B40B-C2F9389ABAF0}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\Payments\PaymentsModuleInfo.json = Sources\Payments\PaymentsModuleInfo.json
+		Sources\Payments\PaymentsDomainModuleInfo.json = Sources\Payments\PaymentsDomainModuleInfo.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RiskManagement", "RiskManagement", "{B132FA8E-B99A-420A-919D-5DA77555517C}"
@@ -80,7 +80,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RiskManagement", "RiskManag
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductsDelivery", "ProductsDelivery", "{A1B88082-6C3F-4A8E-89E7-ABFD08A5A89E}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\ProductsDelivery\ProductsDeliveryModuleInfo.json = Sources\ProductsDelivery\ProductsDeliveryModuleInfo.json
+		Sources\ProductsDelivery\ProductsDeliveryDomainModuleInfo.json = Sources\ProductsDelivery\ProductsDeliveryDomainModuleInfo.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.ProcessModel", "Sources\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj", "{F0906A93-243B-4BD0-A10F-FD6975F7DF10}"
