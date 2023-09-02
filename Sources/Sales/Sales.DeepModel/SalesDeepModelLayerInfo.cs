@@ -1,11 +1,11 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using P3Model.Annotations.Domain;
-using P3Model.Annotations.Technology;
+using P3Model.Annotations.Technology.CleanArchitecture;
 
 [assembly: InternalsVisibleTo("MyCompany.Crm.Startup")]
 [assembly: InternalsVisibleTo("MyCompany.Crm.Sales.IntegrationTests")]
-[assembly: Layer("Deep Model")]
+[assembly: EntitiesLayer]
 [assembly: DomainModel]
 
 namespace MyCompany.ECommerce.Sales;

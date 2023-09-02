@@ -1,12 +1,13 @@
 using System.Reflection;
-using P3Model.Annotations.Technology;
+using JetBrains.Annotations;
+using P3Model.Annotations.Technology.CleanArchitecture;
 
-[assembly: Layer("Rest API")]
+[assembly: AdaptersLayer]
 
-namespace MyCompany.ECommerce.Sales
+namespace MyCompany.ECommerce.Sales;
+
+[UsedImplicitly]
+public static class SalesRestApiLayerInfo
 {
-    public static class SalesRestApiLayerInfo
-    {
-        public static Assembly Assembly => typeof(SalesRestApiLayerInfo).Assembly;
-    }
+    public static Assembly Assembly => typeof(SalesRestApiLayerInfo).Assembly;
 }

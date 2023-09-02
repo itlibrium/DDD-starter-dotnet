@@ -1,14 +1,13 @@
 using System.Reflection;
 using P3Model.Annotations.Domain;
-using P3Model.Annotations.Technology;
+using P3Model.Annotations.Technology.CleanArchitecture;
 
-[assembly: Layer("Process Model")]
+[assembly: UseCasesLayer]
 [assembly: DomainModel]
 
-namespace MyCompany.ECommerce.Sales
+namespace MyCompany.ECommerce.Sales;
+
+public static class SalesProcessModelLayerInfo
 {
-    public static class SalesProcessModelLayerInfo
-    {
-        public static Assembly Assembly => typeof(SalesProcessModelLayerInfo).Assembly;
-    }
+    public static Assembly Assembly => typeof(SalesProcessModelLayerInfo).Assembly;
 }

@@ -1,12 +1,11 @@
 using System.Reflection;
-using P3Model.Annotations.Technology;
+using P3Model.Annotations.Technology.CleanArchitecture;
 
-[assembly: Layer("Adapters")]
+[assembly: AdaptersLayer]
 
-namespace MyCompany.ECommerce.Sales
+namespace MyCompany.ECommerce.Sales;
+
+public static class SalesAdaptersLayerInfo
 {
-    public static class SalesAdaptersLayerInfo
-    {
-        public static Assembly Assembly => typeof(SalesAdaptersLayerInfo).Assembly;
-    }
+    public static Assembly Assembly => typeof(SalesAdaptersLayerInfo).Assembly;
 }
