@@ -2,14 +2,18 @@
 # P3 Model documentation for MyCompany e-commerce
 
 
+---
+
+
+
 ## System Landscape
 
 ```mermaid
   flowchart TB
     0(MyCompany e-commerce)
     subgraph 1["Actors"]
-      2([WholesaleClient])
-      3([RetailClient])
+      2([RetailClient])
+      3([WholesaleClient])
     end
     1-->|uses|0
     subgraph 4["External Systems"]
@@ -17,9 +21,9 @@
     end
     4<-->|are integrated with|0
     subgraph 6["Development Teams"]
-      7([Inventory team])
-      8([Supporting team])
-      9([Core team])
+      7([Core team])
+      8([Inventory team])
+      9([Supporting team])
     end
     0---6
     6-->|develops & maintains|0
@@ -45,27 +49,18 @@
 
 #### Domain perspective
 
-
-##### Cross elements
-
-[Business processes](Business_Processes.md)  
-[Domain Glossary](Glossary/Domain_Glossary.md)  
-[Domain Modules](Modules.md)  
+[Business Processes](Domain/Processes/BusinessProcesses.md)  
+[Domain Glossary](Domain/Glossary/Domain_Glossary.md)  
+[Domain Modules](Domain/Concepts/DomainModules.md)  
 
 #### Technology perspective
 
-
-##### Cross elements
-
-[Deployable units](Deployable_Units.md)  
+[Deployable Units](Technology/DeployableUnits/DeployableUnits.md)  
 
 #### People perspective
 
-
-##### Cross elements
-
-[Business organizational units](Business_Organizational_Units.md)  
-[Development teams](Development_Teams.md)  
+[Business Organizational Units](People/BusinessOrganizationalUnits/BusinessOrganizationalUnits.md)  
+[Development Teams](People/DevelopmentTeams/DevelopmentTeams.md)  
 
 ---
 
