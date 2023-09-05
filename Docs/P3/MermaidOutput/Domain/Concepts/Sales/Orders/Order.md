@@ -27,11 +27,11 @@ This view contains details information about Order building block, including:
       3([AddToOrder])
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Online Ordering / Order Placement"]
+    subgraph 4["Sales / Wholesale Ordering / Order Placement"]
       5([PlaceOrder])
       class 5 DomainPerspective
     end
-    subgraph 6["Sales / Wholesale Ordering / Order Placement"]
+    subgraph 6["Sales / Online Ordering / Order Placement"]
       7([PlaceOrder])
       class 7 DomainPerspective
     end
@@ -143,8 +143,8 @@ This view contains details information about Order building block, including:
 [ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 [CreateOrder](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
 [GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 [PlaceOrder](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

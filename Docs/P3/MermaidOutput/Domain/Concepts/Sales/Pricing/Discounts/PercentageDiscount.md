@@ -1,7 +1,7 @@
 ﻿
 # Percentage Discount
 
-***Ddd Domain Service***  
+***Ddd Value Object***  
 
 This view contains details information about Percentage Discount building block, including:
 - dependencies
@@ -64,11 +64,14 @@ No related processes were found.
 #### Domain perspective
 
 
+##### Ddd Domain Services
+
+[Percentage Discount](PercentageDiscount.md)  
+
 ##### Ddd Value Objects
 
 [Money](../../Commons/Money.md)  
 [Percentage](../../Commons/Percentage.md)  
-[Percentage Discount](PercentageDiscount.md)  
 
 ### Zoom-out
 

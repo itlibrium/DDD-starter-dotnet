@@ -19,11 +19,11 @@ This view contains details information about Clock building block, including:
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Placement"]
+    subgraph 0["Sales / Online Ordering / Order Placement"]
       1([PlaceOrder])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Online Ordering / Order Placement"]
+    subgraph 2["Sales / Wholesale Ordering / Order Placement"]
       3([PlaceOrder])
       class 3 DomainPerspective
     end
@@ -75,8 +75,8 @@ This view contains details information about Clock building block, including:
 ##### Process Steps
 
 [ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 [PlaceOrder](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 
