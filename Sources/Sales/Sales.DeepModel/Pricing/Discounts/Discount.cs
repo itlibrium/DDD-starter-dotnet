@@ -4,7 +4,6 @@ using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {
-    [DddDomainService]
     [DddValueObject]
     public readonly struct Discount : PriceModifier, IEquatable<Discount>
     {
@@ -29,7 +28,7 @@ namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 
         public bool Equals(Discount other) => (_isPercentage, _percentageDiscount, _valueDiscount)
             .Equals((other._isPercentage, other._percentageDiscount, other._valueDiscount));
-        public override bool Equals(object obj) => obj is Discount other && Equals(other);
+        public override bool Equals(object? obj) => obj is Discount other && Equals(other);
         public override int GetHashCode() => (_isPercentage, _percentageDiscount, _valueDiscount).GetHashCode();
 
         public override string ToString() => _isPercentage ? _percentageDiscount.ToString() : _valueDiscount.ToString();

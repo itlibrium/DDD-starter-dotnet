@@ -4,7 +4,6 @@ using P3Model.Annotations.Domain.StaticModel.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {
-    [DddDomainService]
     [DddValueObject]
     public readonly struct ValueDiscount : PriceModifier, IEquatable<ValueDiscount>
     {
@@ -17,9 +16,9 @@ namespace MyCompany.ECommerce.Sales.Pricing.Discounts
         public Money ApplyOn(Money price) => Money.Max(price - _value, Money.Zero(price.Currency));
 
         public bool Equals(ValueDiscount other) => _value.Equals(other._value);
-        public override bool Equals(object obj) => obj is ValueDiscount other && Equals(other);
+        public override bool Equals(object? obj) => obj is ValueDiscount other && Equals(other);
         public override int GetHashCode() => _value.GetHashCode();
 
-        public override string ToString() => $"Discount of {_value.ToString()}";
+        public override string ToString() => $"Discount of {_value}";
     }
 }
