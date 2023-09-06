@@ -28,7 +28,7 @@ This view contains details information about Fulfillment business process, inclu
     0---1
     1-->|is part of|0
     1---0
-    2([OrderPlaced])
+    2([Order Placed])
     class 2 DomainPerspective
     1-->|contains|2
     linkStyle 0,2 stroke:none
@@ -76,7 +76,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[OrderPlaced](../../../Concepts/Sales/Fulfillment/OrderPlaced.md)  
+[Order Placed](../../../Concepts/Sales/Fulfillment/OrderPlaced.md)  
 
 ### Zoom-out
 

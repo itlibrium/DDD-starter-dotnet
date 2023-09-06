@@ -27,12 +27,12 @@ This view contains details information about Offer Modifiers building block, inc
       3(Offer Modifiers)
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Pricing / Discounts"]
-      5([Discounts Repository])
+    subgraph 4["Sales / Pricing"]
+      5([Offer Request])
       class 5 DomainPerspective
     end
-    subgraph 6["Sales / Pricing"]
-      7([Offer Request])
+    subgraph 6["Sales / Pricing / Discounts"]
+      7([Discounts Repository])
       class 7 DomainPerspective
     end
     0-->|depends on|2

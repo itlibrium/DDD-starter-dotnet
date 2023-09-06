@@ -27,19 +27,19 @@ This view contains details information about Product Level Discounts building bl
       3(Product Level Discounts)
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Pricing / Discounts"]
-      5([Product Discount])
+    subgraph 4["Sales / Pricing"]
+      5([Offer])
       class 5 DomainPerspective
+      6([Quote])
+      class 6 DomainPerspective
     end
-    subgraph 6["Sales / Pricing"]
-      7([Offer])
-      class 7 DomainPerspective
-      8([Quote])
+    subgraph 7["Sales / Pricing / Discounts"]
+      8([Product Discount])
       class 8 DomainPerspective
     end
     0-->|depends on|2
     2-->|depends on|4
-    2-->|depends on|6
+    2-->|depends on|7
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014

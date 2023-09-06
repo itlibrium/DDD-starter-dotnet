@@ -23,18 +23,18 @@ This view contains details information about Percentage building block, includin
       1([Money])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Pricing / Discounts"]
-      3([Discount])
+    subgraph 2["Sales / Pricing"]
+      3([Offer])
       class 3 DomainPerspective
-      4([Discount])
-      class 4 DomainPerspective
-      5([Percentage Discount])
-      class 5 DomainPerspective
-      6([Percentage Discount])
-      class 6 DomainPerspective
     end
-    subgraph 7["Sales / Pricing"]
-      8([Offer])
+    subgraph 4["Sales / Pricing / Discounts"]
+      5([Discount])
+      class 5 DomainPerspective
+      6([Discount])
+      class 6 DomainPerspective
+      7([Percentage Discount])
+      class 7 DomainPerspective
+      8([Percentage Discount])
       class 8 DomainPerspective
     end
     subgraph 9["Sales / Commons"]
@@ -43,7 +43,7 @@ This view contains details information about Percentage building block, includin
     end
     0-->|depends on|9
     2-->|depends on|9
-    7-->|depends on|9
+    4-->|depends on|9
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014

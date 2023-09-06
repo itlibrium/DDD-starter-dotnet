@@ -1,9 +1,9 @@
 ﻿
-# PlaceOrder
+# Place Order
 
 ***Process Step***  
 
-This view contains details information about PlaceOrder business processes step, including:
+This view contains details information about Place Order business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about PlaceOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(PlaceOrder)
+    0(Place Order)
     class 0 DomainPerspective
     1([Online Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about PlaceOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(PlaceOrder)
+    0(Place Order)
     class 0 DomainPerspective
     1([Calculate Prices])
     class 1 DomainPerspective
@@ -67,7 +67,7 @@ This view contains details information about PlaceOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(PlaceOrder)
+    0(Place Order)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -81,7 +81,7 @@ This view contains details information about PlaceOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(PlaceOrder)
+    0(Place Order)
     class 0 DomainPerspective
     1([RetailClient])
     class 1 PeoplePerspective

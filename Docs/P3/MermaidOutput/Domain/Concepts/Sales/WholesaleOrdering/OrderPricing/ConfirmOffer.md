@@ -1,9 +1,9 @@
 ﻿
-# ConfirmOffer
+# Confirm Offer
 
 ***Process Step***  
 
-This view contains details information about ConfirmOffer business processes step, including:
+This view contains details information about Confirm Offer business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about ConfirmOffer business processes ste
 
 ```mermaid
   flowchart TB
-    0(ConfirmOffer)
+    0(Confirm Offer)
     class 0 DomainPerspective
     1([Wholesale Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about ConfirmOffer business processes ste
 
 ```mermaid
   flowchart TB
-    0(ConfirmOffer)
+    0(Confirm Offer)
     class 0 DomainPerspective
     1([Calculate Prices])
     class 1 DomainPerspective
@@ -76,7 +76,7 @@ This view contains details information about ConfirmOffer business processes ste
 
 ```mermaid
   flowchart TB
-    0(ConfirmOffer)
+    0(Confirm Offer)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -90,7 +90,7 @@ This view contains details information about ConfirmOffer business processes ste
 
 ```mermaid
   flowchart TB
-    0(ConfirmOffer)
+    0(Confirm Offer)
     class 0 DomainPerspective
     1([WholesaleClient])
     class 1 PeoplePerspective

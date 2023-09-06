@@ -27,23 +27,23 @@ This view contains details information about Client Level Discounts building blo
       3(Client Level Discounts)
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Pricing / Discounts"]
-      5([Percentage Discount])
+    subgraph 4["Sales / Pricing"]
+      5([Offer])
       class 5 DomainPerspective
-      6([Percentage Discount])
+      6([Quote])
       class 6 DomainPerspective
-      7([Product Discount])
-      class 7 DomainPerspective
     end
-    subgraph 8["Sales / Pricing"]
-      9([Offer])
+    subgraph 7["Sales / Pricing / Discounts"]
+      8([Percentage Discount])
+      class 8 DomainPerspective
+      9([Percentage Discount])
       class 9 DomainPerspective
-      10([Quote])
+      10([Product Discount])
       class 10 DomainPerspective
     end
     0-->|depends on|2
     2-->|depends on|4
-    2-->|depends on|8
+    2-->|depends on|7
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014

@@ -23,16 +23,16 @@ This view contains details information about Individual Sales Conditions buildin
       1(Individual Sales Conditions)
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Pricing / Discounts"]
-      3([Client Level Discounts])
+    subgraph 2["Sales / Pricing"]
+      3([Offer])
       class 3 DomainPerspective
-      4([Product Level Discounts])
+      4([Quote])
       class 4 DomainPerspective
     end
-    subgraph 5["Sales / Pricing"]
-      6([Offer])
+    subgraph 5["Sales / Pricing / Discounts"]
+      6([Client Level Discounts])
       class 6 DomainPerspective
-      7([Quote])
+      7([Product Level Discounts])
       class 7 DomainPerspective
     end
     0-->|depends on|2

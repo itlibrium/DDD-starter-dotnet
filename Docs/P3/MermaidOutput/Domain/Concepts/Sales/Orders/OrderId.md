@@ -19,26 +19,26 @@ This view contains details information about Order Id building block, including:
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Modification"]
-      1([AddToOrder])
+    subgraph 0["Sales / Orders"]
+      1([Order])
       class 1 DomainPerspective
-    end
-    subgraph 2["Sales / Wholesale Ordering / Order Placement"]
-      3([PlaceOrder])
+      2([Order Factory])
+      class 2 DomainPerspective
+      3([Order Repository])
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Wholesale Ordering / Order Pricing"]
-      5([ConfirmOffer])
+    subgraph 4["Sales / Wholesale Ordering / Order Modification"]
+      5([Add to Order])
       class 5 DomainPerspective
-      6([GetOffer])
-      class 6 DomainPerspective
     end
-    subgraph 7["Sales / Orders"]
-      8([Order])
-      class 8 DomainPerspective
-      9([Order Factory])
+    subgraph 6["Sales / Wholesale Ordering / Order Placement"]
+      7([Place Order])
+      class 7 DomainPerspective
+    end
+    subgraph 8["Sales / Wholesale Ordering / Order Pricing"]
+      9([Confirm Offer])
       class 9 DomainPerspective
-      10([Order Repository])
+      10([Get Offer])
       class 10 DomainPerspective
     end
     subgraph 11["Sales / Orders"]
@@ -46,9 +46,9 @@ This view contains details information about Order Id building block, including:
       class 12 DomainPerspective
     end
     0-->|depends on|11
-    2-->|depends on|11
     4-->|depends on|11
-    7-->|depends on|11
+    6-->|depends on|11
+    8-->|depends on|11
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -60,16 +60,16 @@ This view contains details information about Order Id building block, including:
   flowchart TB
     0(Order Id)
     class 0 DomainPerspective
-    1([AddToOrder])
+    1([Add to Order])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([ConfirmOffer])
+    2([Place Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([GetOffer])
+    3([Confirm Offer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([PlaceOrder])
+    4([Get Offer])
     class 4 DomainPerspective
     0-->|is used in|4
     classDef DomainPerspective stroke:#009900
@@ -88,10 +88,10 @@ This view contains details information about Order Id building block, including:
 
 ##### Process Steps
 
-[AddToOrder](../WholesaleOrdering/OrderModification/AddToOrder.md)  
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

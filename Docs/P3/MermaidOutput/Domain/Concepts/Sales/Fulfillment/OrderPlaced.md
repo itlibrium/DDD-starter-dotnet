@@ -1,9 +1,9 @@
 ﻿
-# OrderPlaced
+# Order Placed
 
 ***Process Step***  
 
-This view contains details information about OrderPlaced business processes step, including:
+This view contains details information about Order Placed business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about OrderPlaced business processes step
 
 ```mermaid
   flowchart TB
-    0(OrderPlaced)
+    0(Order Placed)
     class 0 DomainPerspective
     1([Fulfillment])
     class 1 DomainPerspective
@@ -39,7 +39,7 @@ No building blocks were found. Maybe this process step is not implemented yet?
 
 ```mermaid
   flowchart TB
-    0(OrderPlaced)
+    0(Order Placed)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -53,7 +53,7 @@ No building blocks were found. Maybe this process step is not implemented yet?
 
 ```mermaid
   flowchart TB
-    0(OrderPlaced)
+    0(Order Placed)
     class 0 DomainPerspective
     1([Core team])
     class 1 PeoplePerspective

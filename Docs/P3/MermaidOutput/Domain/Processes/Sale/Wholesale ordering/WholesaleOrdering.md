@@ -28,22 +28,22 @@ This view contains details information about Wholesale Ordering business process
     0---1
     1-->|is part of|0
     1---0
-    2([AddToOrder])
+    2([Add to Order])
     class 2 DomainPerspective
     1-->|contains|2
-    3([ConfirmOffer])
+    3([Confirm Offer])
     class 3 DomainPerspective
     1-->|contains|3
-    4([CreateOrder])
+    4([Create Order])
     class 4 DomainPerspective
     1-->|contains|4
-    5([CreateOrder])
+    5([Create Order])
     class 5 DomainPerspective
     1-->|contains|5
-    6([GetOffer])
+    6([Get Offer])
     class 6 DomainPerspective
     1-->|contains|6
-    7([PlaceOrder])
+    7([Place Order])
     class 7 DomainPerspective
     1-->|contains|7
     linkStyle 0,2 stroke:none
@@ -131,12 +131,12 @@ No related deployable units were found.
 
 ##### Process Steps
 
-[AddToOrder](../../../Concepts/Sales/WholesaleOrdering/OrderModification/AddToOrder.md)  
-[ConfirmOffer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[CreateOrder](../../../Concepts/Sales/WholesaleOrdering/OrderCreation/CreateOrder.md)  
-[CreateOrder](../../../Concepts/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
-[GetOffer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../../../Concepts/Sales/WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[Add to Order](../../../Concepts/Sales/WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Confirm Offer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Create Order](../../../Concepts/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
+[Create Order](../../../Concepts/Sales/WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Get Offer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../../../Concepts/Sales/WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

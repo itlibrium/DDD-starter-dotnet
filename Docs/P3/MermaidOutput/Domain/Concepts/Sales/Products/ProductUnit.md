@@ -19,12 +19,12 @@ This view contains details information about Product Unit building block, includ
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Pricing / Discounts"]
-      1([Product Discount])
+    subgraph 0["Sales / Orders"]
+      1([Order])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Orders"]
-      3([Order])
+    subgraph 2["Sales / Pricing / Discounts"]
+      3([Product Discount])
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Pricing / Price Lists"]

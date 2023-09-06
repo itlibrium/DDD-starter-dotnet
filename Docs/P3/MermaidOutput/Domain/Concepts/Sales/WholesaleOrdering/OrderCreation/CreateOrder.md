@@ -1,9 +1,9 @@
 ﻿
-# CreateOrder
+# Create Order
 
 ***Process Step***  
 
-This view contains details information about CreateOrder business processes step, including:
+This view contains details information about Create Order business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about CreateOrder business processes step
 
 ```mermaid
   flowchart TB
-    0(CreateOrder)
+    0(Create Order)
     class 0 DomainPerspective
     1([Wholesale Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about CreateOrder business processes step
 
 ```mermaid
   flowchart TB
-    0(CreateOrder)
+    0(Create Order)
     class 0 DomainPerspective
     1([Client Id])
     class 1 DomainPerspective
@@ -58,7 +58,7 @@ This view contains details information about CreateOrder business processes step
 
 ```mermaid
   flowchart TB
-    0(CreateOrder)
+    0(Create Order)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -72,7 +72,7 @@ This view contains details information about CreateOrder business processes step
 
 ```mermaid
   flowchart TB
-    0(CreateOrder)
+    0(Create Order)
     class 0 DomainPerspective
     1([WholesaleClient])
     class 1 PeoplePerspective

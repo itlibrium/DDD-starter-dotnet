@@ -54,7 +54,7 @@ This view contains details information about Requesting domain module, including
   flowchart TB
     0(Requesting)
     class 0 DomainPerspective
-    1([RequestPayment])
+    1([Request Payment])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Requesting domain module, including
 
 ##### Process Steps
 
-[RequestPayment](RequestPayment.md)  
+[Request Payment](RequestPayment.md)  
 
 #### Technology perspective
 

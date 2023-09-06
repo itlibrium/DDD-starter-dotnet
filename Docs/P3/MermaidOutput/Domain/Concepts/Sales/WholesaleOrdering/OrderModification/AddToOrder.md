@@ -1,9 +1,9 @@
 ﻿
-# AddToOrder
+# Add to Order
 
 ***Process Step***  
 
-This view contains details information about AddToOrder business processes step, including:
+This view contains details information about Add to Order business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about AddToOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(AddToOrder)
+    0(Add to Order)
     class 0 DomainPerspective
     1([Wholesale Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about AddToOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(AddToOrder)
+    0(Add to Order)
     class 0 DomainPerspective
     1([Order])
     class 1 DomainPerspective
@@ -58,7 +58,7 @@ This view contains details information about AddToOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(AddToOrder)
+    0(Add to Order)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -72,7 +72,7 @@ This view contains details information about AddToOrder business processes step,
 
 ```mermaid
   flowchart TB
-    0(AddToOrder)
+    0(Add to Order)
     class 0 DomainPerspective
     1([WholesaleClient])
     class 1 PeoplePerspective

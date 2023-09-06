@@ -54,7 +54,7 @@ This view contains details information about Order Modification domain module, i
   flowchart TB
     0(Order Modification)
     class 0 DomainPerspective
-    1([AddToOrder])
+    1([Add to Order])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Order Modification domain module, i
 
 ##### Process Steps
 
-[AddToOrder](AddToOrder.md)  
+[Add to Order](AddToOrder.md)  
 
 #### Technology perspective
 

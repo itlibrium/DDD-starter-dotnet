@@ -28,7 +28,7 @@ This view contains details information about Products Delivery business process,
     0---1
     1-->|is part of|0
     1---0
-    2([RequestDelivery])
+    2([Request Delivery])
     class 2 DomainPerspective
     1-->|contains|2
     linkStyle 0,2 stroke:none
@@ -76,7 +76,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[RequestDelivery](../../../Concepts/ProductsDelivery/Requesting/RequestDelivery.md)  
+[Request Delivery](../../../Concepts/ProductsDelivery/Requesting/RequestDelivery.md)  
 
 ### Zoom-out
 

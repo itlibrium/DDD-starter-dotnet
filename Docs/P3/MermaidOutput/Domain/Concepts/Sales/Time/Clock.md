@@ -20,15 +20,15 @@ This view contains details information about Clock building block, including:
 ```mermaid
   flowchart TB
     subgraph 0["Sales / Online Ordering / Order Placement"]
-      1([PlaceOrder])
+      1([Place Order])
       class 1 DomainPerspective
     end
     subgraph 2["Sales / Wholesale Ordering / Order Placement"]
-      3([PlaceOrder])
+      3([Place Order])
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Wholesale Ordering / Order Pricing"]
-      5([ConfirmOffer])
+      5([Confirm Offer])
       class 5 DomainPerspective
     end
     subgraph 6["Sales / Time"]
@@ -49,13 +49,13 @@ This view contains details information about Clock building block, including:
   flowchart TB
     0(Clock)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Place Order])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([PlaceOrder])
+    2([Place Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([PlaceOrder])
+    3([Confirm Offer])
     class 3 DomainPerspective
     0-->|is used in|3
     classDef DomainPerspective stroke:#009900
@@ -74,9 +74,9 @@ This view contains details information about Clock building block, including:
 
 ##### Process Steps
 
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[PlaceOrder](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

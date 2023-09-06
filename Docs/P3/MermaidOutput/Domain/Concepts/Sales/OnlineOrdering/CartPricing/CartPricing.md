@@ -54,7 +54,7 @@ This view contains details information about Cart Pricing domain module, includi
   flowchart TB
     0(Cart Pricing)
     class 0 DomainPerspective
-    1([PriceCart])
+    1([Price Cart])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Cart Pricing domain module, includi
 
 ##### Process Steps
 
-[PriceCart](PriceCart.md)  
+[Price Cart](PriceCart.md)  
 
 #### Technology perspective
 

@@ -1,9 +1,9 @@
 ﻿
-# GetRiskScore
+# Get Risk Score
 
 ***Process Step***  
 
-This view contains details information about GetRiskScore business processes step, including:
+This view contains details information about Get Risk Score business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about GetRiskScore business processes ste
 
 ```mermaid
   flowchart TB
-    0(GetRiskScore)
+    0(Get Risk Score)
     class 0 DomainPerspective
     1([Risk Score Publication])
     class 1 DomainPerspective

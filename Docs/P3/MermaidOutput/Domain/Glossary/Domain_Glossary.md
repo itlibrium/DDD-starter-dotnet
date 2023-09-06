@@ -51,7 +51,7 @@ This view contains definitions of key domain terms.
 
 ### Requesting
 
-**RequestPayment**
+**Request Payment**
 
 
 ## Products Delivery
@@ -59,7 +59,7 @@ This view contains definitions of key domain terms.
 
 ### Requesting
 
-**RequestDelivery**
+**Request Delivery**
 
 
 ## Risk Management
@@ -70,7 +70,7 @@ This view contains definitions of key domain terms.
 
 ### Publication
 
-**GetRiskScore**
+**Get Risk Score**
 
 
 ## Sales
@@ -103,7 +103,7 @@ This view contains definitions of key domain terms.
 
 ### Fulfillment
 
-**OrderPlaced**
+**Order Placed**
 
 
 ### Online Ordering
@@ -111,12 +111,12 @@ This view contains definitions of key domain terms.
 
 #### Cart Pricing
 
-**PriceCart**
+**Price Cart**
 
 
 #### Order Placement
 
-**PlaceOrder**
+**Place Order**
 
 
 ### Orders
@@ -238,29 +238,29 @@ This view contains definitions of key domain terms.
 
 #### Order Creation
 
-**CreateOrder**
+**Create Order**
 
 
 #### Order Modification
 
-**AddToOrder**
+**Add to Order**
 
 
 #### Order Placement
 
-**PlaceOrder**
+**Place Order**
 
 
 #### Order Pricing
 
-**ConfirmOffer**
+**Confirm Offer**
 
-**GetOffer**
+**Get Offer**
 
 
 #### Product Pricing
 
-**CreateOrder**
+**Create Order**
 
 
 ## Next steps

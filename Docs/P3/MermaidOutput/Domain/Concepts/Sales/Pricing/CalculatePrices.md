@@ -20,21 +20,21 @@ This view contains details information about Calculate Prices building block, in
 ```mermaid
   flowchart TB
     subgraph 0["Sales / Online Ordering / Cart Pricing"]
-      1([PriceCart])
+      1([Price Cart])
       class 1 DomainPerspective
     end
     subgraph 2["Sales / Online Ordering / Order Placement"]
-      3([PlaceOrder])
+      3([Place Order])
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Wholesale Ordering / Order Pricing"]
-      5([ConfirmOffer])
+      5([Confirm Offer])
       class 5 DomainPerspective
-      6([GetOffer])
+      6([Get Offer])
       class 6 DomainPerspective
     end
     subgraph 7["Sales / Wholesale Ordering / Product Pricing"]
-      8([CreateOrder])
+      8([Create Order])
       class 8 DomainPerspective
     end
     subgraph 9["Sales / Pricing"]
@@ -49,14 +49,14 @@ This view contains details information about Calculate Prices building block, in
       14([Currency])
       class 14 DomainPerspective
     end
-    subgraph 15["Sales / Pricing / Price Lists"]
-      16([Price List Repository])
+    subgraph 15["Sales / Pricing"]
+      16([Offer Modifiers])
       class 16 DomainPerspective
+      17([Offer Request])
+      class 17 DomainPerspective
     end
-    subgraph 17["Sales / Pricing"]
-      18([Offer Modifiers])
-      class 18 DomainPerspective
-      19([Offer Request])
+    subgraph 18["Sales / Pricing / Price Lists"]
+      19([Price List Repository])
       class 19 DomainPerspective
     end
     subgraph 20["Sales / Products"]
@@ -74,7 +74,7 @@ This view contains details information about Calculate Prices building block, in
     9-->|depends on|11
     9-->|depends on|13
     9-->|depends on|15
-    9-->|depends on|17
+    9-->|depends on|18
     9-->|depends on|20
     9-->|depends on|22
     classDef DomainPerspective stroke:#009900
@@ -88,19 +88,19 @@ This view contains details information about Calculate Prices building block, in
   flowchart TB
     0(Calculate Prices)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Price Cart])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([CreateOrder])
+    2([Place Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([GetOffer])
+    3([Confirm Offer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([PlaceOrder])
+    4([Get Offer])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([PriceCart])
+    5([Create Order])
     class 5 DomainPerspective
     0-->|is used in|5
     classDef DomainPerspective stroke:#009900
@@ -135,11 +135,11 @@ This view contains details information about Calculate Prices building block, in
 
 ##### Process Steps
 
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[CreateOrder](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
-[GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
-[PriceCart](../OnlineOrdering/CartPricing/PriceCart.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Create Order](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
+[Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Price Cart](../OnlineOrdering/CartPricing/PriceCart.md)  
 
 ### Zoom-out
 

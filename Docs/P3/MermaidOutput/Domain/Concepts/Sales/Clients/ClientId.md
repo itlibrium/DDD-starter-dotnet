@@ -19,52 +19,52 @@ This view contains details information about Client Id building block, including
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Online Ordering / Cart Pricing"]
-      1([PriceCart])
+    subgraph 0["Sales / Clients"]
+      1([Client Repository])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Clients"]
-      3([Client Repository])
+    subgraph 2["Sales / Online Ordering / Cart Pricing"]
+      3([Price Cart])
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Pricing / Discounts"]
-      5([Discounts Repository])
+    subgraph 4["Sales / Online Ordering / Order Placement"]
+      5([Place Order])
       class 5 DomainPerspective
     end
-    subgraph 6["Sales / Wholesale Ordering / Order Creation"]
-      7([CreateOrder])
+    subgraph 6["Sales / Orders"]
+      7([Order Factory])
       class 7 DomainPerspective
     end
-    subgraph 8["Sales / Online Ordering / Order Placement"]
-      9([PlaceOrder])
+    subgraph 8["Sales / Orders / Price Changes"]
+      9([Price Changes Policies])
       class 9 DomainPerspective
     end
-    subgraph 10["Sales / Wholesale Ordering / Order Pricing"]
-      11([ConfirmOffer])
+    subgraph 10["Sales / Pricing"]
+      11([Calculate Prices])
       class 11 DomainPerspective
-      12([GetOffer])
+      12([Offer Request])
       class 12 DomainPerspective
     end
-    subgraph 13["Sales / Orders"]
-      14([Order Factory])
+    subgraph 13["Sales / Pricing / Discounts"]
+      14([Discounts Repository])
       class 14 DomainPerspective
     end
-    subgraph 15["Sales / Orders / Price Changes"]
-      16([Price Changes Policies])
+    subgraph 15["Sales / Pricing / Price Lists"]
+      16([Price List Repository])
       class 16 DomainPerspective
     end
-    subgraph 17["Sales / Pricing / Price Lists"]
-      18([Price List Repository])
+    subgraph 17["Sales / Wholesale Ordering / Order Creation"]
+      18([Create Order])
       class 18 DomainPerspective
     end
-    subgraph 19["Sales / Pricing"]
-      20([Calculate Prices])
+    subgraph 19["Sales / Wholesale Ordering / Order Pricing"]
+      20([Confirm Offer])
       class 20 DomainPerspective
-      21([Offer Request])
+      21([Get Offer])
       class 21 DomainPerspective
     end
     subgraph 22["Sales / Wholesale Ordering / Product Pricing"]
-      23([CreateOrder])
+      23([Create Order])
       class 23 DomainPerspective
     end
     subgraph 24["Sales / Clients"]
@@ -93,22 +93,22 @@ This view contains details information about Client Id building block, including
   flowchart TB
     0(Client Id)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Price Cart])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([CreateOrder])
+    2([Place Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([CreateOrder])
+    3([Create Order])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([GetOffer])
+    4([Confirm Offer])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([PlaceOrder])
+    5([Get Offer])
     class 5 DomainPerspective
     0-->|is used in|5
-    6([PriceCart])
+    6([Create Order])
     class 6 DomainPerspective
     0-->|is used in|6
     classDef DomainPerspective stroke:#009900
@@ -127,12 +127,12 @@ This view contains details information about Client Id building block, including
 
 ##### Process Steps
 
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[CreateOrder](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
-[CreateOrder](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
-[GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
-[PriceCart](../OnlineOrdering/CartPricing/PriceCart.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Create Order](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
+[Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Price Cart](../OnlineOrdering/CartPricing/PriceCart.md)  
 
 ### Zoom-out
 

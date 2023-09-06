@@ -19,26 +19,26 @@ This view contains details information about Product Amount building block, incl
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Modification"]
-      1([AddToOrder])
+    subgraph 0["Sales / Orders"]
+      1([Order])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Orders"]
-      3([Order])
+    subgraph 2["Sales / Pricing"]
+      3([Calculate Prices])
       class 3 DomainPerspective
-    end
-    subgraph 4["Sales / Pricing / Price Lists"]
-      5([Base Prices])
+      4([Offer])
+      class 4 DomainPerspective
+      5([Quote])
       class 5 DomainPerspective
-      6([Price List Repository])
-      class 6 DomainPerspective
     end
-    subgraph 7["Sales / Pricing"]
-      8([Calculate Prices])
+    subgraph 6["Sales / Pricing / Price Lists"]
+      7([Base Prices])
+      class 7 DomainPerspective
+      8([Price List Repository])
       class 8 DomainPerspective
-      9([Offer])
-      class 9 DomainPerspective
-      10([Quote])
+    end
+    subgraph 9["Sales / Wholesale Ordering / Order Modification"]
+      10([Add to Order])
       class 10 DomainPerspective
     end
     subgraph 11["Sales / Products"]
@@ -57,8 +57,8 @@ This view contains details information about Product Amount building block, incl
     end
     0-->|depends on|11
     2-->|depends on|11
-    4-->|depends on|11
-    7-->|depends on|11
+    6-->|depends on|11
+    9-->|depends on|11
     11-->|depends on|13
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -71,7 +71,7 @@ This view contains details information about Product Amount building block, incl
   flowchart TB
     0(Product Amount)
     class 0 DomainPerspective
-    1([AddToOrder])
+    1([Add to Order])
     class 1 DomainPerspective
     0-->|is used in|1
     classDef DomainPerspective stroke:#009900
@@ -97,7 +97,7 @@ This view contains details information about Product Amount building block, incl
 
 ##### Process Steps
 
-[AddToOrder](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
 
 ### Zoom-out
 

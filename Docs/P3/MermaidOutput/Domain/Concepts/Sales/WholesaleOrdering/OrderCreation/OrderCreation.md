@@ -54,7 +54,7 @@ This view contains details information about Order Creation domain module, inclu
   flowchart TB
     0(Order Creation)
     class 0 DomainPerspective
-    1([CreateOrder])
+    1([Create Order])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Order Creation domain module, inclu
 
 ##### Process Steps
 
-[CreateOrder](CreateOrder.md)  
+[Create Order](CreateOrder.md)  
 
 #### Technology perspective
 

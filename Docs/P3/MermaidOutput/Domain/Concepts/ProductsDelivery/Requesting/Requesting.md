@@ -54,7 +54,7 @@ This view contains details information about Requesting domain module, including
   flowchart TB
     0(Requesting)
     class 0 DomainPerspective
-    1([RequestDelivery])
+    1([Request Delivery])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -91,7 +91,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[RequestDelivery](RequestDelivery.md)  
+[Request Delivery](RequestDelivery.md)  
 
 ### Zoom-out
 

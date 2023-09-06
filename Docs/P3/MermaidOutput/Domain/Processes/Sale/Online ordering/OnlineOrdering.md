@@ -28,10 +28,10 @@ This view contains details information about Online Ordering business process, i
     0---1
     1-->|is part of|0
     1---0
-    2([PlaceOrder])
+    2([Place Order])
     class 2 DomainPerspective
     1-->|contains|2
-    3([PriceCart])
+    3([Price Cart])
     class 3 DomainPerspective
     1-->|contains|3
     linkStyle 0,2 stroke:none
@@ -110,8 +110,8 @@ No related deployable units were found.
 
 ##### Process Steps
 
-[PlaceOrder](../../../Concepts/Sales/OnlineOrdering/OrderPlacement/PlaceOrder.md)  
-[PriceCart](../../../Concepts/Sales/OnlineOrdering/CartPricing/PriceCart.md)  
+[Place Order](../../../Concepts/Sales/OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Price Cart](../../../Concepts/Sales/OnlineOrdering/CartPricing/PriceCart.md)  
 
 ### Zoom-out
 

@@ -19,30 +19,30 @@ This view contains details information about Order building block, including:
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Creation"]
-      1([CreateOrder])
+    subgraph 0["Sales / Online Ordering / Order Placement"]
+      1([Place Order])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Wholesale Ordering / Order Modification"]
-      3([AddToOrder])
+    subgraph 2["Sales / Orders"]
+      3([Order Repository])
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Wholesale Ordering / Order Placement"]
-      5([PlaceOrder])
+    subgraph 4["Sales / Wholesale Ordering / Order Creation"]
+      5([Create Order])
       class 5 DomainPerspective
     end
-    subgraph 6["Sales / Online Ordering / Order Placement"]
-      7([PlaceOrder])
+    subgraph 6["Sales / Wholesale Ordering / Order Modification"]
+      7([Add to Order])
       class 7 DomainPerspective
     end
-    subgraph 8["Sales / Wholesale Ordering / Order Pricing"]
-      9([ConfirmOffer])
+    subgraph 8["Sales / Wholesale Ordering / Order Placement"]
+      9([Place Order])
       class 9 DomainPerspective
-      10([GetOffer])
-      class 10 DomainPerspective
     end
-    subgraph 11["Sales / Orders"]
-      12([Order Repository])
+    subgraph 10["Sales / Wholesale Ordering / Order Pricing"]
+      11([Confirm Offer])
+      class 11 DomainPerspective
+      12([Get Offer])
       class 12 DomainPerspective
     end
     subgraph 13["Sales / Orders"]
@@ -76,7 +76,7 @@ This view contains details information about Order building block, including:
     4-->|depends on|13
     6-->|depends on|13
     8-->|depends on|13
-    11-->|depends on|13
+    10-->|depends on|13
     13-->|depends on|15
     13-->|depends on|18
     13-->|depends on|20
@@ -92,22 +92,22 @@ This view contains details information about Order building block, including:
   flowchart TB
     0(Order)
     class 0 DomainPerspective
-    1([AddToOrder])
+    1([Place Order])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([ConfirmOffer])
+    2([Create Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([CreateOrder])
+    3([Add to Order])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([GetOffer])
+    4([Place Order])
     class 4 DomainPerspective
     0-->|is used in|4
-    5([PlaceOrder])
+    5([Confirm Offer])
     class 5 DomainPerspective
     0-->|is used in|5
-    6([PlaceOrder])
+    6([Get Offer])
     class 6 DomainPerspective
     0-->|is used in|6
     classDef DomainPerspective stroke:#009900
@@ -139,12 +139,12 @@ This view contains details information about Order building block, including:
 
 ##### Process Steps
 
-[AddToOrder](../WholesaleOrdering/OrderModification/AddToOrder.md)  
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[CreateOrder](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
-[GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

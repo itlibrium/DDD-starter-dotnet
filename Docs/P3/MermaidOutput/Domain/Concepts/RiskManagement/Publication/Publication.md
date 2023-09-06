@@ -54,7 +54,7 @@ This view contains details information about Publication domain module, includin
   flowchart TB
     0(Publication)
     class 0 DomainPerspective
-    1([GetRiskScore])
+    1([Get Risk Score])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -91,7 +91,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[GetRiskScore](GetRiskScore.md)  
+[Get Risk Score](GetRiskScore.md)  
 
 ### Zoom-out
 

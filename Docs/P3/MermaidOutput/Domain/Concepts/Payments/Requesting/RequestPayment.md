@@ -1,9 +1,9 @@
 ﻿
-# RequestPayment
+# Request Payment
 
 ***Process Step***  
 
-This view contains details information about RequestPayment business processes step, including:
+This view contains details information about Request Payment business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about RequestPayment business processes s
 
 ```mermaid
   flowchart TB
-    0(RequestPayment)
+    0(Request Payment)
     class 0 DomainPerspective
     1([Payment])
     class 1 DomainPerspective
@@ -39,7 +39,7 @@ No building blocks were found. Maybe this process step is not implemented yet?
 
 ```mermaid
   flowchart TB
-    0(RequestPayment)
+    0(Request Payment)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -53,7 +53,7 @@ No building blocks were found. Maybe this process step is not implemented yet?
 
 ```mermaid
   flowchart TB
-    0(RequestPayment)
+    0(Request Payment)
     class 0 DomainPerspective
     1([Supporting team])
     class 1 PeoplePerspective

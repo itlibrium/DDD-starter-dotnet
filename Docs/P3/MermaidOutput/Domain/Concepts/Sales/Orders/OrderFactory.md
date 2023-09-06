@@ -19,12 +19,12 @@ This view contains details information about Order Factory building block, inclu
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Creation"]
-      1([CreateOrder])
+    subgraph 0["Sales / Online Ordering / Order Placement"]
+      1([Place Order])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Online Ordering / Order Placement"]
-      3([PlaceOrder])
+    subgraph 2["Sales / Wholesale Ordering / Order Creation"]
+      3([Create Order])
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Orders"]
@@ -64,10 +64,10 @@ This view contains details information about Order Factory building block, inclu
   flowchart TB
     0(Order Factory)
     class 0 DomainPerspective
-    1([CreateOrder])
+    1([Place Order])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([PlaceOrder])
+    2([Create Order])
     class 2 DomainPerspective
     0-->|is used in|2
     classDef DomainPerspective stroke:#009900
@@ -93,8 +93,8 @@ This view contains details information about Order Factory building block, inclu
 
 ##### Process Steps
 
-[CreateOrder](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 

@@ -28,7 +28,7 @@ This view contains details information about Risk Score Publication business pro
     0---1
     1-->|is part of|0
     1---0
-    2([GetRiskScore])
+    2([Get Risk Score])
     class 2 DomainPerspective
     1-->|contains|2
     linkStyle 0,2 stroke:none
@@ -76,7 +76,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[GetRiskScore](../../../Concepts/RiskManagement/Publication/GetRiskScore.md)  
+[Get Risk Score](../../../Concepts/RiskManagement/Publication/GetRiskScore.md)  
 
 ### Zoom-out
 

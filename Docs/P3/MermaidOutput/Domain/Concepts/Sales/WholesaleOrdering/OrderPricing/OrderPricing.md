@@ -54,10 +54,10 @@ This view contains details information about Order Pricing domain module, includ
   flowchart TB
     0(Order Pricing)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Confirm Offer])
     class 1 DomainPerspective
     0-->|contains|1
-    2([GetOffer])
+    2([Get Offer])
     class 2 DomainPerspective
     0-->|contains|2
     classDef DomainPerspective stroke:#009900
@@ -117,8 +117,8 @@ This view contains details information about Order Pricing domain module, includ
 
 ##### Process Steps
 
-[ConfirmOffer](ConfirmOffer.md)  
-[GetOffer](GetOffer.md)  
+[Confirm Offer](ConfirmOffer.md)  
+[Get Offer](GetOffer.md)  
 
 #### Technology perspective
 

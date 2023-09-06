@@ -1,9 +1,9 @@
 ﻿
-# GetOffer
+# Get Offer
 
 ***Process Step***  
 
-This view contains details information about GetOffer business processes step, including:
+This view contains details information about Get Offer business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about GetOffer business processes step, i
 
 ```mermaid
   flowchart TB
-    0(GetOffer)
+    0(Get Offer)
     class 0 DomainPerspective
     1([Wholesale Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about GetOffer business processes step, i
 
 ```mermaid
   flowchart TB
-    0(GetOffer)
+    0(Get Offer)
     class 0 DomainPerspective
     1([Calculate Prices])
     class 1 DomainPerspective
@@ -67,7 +67,7 @@ This view contains details information about GetOffer business processes step, i
 
 ```mermaid
   flowchart TB
-    0(GetOffer)
+    0(Get Offer)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -81,7 +81,7 @@ This view contains details information about GetOffer business processes step, i
 
 ```mermaid
   flowchart TB
-    0(GetOffer)
+    0(Get Offer)
     class 0 DomainPerspective
     1([WholesaleClient])
     class 1 PeoplePerspective

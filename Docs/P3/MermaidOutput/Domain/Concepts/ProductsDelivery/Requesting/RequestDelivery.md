@@ -1,9 +1,9 @@
 ﻿
-# RequestDelivery
+# Request Delivery
 
 ***Process Step***  
 
-This view contains details information about RequestDelivery business processes step, including:
+This view contains details information about Request Delivery business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about RequestDelivery business processes 
 
 ```mermaid
   flowchart TB
-    0(RequestDelivery)
+    0(Request Delivery)
     class 0 DomainPerspective
     1([Products Delivery])
     class 1 DomainPerspective

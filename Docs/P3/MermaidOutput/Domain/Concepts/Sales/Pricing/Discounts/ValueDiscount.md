@@ -1,7 +1,7 @@
 ﻿
 # Value Discount
 
-***Ddd Domain Service***  
+***Ddd Value Object***  
 
 This view contains details information about Value Discount building block, including:
 - dependencies
@@ -60,10 +60,13 @@ No related processes were found.
 #### Domain perspective
 
 
+##### Ddd Domain Services
+
+[Value Discount](ValueDiscount.md)  
+
 ##### Ddd Value Objects
 
 [Money](../../Commons/Money.md)  
-[Value Discount](ValueDiscount.md)  
 
 ### Zoom-out
 

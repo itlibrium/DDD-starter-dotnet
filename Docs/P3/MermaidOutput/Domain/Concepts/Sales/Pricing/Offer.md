@@ -20,45 +20,45 @@ This view contains details information about Offer building block, including:
 ```mermaid
   flowchart TB
     subgraph 0["Sales / Online Ordering / Cart Pricing"]
-      1([PriceCart])
+      1([Price Cart])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Pricing / Discounts"]
-      3([Client Level Discounts])
+    subgraph 2["Sales / Online Ordering / Order Placement"]
+      3([Place Order])
       class 3 DomainPerspective
-      4([Product Level Discounts])
-      class 4 DomainPerspective
     end
-    subgraph 5["Sales / Online Ordering / Order Placement"]
-      6([PlaceOrder])
+    subgraph 4["Sales / Orders"]
+      5([Order])
+      class 5 DomainPerspective
+      6([Order Factory])
       class 6 DomainPerspective
     end
-    subgraph 7["Sales / Wholesale Ordering / Order Pricing"]
-      8([ConfirmOffer])
+    subgraph 7["Sales / Pricing"]
+      8([Individual Sales Conditions])
       class 8 DomainPerspective
-      9([GetOffer])
+      9([Offer Modifier])
       class 9 DomainPerspective
+      10([Offer Modifier 2])
+      class 10 DomainPerspective
     end
-    subgraph 10["Sales / Orders"]
-      11([Order])
-      class 11 DomainPerspective
-      12([Order Factory])
+    subgraph 11["Sales / Pricing / Discounts"]
+      12([Client Level Discounts])
       class 12 DomainPerspective
+      13([Product Level Discounts])
+      class 13 DomainPerspective
     end
-    subgraph 13["Sales / Pricing"]
-      14([Individual Sales Conditions])
-      class 14 DomainPerspective
-      15([Offer Modifier])
+    subgraph 14["Sales / Pricing / Special Offers"]
+      15([Every Second Box for Half Price])
       class 15 DomainPerspective
-      16([Offer Modifier 2])
+      16([Special Offer])
       class 16 DomainPerspective
+      17([Three for Two])
+      class 17 DomainPerspective
     end
-    subgraph 17["Sales / Pricing / Special Offers"]
-      18([Every Second Box for Half Price])
-      class 18 DomainPerspective
-      19([Special Offer])
+    subgraph 18["Sales / Wholesale Ordering / Order Pricing"]
+      19([Confirm Offer])
       class 19 DomainPerspective
-      20([Three for Two])
+      20([Get Offer])
       class 20 DomainPerspective
     end
     subgraph 21["Sales / Pricing"]
@@ -73,16 +73,16 @@ This view contains details information about Offer building block, including:
       26([Percentage])
       class 26 DomainPerspective
     end
-    subgraph 27["Sales / Pricing / Price Lists"]
-      28([Base Prices])
+    subgraph 27["Sales / Pricing"]
+      28([Offer Modifier])
       class 28 DomainPerspective
-    end
-    subgraph 29["Sales / Pricing"]
-      30([Offer Modifier])
+      29([Quote])
+      class 29 DomainPerspective
+      30([Quote Modifier])
       class 30 DomainPerspective
-      31([Quote])
-      class 31 DomainPerspective
-      32([Quote Modifier])
+    end
+    subgraph 31["Sales / Pricing / Price Lists"]
+      32([Base Prices])
       class 32 DomainPerspective
     end
     subgraph 33["Sales / Products"]
@@ -91,14 +91,14 @@ This view contains details information about Offer building block, including:
     end
     0-->|depends on|21
     2-->|depends on|21
-    5-->|depends on|21
+    4-->|depends on|21
     7-->|depends on|21
-    10-->|depends on|21
-    13-->|depends on|21
-    17-->|depends on|21
+    11-->|depends on|21
+    14-->|depends on|21
+    18-->|depends on|21
     21-->|depends on|23
     21-->|depends on|27
-    21-->|depends on|29
+    21-->|depends on|31
     21-->|depends on|33
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -111,16 +111,16 @@ This view contains details information about Offer building block, including:
   flowchart TB
     0(Offer)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Price Cart])
     class 1 DomainPerspective
     0-->|is used in|1
-    2([GetOffer])
+    2([Place Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([PlaceOrder])
+    3([Confirm Offer])
     class 3 DomainPerspective
     0-->|is used in|3
-    4([PriceCart])
+    4([Get Offer])
     class 4 DomainPerspective
     0-->|is used in|4
     classDef DomainPerspective stroke:#009900
@@ -153,10 +153,10 @@ This view contains details information about Offer building block, including:
 
 ##### Process Steps
 
-[ConfirmOffer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[GetOffer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[PlaceOrder](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
-[PriceCart](../OnlineOrdering/CartPricing/PriceCart.md)  
+[Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Price Cart](../OnlineOrdering/CartPricing/PriceCart.md)  
 
 ### Zoom-out
 

@@ -1,9 +1,9 @@
 ﻿
-# PriceCart
+# Price Cart
 
 ***Process Step***  
 
-This view contains details information about PriceCart business processes step, including:
+This view contains details information about Price Cart business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -21,7 +21,7 @@ This view contains details information about PriceCart business processes step, 
 
 ```mermaid
   flowchart TB
-    0(PriceCart)
+    0(Price Cart)
     class 0 DomainPerspective
     1([Online Ordering])
     class 1 DomainPerspective
@@ -35,7 +35,7 @@ This view contains details information about PriceCart business processes step, 
 
 ```mermaid
   flowchart TB
-    0(PriceCart)
+    0(Price Cart)
     class 0 DomainPerspective
     1([Calculate Prices])
     class 1 DomainPerspective
@@ -58,7 +58,7 @@ This view contains details information about PriceCart business processes step, 
 
 ```mermaid
   flowchart TB
-    0(PriceCart)
+    0(Price Cart)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -72,7 +72,7 @@ This view contains details information about PriceCart business processes step, 
 
 ```mermaid
   flowchart TB
-    0(PriceCart)
+    0(Price Cart)
     class 0 DomainPerspective
     1([RetailClient])
     class 1 PeoplePerspective

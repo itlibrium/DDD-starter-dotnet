@@ -19,12 +19,12 @@ This view contains details information about Price Changes Policy building block
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Wholesale Ordering / Order Pricing"]
-      1([ConfirmOffer])
+    subgraph 0["Sales / Orders"]
+      1([Order])
       class 1 DomainPerspective
     end
-    subgraph 2["Sales / Orders"]
-      3([Order])
+    subgraph 2["Sales / Wholesale Ordering / Order Pricing"]
+      3([Confirm Offer])
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Orders / Price Changes"]
@@ -44,7 +44,7 @@ This view contains details information about Price Changes Policy building block
   flowchart TB
     0(Price Changes Policy)
     class 0 DomainPerspective
-    1([ConfirmOffer])
+    1([Confirm Offer])
     class 1 DomainPerspective
     0-->|is used in|1
     classDef DomainPerspective stroke:#009900
@@ -63,7 +63,7 @@ This view contains details information about Price Changes Policy building block
 
 ##### Process Steps
 
-[ConfirmOffer](../../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Confirm Offer](../../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 
 ### Zoom-out
 

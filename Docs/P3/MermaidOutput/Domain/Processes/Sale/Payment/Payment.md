@@ -28,7 +28,7 @@ This view contains details information about Payment business process, including
     0---1
     1-->|is part of|0
     1---0
-    2([RequestPayment])
+    2([Request Payment])
     class 2 DomainPerspective
     1-->|contains|2
     linkStyle 0,2 stroke:none
@@ -76,7 +76,7 @@ No engaged people were found.
 
 ##### Process Steps
 
-[RequestPayment](../../../Concepts/Payments/Requesting/RequestPayment.md)  
+[Request Payment](../../../Concepts/Payments/Requesting/RequestPayment.md)  
 
 ### Zoom-out
 

@@ -19,44 +19,44 @@ This view contains details information about Money building block, including:
 
 ```mermaid
   flowchart TB
-    subgraph 0["Sales / Pricing / Discounts"]
-      1([Discount])
+    subgraph 0["Sales / Exchange Rates"]
+      1([Exchange Rate])
       class 1 DomainPerspective
-      2([Discount])
-      class 2 DomainPerspective
-      3([Percentage Discount])
+    end
+    subgraph 2["Sales / Orders"]
+      3([Order Factory])
       class 3 DomainPerspective
-      4([Percentage Discount])
+      4([Order Price Agreement])
       class 4 DomainPerspective
-      5([Value Discount])
-      class 5 DomainPerspective
-      6([Value Discount])
+    end
+    subgraph 5["Sales / Orders / Price Changes"]
+      6([Allow Price Changes if Total Price Is Lower])
       class 6 DomainPerspective
     end
-    subgraph 7["Sales / Exchange Rates"]
-      8([Exchange Rate])
+    subgraph 7["Sales / Pricing"]
+      8([Offer])
       class 8 DomainPerspective
-    end
-    subgraph 9["Sales / Orders"]
-      10([Order Factory])
+      9([Price Modifier])
+      class 9 DomainPerspective
+      10([Quote])
       class 10 DomainPerspective
-      11([Order Price Agreement])
-      class 11 DomainPerspective
     end
-    subgraph 12["Sales / Orders / Price Changes"]
-      13([Allow Price Changes if Total Price Is Lower])
+    subgraph 11["Sales / Pricing / Discounts"]
+      12([Discount])
+      class 12 DomainPerspective
+      13([Discount])
       class 13 DomainPerspective
-    end
-    subgraph 14["Sales / Pricing / Price Lists"]
-      15([Base Price])
+      14([Percentage Discount])
+      class 14 DomainPerspective
+      15([Percentage Discount])
       class 15 DomainPerspective
-    end
-    subgraph 16["Sales / Pricing"]
-      17([Offer])
+      16([Value Discount])
+      class 16 DomainPerspective
+      17([Value Discount])
       class 17 DomainPerspective
-      18([Price Modifier])
-      class 18 DomainPerspective
-      19([Quote])
+    end
+    subgraph 18["Sales / Pricing / Price Lists"]
+      19([Base Price])
       class 19 DomainPerspective
     end
     subgraph 20["Sales / Commons"]
@@ -70,11 +70,11 @@ This view contains details information about Money building block, including:
       class 24 DomainPerspective
     end
     0-->|depends on|20
+    2-->|depends on|20
+    5-->|depends on|20
     7-->|depends on|20
-    9-->|depends on|20
-    12-->|depends on|20
-    14-->|depends on|20
-    16-->|depends on|20
+    11-->|depends on|20
+    18-->|depends on|20
     20-->|depends on|22
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB

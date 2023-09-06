@@ -54,7 +54,7 @@ This view contains details information about Order Placement domain module, incl
   flowchart TB
     0(Order Placement)
     class 0 DomainPerspective
-    1([PlaceOrder])
+    1([Place Order])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Order Placement domain module, incl
 
 ##### Process Steps
 
-[PlaceOrder](PlaceOrder.md)  
+[Place Order](PlaceOrder.md)  
 
 #### Technology perspective
 

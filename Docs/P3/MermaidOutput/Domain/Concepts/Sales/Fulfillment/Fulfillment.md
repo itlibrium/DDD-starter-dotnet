@@ -54,7 +54,7 @@ This view contains details information about Fulfillment domain module, includin
   flowchart TB
     0(Fulfillment)
     class 0 DomainPerspective
-    1([OrderPlaced])
+    1([Order Placed])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -114,7 +114,7 @@ This view contains details information about Fulfillment domain module, includin
 
 ##### Process Steps
 
-[OrderPlaced](OrderPlaced.md)  
+[Order Placed](OrderPlaced.md)  
 
 #### Technology perspective
 
