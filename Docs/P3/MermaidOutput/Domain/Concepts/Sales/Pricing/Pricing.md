@@ -87,15 +87,12 @@ This view contains details information about Pricing domain module, including:
     7([Offer Request])
     class 7 DomainPerspective
     0-->|contains|7
-    8([Price Modifier])
+    8([Quote])
     class 8 DomainPerspective
     0-->|contains|8
-    9([Quote])
+    9([Quote Modifier])
     class 9 DomainPerspective
     0-->|contains|9
-    10([Quote Modifier])
-    class 10 DomainPerspective
-    0-->|contains|10
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -153,7 +150,6 @@ This view contains details information about Pricing domain module, including:
 [Individual Sales Conditions](IndividualSalesConditions.md)  
 [Offer Modifier](OfferModifier.md)  
 [Offer Modifier 2](OfferModifier2.md)  
-[Price Modifier](PriceModifier.md)  
 [Quote Modifier](QuoteModifier.md)  
 
 ##### Ddd Factories
@@ -168,9 +164,9 @@ This view contains details information about Pricing domain module, including:
 
 ##### Domain Modules
 
-[Discounts](Discounts/Discounts.md)  
-[Price Lists](PriceLists/PriceLists.md)  
-[Special Offers](SpecialOffers/SpecialOffers.md)  
+[Sales | Pricing | Discounts](Discounts/Discounts.md)  
+[Sales | Pricing | Price lists](PriceLists/PriceLists.md)  
+[Sales | Pricing | Special offers](SpecialOffers/SpecialOffers.md)  
 
 ##### Processes
 

@@ -36,46 +36,38 @@ This view contains details information about Money building block, including:
     subgraph 7["Sales / Pricing"]
       8([Offer])
       class 8 DomainPerspective
-      9([Price Modifier])
+      9([Quote])
       class 9 DomainPerspective
-      10([Quote])
-      class 10 DomainPerspective
     end
-    subgraph 11["Sales / Pricing / Discounts"]
-      12([Discount])
+    subgraph 10["Sales / Pricing / Discounts"]
+      11([Discount])
+      class 11 DomainPerspective
+      12([Percentage Discount])
       class 12 DomainPerspective
-      13([Discount])
+      13([Value Discount])
       class 13 DomainPerspective
-      14([Percentage Discount])
-      class 14 DomainPerspective
-      15([Percentage Discount])
+    end
+    subgraph 14["Sales / Pricing / Price Lists"]
+      15([Base Price])
       class 15 DomainPerspective
-      16([Value Discount])
-      class 16 DomainPerspective
-      17([Value Discount])
+    end
+    subgraph 16["Sales / Commons"]
+      17(Money)
       class 17 DomainPerspective
     end
-    subgraph 18["Sales / Pricing / Price Lists"]
-      19([Base Price])
+    subgraph 18["Sales / Commons"]
+      19([Currency])
       class 19 DomainPerspective
+      20([Percentage])
+      class 20 DomainPerspective
     end
-    subgraph 20["Sales / Commons"]
-      21(Money)
-      class 21 DomainPerspective
-    end
-    subgraph 22["Sales / Commons"]
-      23([Currency])
-      class 23 DomainPerspective
-      24([Percentage])
-      class 24 DomainPerspective
-    end
-    0-->|depends on|20
-    2-->|depends on|20
-    5-->|depends on|20
-    7-->|depends on|20
-    11-->|depends on|20
-    18-->|depends on|20
-    20-->|depends on|22
+    0-->|depends on|16
+    2-->|depends on|16
+    5-->|depends on|16
+    7-->|depends on|16
+    10-->|depends on|16
+    14-->|depends on|16
+    16-->|depends on|18
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -107,7 +99,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Commons](Commons.md)  
+[Sales | Commons](Commons.md)  
 
 ---
 

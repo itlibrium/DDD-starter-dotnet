@@ -71,7 +71,7 @@ This view contains details information about Create Order business processes ste
   flowchart TB
     0(Create Order)
     class 0 DomainPerspective
-    1([WholesaleClient])
+    1([Wholesale Client])
     class 1 PeoplePerspective
     1-->|uses|0
     2([Core team])
@@ -129,7 +129,7 @@ This view contains details information about Create Order business processes ste
 
 ##### Domain Modules
 
-[Product Pricing](ProductPricing.md)  
+[Sales | Wholesale ordering | Product pricing](ProductPricing.md)  
 
 ##### Processes
 

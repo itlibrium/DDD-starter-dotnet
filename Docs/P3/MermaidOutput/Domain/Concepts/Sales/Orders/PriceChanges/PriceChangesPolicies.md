@@ -98,7 +98,7 @@ This view contains details information about Price Changes Policies building blo
 
 ##### Domain Modules
 
-[Price Changes](PriceChanges.md)  
+[Sales | Orders | Price changes](PriceChanges.md)  
 
 ---
 

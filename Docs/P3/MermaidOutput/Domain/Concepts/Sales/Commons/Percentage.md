@@ -30,20 +30,16 @@ This view contains details information about Percentage building block, includin
     subgraph 4["Sales / Pricing / Discounts"]
       5([Discount])
       class 5 DomainPerspective
-      6([Discount])
+      6([Percentage Discount])
       class 6 DomainPerspective
-      7([Percentage Discount])
-      class 7 DomainPerspective
-      8([Percentage Discount])
+    end
+    subgraph 7["Sales / Commons"]
+      8(Percentage)
       class 8 DomainPerspective
     end
-    subgraph 9["Sales / Commons"]
-      10(Percentage)
-      class 10 DomainPerspective
-    end
-    0-->|depends on|9
-    2-->|depends on|9
-    4-->|depends on|9
+    0-->|depends on|7
+    2-->|depends on|7
+    4-->|depends on|7
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -64,7 +60,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Commons](Commons.md)  
+[Sales | Commons](Commons.md)  
 
 ---
 

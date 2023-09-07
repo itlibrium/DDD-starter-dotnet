@@ -67,14 +67,37 @@ This view contains details information about Requesting domain module, including
 
 ### Related deployable units
 
-No related deployable units were found.  
+```mermaid
+  flowchart TB
+    0(Requesting)
+    class 0 DomainPerspective
+    1([ecommerce-monolith])
+    class 1 TechnologyPerspective
+    0-->|is deployed in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## People Perspective
 
 
 ### Engaged people
 
-No engaged people were found.  
+```mermaid
+  flowchart TB
+    0(Requesting)
+    class 0 DomainPerspective
+    1([Inventory team])
+    class 1 PeoplePerspective
+    1-->|develops & maintains|0
+    2([Inventory department])
+    class 2 PeoplePerspective
+    2-->|owns|0
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## Next steps
 
@@ -93,6 +116,24 @@ No engaged people were found.
 
 [Request Delivery](RequestDelivery.md)  
 
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
+
+#### People perspective
+
+
+##### Business Organizational Units
+
+[Inventory department](../../../../People/BusinessOrganizationalUnits/InventoryDepartment.md)  
+
+##### Development Teams
+
+[Inventory team](../../../../People/DevelopmentTeams/InventoryTeam.md)  
+
 ### Zoom-out
 
 
@@ -101,7 +142,7 @@ No engaged people were found.
 
 ##### Domain Modules
 
-[Products Delivery](../ProductsDelivery.md)  
+[Products delivery](../ProductsDelivery.md)  
 
 ---
 

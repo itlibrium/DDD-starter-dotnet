@@ -115,11 +115,11 @@ No direct building blocks were found.
 
 ##### Domain Modules
 
-[Order Creation](OrderCreation/OrderCreation.md)  
-[Order Modification](OrderModification/OrderModification.md)  
-[Order Placement](OrderPlacement/OrderPlacement.md)  
-[Order Pricing](OrderPricing/OrderPricing.md)  
-[Product Pricing](ProductPricing/ProductPricing.md)  
+[Sales | Wholesale ordering | Order creation](OrderCreation/OrderCreation.md)  
+[Sales | Wholesale ordering | Order modification](OrderModification/OrderModification.md)  
+[Sales | Wholesale ordering | Order placement](OrderPlacement/OrderPlacement.md)  
+[Sales | Wholesale ordering | Order pricing](OrderPricing/OrderPricing.md)  
+[Sales | Wholesale ordering | Product pricing](ProductPricing/ProductPricing.md)  
 
 ##### Processes
 

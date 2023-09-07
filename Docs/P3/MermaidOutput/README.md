@@ -12,8 +12,8 @@
   flowchart TB
     0(MyCompany e-commerce)
     subgraph 1["Actors"]
-      2([RetailClient])
-      3([WholesaleClient])
+      2([Retail Client])
+      3([Wholesale Client])
     end
     1-->|uses|0
     subgraph 4["External Systems"]

@@ -21,36 +21,12 @@ All modules can be divided into sub-modules to reflect hierarchical structure of
     1(Companies)
     class 1 DomainPerspective
     0-->|contains|1
-    2(Old Api)
+    2(Groups)
     class 2 DomainPerspective
-    1-->|contains|2
-    3(Rest Api)
+    0-->|contains|2
+    3(Tags)
     class 3 DomainPerspective
-    1-->|contains|3
-    4(Database)
-    class 4 DomainPerspective
-    0-->|contains|4
-    5(Migrations)
-    class 5 DomainPerspective
-    4-->|contains|5
-    6(Groups)
-    class 6 DomainPerspective
-    0-->|contains|6
-    7(Old Api)
-    class 7 DomainPerspective
-    6-->|contains|7
-    8(Rest Api)
-    class 8 DomainPerspective
-    6-->|contains|8
-    9(Tags)
-    class 9 DomainPerspective
-    0-->|contains|9
-    10(Old Api)
-    class 10 DomainPerspective
-    9-->|contains|10
-    11(Rest Api)
-    class 11 DomainPerspective
-    9-->|contains|11
+    0-->|contains|3
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -189,52 +165,43 @@ All modules can be divided into sub-modules to reflect hierarchical structure of
 
 ##### Domain Modules
 
-[Calculation](RiskManagement/Calculation/Calculation.md)  
-[Cart Pricing](Sales/OnlineOrdering/CartPricing/CartPricing.md)  
-[Clients](Sales/Clients/Clients.md)  
-[Commons](Sales/Commons/Commons.md)  
-[Companies](Contacts/Companies/Companies.md)  
 [Contacts](Contacts/Contacts.md)  
-[Database](Contacts/Database/Database.md)  
-[Discounts](Sales/Pricing/Discounts/Discounts.md)  
-[Exchange Rates](Sales/ExchangeRates/ExchangeRates.md)  
-[Fulfillment](Sales/Fulfillment/Fulfillment.md)  
-[Groups](Contacts/Groups/Groups.md)  
-[Migrations](Contacts/Database/Migrations/Migrations.md)  
-[Old Api](Contacts/Companies/OldApi/OldApi.md)  
-[Old Api](Contacts/Tags/OldApi/OldApi.md)  
-[Old Api](Contacts/Groups/OldApi/OldApi.md)  
-[Online Ordering](Sales/OnlineOrdering/OnlineOrdering.md)  
-[Order Creation](Sales/WholesaleOrdering/OrderCreation/OrderCreation.md)  
-[Order Modification](Sales/WholesaleOrdering/OrderModification/OrderModification.md)  
-[Order Placement](Sales/WholesaleOrdering/OrderPlacement/OrderPlacement.md)  
-[Order Placement](Sales/OnlineOrdering/OrderPlacement/OrderPlacement.md)  
-[Order Pricing](Sales/WholesaleOrdering/OrderPricing/OrderPricing.md)  
-[Orders](Sales/Orders/Orders.md)  
+[Contacts | Companies](Contacts/Companies/Companies.md)  
+[Contacts | Groups](Contacts/Groups/Groups.md)  
+[Contacts | Tags](Contacts/Tags/Tags.md)  
 [Payments](Payments/Payments.md)  
-[Payments](Sales/Integrations/Payments/Payments.md)  
-[Price Changes](Sales/Orders/PriceChanges/PriceChanges.md)  
-[Price Lists](Sales/Pricing/PriceLists/PriceLists.md)  
-[Pricing](Sales/Pricing/Pricing.md)  
-[Product Pricing](Sales/WholesaleOrdering/ProductPricing/ProductPricing.md)  
-[Products](Sales/Products/Products.md)  
-[Products Delivery](ProductsDelivery/ProductsDelivery.md)  
-[Products Delivery](Products Delivery/ProductsDelivery.md)  
-[Products Delivery](Sales/Integrations/ProductsDelivery/ProductsDelivery.md)  
-[Publication](RiskManagement/Publication/Publication.md)  
-[Requesting](Payments/Requesting/Requesting.md)  
-[Requesting](ProductsDelivery/Requesting/Requesting.md)  
-[Rest Api](Contacts/Companies/RestApi/RestApi.md)  
-[Rest Api](Contacts/Groups/RestApi/RestApi.md)  
-[Rest Api](Contacts/Tags/RestApi/RestApi.md)  
-[Risk Management](RiskManagement/RiskManagement.md)  
-[Risk Management](Sales/Integrations/RiskManagement/RiskManagement.md)  
+[Payments | Requesting](Payments/Requesting/Requesting.md)  
+[Products delivery](ProductsDelivery/ProductsDelivery.md)  
+[Products delivery | Requesting](ProductsDelivery/Requesting/Requesting.md)  
+[Risk management](RiskManagement/RiskManagement.md)  
+[Risk management | Calculation](RiskManagement/Calculation/Calculation.md)  
+[Risk management | Publication](RiskManagement/Publication/Publication.md)  
 [Sales](Sales/Sales.md)  
-[Sales Channels](Sales/SalesChannels/SalesChannels.md)  
-[Special Offers](Sales/Pricing/SpecialOffers/SpecialOffers.md)  
-[Tags](Contacts/Tags/Tags.md)  
-[Time](Sales/Time/Time.md)  
-[Wholesale Ordering](Sales/WholesaleOrdering/WholesaleOrdering.md)  
+[Sales | Clients](Sales/Clients/Clients.md)  
+[Sales | Commons](Sales/Commons/Commons.md)  
+[Sales | Exchange rates](Sales/ExchangeRates/ExchangeRates.md)  
+[Sales | Fulfillment](Sales/Fulfillment/Fulfillment.md)  
+[Sales | Integrations | Payments](Sales/Integrations/Payments/Payments.md)  
+[Sales | Integrations | Products delivery](Sales/Integrations/ProductsDelivery/ProductsDelivery.md)  
+[Sales | Integrations | Risk management](Sales/Integrations/RiskManagement/RiskManagement.md)  
+[Sales | Online ordering](Sales/OnlineOrdering/OnlineOrdering.md)  
+[Sales | Online ordering | Cart pricing](Sales/OnlineOrdering/CartPricing/CartPricing.md)  
+[Sales | Online ordering | Order placement](Sales/OnlineOrdering/OrderPlacement/OrderPlacement.md)  
+[Sales | Orders](Sales/Orders/Orders.md)  
+[Sales | Orders | Price changes](Sales/Orders/PriceChanges/PriceChanges.md)  
+[Sales | Pricing](Sales/Pricing/Pricing.md)  
+[Sales | Pricing | Discounts](Sales/Pricing/Discounts/Discounts.md)  
+[Sales | Pricing | Price lists](Sales/Pricing/PriceLists/PriceLists.md)  
+[Sales | Pricing | Special offers](Sales/Pricing/SpecialOffers/SpecialOffers.md)  
+[Sales | Products](Sales/Products/Products.md)  
+[Sales | Sales channels](Sales/SalesChannels/SalesChannels.md)  
+[Sales | Time](Sales/Time/Time.md)  
+[Sales | Wholesale ordering](Sales/WholesaleOrdering/WholesaleOrdering.md)  
+[Sales | Wholesale ordering | Order creation](Sales/WholesaleOrdering/OrderCreation/OrderCreation.md)  
+[Sales | Wholesale ordering | Order modification](Sales/WholesaleOrdering/OrderModification/OrderModification.md)  
+[Sales | Wholesale ordering | Order placement](Sales/WholesaleOrdering/OrderPlacement/OrderPlacement.md)  
+[Sales | Wholesale ordering | Order pricing](Sales/WholesaleOrdering/OrderPricing/OrderPricing.md)  
+[Sales | Wholesale ordering | Product pricing](Sales/WholesaleOrdering/ProductPricing/ProductPricing.md)  
 
 ### Zoom-out
 

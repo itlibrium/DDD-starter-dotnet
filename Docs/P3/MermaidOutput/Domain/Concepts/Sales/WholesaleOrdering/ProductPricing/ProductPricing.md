@@ -142,7 +142,7 @@ This view contains details information about Product Pricing domain module, incl
 
 ##### Domain Modules
 
-[Wholesale Ordering](../WholesaleOrdering.md)  
+[Sales | Wholesale ordering](../WholesaleOrdering.md)  
 
 ---
 

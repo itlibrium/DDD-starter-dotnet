@@ -20,36 +20,28 @@ This view contains details information about Discount building block, including:
 ```mermaid
   flowchart TB
     subgraph 0["Sales / Pricing / Discounts"]
-      1([Discount])
+      1([Product Discount])
       class 1 DomainPerspective
-      2([Product Discount])
-      class 2 DomainPerspective
     end
-    subgraph 3["Sales / Pricing / Discounts"]
-      4(Discount)
-      class 4 DomainPerspective
+    subgraph 2["Sales / Pricing / Discounts"]
+      3(Discount)
+      class 3 DomainPerspective
     end
-    subgraph 5["Sales / Commons"]
-      6([Money])
+    subgraph 4["Sales / Commons"]
+      5([Money])
+      class 5 DomainPerspective
+      6([Percentage])
       class 6 DomainPerspective
-      7([Percentage])
-      class 7 DomainPerspective
     end
-    subgraph 8["Sales / Pricing / Discounts"]
-      9([Discount])
+    subgraph 7["Sales / Pricing / Discounts"]
+      8([Percentage Discount])
+      class 8 DomainPerspective
+      9([Value Discount])
       class 9 DomainPerspective
-      10([Percentage Discount])
-      class 10 DomainPerspective
-      11([Percentage Discount])
-      class 11 DomainPerspective
-      12([Value Discount])
-      class 12 DomainPerspective
-      13([Value Discount])
-      class 13 DomainPerspective
     end
-    0-->|depends on|3
-    3-->|depends on|5
-    3-->|depends on|8
+    0-->|depends on|2
+    2-->|depends on|4
+    2-->|depends on|7
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -68,12 +60,6 @@ No related processes were found.
 #### Domain perspective
 
 
-##### Ddd Domain Services
-
-[Discount](Discount.md)  
-[Percentage Discount](PercentageDiscount.md)  
-[Value Discount](ValueDiscount.md)  
-
 ##### Ddd Value Objects
 
 [Money](../../Commons/Money.md)  
@@ -89,7 +75,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Discounts](Discounts.md)  
+[Sales | Pricing | Discounts](Discounts.md)  
 
 ---
 

@@ -81,7 +81,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Products](Products.md)  
+[Sales | Products](Products.md)  
 
 ---
 

@@ -36,10 +36,8 @@ This view contains details information about Client Level Discounts building blo
     subgraph 7["Sales / Pricing / Discounts"]
       8([Percentage Discount])
       class 8 DomainPerspective
-      9([Percentage Discount])
+      9([Product Discount])
       class 9 DomainPerspective
-      10([Product Discount])
-      class 10 DomainPerspective
     end
     0-->|depends on|2
     2-->|depends on|4
@@ -62,10 +60,6 @@ No related processes were found.
 #### Domain perspective
 
 
-##### Ddd Domain Services
-
-[Percentage Discount](PercentageDiscount.md)  
-
 ##### Ddd Value Objects
 
 [Offer](../Offer.md)  
@@ -81,7 +75,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Discounts](Discounts.md)  
+[Sales | Pricing | Discounts](Discounts.md)  
 
 ---
 

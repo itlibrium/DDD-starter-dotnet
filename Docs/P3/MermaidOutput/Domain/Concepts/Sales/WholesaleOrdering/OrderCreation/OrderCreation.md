@@ -142,7 +142,7 @@ This view contains details information about Order Creation domain module, inclu
 
 ##### Domain Modules
 
-[Wholesale Ordering](../WholesaleOrdering.md)  
+[Sales | Wholesale ordering](../WholesaleOrdering.md)  
 
 ---
 

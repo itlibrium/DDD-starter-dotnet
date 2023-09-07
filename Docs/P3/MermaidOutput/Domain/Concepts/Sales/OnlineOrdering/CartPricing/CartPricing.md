@@ -142,7 +142,7 @@ This view contains details information about Cart Pricing domain module, includi
 
 ##### Domain Modules
 
-[Online Ordering](../OnlineOrdering.md)  
+[Sales | Online ordering](../OnlineOrdering.md)  
 
 ---
 

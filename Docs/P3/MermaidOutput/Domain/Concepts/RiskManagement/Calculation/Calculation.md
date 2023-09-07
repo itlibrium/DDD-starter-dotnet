@@ -67,7 +67,7 @@ No engaged people were found.
 
 ##### Domain Modules
 
-[Risk Management](../RiskManagement.md)  
+[Risk management](../RiskManagement.md)  
 
 ---
 

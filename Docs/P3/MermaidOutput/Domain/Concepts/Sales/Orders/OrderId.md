@@ -101,7 +101,7 @@ This view contains details information about Order Id building block, including:
 
 ##### Domain Modules
 
-[Orders](Orders.md)  
+[Sales | Orders](Orders.md)  
 
 ---
 

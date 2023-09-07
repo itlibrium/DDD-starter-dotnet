@@ -73,7 +73,7 @@ No related deployable units were found.
   flowchart LR
     subgraph 0["Actors"]
       direction TB
-      1([RetailClient])
+      1([Retail Client])
       class 1 PeoplePerspective
     end
     2(Online Ordering)

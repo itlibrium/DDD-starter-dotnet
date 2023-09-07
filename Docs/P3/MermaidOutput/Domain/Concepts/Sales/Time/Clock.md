@@ -75,8 +75,8 @@ This view contains details information about Clock building block, including:
 ##### Process Steps
 
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 [Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 
@@ -86,7 +86,7 @@ This view contains details information about Clock building block, including:
 
 ##### Domain Modules
 
-[Time](Time.md)  
+[Sales | Time](Time.md)  
 
 ---
 

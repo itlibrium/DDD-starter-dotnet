@@ -106,8 +106,8 @@ No direct building blocks were found.
 
 ##### Domain Modules
 
-[Cart Pricing](CartPricing/CartPricing.md)  
-[Order Placement](OrderPlacement/OrderPlacement.md)  
+[Sales | Online ordering | Cart pricing](CartPricing/CartPricing.md)  
+[Sales | Online ordering | Order placement](OrderPlacement/OrderPlacement.md)  
 
 ##### Processes
 

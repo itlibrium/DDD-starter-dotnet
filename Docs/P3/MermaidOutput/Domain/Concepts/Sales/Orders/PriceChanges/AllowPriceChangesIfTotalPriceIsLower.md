@@ -69,7 +69,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Price Changes](PriceChanges.md)  
+[Sales | Orders | Price changes](PriceChanges.md)  
 
 ---
 

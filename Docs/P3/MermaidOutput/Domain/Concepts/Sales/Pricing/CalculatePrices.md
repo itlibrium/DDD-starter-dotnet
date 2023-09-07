@@ -149,7 +149,7 @@ This view contains details information about Calculate Prices building block, in
 
 ##### Domain Modules
 
-[Pricing](Pricing.md)  
+[Sales | Pricing](Pricing.md)  
 
 ---
 

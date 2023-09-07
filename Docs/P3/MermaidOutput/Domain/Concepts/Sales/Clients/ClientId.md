@@ -128,8 +128,8 @@ This view contains details information about Client Id building block, including
 ##### Process Steps
 
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[Create Order](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
 [Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Create Order](../WholesaleOrdering/ProductPricing/CreateOrder.md)  
 [Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
 [Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
 [Price Cart](../OnlineOrdering/CartPricing/PriceCart.md)  
@@ -142,7 +142,7 @@ This view contains details information about Client Id building block, including
 
 ##### Domain Modules
 
-[Clients](Clients.md)  
+[Sales | Clients](Clients.md)  
 
 ---
 

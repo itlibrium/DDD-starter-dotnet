@@ -142,7 +142,7 @@ This view contains details information about Order Placement domain module, incl
 
 ##### Domain Modules
 
-[Online Ordering](../OnlineOrdering.md)  
+[Sales | Online ordering](../OnlineOrdering.md)  
 
 ---
 

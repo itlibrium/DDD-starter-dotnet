@@ -100,9 +100,9 @@ No related deployable units were found.
   flowchart LR
     subgraph 0["Actors"]
       direction TB
-      1([RetailClient])
+      1([Retail Client])
       class 1 PeoplePerspective
-      2([WholesaleClient])
+      2([Wholesale Client])
       class 2 PeoplePerspective
       1---2
     end

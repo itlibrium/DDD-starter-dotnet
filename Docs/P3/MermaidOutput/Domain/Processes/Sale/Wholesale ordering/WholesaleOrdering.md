@@ -94,7 +94,7 @@ No related deployable units were found.
   flowchart LR
     subgraph 0["Actors"]
       direction TB
-      1([WholesaleClient])
+      1([Wholesale Client])
       class 1 PeoplePerspective
     end
     2(Wholesale Ordering)
@@ -133,8 +133,8 @@ No related deployable units were found.
 
 [Add to Order](../../../Concepts/Sales/WholesaleOrdering/OrderModification/AddToOrder.md)  
 [Confirm Offer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[Create Order](../../../Concepts/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
 [Create Order](../../../Concepts/Sales/WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Create Order](../../../Concepts/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
 [Get Offer](../../../Concepts/Sales/WholesaleOrdering/OrderPricing/GetOffer.md)  
 [Place Order](../../../Concepts/Sales/WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 

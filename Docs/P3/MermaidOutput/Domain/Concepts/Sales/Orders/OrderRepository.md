@@ -114,8 +114,8 @@ This view contains details information about Order Repository building block, in
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 [Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
 [Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
-[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 [Place Order](../OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 
 ### Zoom-out
 
@@ -125,7 +125,7 @@ This view contains details information about Order Repository building block, in
 
 ##### Domain Modules
 
-[Orders](Orders.md)  
+[Sales | Orders](Orders.md)  
 
 ---
 

@@ -92,7 +92,7 @@ This view contains details information about Confirm Offer business processes st
   flowchart TB
     0(Confirm Offer)
     class 0 DomainPerspective
-    1([WholesaleClient])
+    1([Wholesale Client])
     class 1 PeoplePerspective
     1-->|uses|0
     2([Core team])
@@ -166,7 +166,7 @@ This view contains details information about Confirm Offer business processes st
 
 ##### Domain Modules
 
-[Order Pricing](OrderPricing.md)  
+[Sales | Wholesale ordering | Order pricing](OrderPricing.md)  
 
 ##### Processes
 

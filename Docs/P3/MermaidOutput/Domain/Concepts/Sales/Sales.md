@@ -133,17 +133,17 @@ No direct building blocks were found.
 
 ##### Domain Modules
 
-[Clients](Clients/Clients.md)  
-[Commons](Commons/Commons.md)  
-[Exchange Rates](ExchangeRates/ExchangeRates.md)  
-[Fulfillment](Fulfillment/Fulfillment.md)  
-[Online Ordering](OnlineOrdering/OnlineOrdering.md)  
-[Orders](Orders/Orders.md)  
-[Pricing](Pricing/Pricing.md)  
-[Products](Products/Products.md)  
-[Sales Channels](SalesChannels/SalesChannels.md)  
-[Time](Time/Time.md)  
-[Wholesale Ordering](WholesaleOrdering/WholesaleOrdering.md)  
+[Sales | Clients](Clients/Clients.md)  
+[Sales | Commons](Commons/Commons.md)  
+[Sales | Exchange rates](ExchangeRates/ExchangeRates.md)  
+[Sales | Fulfillment](Fulfillment/Fulfillment.md)  
+[Sales | Online ordering](OnlineOrdering/OnlineOrdering.md)  
+[Sales | Orders](Orders/Orders.md)  
+[Sales | Pricing](Pricing/Pricing.md)  
+[Sales | Products](Products/Products.md)  
+[Sales | Sales channels](SalesChannels/SalesChannels.md)  
+[Sales | Time](Time/Time.md)  
+[Sales | Wholesale ordering](WholesaleOrdering/WholesaleOrdering.md)  
 
 ##### Processes
 

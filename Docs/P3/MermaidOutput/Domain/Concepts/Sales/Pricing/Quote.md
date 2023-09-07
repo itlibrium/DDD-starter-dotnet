@@ -142,7 +142,7 @@ This view contains details information about Quote building block, including:
 
 ##### Domain Modules
 
-[Pricing](Pricing.md)  
+[Sales | Pricing](Pricing.md)  
 
 ---
 

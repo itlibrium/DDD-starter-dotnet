@@ -73,7 +73,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Pricing](Pricing.md)  
+[Sales | Pricing](Pricing.md)  
 
 ---
 

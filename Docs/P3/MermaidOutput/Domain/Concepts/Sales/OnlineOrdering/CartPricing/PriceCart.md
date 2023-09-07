@@ -74,7 +74,7 @@ This view contains details information about Price Cart business processes step,
   flowchart TB
     0(Price Cart)
     class 0 DomainPerspective
-    1([RetailClient])
+    1([Retail Client])
     class 1 PeoplePerspective
     1-->|uses|0
     2([Core team])
@@ -133,7 +133,7 @@ This view contains details information about Price Cart business processes step,
 
 ##### Domain Modules
 
-[Cart Pricing](CartPricing.md)  
+[Sales | Online ordering | Cart pricing](CartPricing.md)  
 
 ##### Processes
 

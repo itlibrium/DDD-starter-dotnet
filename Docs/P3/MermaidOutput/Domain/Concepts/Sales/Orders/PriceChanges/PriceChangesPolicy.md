@@ -73,7 +73,7 @@ This view contains details information about Price Changes Policy building block
 
 ##### Domain Modules
 
-[Price Changes](PriceChanges.md)  
+[Sales | Orders | Price changes](PriceChanges.md)  
 
 ---
 

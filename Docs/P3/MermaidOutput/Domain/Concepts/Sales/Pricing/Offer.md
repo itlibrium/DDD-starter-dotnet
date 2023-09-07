@@ -166,7 +166,7 @@ This view contains details information about Offer building block, including:
 
 ##### Domain Modules
 
-[Pricing](Pricing.md)  
+[Sales | Pricing](Pricing.md)  
 
 ---
 

@@ -107,7 +107,7 @@ This view contains details information about Product Amount building block, incl
 
 ##### Domain Modules
 
-[Products](Products.md)  
+[Sales | Products](Products.md)  
 
 ---
 

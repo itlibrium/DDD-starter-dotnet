@@ -144,7 +144,7 @@ This view contains details information about ecommerce-monolith deployable unit,
 ##### Domain Modules
 
 [Payments](../../Domain/Concepts/Payments/Payments.md)  
-[Products Delivery](../../Domain/Concepts/Products Delivery/ProductsDelivery.md)  
+[Products delivery](../../Domain/Concepts/ProductsDelivery/ProductsDelivery.md)  
 [Sales](../../Domain/Concepts/Sales/Sales.md)  
 
 #### People perspective

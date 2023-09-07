@@ -69,7 +69,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Price Lists](PriceLists.md)  
+[Sales | Pricing | Price lists](PriceLists.md)  
 
 ---
 

@@ -61,7 +61,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Exchange Rates](ExchangeRates.md)  
+[Sales | Exchange rates](ExchangeRates.md)  
 
 ---
 

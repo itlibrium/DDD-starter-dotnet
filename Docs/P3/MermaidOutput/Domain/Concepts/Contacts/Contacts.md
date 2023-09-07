@@ -26,15 +26,12 @@ This view contains details information about Contacts domain module, including:
     1([Companies])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Database])
+    2([Groups])
     class 2 DomainPerspective
     0-->|contains|2
-    3([Groups])
+    3([Tags])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Tags])
-    class 4 DomainPerspective
-    0-->|contains|4
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -73,10 +70,9 @@ No engaged people were found.
 
 ##### Domain Modules
 
-[Companies](Companies/Companies.md)  
-[Database](Database/Database.md)  
-[Groups](Groups/Groups.md)  
-[Tags](Tags/Tags.md)  
+[Contacts | Companies](Companies/Companies.md)  
+[Contacts | Groups](Groups/Groups.md)  
+[Contacts | Tags](Tags/Tags.md)  
 
 ### Zoom-out
 

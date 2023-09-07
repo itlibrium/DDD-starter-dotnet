@@ -74,7 +74,7 @@ This view contains details information about Add to Order business processes ste
   flowchart TB
     0(Add to Order)
     class 0 DomainPerspective
-    1([WholesaleClient])
+    1([Wholesale Client])
     class 1 PeoplePerspective
     1-->|uses|0
     2([Core team])
@@ -136,7 +136,7 @@ This view contains details information about Add to Order business processes ste
 
 ##### Domain Modules
 
-[Order Modification](OrderModification.md)  
+[Sales | Wholesale ordering | Order modification](OrderModification.md)  
 
 ##### Processes
 

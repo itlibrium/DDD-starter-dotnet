@@ -104,7 +104,7 @@ This view contains details information about Order Factory building block, inclu
 
 ##### Domain Modules
 
-[Orders](Orders.md)  
+[Sales | Orders](Orders.md)  
 
 ---
 

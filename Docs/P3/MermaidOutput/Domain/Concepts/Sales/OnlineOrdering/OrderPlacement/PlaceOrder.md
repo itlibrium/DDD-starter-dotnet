@@ -83,7 +83,7 @@ This view contains details information about Place Order business processes step
   flowchart TB
     0(Place Order)
     class 0 DomainPerspective
-    1([RetailClient])
+    1([Retail Client])
     class 1 PeoplePerspective
     1-->|uses|0
     2([Core team])
@@ -154,7 +154,7 @@ This view contains details information about Place Order business processes step
 
 ##### Domain Modules
 
-[Order Placement](OrderPlacement.md)  
+[Sales | Online ordering | Order placement](OrderPlacement.md)  
 
 ##### Processes
 

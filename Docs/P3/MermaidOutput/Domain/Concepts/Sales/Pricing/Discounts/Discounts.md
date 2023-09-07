@@ -50,30 +50,21 @@ No related processes were found.
     2([Discount])
     class 2 DomainPerspective
     0-->|contains|2
-    3([Discount])
+    3([Discounts Repository])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Discounts Repository])
+    4([Percentage Discount])
     class 4 DomainPerspective
     0-->|contains|4
-    5([Percentage Discount])
+    5([Product Discount])
     class 5 DomainPerspective
     0-->|contains|5
-    6([Percentage Discount])
+    6([Product Level Discounts])
     class 6 DomainPerspective
     0-->|contains|6
-    7([Product Discount])
+    7([Value Discount])
     class 7 DomainPerspective
     0-->|contains|7
-    8([Product Level Discounts])
-    class 8 DomainPerspective
-    0-->|contains|8
-    9([Value Discount])
-    class 9 DomainPerspective
-    0-->|contains|9
-    10([Value Discount])
-    class 10 DomainPerspective
-    0-->|contains|10
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -128,10 +119,7 @@ No related processes were found.
 ##### Ddd Domain Services
 
 [Client Level Discounts](ClientLevelDiscounts.md)  
-[Discount](Discount.md)  
-[Percentage Discount](PercentageDiscount.md)  
 [Product Level Discounts](ProductLevelDiscounts.md)  
-[Value Discount](ValueDiscount.md)  
 
 ##### Ddd Repositories
 
@@ -170,7 +158,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Pricing](../Pricing.md)  
+[Sales | Pricing](../Pricing.md)  
 
 ---
 

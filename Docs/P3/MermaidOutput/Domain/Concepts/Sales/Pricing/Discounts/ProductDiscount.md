@@ -32,16 +32,14 @@ This view contains details information about Product Discount building block, in
     subgraph 5["Sales / Pricing / Discounts"]
       6([Discount])
       class 6 DomainPerspective
-      7([Discount])
-      class 7 DomainPerspective
     end
-    subgraph 8["Sales / Products"]
-      9([Product Unit])
-      class 9 DomainPerspective
+    subgraph 7["Sales / Products"]
+      8([Product Unit])
+      class 8 DomainPerspective
     end
     0-->|depends on|3
     3-->|depends on|5
-    3-->|depends on|8
+    3-->|depends on|7
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -60,10 +58,6 @@ No related processes were found.
 #### Domain perspective
 
 
-##### Ddd Domain Services
-
-[Discount](Discount.md)  
-
 ##### Ddd Value Objects
 
 [Discount](Discount.md)  
@@ -77,7 +71,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Discounts](Discounts.md)  
+[Sales | Pricing | Discounts](Discounts.md)  
 
 ---
 

@@ -22,26 +22,17 @@ This view contains details information about Value Discount building block, incl
     subgraph 0["Sales / Pricing / Discounts"]
       1([Discount])
       class 1 DomainPerspective
-      2([Discount])
-      class 2 DomainPerspective
-      3([Value Discount])
+    end
+    subgraph 2["Sales / Pricing / Discounts"]
+      3(Value Discount)
       class 3 DomainPerspective
     end
-    subgraph 4["Sales / Pricing / Discounts"]
-      5(Value Discount)
+    subgraph 4["Sales / Commons"]
+      5([Money])
       class 5 DomainPerspective
     end
-    subgraph 6["Sales / Commons"]
-      7([Money])
-      class 7 DomainPerspective
-    end
-    subgraph 8["Sales / Pricing / Discounts"]
-      9([Value Discount])
-      class 9 DomainPerspective
-    end
-    0-->|depends on|4
-    4-->|depends on|6
-    4-->|depends on|8
+    0-->|depends on|2
+    2-->|depends on|4
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -60,10 +51,6 @@ No related processes were found.
 #### Domain perspective
 
 
-##### Ddd Domain Services
-
-[Value Discount](ValueDiscount.md)  
-
 ##### Ddd Value Objects
 
 [Money](../../Commons/Money.md)  
@@ -76,7 +63,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Discounts](Discounts.md)  
+[Sales | Pricing | Discounts](Discounts.md)  
 
 ---
 

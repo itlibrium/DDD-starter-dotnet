@@ -16,34 +16,10 @@ This view contains definitions of key domain terms.
 ### Companies
 
 
-#### Old Api
-
-
-#### Rest Api
-
-
-### Database
-
-
-#### Migrations
-
-
 ### Groups
 
 
-#### Old Api
-
-
-#### Rest Api
-
-
 ### Tags
-
-
-#### Old Api
-
-
-#### Rest Api
 
 
 ## Payments
@@ -155,19 +131,13 @@ This view contains definitions of key domain terms.
 
 **Discount**
 
-**Discount**
-
 **Discounts Repository**
-
-**Percentage Discount**
 
 **Percentage Discount**
 
 **Product Discount**
 
 **Product Level Discounts**
-
-**Value Discount**
 
 **Value Discount**
 
@@ -202,8 +172,6 @@ This view contains definitions of key domain terms.
 **Offer Modifiers**
 
 **Offer Request**
-
-**Price Modifier**
 
 **Quote**
 

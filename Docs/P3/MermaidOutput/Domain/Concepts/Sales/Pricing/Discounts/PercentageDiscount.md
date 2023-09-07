@@ -24,28 +24,19 @@ This view contains details information about Percentage Discount building block,
       class 1 DomainPerspective
       2([Discount])
       class 2 DomainPerspective
-      3([Discount])
-      class 3 DomainPerspective
-      4([Percentage Discount])
+    end
+    subgraph 3["Sales / Pricing / Discounts"]
+      4(Percentage Discount)
       class 4 DomainPerspective
     end
-    subgraph 5["Sales / Pricing / Discounts"]
-      6(Percentage Discount)
+    subgraph 5["Sales / Commons"]
+      6([Money])
       class 6 DomainPerspective
+      7([Percentage])
+      class 7 DomainPerspective
     end
-    subgraph 7["Sales / Commons"]
-      8([Money])
-      class 8 DomainPerspective
-      9([Percentage])
-      class 9 DomainPerspective
-    end
-    subgraph 10["Sales / Pricing / Discounts"]
-      11([Percentage Discount])
-      class 11 DomainPerspective
-    end
-    0-->|depends on|5
-    5-->|depends on|7
-    5-->|depends on|10
+    0-->|depends on|3
+    3-->|depends on|5
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -64,10 +55,6 @@ No related processes were found.
 #### Domain perspective
 
 
-##### Ddd Domain Services
-
-[Percentage Discount](PercentageDiscount.md)  
-
 ##### Ddd Value Objects
 
 [Money](../../Commons/Money.md)  
@@ -81,7 +68,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Discounts](Discounts.md)  
+[Sales | Pricing | Discounts](Discounts.md)  
 
 ---
 

@@ -28,12 +28,6 @@ This view contains details information about Companies domain module, including:
     0---1
     1-->|is part of|0
     1---0
-    2([Old Api])
-    class 2 DomainPerspective
-    1-->|contains|2
-    3([Rest Api])
-    class 3 DomainPerspective
-    1-->|contains|3
     linkStyle 0,2 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -64,17 +58,6 @@ No engaged people were found.
 
 ## Next steps
 
-
-### Zoom-in
-
-
-#### Domain perspective
-
-
-##### Domain Modules
-
-[Old Api](OldApi/OldApi.md)  
-[Rest Api](RestApi/RestApi.md)  
 
 ### Zoom-out
 

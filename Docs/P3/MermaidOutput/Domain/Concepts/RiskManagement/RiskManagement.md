@@ -77,8 +77,8 @@ No engaged people were found.
 
 ##### Domain Modules
 
-[Calculation](Calculation/Calculation.md)  
-[Publication](Publication/Publication.md)  
+[Risk management | Calculation](Calculation/Calculation.md)  
+[Risk management | Publication](Publication/Publication.md)  
 
 ##### Processes
 

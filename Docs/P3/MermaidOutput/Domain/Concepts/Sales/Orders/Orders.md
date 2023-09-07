@@ -149,7 +149,7 @@ This view contains details information about Orders domain module, including:
 
 ##### Domain Modules
 
-[Price Changes](PriceChanges/PriceChanges.md)  
+[Sales | Orders | Price changes](PriceChanges/PriceChanges.md)  
 
 ##### Processes
 

@@ -50,7 +50,7 @@ No related processes were found.
 
 ##### Domain Modules
 
-[Sales Channels](SalesChannels.md)  
+[Sales | Sales channels](SalesChannels.md)  
 
 ---
 
