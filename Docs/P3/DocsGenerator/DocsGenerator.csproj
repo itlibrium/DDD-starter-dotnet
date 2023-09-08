@@ -10,7 +10,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-      <PackageReference Include="P3Model.Parser" Version="0.1.0-preview5" />
+      <PackageReference Include="P3Model.Parser" Version="0.1.0-preview6" />
     </ItemGroup>
 
     <ItemGroup>
