@@ -48,6 +48,23 @@ This view contains details information about Core team team, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain Modules
+
+[Sales](../../Domain/Concepts/Sales/Sales.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
+
 ### Zoom-out
 
 

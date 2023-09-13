@@ -48,6 +48,23 @@ This view contains details information about Inventory team team, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain Modules
+
+[Products delivery](../../Domain/Concepts/ProductsDelivery/ProductsDelivery.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
+
 ### Zoom-out
 
 

@@ -10,7 +10,7 @@
 
 ```mermaid
   flowchart TB
-    0(MyCompany e-commerce)
+    0(MyCompany e-commerce system)
     subgraph 1["Actors"]
       2([Retail Client])
       3([Wholesale Client])

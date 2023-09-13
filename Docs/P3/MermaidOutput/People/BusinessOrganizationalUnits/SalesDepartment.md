@@ -33,6 +33,17 @@ This view contains details information about Sales department, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain Modules
+
+[Payments](../../Domain/Concepts/Payments/Payments.md)  
+[Sales](../../Domain/Concepts/Sales/Sales.md)  
+
 ### Zoom-out
 
 

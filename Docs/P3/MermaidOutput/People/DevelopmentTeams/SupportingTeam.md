@@ -48,6 +48,23 @@ This view contains details information about Supporting team team, including:
 ## Next steps
 
 
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Domain Modules
+
+[Payments](../../Domain/Concepts/Payments/Payments.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
+
 ### Zoom-out
 
 
