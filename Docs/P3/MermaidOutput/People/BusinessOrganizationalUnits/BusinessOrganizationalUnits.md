@@ -26,6 +26,10 @@ This view contains all business organizational units that owns MyCompany e-comme
 ### Zoom-in
 
 
+#### Domain perspective
+
+[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+
 #### People perspective
 
 

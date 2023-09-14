@@ -47,6 +47,10 @@ This view contains details information about Sales department, including:
 ### Zoom-out
 
 
+#### Domain perspective
+
+[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+
 #### People perspective
 
 [Business Organizational Units](BusinessOrganizationalUnits.md)  

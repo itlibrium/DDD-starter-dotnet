@@ -51,6 +51,7 @@
 
 [Business Processes](Domain/Processes/BusinessProcesses.md)  
 [Domain Glossary](Domain/Glossary/Domain_Glossary.md)  
+[Domain Module Owners](Domain/Concepts/DomainModuleOwners.md)  
 [Domain Modules](Domain/Concepts/DomainModules.md)  
 
 #### Technology perspective

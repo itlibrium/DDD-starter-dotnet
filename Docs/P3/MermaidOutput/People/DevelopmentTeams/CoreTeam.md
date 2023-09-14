@@ -68,6 +68,10 @@ This view contains details information about Core team team, including:
 ### Zoom-out
 
 
+#### Domain perspective
+
+[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+
 #### People perspective
 
 [Development Teams](DevelopmentTeams.md)  

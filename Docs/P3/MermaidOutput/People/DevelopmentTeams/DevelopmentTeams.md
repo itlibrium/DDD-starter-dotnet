@@ -28,6 +28,10 @@ This view contains all development teams that build and maintain MyCompany e-com
 ### Zoom-in
 
 
+#### Domain perspective
+
+[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+
 #### People perspective
 
 
