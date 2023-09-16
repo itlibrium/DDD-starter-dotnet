@@ -42,17 +42,7 @@ This view contains details information about Online Ordering domain module, incl
 
 ### Related processes
 
-```mermaid
-  flowchart TB
-    0(Online Ordering)
-    class 0 DomainPerspective
-    1([Online Ordering])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related processes were found.  
 
 ### Direct building blocks
 
@@ -108,10 +98,6 @@ No direct building blocks were found.
 
 [Sales | Online ordering | Cart pricing](CartPricing/CartPricing.md)  
 [Sales | Online ordering | Order placement](OrderPlacement/OrderPlacement.md)  
-
-##### Processes
-
-[Online Ordering](../../../Processes/Sale/Online ordering/OnlineOrdering.md)  
 
 #### Technology perspective
 

@@ -15,7 +15,7 @@ using P3Model.Annotations.People;
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing
 {
     [UsedImplicitly]
-    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.FullName)]
+    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class GetQuickQuoteHandler : CommandHandler<GetQuickQuote, QuickQuoteCalculated>

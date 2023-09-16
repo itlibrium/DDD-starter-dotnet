@@ -28,7 +28,7 @@ This view contains details information about Order Repository building block, in
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Wholesale Ordering / Order Modification"]
-      5([Add to Order])
+      5([Add to Order Handler])
       class 5 DomainPerspective
     end
     subgraph 6["Sales / Wholesale Ordering / Order Placement"]
@@ -74,7 +74,7 @@ This view contains details information about Order Repository building block, in
     2([Create Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([Add to Order])
+    3([Add to Order Handler])
     class 3 DomainPerspective
     0-->|is used in|3
     4([Place Order])
@@ -110,7 +110,7 @@ This view contains details information about Order Repository building block, in
 
 ##### Process Steps
 
-[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Add to Order Handler](../WholesaleOrdering/OrderModification/AddToOrderHandler.md)  
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 [Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
 [Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  

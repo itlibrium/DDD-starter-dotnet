@@ -36,17 +36,7 @@ This view contains details information about Requesting domain module, including
 
 ### Related processes
 
-```mermaid
-  flowchart TB
-    0(Requesting)
-    class 0 DomainPerspective
-    1([Payment])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related processes were found.  
 
 ### Direct building blocks
 
@@ -107,10 +97,6 @@ This view contains details information about Requesting domain module, including
 
 #### Domain perspective
 
-
-##### Processes
-
-[Payment](../../../Processes/Sale/Payment/Payment.md)  
 
 ##### Process Steps
 

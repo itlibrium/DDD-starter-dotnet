@@ -1,50 +1,31 @@
 ﻿
 # Business Processes
 
-This view contains all business processes with their sub-processes.  
+This view contains all business processes  
 
 ---
 
 
-
-## Risk Management
-
 ```mermaid
   flowchart TB
-    0(Risk Management)
+    0(Fulfillment)
     class 0 DomainPerspective
-    1(Risk Score Calculation)
+    1(Online ordering)
     class 1 DomainPerspective
-    0-->|contains|1
-    2(Risk Score Publication)
+    2(Payment)
     class 2 DomainPerspective
-    0-->|contains|2
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
-
-## Sale
-
-```mermaid
-  flowchart TB
-    0(Sale)
-    class 0 DomainPerspective
-    1(Fulfillment)
-    class 1 DomainPerspective
-    0-->|contains|1
-    2(Online Ordering)
-    class 2 DomainPerspective
-    0-->|contains|2
-    3(Payment)
+    3(Products delivery)
     class 3 DomainPerspective
-    0-->|contains|3
-    4(Products Delivery)
+    4(Risk management)
     class 4 DomainPerspective
-    0-->|contains|4
-    5(Wholesale Ordering)
+    5(Risk score calculation)
     class 5 DomainPerspective
-    0-->|contains|5
+    6(Risk score publication)
+    class 6 DomainPerspective
+    7(Sale)
+    class 7 DomainPerspective
+    8(Wholesale ordering)
+    class 8 DomainPerspective
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -61,15 +42,15 @@ This view contains all business processes with their sub-processes.
 
 ##### Processes
 
-[Fulfillment](Sale/Fulfillment/Fulfillment.md)  
-[Online Ordering](Sale/Online ordering/OnlineOrdering.md)  
-[Payment](Sale/Payment/Payment.md)  
-[Products Delivery](Sale/Products delivery/ProductsDelivery.md)  
-[Risk Management](Risk management/RiskManagement.md)  
-[Risk Score Calculation](Risk management/Risk score calculation/RiskScoreCalculation.md)  
-[Risk Score Publication](Risk management/Risk score publication/RiskScorePublication.md)  
-[Sale](Sale/Sale.md)  
-[Wholesale Ordering](Sale/Wholesale ordering/WholesaleOrdering.md)  
+[Fulfillment](Fulfillment.md)  
+[Online ordering](OnlineOrdering.md)  
+[Payment](Payment.md)  
+[Products delivery](ProductsDelivery.md)  
+[Risk management](RiskManagement.md)  
+[Risk score calculation](RiskScoreCalculation.md)  
+[Risk score publication](RiskScorePublication.md)  
+[Sale](Sale.md)  
+[Wholesale ordering](WholesaleOrdering.md)  
 
 ### Zoom-out
 

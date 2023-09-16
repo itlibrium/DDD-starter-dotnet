@@ -1,13 +1,13 @@
 ﻿
 # Domain Module Owners
 
-This view shows how first level domain modules are assigned to development teams and business organizational units.  
+This view shows how top level domain modules are assigned to development teams and business organizational units.  
 
 ---
 
 
 
-## Development Teams and Domain Modules they maintain
+## Development Teams and top level Domain Modules they maintain
 
 ```mermaid
   flowchart TB
@@ -28,7 +28,7 @@ This view shows how first level domain modules are assigned to development teams
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Business Organizational Units and Domain Modules they own
+## Business Organizational Units and top level Domain Modules they own
 
 ```mermaid
   flowchart TB

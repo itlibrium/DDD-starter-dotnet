@@ -10,7 +10,7 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification
 {
-    [ProcessStep(nameof(AddToOrder), WholesaleOrderingProcess.FullName,
+    [ProcessStep(nameof(AddToOrder), WholesaleOrderingProcess.Name,
         NextSteps = new[]
         {
             nameof(AddedToOrder),

@@ -19,17 +19,7 @@ This view contains details information about Price Cart business processes step,
 
 ### Process
 
-```mermaid
-  flowchart TB
-    0(Price Cart)
-    class 0 DomainPerspective
-    1([Online Ordering])
-    class 1 DomainPerspective
-    0-->|is part of|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related process was found.  
 
 ### Used Building Blocks
 
@@ -134,10 +124,6 @@ This view contains details information about Price Cart business processes step,
 ##### Domain Modules
 
 [Sales | Online ordering | Cart pricing](CartPricing.md)  
-
-##### Processes
-
-[Online Ordering](../../../../Processes/Sale/Online ordering/OnlineOrdering.md)  
 
 ---
 

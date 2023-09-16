@@ -6,7 +6,7 @@ using P3Model.Annotations.Domain.StaticModel;
 namespace MyCompany.ECommerce.Payments.Requesting;
 
 [UsedImplicitly]
-[ProcessStep(nameof(RequestPayment), Process = PaymentProcess.FullName)]
+[ProcessStep(nameof(RequestPayment), Process = PaymentProcess.Name)]
 public class RequestPaymentHandler : CommandHandler<RequestPayment>
 {
     public Task Handle(RequestPayment command)

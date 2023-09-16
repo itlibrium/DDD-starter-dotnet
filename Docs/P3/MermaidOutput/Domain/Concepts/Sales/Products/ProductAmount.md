@@ -38,7 +38,7 @@ This view contains details information about Product Amount building block, incl
       class 8 DomainPerspective
     end
     subgraph 9["Sales / Wholesale Ordering / Order Modification"]
-      10([Add to Order])
+      10([Add to Order Handler])
       class 10 DomainPerspective
     end
     subgraph 11["Sales / Products"]
@@ -71,7 +71,7 @@ This view contains details information about Product Amount building block, incl
   flowchart TB
     0(Product Amount)
     class 0 DomainPerspective
-    1([Add to Order])
+    1([Add to Order Handler])
     class 1 DomainPerspective
     0-->|is used in|1
     classDef DomainPerspective stroke:#009900
@@ -97,7 +97,7 @@ This view contains details information about Product Amount building block, incl
 
 ##### Process Steps
 
-[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Add to Order Handler](../WholesaleOrdering/OrderModification/AddToOrderHandler.md)  
 
 ### Zoom-out
 

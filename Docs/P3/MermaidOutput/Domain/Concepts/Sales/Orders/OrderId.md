@@ -28,7 +28,7 @@ This view contains details information about Order Id building block, including:
       class 3 DomainPerspective
     end
     subgraph 4["Sales / Wholesale Ordering / Order Modification"]
-      5([Add to Order])
+      5([Add to Order Handler])
       class 5 DomainPerspective
     end
     subgraph 6["Sales / Wholesale Ordering / Order Placement"]
@@ -60,7 +60,7 @@ This view contains details information about Order Id building block, including:
   flowchart TB
     0(Order Id)
     class 0 DomainPerspective
-    1([Add to Order])
+    1([Add to Order Handler])
     class 1 DomainPerspective
     0-->|is used in|1
     2([Place Order])
@@ -88,7 +88,7 @@ This view contains details information about Order Id building block, including:
 
 ##### Process Steps
 
-[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Add to Order Handler](../WholesaleOrdering/OrderModification/AddToOrderHandler.md)  
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 [Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  
 [Place Order](../WholesaleOrdering/OrderPlacement/PlaceOrder.md)  

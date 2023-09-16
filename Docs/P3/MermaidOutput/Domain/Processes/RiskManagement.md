@@ -1,10 +1,9 @@
 ﻿
-# Risk Score Calculation
+# Risk management
 
 ***Process***  
 
-This view contains details information about Risk Score Calculation business process, including:
-- other related processes
+This view contains details information about Risk management business process, including:
 - process steps
 - related domain modules
 - related deployable units
@@ -17,22 +16,9 @@ This view contains details information about Risk Score Calculation business pro
 ## Domain Perspective
 
 
-### Related processes and steps
+### Related process steps
 
-```mermaid
-  flowchart TB
-    0([Risk Management])
-    class 0 DomainPerspective
-    1(Risk Score Calculation)
-    class 1 DomainPerspective
-    0---1
-    1-->|is part of|0
-    1---0
-    linkStyle 0,2 stroke:none
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related process steps were found.  
 
 ### Related domain modules
 
@@ -60,7 +46,7 @@ No engaged people were found.
 
 #### Domain perspective
 
-[Business Processes](../../BusinessProcesses.md)  
+[Business Processes](BusinessProcesses.md)  
 
 ---
 

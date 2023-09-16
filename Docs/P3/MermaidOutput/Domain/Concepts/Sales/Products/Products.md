@@ -36,17 +36,7 @@ This view contains details information about Products domain module, including:
 
 ### Related processes
 
-```mermaid
-  flowchart TB
-    0(Products)
-    class 0 DomainPerspective
-    1([Wholesale Ordering])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related processes were found.  
 
 ### Direct building blocks
 
@@ -127,10 +117,6 @@ This view contains details information about Products domain module, including:
 [Product Amount](ProductAmount.md)  
 [Product Id](ProductId.md)  
 [Product Unit](ProductUnit.md)  
-
-##### Processes
-
-[Wholesale Ordering](../../../Processes/Sale/Wholesale ordering/WholesaleOrdering.md)  
 
 #### Technology perspective
 

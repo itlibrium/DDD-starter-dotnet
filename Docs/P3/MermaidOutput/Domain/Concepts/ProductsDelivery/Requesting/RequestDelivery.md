@@ -19,17 +19,7 @@ This view contains details information about Request Delivery business processes
 
 ### Process
 
-```mermaid
-  flowchart TB
-    0(Request Delivery)
-    class 0 DomainPerspective
-    1([Products Delivery])
-    class 1 DomainPerspective
-    0-->|is part of|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related process was found.  
 
 ### Used Building Blocks
 
@@ -99,10 +89,6 @@ No building blocks were found. Maybe this process step is not implemented yet?
 ##### Domain Modules
 
 [Products delivery | Requesting](Requesting.md)  
-
-##### Processes
-
-[Products Delivery](../../../Processes/Sale/Products delivery/ProductsDelivery.md)  
 
 ---
 

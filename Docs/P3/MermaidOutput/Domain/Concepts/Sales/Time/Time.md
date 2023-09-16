@@ -36,20 +36,7 @@ This view contains details information about Time domain module, including:
 
 ### Related processes
 
-```mermaid
-  flowchart TB
-    0(Time)
-    class 0 DomainPerspective
-    1([Online Ordering])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    2([Wholesale Ordering])
-    class 2 DomainPerspective
-    0-->|takes part in|2
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related processes were found.  
 
 ### Direct building blocks
 
@@ -114,11 +101,6 @@ This view contains details information about Time domain module, including:
 ##### Ddd Domain Services
 
 [Clock](Clock.md)  
-
-##### Processes
-
-[Online Ordering](../../../Processes/Sale/Online ordering/OnlineOrdering.md)  
-[Wholesale Ordering](../../../Processes/Sale/Wholesale ordering/WholesaleOrdering.md)  
 
 #### Technology perspective
 

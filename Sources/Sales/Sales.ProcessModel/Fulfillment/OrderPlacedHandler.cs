@@ -9,7 +9,7 @@ using P3Model.Annotations.Domain.StaticModel.DDD;
 namespace MyCompany.ECommerce.Sales.Fulfillment;
 
 [UsedImplicitly]
-[ProcessStep(nameof(OrderPlaced), Process = FulfillmentProcess.FullName)]
+[ProcessStep(nameof(OrderPlaced), Process = FulfillmentProcess.Name)]
 [DddApplicationService]
 public class OrderPlacedHandler : DomainEventHandler<OrderPlaced>, DomainEventHandler<MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement.OrderPlaced>
 {

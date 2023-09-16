@@ -10,7 +10,7 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation
 {
-    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.FullName)]
+    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>

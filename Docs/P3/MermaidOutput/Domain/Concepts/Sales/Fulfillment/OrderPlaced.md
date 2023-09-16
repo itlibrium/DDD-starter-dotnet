@@ -19,17 +19,7 @@ This view contains details information about Order Placed business processes ste
 
 ### Process
 
-```mermaid
-  flowchart TB
-    0(Order Placed)
-    class 0 DomainPerspective
-    1([Fulfillment])
-    class 1 DomainPerspective
-    0-->|is part of|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related process was found.  
 
 ### Used Building Blocks
 
@@ -99,10 +89,6 @@ No building blocks were found. Maybe this process step is not implemented yet?
 ##### Domain Modules
 
 [Sales | Fulfillment](Fulfillment.md)  
-
-##### Processes
-
-[Fulfillment](../../../Processes/Sale/Fulfillment/Fulfillment.md)  
 
 ---
 

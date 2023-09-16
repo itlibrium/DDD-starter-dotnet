@@ -17,7 +17,7 @@ using P3Model.Annotations.People;
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
     [UsedImplicitly]
-    [ProcessStep(nameof(PlaceOrder), Process = OnlineOrderingProcess.FullName)]
+    [ProcessStep(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
     [Actor(Actors.RetailClient)]
     [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
