@@ -1,12 +1,11 @@
 ﻿
-# Order Creation
+# Order fulfillment
 
-***Domain Module***  
+***Process***  
 
-This view contains details information about Order Creation domain module, including:
-- other related modules
-- related processes
-- related building blocks
+This view contains details information about Order fulfillment business process, including:
+- process steps
+- related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
 
@@ -17,46 +16,29 @@ This view contains details information about Order Creation domain module, inclu
 ## Domain Perspective
 
 
-### Related modules
+### Related process steps
 
 ```mermaid
   flowchart TB
-    0([Wholesale Ordering])
+    0(Order fulfillment)
     class 0 DomainPerspective
-    1(Order Creation)
-    class 1 DomainPerspective
-    0---1
-    1-->|is part of|0
-    1---0
-    linkStyle 0,2 stroke:none
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
-
-### Related processes
-
-```mermaid
-  flowchart TB
-    0(Order Creation)
-    class 0 DomainPerspective
-    1([Wholesale ordering])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
-
-### Direct building blocks
-
-```mermaid
-  flowchart TB
-    0(Order Creation)
-    class 0 DomainPerspective
-    1([Create Order])
+    1([Order Placed])
     class 1 DomainPerspective
     0-->|contains|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
+
+### Related top level domain modules
+
+```mermaid
+  flowchart TB
+    0(Order fulfillment)
+    class 0 DomainPerspective
+    1([Sales])
+    class 1 DomainPerspective
+    0-->|belongs to|1
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -69,7 +51,7 @@ This view contains details information about Order Creation domain module, inclu
 
 ```mermaid
   flowchart TB
-    0(Order Creation)
+    0(Order fulfillment)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -85,15 +67,31 @@ This view contains details information about Order Creation domain module, inclu
 ### Engaged people
 
 ```mermaid
-  flowchart TB
-    0(Order Creation)
-    class 0 DomainPerspective
-    1([Core team])
-    class 1 PeoplePerspective
-    1-->|develops & maintains|0
-    2([Sales department])
-    class 2 PeoplePerspective
-    2-->|owns|0
+  flowchart LR
+    subgraph 0["Actors"]
+      direction TB
+      1([no actors found])
+    end
+    2(Order fulfillment)
+    class 2 DomainPerspective
+    0-->|uses|2
+    subgraph 3["Teams"]
+      direction TB
+      4([Core team])
+      class 4 PeoplePerspective
+    end
+    2---3
+    3-->|develops & maintains|2
+    3---2
+    subgraph 5["Business"]
+      direction TB
+      6([Sales department])
+      class 6 PeoplePerspective
+    end
+    2---5
+    5-->|owns|2
+    5---2
+    linkStyle 1,3,4,6 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -108,41 +106,34 @@ This view contains details information about Order Creation domain module, inclu
 #### Domain perspective
 
 
-##### Processes
-
-[Wholesale ordering](../../../../Processes/WholesaleOrdering.md)  
-
 ##### Process Steps
 
-[Create Order](CreateOrder.md)  
+[Order Placed](../Concepts/Sales/Fulfillment/OrderPlaced.md)  
 
 #### Technology perspective
 
 
 ##### Deployable Units
 
-[ecommerce-monolith](../../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
+[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 #### People perspective
 
 
 ##### Business Organizational Units
 
-[Sales department](../../../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
+[Sales department](../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
 
 ##### Development Teams
 
-[Core team](../../../../../People/DevelopmentTeams/CoreTeam.md)  
+[Core team](../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 
 
 #### Domain perspective
 
-
-##### Domain Modules
-
-[Sales | Wholesale ordering](../WholesaleOrdering.md)  
+[Business Processes](BusinessProcesses.md)  
 
 ---
 

@@ -36,7 +36,17 @@ This view contains details information about Publication domain module, includin
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Publication)
+    class 0 DomainPerspective
+    1([Risk score publication])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -74,6 +84,10 @@ No engaged people were found.
 
 #### Domain perspective
 
+
+##### Processes
+
+[Risk score publication](../../../Processes/RiskScorePublication.md)  
 
 ##### Process Steps
 

@@ -18,11 +18,31 @@ This view contains details information about Risk score publication business pro
 
 ### Related process steps
 
-No related process steps were found.  
+```mermaid
+  flowchart TB
+    0(Risk score publication)
+    class 0 DomainPerspective
+    1([Get Risk Score])
+    class 1 DomainPerspective
+    0-->|contains|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
-### Related domain modules
+### Related top level domain modules
 
-No related domain modules were found.  
+```mermaid
+  flowchart TB
+    0(Risk score publication)
+    class 0 DomainPerspective
+    1([Risk Management])
+    class 1 DomainPerspective
+    0-->|belongs to|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## Technology Perspective
 
@@ -40,6 +60,16 @@ No engaged people were found.
 
 ## Next steps
 
+
+### Zoom-in
+
+
+#### Domain perspective
+
+
+##### Process Steps
+
+[Get Risk Score](../Concepts/RiskManagement/Publication/GetRiskScore.md)  
 
 ### Zoom-out
 

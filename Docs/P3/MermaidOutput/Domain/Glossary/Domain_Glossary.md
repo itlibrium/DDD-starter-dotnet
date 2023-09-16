@@ -211,7 +211,7 @@ This view contains definitions of key domain terms.
 
 #### Order Modification
 
-**Add to Order Handler**
+**Add to Order**
 
 
 #### Order Placement

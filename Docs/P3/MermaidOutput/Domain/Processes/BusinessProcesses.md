@@ -8,9 +8,9 @@ This view contains all business processes
 
 ```mermaid
   flowchart TB
-    0(Fulfillment)
+    0(Online ordering)
     class 0 DomainPerspective
-    1(Online ordering)
+    1(Order fulfillment)
     class 1 DomainPerspective
     2(Payment)
     class 2 DomainPerspective
@@ -42,8 +42,8 @@ This view contains all business processes
 
 ##### Processes
 
-[Fulfillment](Fulfillment.md)  
 [Online ordering](OnlineOrdering.md)  
+[Order fulfillment](OrderFulfillment.md)  
 [Payment](Payment.md)  
 [Products delivery](ProductsDelivery.md)  
 [Risk management](RiskManagement.md)  

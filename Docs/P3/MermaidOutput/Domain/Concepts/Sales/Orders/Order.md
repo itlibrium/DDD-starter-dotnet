@@ -32,7 +32,7 @@ This view contains details information about Order building block, including:
       class 5 DomainPerspective
     end
     subgraph 6["Sales / Wholesale Ordering / Order Modification"]
-      7([Add to Order Handler])
+      7([Add to Order])
       class 7 DomainPerspective
     end
     subgraph 8["Sales / Wholesale Ordering / Order Placement"]
@@ -98,7 +98,7 @@ This view contains details information about Order building block, including:
     2([Create Order])
     class 2 DomainPerspective
     0-->|is used in|2
-    3([Add to Order Handler])
+    3([Add to Order])
     class 3 DomainPerspective
     0-->|is used in|3
     4([Place Order])
@@ -139,7 +139,7 @@ This view contains details information about Order building block, including:
 
 ##### Process Steps
 
-[Add to Order Handler](../WholesaleOrdering/OrderModification/AddToOrderHandler.md)  
+[Add to Order](../WholesaleOrdering/OrderModification/AddToOrder.md)  
 [Confirm Offer](../WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
 [Create Order](../WholesaleOrdering/OrderCreation/CreateOrder.md)  
 [Get Offer](../WholesaleOrdering/OrderPricing/GetOffer.md)  

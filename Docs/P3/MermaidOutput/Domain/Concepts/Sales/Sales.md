@@ -63,7 +63,23 @@ This view contains details information about Sales domain module, including:
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Sales)
+    class 0 DomainPerspective
+    1([Online ordering])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    2([Order fulfillment])
+    class 2 DomainPerspective
+    0-->|takes part in|2
+    3([Wholesale ordering])
+    class 3 DomainPerspective
+    0-->|takes part in|3
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -128,6 +144,12 @@ No direct building blocks were found.
 [Sales | Sales channels](SalesChannels/SalesChannels.md)  
 [Sales | Time](Time/Time.md)  
 [Sales | Wholesale ordering](WholesaleOrdering/WholesaleOrdering.md)  
+
+##### Processes
+
+[Online ordering](../../Processes/OnlineOrdering.md)  
+[Order fulfillment](../../Processes/OrderFulfillment.md)  
+[Wholesale ordering](../../Processes/WholesaleOrdering.md)  
 
 #### Technology perspective
 

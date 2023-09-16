@@ -19,7 +19,17 @@ This view contains details information about Create Order business processes ste
 
 ### Process
 
-No related process was found.  
+```mermaid
+  flowchart TB
+    0(Create Order)
+    class 0 DomainPerspective
+    1([Wholesale ordering])
+    class 1 DomainPerspective
+    0-->|is part of|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Used Building Blocks
 
@@ -120,6 +130,10 @@ No related process was found.
 ##### Domain Modules
 
 [Sales | Wholesale ordering | Product pricing](ProductPricing.md)  
+
+##### Processes
+
+[Wholesale ordering](../../../../Processes/WholesaleOrdering.md)  
 
 ---
 

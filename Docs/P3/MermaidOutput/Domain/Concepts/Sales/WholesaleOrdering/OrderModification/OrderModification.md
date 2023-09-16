@@ -36,7 +36,17 @@ This view contains details information about Order Modification domain module, i
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Order Modification)
+    class 0 DomainPerspective
+    1([Wholesale ordering])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -44,7 +54,7 @@ No related processes were found.
   flowchart TB
     0(Order Modification)
     class 0 DomainPerspective
-    1([Add to Order Handler])
+    1([Add to Order])
     class 1 DomainPerspective
     0-->|contains|1
     classDef DomainPerspective stroke:#009900
@@ -98,9 +108,13 @@ No related processes were found.
 #### Domain perspective
 
 
+##### Processes
+
+[Wholesale ordering](../../../../Processes/WholesaleOrdering.md)  
+
 ##### Process Steps
 
-[Add to Order Handler](AddToOrderHandler.md)  
+[Add to Order](AddToOrder.md)  
 
 #### Technology perspective
 

@@ -33,7 +33,17 @@ This view contains details information about Payments domain module, including:
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Payments)
+    class 0 DomainPerspective
+    1([Payment])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -88,6 +98,10 @@ No direct building blocks were found.
 ##### Domain Modules
 
 [Payments | Requesting](Requesting/Requesting.md)  
+
+##### Processes
+
+[Payment](../../Processes/Payment.md)  
 
 #### Technology perspective
 

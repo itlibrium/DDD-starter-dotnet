@@ -1,9 +1,9 @@
 ﻿
-# Add to Order Handler
+# Add to Order
 
 ***Process Step***  
 
-This view contains details information about Add to Order Handler business processes step, including:
+This view contains details information about Add to Order business processes step, including:
 - related process
 - next process steps
 - related domain module
@@ -19,13 +19,23 @@ This view contains details information about Add to Order Handler business proce
 
 ### Process
 
-No related process was found.  
+```mermaid
+  flowchart TB
+    0(Add to Order)
+    class 0 DomainPerspective
+    1([Wholesale ordering])
+    class 1 DomainPerspective
+    0-->|is part of|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Used Building Blocks
 
 ```mermaid
   flowchart TB
-    0(Add to Order Handler)
+    0(Add to Order)
     class 0 DomainPerspective
     1([Order])
     class 1 DomainPerspective
@@ -48,7 +58,7 @@ No related process was found.
 
 ```mermaid
   flowchart TB
-    0(Add to Order Handler)
+    0(Add to Order)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -62,7 +72,7 @@ No related process was found.
 
 ```mermaid
   flowchart TB
-    0(Add to Order Handler)
+    0(Add to Order)
     class 0 DomainPerspective
     1([Wholesale Client])
     class 1 PeoplePerspective
@@ -127,6 +137,10 @@ No related process was found.
 ##### Domain Modules
 
 [Sales | Wholesale ordering | Order modification](OrderModification.md)  
+
+##### Processes
+
+[Wholesale ordering](../../../../Processes/WholesaleOrdering.md)  
 
 ---
 

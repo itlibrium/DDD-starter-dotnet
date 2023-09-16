@@ -36,7 +36,17 @@ This view contains details information about Price Changes domain module, includ
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Price Changes)
+    class 0 DomainPerspective
+    1([Wholesale ordering])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -116,6 +126,10 @@ No related processes were found.
 ##### Ddd Factories
 
 [Price Changes Policies](PriceChangesPolicies.md)  
+
+##### Processes
+
+[Wholesale ordering](../../../../Processes/WholesaleOrdering.md)  
 
 #### Technology perspective
 

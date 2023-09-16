@@ -19,7 +19,17 @@ This view contains details information about Place Order business processes step
 
 ### Process
 
-No related process was found.  
+```mermaid
+  flowchart TB
+    0(Place Order)
+    class 0 DomainPerspective
+    1([Online ordering])
+    class 1 DomainPerspective
+    0-->|is part of|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Used Building Blocks
 
@@ -145,6 +155,10 @@ No related process was found.
 ##### Domain Modules
 
 [Sales | Online ordering | Order placement](OrderPlacement.md)  
+
+##### Processes
+
+[Online ordering](../../../../Processes/OnlineOrdering.md)  
 
 ---
 

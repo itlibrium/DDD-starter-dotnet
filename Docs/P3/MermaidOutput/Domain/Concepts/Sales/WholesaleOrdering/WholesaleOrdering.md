@@ -51,7 +51,17 @@ This view contains details information about Wholesale Ordering domain module, i
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Wholesale Ordering)
+    class 0 DomainPerspective
+    1([Wholesale ordering])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -110,6 +120,10 @@ No direct building blocks were found.
 [Sales | Wholesale ordering | Order placement](OrderPlacement/OrderPlacement.md)  
 [Sales | Wholesale ordering | Order pricing](OrderPricing/OrderPricing.md)  
 [Sales | Wholesale ordering | Product pricing](ProductPricing/ProductPricing.md)  
+
+##### Processes
+
+[Wholesale ordering](../../../Processes/WholesaleOrdering.md)  
 
 #### Technology perspective
 

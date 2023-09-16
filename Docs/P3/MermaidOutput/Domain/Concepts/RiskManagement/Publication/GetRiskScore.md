@@ -19,7 +19,17 @@ This view contains details information about Get Risk Score business processes s
 
 ### Process
 
-No related process was found.  
+```mermaid
+  flowchart TB
+    0(Get Risk Score)
+    class 0 DomainPerspective
+    1([Risk score publication])
+    class 1 DomainPerspective
+    0-->|is part of|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Used Building Blocks
 
@@ -45,6 +55,10 @@ No engaged people were found.
 ##### Domain Modules
 
 [Risk management | Publication](Publication.md)  
+
+##### Processes
+
+[Risk score publication](../../../Processes/RiskScorePublication.md)  
 
 ---
 

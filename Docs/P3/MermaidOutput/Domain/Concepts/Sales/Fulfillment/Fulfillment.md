@@ -36,7 +36,17 @@ This view contains details information about Fulfillment domain module, includin
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Fulfillment)
+    class 0 DomainPerspective
+    1([Order fulfillment])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -97,6 +107,10 @@ No related processes were found.
 
 #### Domain perspective
 
+
+##### Processes
+
+[Order fulfillment](../../../Processes/OrderFulfillment.md)  
 
 ##### Process Steps
 

@@ -39,7 +39,20 @@ This view contains details information about Orders domain module, including:
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Orders)
+    class 0 DomainPerspective
+    1([Online ordering])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    2([Wholesale ordering])
+    class 2 DomainPerspective
+    0-->|takes part in|2
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -137,6 +150,11 @@ No related processes were found.
 ##### Domain Modules
 
 [Sales | Orders | Price changes](PriceChanges/PriceChanges.md)  
+
+##### Processes
+
+[Online ordering](../../../Processes/OnlineOrdering.md)  
+[Wholesale ordering](../../../Processes/WholesaleOrdering.md)  
 
 #### Technology perspective
 
