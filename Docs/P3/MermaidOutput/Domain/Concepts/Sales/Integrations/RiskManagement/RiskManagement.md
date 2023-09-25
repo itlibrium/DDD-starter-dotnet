@@ -34,7 +34,17 @@ No direct building blocks were found.
 
 ### Related deployable units
 
-No related deployable units were found.  
+```mermaid
+  flowchart TB
+    0(Risk Management)
+    class 0 DomainPerspective
+    1([ecommerce-monolith])
+    class 1 TechnologyPerspective
+    0-->|is deployed in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## People Perspective
 
@@ -45,6 +55,16 @@ No engaged people were found.
 
 ## Next steps
 
+
+### Zoom-in
+
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 ### Zoom-out
 

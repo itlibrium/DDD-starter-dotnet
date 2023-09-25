@@ -67,7 +67,17 @@ This view contains details information about Publication domain module, includin
 
 ### Related deployable units
 
-No related deployable units were found.  
+```mermaid
+  flowchart TB
+    0(Publication)
+    class 0 DomainPerspective
+    1([ecommerce-monolith])
+    class 1 TechnologyPerspective
+    0-->|is deployed in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## People Perspective
 
@@ -92,6 +102,13 @@ No engaged people were found.
 ##### Process Steps
 
 [Get Risk Score](GetRiskScore.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 ### Zoom-out
 

@@ -20,21 +20,30 @@ This view contains details information about ecommerce-monolith deployable unit,
   flowchart TB
     0(ecommerce-monolith)
     class 0 TechnologyPerspective
-    1([Payments])
+    1([Contacts])
     class 1 DomainPerspective
     1-->|is deployed in|0
-    2([Products Delivery])
+    2([Payments])
     class 2 DomainPerspective
     2-->|is deployed in|0
-    3([Sales])
+    3([Products Delivery])
     class 3 DomainPerspective
     3-->|is deployed in|0
+    4([Risk Management])
+    class 4 DomainPerspective
+    4-->|is deployed in|0
+    5([Sales])
+    class 5 DomainPerspective
+    5-->|is deployed in|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
 ```
 
 ## Technology Perspective
+
+
+### Tier, CSharp Projects and their Layers
 
 ```mermaid
   flowchart TB
@@ -109,6 +118,24 @@ This view contains details information about ecommerce-monolith deployable unit,
     classDef PeoplePerspective stroke:#FFF014
 ```
 
+### Infrastructure
+
+```mermaid
+  flowchart TB
+    0(ecommerce-monolith)
+    class 0 TechnologyPerspective
+    subgraph 1["Postgres"]
+      2([Contacts])
+      class 2 TechnologyPerspective
+      3([Main])
+      class 3 TechnologyPerspective
+    end
+    0-->|uses|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
+
 ## People Perspective
 
 
@@ -143,8 +170,10 @@ This view contains details information about ecommerce-monolith deployable unit,
 
 ##### Domain Modules
 
+[Contacts](../../Domain/Concepts/Contacts/Contacts.md)  
 [Payments](../../Domain/Concepts/Payments/Payments.md)  
 [Products delivery](../../Domain/Concepts/ProductsDelivery/ProductsDelivery.md)  
+[Risk management](../../Domain/Concepts/RiskManagement/RiskManagement.md)  
 [Sales](../../Domain/Concepts/Sales/Sales.md)  
 
 #### People perspective
