@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview01" />
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
       <PackageReference Include="TaskTupleAwaiter" Version="2.0.0" />
     </ItemGroup>
 
