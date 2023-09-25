@@ -10,4 +10,8 @@
       <ProjectReference Include="..\TechnicalStuff.Crud\TechnicalStuff.Crud.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
+    </ItemGroup>
+
 </Project>
