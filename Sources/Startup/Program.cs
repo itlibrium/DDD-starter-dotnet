@@ -71,7 +71,7 @@ Use REST API instead whenever possible.";
 void ConfigureDatabases()
 {
     var connectionString = builder.Configuration.GetConnectionString("Main");
-    builder.Services.AddScoped<MainDb>(_ => new CrmDb(connectionString));
+    builder.Services.AddScoped<MainDb>(_ => new MainECommerceDb(connectionString));
 }
 
 void ConfigureMessagingServices()

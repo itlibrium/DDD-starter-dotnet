@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.TechnicalStuff.Ef.ValueConverters;
 using MyCompany.ECommerce.TechnicalStuff.ValueObjects;
+using P3Model.Annotations.Technology;
 
 namespace MyCompany.ECommerce.Sales.Database.Sql.EF
 {
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
+    [Database("Main", ClusterName = "Postgres")]
     public class SalesDbContext : DbContext
     {
         public DbSet<DbOrder> Orders { get; set; }
