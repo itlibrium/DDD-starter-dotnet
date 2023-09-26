@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;
@@ -9,8 +10,6 @@ using MyCompany.ECommerce.Sales.Orders.PriceChanges;
 using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.Sales.Time;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain.StaticModel;
@@ -19,14 +18,10 @@ using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 {
-    [ProcessStep(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.Name,
-        NextSteps = new[]
-        {
-            nameof(AddedToOrder),
-            nameof(PlaceOrder)
-        })]
+    [ProcessStep(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     [DddApplicationService]
+    [UsedImplicitly]
     public class ConfirmOfferHandler : CommandHandler<ConfirmOffer, OfferConfirmed>
     {
         private readonly Order.Repository _orders;
