@@ -28,7 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Startup\Startup.csproj" />
+      <ProjectReference Include="..\..\Monolith.Startup\Monolith.Startup.csproj" />
     </ItemGroup>
 
 </Project>

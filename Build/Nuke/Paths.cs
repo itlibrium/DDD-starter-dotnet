@@ -11,6 +11,6 @@ namespace MyCompany.ECommerce.Nuke
         public static readonly AbsolutePath ArtifactsDirectory = NukeDirectory / "Artifacts";
         public static readonly AbsolutePath BinDirectory = ArtifactsDirectory / "Bin";
         
-        public static readonly AbsolutePath StartupProjectFile = SourcesDirectory / "Startup" / "Startup.csproj";
+        public static readonly AbsolutePath StartupProjectFile = SourcesDirectory / "Monolith.Startup" / "Monolith.Startup.csproj";
     }
 }

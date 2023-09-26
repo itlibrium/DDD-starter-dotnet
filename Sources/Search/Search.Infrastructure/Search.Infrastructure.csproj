@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>MyCompany.ECommerce.Search.Infrastructure</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Search</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
+    </ItemGroup>
+
+</Project>

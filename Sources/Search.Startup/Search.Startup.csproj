@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AssemblyName>MyCompany.ECommerce.Search.Startup</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Search</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Search\Search.Api\Search.Api.csproj" />
+      <ProjectReference Include="..\Search\Search.Infrastructure\Search.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

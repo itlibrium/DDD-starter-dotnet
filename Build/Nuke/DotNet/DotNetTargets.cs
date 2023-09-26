@@ -20,7 +20,7 @@ namespace MyCompany.ECommerce.Nuke.DotNet
     {
         private static readonly ISet<string> RootProjects = new HashSet<string>
         {
-            "Startup",
+            "Monolith.Startup",
             "Sales.FluentMigrations"
         };
 

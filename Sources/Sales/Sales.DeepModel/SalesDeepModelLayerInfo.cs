@@ -3,8 +3,8 @@ using System.Runtime.CompilerServices;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.Technology.CleanArchitecture;
 
-[assembly: InternalsVisibleTo("MyCompany.Crm.Startup")]
-[assembly: InternalsVisibleTo("MyCompany.Crm.Sales.IntegrationTests")]
+[assembly: InternalsVisibleTo("MyCompany.ECommerce.Monolith.Startup")]
+[assembly: InternalsVisibleTo("MyCompany.ECommerce.Sales.IntegrationTests")]
 [assembly: EntitiesLayer]
 [assembly: DomainModel]
 

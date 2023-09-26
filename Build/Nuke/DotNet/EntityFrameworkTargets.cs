@@ -9,7 +9,7 @@ namespace MyCompany.ECommerce.Nuke.DotNet
 {
     public static class EntityFrameworkTargets
     {
-        private const string StartupProject = "Startup/Startup.csproj";
+        private const string StartupProject = "Monolith.Startup/Monolith.Startup.csproj";
         // TODO: Automatic detecting all projects with DbContexts.
         private static readonly (string Project, string Name)[] DbContexts =
         {
