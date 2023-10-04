@@ -87,9 +87,9 @@ This view contains details information about ecommerce-monolith deployable unit,
     0(ecommerce-monolith)
     class 0 TechnologyPerspective
     subgraph 1["Postgres"]
-      2([Main])
+      2([Contacts])
       class 2 TechnologyPerspective
-      3([Contacts])
+      3([Main])
       class 3 TechnologyPerspective
     end
     0-->|uses|1

@@ -14,14 +14,16 @@ This view shows how top level domain modules are assigned to development teams a
     subgraph 0["Supporting team"]
       1(Payments)
       class 1 DomainPerspective
+      2(Search)
+      class 2 DomainPerspective
     end
-    subgraph 2["Inventory team"]
-      3(Products Delivery)
-      class 3 DomainPerspective
+    subgraph 3["Inventory team"]
+      4(Products Delivery)
+      class 4 DomainPerspective
     end
-    subgraph 4["Core team"]
-      5(Sales)
-      class 5 DomainPerspective
+    subgraph 5["Core team"]
+      6(Sales)
+      class 6 DomainPerspective
     end
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -37,10 +39,12 @@ This view shows how top level domain modules are assigned to development teams a
       class 1 DomainPerspective
       2(Sales)
       class 2 DomainPerspective
+      3(Search)
+      class 3 DomainPerspective
     end
-    subgraph 3["Inventory department"]
-      4(Products Delivery)
-      class 4 DomainPerspective
+    subgraph 4["Inventory department"]
+      5(Products Delivery)
+      class 5 DomainPerspective
     end
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
@@ -82,6 +86,7 @@ This view shows how top level domain modules are assigned to development teams a
 [Products delivery](ProductsDelivery/ProductsDelivery.md)  
 [Risk management](RiskManagement/RiskManagement.md)  
 [Sales](Sales/Sales.md)  
+[Search](Search/Search.md)  
 
 #### People perspective
 

@@ -25,6 +25,9 @@ This view contains details information about Sales department, including:
     2([Sales])
     class 2 DomainPerspective
     0-->|owns|2
+    3([Search])
+    class 3 DomainPerspective
+    0-->|owns|3
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -43,6 +46,7 @@ This view contains details information about Sales department, including:
 
 [Payments](../../Domain/Concepts/Payments/Payments.md)  
 [Sales](../../Domain/Concepts/Sales/Sales.md)  
+[Search](../../Domain/Concepts/Search/Search.md)  
 
 ### Zoom-out
 

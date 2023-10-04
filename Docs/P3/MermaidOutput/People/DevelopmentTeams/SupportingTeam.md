@@ -23,6 +23,9 @@ This view contains details information about Supporting team team, including:
     1([Payments])
     class 1 DomainPerspective
     0-->|develops & maintains|1
+    2([Search])
+    class 2 DomainPerspective
+    0-->|develops & maintains|2
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -40,6 +43,9 @@ This view contains details information about Supporting team team, including:
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
     0-->|maintains|1
+    2([ecommerce-search])
+    class 2 TechnologyPerspective
+    0-->|maintains|2
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -57,6 +63,7 @@ This view contains details information about Supporting team team, including:
 ##### Domain Modules
 
 [Payments](../../Domain/Concepts/Payments/Payments.md)  
+[Search](../../Domain/Concepts/Search/Search.md)  
 
 #### Technology perspective
 
@@ -64,6 +71,7 @@ This view contains details information about Supporting team team, including:
 ##### Deployable Units
 
 [ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
+[ecommerce-search](../../Technology/DeployableUnits/EcommerceSearch.md)  
 
 ### Zoom-out
 

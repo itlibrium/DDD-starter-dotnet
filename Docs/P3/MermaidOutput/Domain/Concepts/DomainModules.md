@@ -154,6 +154,20 @@ All modules can be divided into sub-modules to reflect hierarchical structure of
     classDef PeoplePerspective stroke:#FFF014
 ```
 
+## Search
+
+```mermaid
+  flowchart TB
+    0(Search)
+    class 0 DomainPerspective
+    1(Products)
+    class 1 DomainPerspective
+    0-->|contains|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
+
 ## Next steps
 
 
@@ -203,6 +217,8 @@ All modules can be divided into sub-modules to reflect hierarchical structure of
 [Sales | Wholesale ordering | Order placement](Sales/WholesaleOrdering/OrderPlacement/OrderPlacement.md)  
 [Sales | Wholesale ordering | Order pricing](Sales/WholesaleOrdering/OrderPricing/OrderPricing.md)  
 [Sales | Wholesale ordering | Product pricing](Sales/WholesaleOrdering/ProductPricing/ProductPricing.md)  
+[Search](Search/Search.md)  
+[Search | Products](Search/Products/Products.md)  
 
 ### Zoom-out
 
