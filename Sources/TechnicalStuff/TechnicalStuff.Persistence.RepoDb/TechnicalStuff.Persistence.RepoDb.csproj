@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
       <PackageReference Include="RepoDb" Version="1.13.0" />
     </ItemGroup>
 

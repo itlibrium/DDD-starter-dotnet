@@ -17,7 +17,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview02" />
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
     </ItemGroup>
 
 </Project>
