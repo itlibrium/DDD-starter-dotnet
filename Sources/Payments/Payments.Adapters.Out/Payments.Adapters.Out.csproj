@@ -14,4 +14,8 @@
       <ProjectReference Include="..\Payments.ProcessModel\Payments.ProcessModel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
+    </ItemGroup>
+
 </Project>

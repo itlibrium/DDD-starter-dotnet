@@ -9,4 +9,8 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
+    </ItemGroup>
+
 </Project>

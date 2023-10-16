@@ -13,4 +13,8 @@
       <ProjectReference Include="..\ProductsDelivery.ProcessModel\ProductsDelivery.ProcessModel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
+    </ItemGroup>
+
 </Project>
