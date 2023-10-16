@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
+      <ProjectReference Include="..\Payments.DeepModel\Payments.DeepModel.csproj" />
     </ItemGroup>
 
     <ItemGroup>

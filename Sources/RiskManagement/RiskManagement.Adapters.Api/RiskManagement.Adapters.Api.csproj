@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>MyCompany.ECommerce.RiskManagement.Adapters.Api</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.RiskManagement</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RiskManagement.ProcessModel\RiskManagement.ProcessModel.csproj" />
+    </ItemGroup>
+
+</Project>

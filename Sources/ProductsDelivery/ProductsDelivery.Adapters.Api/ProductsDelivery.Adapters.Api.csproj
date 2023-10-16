@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>MyCompany.ECommerce.ProductsDelivery.Adapters.Api</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.ProductsDelivery</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProductsDelivery.ProcessModel\ProductsDelivery.ProcessModel.csproj" />
+    </ItemGroup>
+
+</Project>

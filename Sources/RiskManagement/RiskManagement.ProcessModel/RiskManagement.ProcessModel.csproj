@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
+      <ProjectReference Include="..\RiskManagement.DeepModel\RiskManagement.DeepModel.csproj" />
     </ItemGroup>
 
 </Project>

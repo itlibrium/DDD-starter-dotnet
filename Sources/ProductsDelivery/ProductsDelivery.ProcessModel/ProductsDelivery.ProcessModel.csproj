@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.ProcessModel\TechnicalStuff.ProcessModel.csproj" />
+      <ProjectReference Include="..\ProductsDelivery.DeepModel\ProductsDelivery.DeepModel.csproj" />
     </ItemGroup>
 
     <ItemGroup>
