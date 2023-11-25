@@ -1,18 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using P3Model.Annotations.Domain;
+﻿using P3Model.Annotations.Domain;
 using P3Model.Parser.Configuration;
 
-var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", true)
-    .AddEnvironmentVariables()
-    .Build();
-var repositoryPath = configuration["RepositoryPath"] ?? $"{Environment.CurrentDirectory}/../../../../../../";
-var outputPath = configuration["OutputPath"] ?? $"{Environment.CurrentDirectory}/../../../../../../Docs/P3";
 await P3
     .Product(product => product
         .UseName("MyCompany e-commerce"))
     .Repositories(repositories => repositories
-        .Use(repositoryPath))
+        .Use("."))
     .Analyzers(analyzers => analyzers
         .UseDefaults(options => options
             .TreatNamespacesAsDomainModules(namespaces => namespaces
@@ -20,8 +13,8 @@ await P3
                 .RemoveRootNamespace("MyCompany.ECommerce"))))
     .OutputFormat(formatters => formatters
         .UseMermaid(options => options
-            .Directory($"{outputPath}/MermaidOutput")
+            .Directory("Docs/P3/MermaidOutput")
             .UseDefaultPages())
         .UseJson(options => options
-            .File($"{outputPath}/JsonOutput/model.json")))
+            .File("Docs/P3/JsonOutput/model.json")))
     .Analyze();
