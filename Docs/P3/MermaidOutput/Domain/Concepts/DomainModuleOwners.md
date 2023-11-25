@@ -81,10 +81,8 @@ This view shows how top level domain modules are assigned to development teams a
 
 ##### Domain Modules
 
-[Contacts](Contacts/Contacts.md)  
 [Payments](Payments/Payments.md)  
 [Products delivery](ProductsDelivery/ProductsDelivery.md)  
-[Risk management](RiskManagement/RiskManagement.md)  
 [Sales](Sales/Sales.md)  
 [Search](Search/Search.md)  
 

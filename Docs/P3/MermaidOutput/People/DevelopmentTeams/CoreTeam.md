@@ -33,17 +33,7 @@ This view contains details information about Core team team, including:
 
 ### Related deployable units
 
-```mermaid
-  flowchart TB
-    0(Core team)
-    class 0 PeoplePerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|maintains|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related deployable units were found.  
 
 ## Next steps
 
@@ -57,13 +47,6 @@ This view contains details information about Core team team, including:
 ##### Domain Modules
 
 [Sales](../../Domain/Concepts/Sales/Sales.md)  
-
-#### Technology perspective
-
-
-##### Deployable Units
-
-[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 ### Zoom-out
 

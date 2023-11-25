@@ -19,31 +19,11 @@ This view contains details information about Payments domain module, including:
 
 ### Related modules
 
-```mermaid
-  flowchart TB
-    0(Payments)
-    class 0 DomainPerspective
-    1([Requesting])
-    class 1 DomainPerspective
-    0-->|contains|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related modules were found.  
 
 ### Related processes
 
-```mermaid
-  flowchart TB
-    0(Payments)
-    class 0 DomainPerspective
-    1([Payment])
-    class 1 DomainPerspective
-    0-->|takes part in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related processes were found.  
 
 ### Direct building blocks
 
@@ -54,17 +34,7 @@ No direct building blocks were found.
 
 ### Related deployable units
 
-```mermaid
-  flowchart TB
-    0(Payments)
-    class 0 DomainPerspective
-    1([ecommerce-monolith])
-    class 1 TechnologyPerspective
-    0-->|is deployed in|1
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related deployable units were found.  
 
 ## People Perspective
 
@@ -91,24 +61,6 @@ No direct building blocks were found.
 
 ### Zoom-in
 
-
-#### Domain perspective
-
-
-##### Domain Modules
-
-[Payments | Requesting](Requesting/Requesting.md)  
-
-##### Processes
-
-[Payment](../../Processes/Payment.md)  
-
-#### Technology perspective
-
-
-##### Deployable Units
-
-[ecommerce-monolith](../../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 #### People perspective
 
