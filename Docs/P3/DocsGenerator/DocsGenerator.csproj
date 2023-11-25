@@ -24,4 +24,12 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Properties\launchSettings.json">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </None>
+    </ItemGroup>
+
 </Project>
