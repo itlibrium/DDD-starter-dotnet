@@ -5,6 +5,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>MyCompany.ECommerce.DocsGenerator</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.DocsGenerator</RootNamespace>
+        <LangVersion>default</LangVersion>
+        <Company>MyCompany.ECommerce.DocsGenerator</Company>
+        <Product>MyCompany.ECommerce.DocsGenerator</Product>
     </PropertyGroup>
 
     <ItemGroup>
