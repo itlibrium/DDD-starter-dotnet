@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run P3 Parser
-        run: dotnet run --project path/to/your/console/app.csproj
+        run: dotnet run --project Docs/P3/DocsGenerator/DocsGenerator.csproj
 
       - name: Add, Commit & Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
