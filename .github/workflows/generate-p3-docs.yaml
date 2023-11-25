@@ -1,0 +1,25 @@
+name: Generate P3 documentation
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate-p3-docs:
+    runs-on: ubuntu-latest
+    
+    permissions:      
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run P3 Parser
+        run: dotnet run --project path/to/your/console/app.csproj
+
+      - name: Add, Commit & Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "P3 docs updated"
