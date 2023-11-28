@@ -19,11 +19,31 @@ This view contains details information about Payments domain module, including:
 
 ### Related modules
 
-No related modules were found.  
+```mermaid
+  flowchart TB
+    0(Payments)
+    class 0 DomainPerspective
+    1([Requesting])
+    class 1 DomainPerspective
+    0-->|contains|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Related processes
 
-No related processes were found.  
+```mermaid
+  flowchart TB
+    0(Payments)
+    class 0 DomainPerspective
+    1([Payment])
+    class 1 DomainPerspective
+    0-->|takes part in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Direct building blocks
 
@@ -34,10 +54,24 @@ No direct building blocks were found.
 
 ### Related deployable units
 
-No related deployable units were found.  
+```mermaid
+  flowchart TB
+    0(Payments)
+    class 0 DomainPerspective
+    1([ecommerce-monolith])
+    class 1 TechnologyPerspective
+    0-->|is deployed in|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ### Source code
 
+- [Payments](../../../../../../Sources/Payments/Payments.Adapters.Out)
+- [Payments](../../../../../../Sources/Payments/Payments.ProcessModel)
+- [Payments](../../../../../../Sources/Payments/Payments.Adapters.Api)
+- [Payments](../../../../../../Sources/Payments/Payments.DeepModel)
 
 ## People Perspective
 
@@ -64,6 +98,24 @@ No related deployable units were found.
 
 ### Zoom-in
 
+
+#### Domain perspective
+
+
+##### Domain Modules
+
+[Payments | Requesting](Requesting/Requesting.md)  
+
+##### Processes
+
+[Payment](../../Processes/Payment.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../../Technology/DeployableUnits/EcommerceMonolith.md)  
 
 #### People perspective
 

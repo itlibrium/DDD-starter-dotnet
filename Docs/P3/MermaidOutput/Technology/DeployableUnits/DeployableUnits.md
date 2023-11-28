@@ -11,6 +11,12 @@ This view contains all deployable units for MyCompany e-commerce product.
 
 ```mermaid
   flowchart TB
+    subgraph 0["Application"]
+      1(ecommerce-search)
+      class 1 TechnologyPerspective
+      2(ecommerce-monolith)
+      class 2 TechnologyPerspective
+    end
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -18,6 +24,17 @@ This view contains all deployable units for MyCompany e-commerce product.
 
 ## Next steps
 
+
+### Zoom-in
+
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](EcommerceMonolith.md)  
+[ecommerce-search](EcommerceSearch.md)  
 
 ### Zoom-out
 

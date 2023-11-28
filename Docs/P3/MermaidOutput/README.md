@@ -12,26 +12,29 @@
   flowchart TB
     0(MyCompany e-commerce system)
     subgraph 1["Actors"]
+      2([Retail Client])
+      3([Wholesale Client])
     end
     1-->|uses|0
-    subgraph 2["External Systems"]
+    subgraph 4["External Systems"]
+      5([Forex])
     end
-    2<-->|are integrated with|0
-    subgraph 3["Development Teams"]
-      4([Core team])
-      5([Inventory team])
-      6([Supporting team])
+    4<-->|are integrated with|0
+    subgraph 6["Development Teams"]
+      7([Core team])
+      8([Inventory team])
+      9([Supporting team])
     end
-    0---3
-    3-->|develops & maintains|0
-    3---0
-    subgraph 7["Business Units"]
-      8([Inventory department])
-      9([Sales department])
+    0---6
+    6-->|develops & maintains|0
+    6---0
+    subgraph 10["Business Units"]
+      11([Inventory department])
+      12([Sales department])
     end
-    0---7
-    7-->|owns|0
-    7---0
+    0---10
+    10-->|owns|0
+    10---0
     linkStyle 2,4,5,7 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB

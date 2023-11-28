@@ -36,7 +36,20 @@ This view contains details information about Supporting team team, including:
 
 ### Related deployable units
 
-No related deployable units were found.  
+```mermaid
+  flowchart TB
+    0(Supporting team)
+    class 0 PeoplePerspective
+    1([ecommerce-monolith])
+    class 1 TechnologyPerspective
+    0-->|maintains|1
+    2([ecommerce-search])
+    class 2 TechnologyPerspective
+    0-->|maintains|2
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## Next steps
 
@@ -51,6 +64,14 @@ No related deployable units were found.
 
 [Payments](../../Domain/Concepts/Payments/Payments.md)  
 [Search](../../Domain/Concepts/Search/Search.md)  
+
+#### Technology perspective
+
+
+##### Deployable Units
+
+[ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
+[ecommerce-search](../../Technology/DeployableUnits/EcommerceSearch.md)  
 
 ### Zoom-out
 
