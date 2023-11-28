@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Restore packages
+        run: dotnet restore
+
       - name: Run P3 Parser
         run: dotnet run --project Docs/P3/DocsGenerator/DocsGenerator.csproj
 
