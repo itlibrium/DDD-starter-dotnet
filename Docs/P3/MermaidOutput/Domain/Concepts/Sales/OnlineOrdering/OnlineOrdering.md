@@ -77,8 +77,8 @@ No direct building blocks were found.
 
 ### Source code
 
-- [OnlineOrdering](../../../../../../../Sources/Sales/Sales.ProcessModel/OnlineOrdering)
 - [OnlineOrdering](../../../../../../../Sources/Sales/Sales.RestApi/OnlineOrdering)
+- [OnlineOrdering](../../../../../../../Sources/Sales/Sales.ProcessModel/OnlineOrdering)
 
 ## People Perspective
 

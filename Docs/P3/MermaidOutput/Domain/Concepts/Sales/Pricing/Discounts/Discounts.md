@@ -89,8 +89,8 @@ No related processes were found.
 
 ### Source code
 
-- [Discounts](../../../../../../../../Sources/Sales/Sales.DeepModel/Pricing/Discounts)
 - [Discounts](../../../../../../../../Sources/Sales/Sales.Adapters/Pricing/Discounts)
+- [Discounts](../../../../../../../../Sources/Sales/Sales.DeepModel/Pricing/Discounts)
 
 ## People Perspective
 

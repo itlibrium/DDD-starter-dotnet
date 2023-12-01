@@ -90,8 +90,8 @@ This view contains details information about Clients domain module, including:
 
 ### Source code
 
-- [Clients](../../../../../../../Sources/Sales/Sales.DeepModel/Clients)
 - [Clients](../../../../../../../Sources/Sales/Sales.Adapters/Clients)
+- [Clients](../../../../../../../Sources/Sales/Sales.DeepModel/Clients)
 
 ## People Perspective
 

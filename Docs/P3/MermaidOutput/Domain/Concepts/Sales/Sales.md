@@ -104,10 +104,10 @@ No direct building blocks were found.
 
 ### Source code
 
-- [Sales](../../../../../../Sources/Sales/Sales.RestApi/OnlineOrdering)
-- [Sales](../../../../../../Sources/Sales/Sales.DeepModel/Clients)
 - [Sales](../../../../../../Sources/Sales/Sales.ProcessModel)
+- [Sales](../../../../../../Sources/Sales/Sales.RestApi/OnlineOrdering)
 - [Sales](../../../../../../Sources/Sales/Sales.Adapters/Clients)
+- [Sales](../../../../../../Sources/Sales/Sales.DeepModel/Clients)
 
 ## People Perspective
 

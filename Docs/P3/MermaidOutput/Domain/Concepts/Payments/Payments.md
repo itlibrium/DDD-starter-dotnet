@@ -70,8 +70,8 @@ No direct building blocks were found.
 
 - [Payments](../../../../../../Sources/Payments/Payments.Adapters.Out)
 - [Payments](../../../../../../Sources/Payments/Payments.ProcessModel)
-- [Payments](../../../../../../Sources/Payments/Payments.Adapters.Api)
 - [Payments](../../../../../../Sources/Payments/Payments.DeepModel)
+- [Payments](../../../../../../Sources/Payments/Payments.Adapters.Api)
 
 ## People Perspective
 

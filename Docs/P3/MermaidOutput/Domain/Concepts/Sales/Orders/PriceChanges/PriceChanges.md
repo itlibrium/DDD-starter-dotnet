@@ -90,8 +90,8 @@ This view contains details information about Price Changes domain module, includ
 
 ### Source code
 
-- [PriceChanges](../../../../../../../../Sources/Sales/Sales.DeepModel/Orders/PriceChanges)
 - [PriceChanges](../../../../../../../../Sources/Sales/Sales.IntegrationTests/Orders/PriceChanges)
+- [PriceChanges](../../../../../../../../Sources/Sales/Sales.DeepModel/Orders/PriceChanges)
 
 ## People Perspective
 

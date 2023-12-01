@@ -72,8 +72,8 @@ No direct building blocks were found.
 ### Source code
 
 - [RiskManagement](../../../../../../Sources/RiskManagement/RiskManagement.ProcessModel/Calculation)
-- [RiskManagement](../../../../../../Sources/RiskManagement/RiskManagement.Adapters.Api)
 - [RiskManagement](../../../../../../Sources/RiskManagement/RiskManagement.DeepModel)
+- [RiskManagement](../../../../../../Sources/RiskManagement/RiskManagement.Adapters.Api)
 - [RiskManagement](../../../../../../Sources/RiskManagement/RiskManagement.Adapters.Out)
 
 ## People Perspective

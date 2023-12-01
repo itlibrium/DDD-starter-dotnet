@@ -102,9 +102,9 @@ This view contains details information about Orders domain module, including:
 
 ### Source code
 
-- [Orders](../../../../../../../Sources/Sales/Sales.IntegrationTests/Orders)
 - [Orders](../../../../../../../Sources/Sales/Sales.DeepModel/Orders)
 - [Orders](../../../../../../../Sources/Sales/Sales.Adapters/Orders)
+- [Orders](../../../../../../../Sources/Sales/Sales.IntegrationTests/Orders)
 
 ## People Perspective
 
