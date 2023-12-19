@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview05" />
     </ItemGroup>
 
 </Project>

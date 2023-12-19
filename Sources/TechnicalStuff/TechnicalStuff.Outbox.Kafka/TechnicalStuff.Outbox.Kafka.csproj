@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview03" />
+      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview05" />
     </ItemGroup>
 
 </Project>
