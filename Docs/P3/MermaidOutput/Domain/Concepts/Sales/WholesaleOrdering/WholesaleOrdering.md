@@ -86,8 +86,8 @@ No direct building blocks were found.
 
 ### Source code
 
-- [WholesaleOrdering](../../../../../../../Sources/Sales/Sales.RestApi/WholesaleOrdering)
 - [WholesaleOrdering](../../../../../../../Sources/Sales/Sales.ProcessModel/WholesaleOrdering)
+- [WholesaleOrdering](../../../../../../../Sources/Sales/Sales.RestApi/WholesaleOrdering)
 
 ## People Perspective
 

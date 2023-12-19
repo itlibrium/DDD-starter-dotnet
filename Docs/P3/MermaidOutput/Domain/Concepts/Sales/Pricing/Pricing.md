@@ -117,8 +117,8 @@ This view contains details information about Pricing domain module, including:
 
 ### Source code
 
-- [Pricing](../../../../../../../Sources/Sales/Sales.DeepModel/Pricing)
 - [Pricing](../../../../../../../Sources/Sales/Sales.Adapters/Pricing/Discounts)
+- [Pricing](../../../../../../../Sources/Sales/Sales.DeepModel/Pricing)
 
 ## People Perspective
 
