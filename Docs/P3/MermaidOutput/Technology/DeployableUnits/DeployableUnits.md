@@ -22,7 +22,7 @@ This view contains all deployable units for MyCompany e-commerce product.
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in

@@ -33,7 +33,7 @@ This view contains details information about Sales department, including:
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -44,16 +44,16 @@ This view contains details information about Sales department, including:
 
 ##### Domain Modules
 
-[Payments](../../Domain/Concepts/Payments/Payments.md)  
-[Sales](../../Domain/Concepts/Sales/Sales.md)  
-[Search](../../Domain/Concepts/Search/Search.md)  
+[Payments](../../Domain/Modules/Payments/Payments-module.md)  
+[Sales](../../Domain/Modules/Sales/Sales-module.md)  
+[Search](../../Domain/Modules/Search/Search-module.md)  
 
 ### Zoom-out
 
 
 #### Domain perspective
 
-[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+[Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
 
 #### People perspective
 

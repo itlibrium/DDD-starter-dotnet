@@ -85,7 +85,7 @@ This view contains details information about ecommerce-search deployable unit, i
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -96,7 +96,7 @@ This view contains details information about ecommerce-search deployable unit, i
 
 ##### Domain Modules
 
-[Search](../../Domain/Concepts/Search/Search.md)  
+[Search](../../Domain/Modules/Search/Search-module.md)  
 
 #### People perspective
 

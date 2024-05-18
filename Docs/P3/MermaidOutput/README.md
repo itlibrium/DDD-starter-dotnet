@@ -41,7 +41,7 @@
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -50,9 +50,9 @@
 #### Domain perspective
 
 [Business Processes](Domain/Processes/BusinessProcesses.md)  
-[Domain Glossary](Domain/Glossary/Domain_Glossary.md)  
-[Domain Module Owners](Domain/Concepts/DomainModuleOwners.md)  
-[Domain Modules](Domain/Concepts/DomainModules.md)  
+[Domain Glossary](Domain/Glossary.md)  
+[Domain Module Owners](Domain/Modules/ModuleOwners.md)  
+[Domain Modules](Domain/Modules/Modules.md)  
 
 #### Technology perspective
 

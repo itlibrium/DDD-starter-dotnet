@@ -1,10 +1,10 @@
 ﻿
-# Products delivery
+# Products Delivery
 
 ***Process***  
 
-This view contains details information about Products delivery business process, including:
-- process steps
+This view contains details information about Products Delivery business process, including:
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,11 +16,11 @@ This view contains details information about Products delivery business process,
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
 ```mermaid
   flowchart TB
-    0(Products delivery)
+    0(Products Delivery)
     class 0 DomainPerspective
     1([Request Delivery])
     class 1 DomainPerspective
@@ -34,7 +34,7 @@ This view contains details information about Products delivery business process,
 
 ```mermaid
   flowchart TB
-    0(Products delivery)
+    0(Products Delivery)
     class 0 DomainPerspective
     1([Products Delivery])
     class 1 DomainPerspective
@@ -51,7 +51,7 @@ This view contains details information about Products delivery business process,
 
 ```mermaid
   flowchart TB
-    0(Products delivery)
+    0(Products Delivery)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -72,7 +72,7 @@ This view contains details information about Products delivery business process,
       direction TB
       1([no actors found])
     end
-    2(Products delivery)
+    2(Products Delivery)
     class 2 DomainPerspective
     0-->|uses|2
     subgraph 3["Teams"]
@@ -97,7 +97,7 @@ This view contains details information about Products delivery business process,
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -106,9 +106,9 @@ This view contains details information about Products delivery business process,
 #### Domain perspective
 
 
-##### Process Steps
+##### Use Cases
 
-[Request Delivery](../Concepts/ProductsDelivery/Requesting/RequestDelivery.md)  
+[Request Delivery](../Modules/ProductsDelivery/Requesting/RequestDelivery.md)  
 
 #### Technology perspective
 

@@ -1,10 +1,10 @@
 ﻿
-# Wholesale ordering
+# Wholesale Ordering
 
 ***Process***  
 
-This view contains details information about Wholesale ordering business process, including:
-- process steps
+This view contains details information about Wholesale Ordering business process, including:
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,11 +16,11 @@ This view contains details information about Wholesale ordering business process
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
 ```mermaid
   flowchart TB
-    0(Wholesale ordering)
+    0(Wholesale Ordering)
     class 0 DomainPerspective
     1([Add to Order])
     class 1 DomainPerspective
@@ -49,7 +49,7 @@ This view contains details information about Wholesale ordering business process
 
 ```mermaid
   flowchart TB
-    0(Wholesale ordering)
+    0(Wholesale Ordering)
     class 0 DomainPerspective
     1([Sales])
     class 1 DomainPerspective
@@ -66,7 +66,7 @@ This view contains details information about Wholesale ordering business process
 
 ```mermaid
   flowchart TB
-    0(Wholesale ordering)
+    0(Wholesale Ordering)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -88,7 +88,7 @@ This view contains details information about Wholesale ordering business process
       1([Wholesale Client])
       class 1 PeoplePerspective
     end
-    2(Wholesale ordering)
+    2(Wholesale Ordering)
     class 2 DomainPerspective
     0-->|uses|2
     subgraph 3["Teams"]
@@ -113,7 +113,7 @@ This view contains details information about Wholesale ordering business process
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -122,14 +122,14 @@ This view contains details information about Wholesale ordering business process
 #### Domain perspective
 
 
-##### Process Steps
+##### Use Cases
 
-[Add to Order](../Concepts/Sales/WholesaleOrdering/OrderModification/AddToOrder.md)  
-[Confirm Offer](../Concepts/Sales/WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
-[Create Order](../Concepts/Sales/WholesaleOrdering/OrderCreation/CreateOrder.md)  
-[Create Order](../Concepts/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
-[Get Offer](../Concepts/Sales/WholesaleOrdering/OrderPricing/GetOffer.md)  
-[Place Order](../Concepts/Sales/WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
+[Add to Order](../Modules/Sales/WholesaleOrdering/OrderModification/AddToOrder.md)  
+[Confirm Offer](../Modules/Sales/WholesaleOrdering/OrderPricing/ConfirmOffer.md)  
+[Create Order](../Modules/Sales/WholesaleOrdering/OrderCreation/CreateOrder.md)  
+[Create Order](../Modules/Sales/WholesaleOrdering/ProductPricing/CreateOrder.md)  
+[Get Offer](../Modules/Sales/WholesaleOrdering/OrderPricing/GetOffer.md)  
+[Place Order](../Modules/Sales/WholesaleOrdering/OrderPlacement/PlaceOrder.md)  
 
 #### Technology perspective
 

@@ -1,10 +1,10 @@
 ﻿
-# Online ordering
+# Online Ordering
 
 ***Process***  
 
-This view contains details information about Online ordering business process, including:
-- process steps
+This view contains details information about Online Ordering business process, including:
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,11 +16,11 @@ This view contains details information about Online ordering business process, i
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
 ```mermaid
   flowchart TB
-    0(Online ordering)
+    0(Online Ordering)
     class 0 DomainPerspective
     1([Place Order])
     class 1 DomainPerspective
@@ -37,7 +37,7 @@ This view contains details information about Online ordering business process, i
 
 ```mermaid
   flowchart TB
-    0(Online ordering)
+    0(Online Ordering)
     class 0 DomainPerspective
     1([Sales])
     class 1 DomainPerspective
@@ -54,7 +54,7 @@ This view contains details information about Online ordering business process, i
 
 ```mermaid
   flowchart TB
-    0(Online ordering)
+    0(Online Ordering)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -76,7 +76,7 @@ This view contains details information about Online ordering business process, i
       1([Retail Client])
       class 1 PeoplePerspective
     end
-    2(Online ordering)
+    2(Online Ordering)
     class 2 DomainPerspective
     0-->|uses|2
     subgraph 3["Teams"]
@@ -101,7 +101,7 @@ This view contains details information about Online ordering business process, i
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -110,10 +110,10 @@ This view contains details information about Online ordering business process, i
 #### Domain perspective
 
 
-##### Process Steps
+##### Use Cases
 
-[Place Order](../Concepts/Sales/OnlineOrdering/OrderPlacement/PlaceOrder.md)  
-[Price Cart](../Concepts/Sales/OnlineOrdering/CartPricing/PriceCart.md)  
+[Place Order](../Modules/Sales/OnlineOrdering/OrderPlacement/PlaceOrder.md)  
+[Price Cart](../Modules/Sales/OnlineOrdering/CartPricing/PriceCart.md)  
 
 #### Technology perspective
 

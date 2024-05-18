@@ -51,7 +51,7 @@ This view contains details information about Supporting team team, including:
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -62,8 +62,8 @@ This view contains details information about Supporting team team, including:
 
 ##### Domain Modules
 
-[Payments](../../Domain/Concepts/Payments/Payments.md)  
-[Search](../../Domain/Concepts/Search/Search.md)  
+[Payments](../../Domain/Modules/Payments/Payments-module.md)  
+[Search](../../Domain/Modules/Search/Search-module.md)  
 
 #### Technology perspective
 
@@ -78,7 +78,7 @@ This view contains details information about Supporting team team, including:
 
 #### Domain perspective
 
-[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+[Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
 
 #### People perspective
 

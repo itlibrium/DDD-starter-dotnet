@@ -4,7 +4,7 @@
 ***Process***  
 
 This view contains details information about Sale business process, including:
-- process steps
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,9 +16,9 @@ This view contains details information about Sale business process, including:
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
-No related process steps were found.  
+No related use cases were found.  
 
 ### Related top level domain modules
 
@@ -38,7 +38,7 @@ No related deployable units were found.
 
 No engaged people were found.  
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-out

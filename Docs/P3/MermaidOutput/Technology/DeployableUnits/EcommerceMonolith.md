@@ -127,7 +127,7 @@ This view contains details information about ecommerce-monolith deployable unit,
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -138,11 +138,11 @@ This view contains details information about ecommerce-monolith deployable unit,
 
 ##### Domain Modules
 
-[Contacts](../../Domain/Concepts/Contacts/Contacts.md)  
-[Payments](../../Domain/Concepts/Payments/Payments.md)  
-[Products delivery](../../Domain/Concepts/ProductsDelivery/ProductsDelivery.md)  
-[Risk management](../../Domain/Concepts/RiskManagement/RiskManagement.md)  
-[Sales](../../Domain/Concepts/Sales/Sales.md)  
+[Contacts](../../Domain/Modules/Contacts/Contacts-module.md)  
+[Payments](../../Domain/Modules/Payments/Payments-module.md)  
+[Products delivery](../../Domain/Modules/ProductsDelivery/ProductsDelivery-module.md)  
+[Risk management](../../Domain/Modules/RiskManagement/RiskManagement-module.md)  
+[Sales](../../Domain/Modules/Sales/Sales-module.md)  
 
 #### People perspective
 

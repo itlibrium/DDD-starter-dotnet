@@ -27,7 +27,7 @@ This view contains details information about Inventory department, including:
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -38,14 +38,14 @@ This view contains details information about Inventory department, including:
 
 ##### Domain Modules
 
-[Products delivery](../../Domain/Concepts/ProductsDelivery/ProductsDelivery.md)  
+[Products delivery](../../Domain/Modules/ProductsDelivery/ProductsDelivery-module.md)  
 
 ### Zoom-out
 
 
 #### Domain perspective
 
-[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+[Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
 
 #### People perspective
 

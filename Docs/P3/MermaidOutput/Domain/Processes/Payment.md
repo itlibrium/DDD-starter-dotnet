@@ -4,7 +4,7 @@
 ***Process***  
 
 This view contains details information about Payment business process, including:
-- process steps
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,7 +16,7 @@ This view contains details information about Payment business process, including
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
 ```mermaid
   flowchart TB
@@ -97,7 +97,7 @@ This view contains details information about Payment business process, including
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -106,9 +106,9 @@ This view contains details information about Payment business process, including
 #### Domain perspective
 
 
-##### Process Steps
+##### Use Cases
 
-[Request Payment](../Concepts/Payments/Requesting/RequestPayment.md)  
+[Request Payment](../Modules/Payments/Requesting/RequestPayment.md)  
 
 #### Technology perspective
 

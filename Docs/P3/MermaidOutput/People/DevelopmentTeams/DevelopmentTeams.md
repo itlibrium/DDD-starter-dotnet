@@ -22,7 +22,7 @@ This view contains all development teams that build and maintain MyCompany e-com
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -30,7 +30,7 @@ This view contains all development teams that build and maintain MyCompany e-com
 
 #### Domain perspective
 
-[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+[Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
 
 #### People perspective
 

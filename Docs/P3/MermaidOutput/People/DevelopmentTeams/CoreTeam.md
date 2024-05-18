@@ -45,7 +45,7 @@ This view contains details information about Core team team, including:
     classDef PeoplePerspective stroke:#FFF014
 ```
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -56,7 +56,7 @@ This view contains details information about Core team team, including:
 
 ##### Domain Modules
 
-[Sales](../../Domain/Concepts/Sales/Sales.md)  
+[Sales](../../Domain/Modules/Sales/Sales-module.md)  
 
 #### Technology perspective
 
@@ -70,7 +70,7 @@ This view contains details information about Core team team, including:
 
 #### Domain perspective
 
-[Domain Module Owners](../../Domain/Concepts/DomainModuleOwners.md)  
+[Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
 
 #### People perspective
 

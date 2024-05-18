@@ -1,10 +1,10 @@
 ﻿
-# Risk score publication
+# Risk Score Publication
 
 ***Process***  
 
-This view contains details information about Risk score publication business process, including:
-- process steps
+This view contains details information about Risk Score Publication business process, including:
+- use cases
 - related domain modules
 - related deployable units
 - engaged people: actors, development teams, business stakeholders  
@@ -16,11 +16,11 @@ This view contains details information about Risk score publication business pro
 ## Domain Perspective
 
 
-### Related process steps
+### Related use cases
 
 ```mermaid
   flowchart TB
-    0(Risk score publication)
+    0(Risk Score Publication)
     class 0 DomainPerspective
     1([Get Risk Score])
     class 1 DomainPerspective
@@ -34,7 +34,7 @@ This view contains details information about Risk score publication business pro
 
 ```mermaid
   flowchart TB
-    0(Risk score publication)
+    0(Risk Score Publication)
     class 0 DomainPerspective
     1([Risk Management])
     class 1 DomainPerspective
@@ -51,7 +51,7 @@ This view contains details information about Risk score publication business pro
 
 ```mermaid
   flowchart TB
-    0(Risk score publication)
+    0(Risk Score Publication)
     class 0 DomainPerspective
     1([ecommerce-monolith])
     class 1 TechnologyPerspective
@@ -68,7 +68,7 @@ This view contains details information about Risk score publication business pro
 
 No engaged people were found.  
 
-## Next steps
+## Next use cases
 
 
 ### Zoom-in
@@ -77,9 +77,9 @@ No engaged people were found.
 #### Domain perspective
 
 
-##### Process Steps
+##### Use Cases
 
-[Get Risk Score](../Concepts/RiskManagement/Publication/GetRiskScore.md)  
+[Get Risk Score](../Modules/RiskManagement/Publication/GetRiskScore.md)  
 
 #### Technology perspective
 
