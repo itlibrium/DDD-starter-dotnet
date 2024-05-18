@@ -1,12 +1,8 @@
-using System;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement
-{
-    public readonly struct PlaceOrder : Command
-    {
-        public Guid OrderId { get; }
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
 
-        public PlaceOrder(Guid orderId) => OrderId = orderId;
-    }
+public readonly struct PlaceOrder(Guid orderId) : Command
+{
+    public Guid OrderId { get; } = orderId;
 }

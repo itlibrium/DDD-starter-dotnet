@@ -7,88 +7,87 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using MyCompany.ECommerce.TechnicalStuff.Postgres;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres;
+
+[UsedImplicitly]
+public class PostgresOutboxProcessor<TConnectionFactory> : TransactionalOutboxProcessor
+    where TConnectionFactory : PostgresConnectionProvider
 {
-    [UsedImplicitly]
-    public class PostgresOutboxProcessor<TConnectionFactory> : TransactionalOutboxProcessor
-        where TConnectionFactory : PostgresConnectionProvider
+    private readonly PostgresOutboxRepository _repository;
+    private readonly Dictionary<string, OutboxMessageProcessor> _processors;
+    private readonly PostgresOutboxProcessorSettings _processorSettings;
+    private readonly ILogger<PostgresOutboxProcessor<TConnectionFactory>> _logger;
+
+    protected PostgresOutboxProcessor(
+        PostgresOutboxRepository repository,
+        IEnumerable<OutboxMessageProcessor> messageProcessors,
+        PostgresOutboxProcessorSettings processorSettings,
+        ILogger<PostgresOutboxProcessor<TConnectionFactory>> logger)
     {
-        private readonly PostgresOutboxRepository _repository;
-        private readonly Dictionary<string, OutboxMessageProcessor> _processors;
-        private readonly PostgresOutboxProcessorSettings _processorSettings;
-        private readonly ILogger<PostgresOutboxProcessor<TConnectionFactory>> _logger;
+        _repository = repository;
+        _processors = messageProcessors.ToDictionary(p => p.ProcessorType);
+        _processorSettings = processorSettings;
+        _logger = logger;
+    }
 
-        protected PostgresOutboxProcessor(
-            PostgresOutboxRepository repository,
-            IEnumerable<OutboxMessageProcessor> messageProcessors,
-            PostgresOutboxProcessorSettings processorSettings,
-            ILogger<PostgresOutboxProcessor<TConnectionFactory>> logger)
+    public async Task<BatchProcessingResult> ProcessSingleBatch(int partition, CancellationToken cancellationToken)
+    {
+        try
         {
-            _repository = repository;
-            _processors = messageProcessors.ToDictionary(p => p.ProcessorType);
-            _processorSettings = processorSettings;
-            _logger = logger;
-        }
-
-        public async Task<BatchProcessingResult> ProcessSingleBatch(int partition, CancellationToken cancellationToken)
-        {
-            try
+            var batch = await _repository.GetUnprocessedMessagesFor(partition, _processorSettings.BatchSize,
+                cancellationToken);
+            foreach (var item in batch)
             {
-                var batch = await _repository.GetUnprocessedMessagesFor(partition, _processorSettings.BatchSize,
-                    cancellationToken);
-                foreach (var item in batch)
+                if (cancellationToken.IsCancellationRequested)
+                    return BatchProcessingResult.NotFullBatchProcessed;
+                var result = await Process(item, cancellationToken);
+                if (result == BatchItemProcessingResult.TemporaryError)
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                        return BatchProcessingResult.NotFullBatchProcessed;
-                    var result = await Process(item, cancellationToken);
-                    if (result == BatchItemProcessingResult.TemporaryError)
-                    {
-                        await _repository.SaveCurrentOffset(partition, item.Offset - 1);
-                        return BatchProcessingResult.TemporaryError;
-                    }
-                    if (batch.IsOffsetCommitRequiredFor(item, _processorSettings.CommitOffsetInterval))
-                        await _repository.SaveCurrentOffset(partition, item.Offset);
+                    await _repository.SaveCurrentOffset(partition, item.Offset - 1);
+                    return BatchProcessingResult.TemporaryError;
                 }
-                return batch.IsFull
-                    ? BatchProcessingResult.FullBatchProcessed
-                    : BatchProcessingResult.NotFullBatchProcessed;
+                if (batch.IsOffsetCommitRequiredFor(item, _processorSettings.CommitOffsetInterval))
+                    await _repository.SaveCurrentOffset(partition, item.Offset);
             }
-            catch (TemporaryInfrastructureError e)
-            {
-                _logger.LogError(e, "Temporary infrastructure error");
-                return BatchProcessingResult.TemporaryError;
-            }
+            return batch.IsFull
+                ? BatchProcessingResult.FullBatchProcessed
+                : BatchProcessingResult.NotFullBatchProcessed;
         }
-
-        private async Task<BatchItemProcessingResult> Process(Batch.Item item, CancellationToken cancellationToken)
+        catch (TemporaryInfrastructureError e)
         {
-            var messageProcessingResult = await Process(item.OutboxMessage, cancellationToken);
-            switch (messageProcessingResult)
-            {
-                case MessageProcessingResult.Processed:
-                    return BatchItemProcessingResult.Processed;
-                case MessageProcessingResult.MessageUnprocessable:
-                    await _repository.MoveToUnprocessableMessages(item.OutboxMessage);
-                    return BatchItemProcessingResult.Processed;
-                case MessageProcessingResult.TemporaryError:
-                    return BatchItemProcessingResult.TemporaryError;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(messageProcessingResult));
-            }
+            _logger.LogError(e, "Temporary infrastructure error");
+            return BatchProcessingResult.TemporaryError;
         }
+    }
 
-        private async Task<MessageProcessingResult> Process(OutboxMessage message, CancellationToken cancellationToken)
+    private async Task<BatchItemProcessingResult> Process(Batch.Item item, CancellationToken cancellationToken)
+    {
+        var messageProcessingResult = await Process(item.OutboxMessage, cancellationToken);
+        switch (messageProcessingResult)
         {
-            if (_processors.TryGetValue(message.ProcessorType, out var processor))
-                return await processor.Process(message, cancellationToken);
-            _logger.LogCritical("Missing OutboxMessageProcessor of type: {ProcessorType}", message.ProcessorType);
-            return MessageProcessingResult.MessageUnprocessable;
+            case MessageProcessingResult.Processed:
+                return BatchItemProcessingResult.Processed;
+            case MessageProcessingResult.MessageUnprocessable:
+                await _repository.MoveToUnprocessableMessages(item.OutboxMessage);
+                return BatchItemProcessingResult.Processed;
+            case MessageProcessingResult.TemporaryError:
+                return BatchItemProcessingResult.TemporaryError;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(messageProcessingResult));
         }
+    }
 
-        private enum BatchItemProcessingResult
-        {
-            Processed,
-            TemporaryError
-        }
+    private async Task<MessageProcessingResult> Process(OutboxMessage message, CancellationToken cancellationToken)
+    {
+        if (_processors.TryGetValue(message.ProcessorType, out var processor))
+            return await processor.Process(message, cancellationToken);
+        _logger.LogCritical("Missing OutboxMessageProcessor of type: {ProcessorType}", message.ProcessorType);
+        return MessageProcessingResult.MessageUnprocessable;
+    }
+
+    private enum BatchItemProcessingResult
+    {
+        Processed,
+        TemporaryError
     }
 }

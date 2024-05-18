@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb;
 

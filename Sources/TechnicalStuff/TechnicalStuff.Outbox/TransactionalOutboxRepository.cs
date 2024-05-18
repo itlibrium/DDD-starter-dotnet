@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+public interface TransactionalOutboxRepository
 {
-    public interface TransactionalOutboxRepository
-    {
-        Task Save(IEnumerable<OutboxMessage> messages);
-    }
+    Task Save(IEnumerable<OutboxMessage> messages);
 }

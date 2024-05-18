@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using MyCompany.ECommerce.Sales.Commons;

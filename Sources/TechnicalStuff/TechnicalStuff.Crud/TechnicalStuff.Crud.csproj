@@ -2,7 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>default</LangVersion>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <OutputType>Library</OutputType>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Crud</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Crud</RootNamespace>

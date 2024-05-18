@@ -1,16 +1,7 @@
-using System;
+namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering
+public readonly struct CartItemDto(Guid productId, int amount)
 {
-    public readonly struct CartItemDto
-    {
-        public Guid ProductId { get; }
-        public int Amount { get; }
-
-        public CartItemDto(Guid productId, int amount)
-        {
-            ProductId = productId;
-            Amount = amount;
-        }
-    }
+    public Guid ProductId { get; } = productId;
+    public int Amount { get; } = amount;
 }

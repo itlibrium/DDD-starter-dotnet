@@ -5,6 +5,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <AssemblyName>MyCompany.ECommerce.DocsGenerator</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.DocsGenerator</RootNamespace>
         <LangVersion>default</LangVersion>

@@ -1,4 +1,1 @@
-namespace MyCompany.ECommerce.Sales.Orders
-{
-    
-}
+namespace MyCompany.ECommerce.Sales.Orders; 

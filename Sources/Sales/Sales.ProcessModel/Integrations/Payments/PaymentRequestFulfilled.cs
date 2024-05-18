@@ -1,9 +1,6 @@
-using System;
+namespace MyCompany.ECommerce.Sales.Integrations.Payments;
 
-namespace MyCompany.ECommerce.Sales.Integrations.Payments
+public class PaymentRequestFulfilled : OrderEvent
 {
-    public class PaymentRequestFulfilled : OrderEvent
-    {
-        public Guid OrderId { get; }
-    }
+    public Guid OrderId { get; }
 }

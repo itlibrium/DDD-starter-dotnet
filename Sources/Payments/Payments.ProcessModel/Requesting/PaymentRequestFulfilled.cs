@@ -1,4 +1,3 @@
-using System;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Payments.Requesting;

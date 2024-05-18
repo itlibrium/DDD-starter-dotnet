@@ -1,7 +1,4 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Metadata
-{
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface)]
-    public class DomainEventAttribute : Attribute { }
-}
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface)]
+public class DomainEventAttribute : Attribute { }

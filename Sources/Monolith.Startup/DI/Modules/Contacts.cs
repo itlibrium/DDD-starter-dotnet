@@ -1,21 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using MyCompany.ECommerce.Contacts;
 using MyCompany.ECommerce.Contacts.Database;
 
-namespace MyCompany.ECommerce.DI.Modules
+namespace MyCompany.ECommerce.DI.Modules;
+
+internal static class ContactsRegistrations
 {
-    internal static class ContactsRegistrations
+    public static IServiceCollection AddContactsModule(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        public static IServiceCollection AddContactsModule(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddDbContextPool<ContactsDbContext>(options => options
-                .UseNpgsql(configuration.GetConnectionString("Main"), npgsqlOptions => npgsqlOptions
-                    .MigrationsHistoryTable("__Contacts_Migrations")));
-            services.AddScoped<ContactsCrudOperations, ContactsEfDao>();
-            return services;
-        }
+        services.AddDbContextPool<ContactsDbContext>(options => options
+            .UseNpgsql(configuration.GetConnectionString("Main"), npgsqlOptions => npgsqlOptions
+                .MigrationsHistoryTable("__Contacts_Migrations")));
+        services.AddScoped<ContactsCrudOperations, ContactsEfDao>();
+        return services;
     }
 }

@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
 
-namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel
+namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel;
+
+public interface MessageHandler
 {
-    public interface MessageHandler
-    {
-        Task Handle(Message message);
-    }
+    Task Handle(Message message);
 }

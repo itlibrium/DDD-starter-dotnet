@@ -1,10 +1,9 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Kafka;
+
+public enum KafkaProducerResult
 {
-    public enum KafkaProducerResult
-    {
-        NoError,
-        InvalidMessage,
-        NoAck,
-        OtherError
-    }
+    NoError,
+    InvalidMessage,
+    NoAck,
+    OtherError
 }

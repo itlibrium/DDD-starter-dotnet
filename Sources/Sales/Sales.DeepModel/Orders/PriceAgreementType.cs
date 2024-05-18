@@ -1,12 +1,11 @@
 using P3Model.Annotations.Domain.DDD;
 
-namespace MyCompany.ECommerce.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders;
+
+[DddValueObject]
+public enum PriceAgreementType : byte
 {
-    [DddValueObject]
-    public enum PriceAgreementType : byte
-    {
-        Non,
-        Temporary,
-        Final
-    }
+    Non,
+    Temporary,
+    Final
 }

@@ -1,4 +1,3 @@
-using System;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Contacts.Tags;
 using P3Model.Annotations.Domain.DDD;

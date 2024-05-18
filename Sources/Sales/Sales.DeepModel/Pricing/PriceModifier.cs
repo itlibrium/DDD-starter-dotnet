@@ -1,11 +1,10 @@
 using System.Diagnostics.Contracts;
 using MyCompany.ECommerce.Sales.Commons;
 
-namespace MyCompany.ECommerce.Sales.Pricing
+namespace MyCompany.ECommerce.Sales.Pricing;
+
+internal interface PriceModifier
 {
-    internal interface PriceModifier
-    {
-        [Pure]
-        Money ApplyOn(Money price);
-    }
+    [Pure]
+    Money ApplyOn(Money price);
 }

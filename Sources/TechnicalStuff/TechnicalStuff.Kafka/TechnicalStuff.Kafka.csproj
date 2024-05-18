@@ -4,6 +4,9 @@
         <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Kafka</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Kafka</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

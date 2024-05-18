@@ -1,9 +1,8 @@
-namespace MyCompany.ECommerce.Nuke.Postgres
+namespace MyCompany.ECommerce.Nuke.Postgres;
+
+public class PostgresSettings
 {
-    public class PostgresSettings
-    {
-        public const string Key = "Postgres";
+    public const string Key = "Postgres";
         
-        public string ConnectionString { get; set; }
-    }
+    public string ConnectionString { get; set; }
 }

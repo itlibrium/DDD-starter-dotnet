@@ -3,10 +3,11 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.Startup</AssemblyName>
-        <RootNamespace>MyCompany.ECommerce</RootNamespace>
-        <LangVersion>latest</LangVersion>
+        <RootNamespace>MyCompany.ECommerce</RootNamespace>        
         <UserSecretsId>MyCompanyCrm</UserSecretsId>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>        

@@ -1,12 +1,9 @@
-using System.Collections.Generic;
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+public class TransactionalOutboxes
 {
-    public class TransactionalOutboxes
-    {
-        private readonly List<TransactionalOutbox> _outboxes = new();
-        public IReadOnlyList<TransactionalOutbox> ForCurrentUseCase => _outboxes.AsReadOnly();
+    private readonly List<TransactionalOutbox> _outboxes = new();
+    public IReadOnlyList<TransactionalOutbox> ForCurrentUseCase => _outboxes.AsReadOnly();
 
-        public void Register(TransactionalOutbox outbox) => _outboxes.Add(outbox);
-    }
+    public void Register(TransactionalOutbox outbox) => _outboxes.Add(outbox);
 }

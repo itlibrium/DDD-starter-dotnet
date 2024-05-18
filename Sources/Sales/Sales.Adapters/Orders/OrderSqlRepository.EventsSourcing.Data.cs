@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using MyCompany.ECommerce.Sales.Commons;
 
 namespace MyCompany.ECommerce.Sales.Orders;

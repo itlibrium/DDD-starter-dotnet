@@ -1,9 +1,8 @@
 using MyCompany.ECommerce.Sales.Orders;
 
-namespace MyCompany.ECommerce.Sales.Integrations.ProductsDelivery
+namespace MyCompany.ECommerce.Sales.Integrations.ProductsDelivery;
+
+public interface ProductsDeliveryModule
 {
-    public interface ProductsDeliveryModule
-    {
-        void AddDeliveryRequestFor(AllOrderDetails orderDetails);
-    }
+    void AddDeliveryRequestFor(AllOrderDetails orderDetails);
 }

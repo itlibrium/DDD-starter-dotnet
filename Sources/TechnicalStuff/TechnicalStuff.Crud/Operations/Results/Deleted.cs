@@ -1,23 +1,15 @@
-using System;
 using JetBrains.Annotations;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations.Results
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations.Results;
+
+public readonly struct Deleted(Guid id, bool wasPresent) : IEquatable<Deleted>
 {
-    public readonly struct Deleted : IEquatable<Deleted>
-    {
-        [PublicAPI] public Guid Id { get; }
-        [PublicAPI] public bool WasPresent { get; }
+    [PublicAPI] public Guid Id { get; } = id;
+    [PublicAPI] public bool WasPresent { get; } = wasPresent;
 
-        public Deleted(Guid id, bool wasPresent)
-        {
-            Id = id;
-            WasPresent = wasPresent;
-        }
+    public bool Equals(Deleted other) => (Id, WasPresent).Equals((other.Id, other.WasPresent));
 
-        public bool Equals(Deleted other) => (Id, WasPresent).Equals((other.Id, other.WasPresent));
+    public override bool Equals(object obj) => obj is Deleted other && Equals(other);
 
-        public override bool Equals(object obj) => obj is Deleted other && Equals(other);
-
-        public override int GetHashCode() => (Id, WasPresent).GetHashCode();
-    }
+    public override int GetHashCode() => (Id, WasPresent).GetHashCode();
 }

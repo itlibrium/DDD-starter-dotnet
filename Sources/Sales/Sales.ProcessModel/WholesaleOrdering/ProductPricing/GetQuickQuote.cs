@@ -1,23 +1,13 @@
-using System;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing
-{
-    public readonly struct GetQuickQuote : Command
-    {
-        public Guid ClientId { get; }
-        public Guid ProductId { get; }
-        public int Amount { get; }
-        public string UnitCode { get; }
-        public string CurrencyCode { get; }
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing;
 
-        public GetQuickQuote(Guid clientId, Guid productId, int amount, string unitCode, string currencyCode)
-        {
-            ClientId = clientId;
-            ProductId = productId;
-            Amount = amount;
-            UnitCode = unitCode;
-            CurrencyCode = currencyCode;
-        }
-    }
+public readonly struct GetQuickQuote(Guid clientId, Guid productId, int amount, string unitCode, string currencyCode)
+    : Command
+{
+    public Guid ClientId { get; } = clientId;
+    public Guid ProductId { get; } = productId;
+    public int Amount { get; } = amount;
+    public string UnitCode { get; } = unitCode;
+    public string CurrencyCode { get; } = currencyCode;
 }

@@ -1,9 +1,8 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
+
+public enum MessageProcessingResult
 {
-    public enum MessageProcessingResult
-    {
-        Processed,
-        TemporaryError,
-        MessageUnprocessable
-    }
+    Processed,
+    TemporaryError,
+    MessageUnprocessable
 }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.Raw;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
@@ -13,12 +9,9 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public partial class Raw : Order.Factory, Order.Repository
+    public partial class Raw(RiskManagement riskManagement, MainDb db) : Order.Factory(riskManagement), Order.Repository
     {
-        private readonly MainDb _db;
         private readonly Dictionary<OrderId, Data> _orders = new();
-
-        public Raw(RiskManagement riskManagement, MainDb db) : base(riskManagement) => _db = db;
 
         protected override Order.Data CreateData(OrderId id, Money maxTotalCost) => new Data(id, maxTotalCost);
 
@@ -26,7 +19,7 @@ public static partial class OrderSqlRepository
         {
             if (_orders.ContainsKey(id))
                 throw new DesignError(SameAggregateRestoredMoreThanOnce);
-            var connection = await _db.CreateOneOffConnection();
+            var connection = await db.CreateOneOffConnection();
             var (dbOrders, dbOrderItems) = await connection.QueryMultipleAsync<DbOrder, DbOrderItem>(               
                 o => o.Id == id.Value,                
                 i => i.OrderId == id.Value);
@@ -43,7 +36,7 @@ public static partial class OrderSqlRepository
         {
             if (!_orders.TryGetValue(order.Id, out var data))
                 throw new DesignError(SaveOfUnknownAggregate);
-            var transaction = _db.GetCurrentTransaction();
+            var transaction = db.GetCurrentTransaction();
             await data.Save(transaction);
         }
     }

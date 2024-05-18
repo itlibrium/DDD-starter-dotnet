@@ -1,10 +1,7 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
-namespace MyCompany.ECommerce.TechnicalStuff
+public class DesignError : Exception
 {
-    public class DesignError : Exception
-    {
-        public DesignError(string message) : base(message) { }
-        public DesignError(string message, Exception innerException) : base(message, innerException) { }
-    }
+    public DesignError(string message) : base(message) { }
+    public DesignError(string message, Exception innerException) : base(message, innerException) { }
 }

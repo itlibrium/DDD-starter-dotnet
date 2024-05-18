@@ -1,8 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Json;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using MyCompany.ECommerce.DI;
 using MyCompany.ECommerce.DI.Modules;
 using MyCompany.ECommerce.Infrastructure;
@@ -31,6 +28,7 @@ app.UseRouting();
 app.MapControllers();
 app.UseOpenApiWithUi();
 app.Run();
+return;
 
 void ConfigureSerialization()
 {

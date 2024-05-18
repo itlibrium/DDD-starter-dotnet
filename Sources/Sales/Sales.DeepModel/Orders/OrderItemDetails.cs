@@ -1,16 +1,14 @@
-using System;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.TechnicalStuff.Metadata;
 
-namespace MyCompany.ECommerce.Sales.Orders
+namespace MyCompany.ECommerce.Sales.Orders;
+
+[DataStructure]
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+public class OrderItemDetails
 {
-    [DataStructure]
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    public class OrderItemDetails
-    {
-        public Guid ProductId { get; set; }
-        public int Amount { get; set; }
-        public string AmountUnit { get; set; }
-        public decimal Price { get; set; }
-    }
+    public Guid ProductId { get; set; }
+    public int Amount { get; set; }
+    public string AmountUnit { get; set; }
+    public decimal Price { get; set; }
 }

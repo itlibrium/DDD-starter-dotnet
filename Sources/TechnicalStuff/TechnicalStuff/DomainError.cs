@@ -1,9 +1,6 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
-namespace MyCompany.ECommerce.TechnicalStuff
+public class DomainError : Exception
 {
-    public class DomainError : Exception
-    {
         
-    }
 }

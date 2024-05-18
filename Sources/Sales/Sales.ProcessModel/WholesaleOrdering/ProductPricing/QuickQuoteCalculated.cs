@@ -1,16 +1,7 @@
-using System;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing
+public class QuickQuoteCalculated(Guid clientId, QuoteDto quote)
 {
-    public class QuickQuoteCalculated
-    {
-        public Guid ClientId { get; }
-        public QuoteDto Quote { get; }
-
-        public QuickQuoteCalculated(Guid clientId, QuoteDto quote)
-        {
-            ClientId = clientId;
-            Quote = quote;
-        }
-    }
+    public Guid ClientId { get; } = clientId;
+    public QuoteDto Quote { get; } = quote;
 }

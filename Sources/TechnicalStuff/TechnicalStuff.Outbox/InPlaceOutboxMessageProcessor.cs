@@ -1,79 +1,67 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using Newtonsoft.Json;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
+
+public class InPlaceOutboxMessageProcessor(
+    MessageTypes messageTypes,
+    IServiceScopeFactory serviceScopeProvider,
+    ILogger<InPlaceOutboxMessageProcessor> logger)
+    : OutboxMessageProcessor
 {
-    public class InPlaceOutboxMessageProcessor : OutboxMessageProcessor
+    public string ProcessorType => OutboxMessageProcessors.InPlace;
+
+    public async Task<MessageProcessingResult> Process(OutboxMessage outboxMessage,
+        CancellationToken cancellationToken)
     {
-        public string ProcessorType => OutboxMessageProcessors.InPlace;
+        var messageType = messageTypes.GetMessageTypeFor(outboxMessage.MessageTypeId);
+        var handlerType = messageTypes.GetHandlerTypeFor(outboxMessage.MessageTypeId);
+        if (!TryDeserializeMessage(outboxMessage.PayloadAsJson, messageType, out var message))
+            return MessageProcessingResult.MessageUnprocessable;
 
-        private readonly MessageTypes _messageTypes;
-        private readonly IServiceScopeFactory _serviceScopeProvider;
-        private readonly ILogger<InPlaceOutboxMessageProcessor> _logger;
+        return await TryHandleMessage(message, handlerType);
+    }
 
-        public InPlaceOutboxMessageProcessor(MessageTypes messageTypes, IServiceScopeFactory serviceScopeProvider,
-            ILogger<InPlaceOutboxMessageProcessor> logger)
+    private bool TryDeserializeMessage(string json, Type messageType, out Message message)
+    {
+        try
         {
-            _messageTypes = messageTypes;
-            _serviceScopeProvider = serviceScopeProvider;
-            _logger = logger;
+            message = (Message) JsonConvert.DeserializeObject(json, messageType);
+            return true;
         }
-
-        public async Task<MessageProcessingResult> Process(OutboxMessage outboxMessage,
-            CancellationToken cancellationToken)
+        catch (JsonException e)
         {
-            var messageType = _messageTypes.GetMessageTypeFor(outboxMessage.MessageTypeId);
-            var handlerType = _messageTypes.GetHandlerTypeFor(outboxMessage.MessageTypeId);
-            if (!TryDeserializeMessage(outboxMessage.PayloadAsJson, messageType, out var message))
-                return MessageProcessingResult.MessageUnprocessable;
-
-            return await TryHandleMessage(message, handlerType);
+            logger.LogError(e, "Message deserialization failed");
+            message = null;
+            return false;
         }
+    }
 
-        private bool TryDeserializeMessage(string json, Type messageType, out Message message)
+    private async Task<MessageProcessingResult> TryHandleMessage(Message message, Type handlerType)
+    {
+        using var scope = serviceScopeProvider.CreateScope();
+        var handler = (MessageHandler) scope.ServiceProvider.GetService(handlerType);
+        try
         {
-            try
-            {
-                message = (Message) JsonConvert.DeserializeObject(json, messageType);
-                return true;
-            }
-            catch (JsonException e)
-            {
-                _logger.LogError(e, "Message deserialization failed");
-                message = null;
-                return false;
-            }
+            await handler.Handle(message);
+            return MessageProcessingResult.Processed;
         }
-
-        private async Task<MessageProcessingResult> TryHandleMessage(Message message, Type handlerType)
+        catch (DomainError e)
         {
-            using var scope = _serviceScopeProvider.CreateScope();
-            var handler = (MessageHandler) scope.ServiceProvider.GetService(handlerType);
-            try
-            {
-                await handler.Handle(message);
-                return MessageProcessingResult.Processed;
-            }
-            catch (DomainError e)
-            {
-                _logger.LogError(e, "Domain error");
-                return MessageProcessingResult.Processed;
-            }
-            catch (TemporaryInfrastructureError e)
-            {
-                _logger.LogError(e, "Temporary infrastructure error");
-                return MessageProcessingResult.TemporaryError;
-            }
-            catch (PermanentInfrastructureError e)
-            {
-                _logger.LogCritical(e, "Permanent infrastructure error");
-                return MessageProcessingResult.MessageUnprocessable;
-            }
+            logger.LogError(e, "Domain error");
+            return MessageProcessingResult.Processed;
+        }
+        catch (TemporaryInfrastructureError e)
+        {
+            logger.LogError(e, "Temporary infrastructure error");
+            return MessageProcessingResult.TemporaryError;
+        }
+        catch (PermanentInfrastructureError e)
+        {
+            logger.LogCritical(e, "Permanent infrastructure error");
+            return MessageProcessingResult.MessageUnprocessable;
         }
     }
 }

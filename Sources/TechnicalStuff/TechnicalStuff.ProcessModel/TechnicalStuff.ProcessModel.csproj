@@ -4,7 +4,9 @@
         <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.ProcessModel</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.ProcessModel</RootNamespace>
-        <LangVersion>default</LangVersion>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,17 +1,14 @@
-using System;
+namespace MyCompany.ECommerce.Sales.Time;
 
-namespace MyCompany.ECommerce.Sales.Time
+public class SystemClock : Clock
 {
-    public class SystemClock : Clock
+    public DateTime Now
     {
-        public DateTime Now
+        get
         {
-            get
-            {
-                var now = DateTime.UtcNow;
-                return new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond,
-                    DateTimeKind.Utc);
-            }
+            var now = DateTime.UtcNow;
+            return new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond,
+                DateTimeKind.Utc);
         }
     }
 }

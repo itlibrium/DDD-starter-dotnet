@@ -1,20 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz
-{
-    public class OutboxBackgroundServiceSettings
-    {
-        public IReadOnlyList<Type> ProcessorTypes { get; }
-        public int? MinDelayBetweenBatches { get; }
-        public int? DelayAfterEmptyBatch { get; }
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Quartz;
 
-        public OutboxBackgroundServiceSettings(IReadOnlyList<Type> processorTypes, int? minDelayBetweenBatches,
-            int? delayAfterEmptyBatch)
-        {
-            ProcessorTypes = processorTypes;
-            MinDelayBetweenBatches = minDelayBetweenBatches;
-            DelayAfterEmptyBatch = delayAfterEmptyBatch;
-        }
-    }
+public class OutboxBackgroundServiceSettings(
+    IReadOnlyList<Type> processorTypes,
+    int? minDelayBetweenBatches,
+    int? delayAfterEmptyBatch)
+{
+    public IReadOnlyList<Type> ProcessorTypes { get; } = processorTypes;
+    public int? MinDelayBetweenBatches { get; } = minDelayBetweenBatches;
+    public int? DelayAfterEmptyBatch { get; } = delayAfterEmptyBatch;
 }

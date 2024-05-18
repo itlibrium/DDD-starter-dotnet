@@ -1,19 +1,15 @@
-using System;
 using P3Model.Annotations.Domain.DDD;
 
-namespace MyCompany.ECommerce.Sales.Commons
+namespace MyCompany.ECommerce.Sales.Commons;
+
+[DddValueObject]
+public readonly struct TaxId(string value) : IEquatable<TaxId>
 {
-    [DddValueObject]
-    public readonly struct TaxId : IEquatable<TaxId>
-    {
-        public string Value { get; }
-        
-        public TaxId(string value) => Value = value;
+    public string Value { get; } = value;
 
-        public bool Equals(TaxId other) => Value == other.Value;
+    public bool Equals(TaxId other) => Value == other.Value;
 
-        public override bool Equals(object obj) => obj is TaxId other && Equals(other);
+    public override bool Equals(object obj) => obj is TaxId other && Equals(other);
 
-        public override int GetHashCode() => Value.GetHashCode();
-    }
+    public override int GetHashCode() => Value.GetHashCode();
 }

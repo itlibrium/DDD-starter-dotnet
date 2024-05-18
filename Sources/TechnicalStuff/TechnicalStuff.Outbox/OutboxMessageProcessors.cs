@@ -1,7 +1,6 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
+
+internal static class OutboxMessageProcessors
 {
-    internal static class OutboxMessageProcessors
-    {
-        internal const string InPlace = "InPlace";
-    }
+    internal const string InPlace = "InPlace";
 }

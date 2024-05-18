@@ -2,11 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <AssemblyName>MyCompany.ECommerce.Payments.Adapters.Out</AssemblyName>
-        <RootNamespace>MyCompany.ECommerce.Payments</RootNamespace>
-        <LangVersion>default</LangVersion>
+        <RootNamespace>MyCompany.ECommerce.Payments</RootNamespace>        
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,6 +1,4 @@
 using System.Collections.Immutable;
-using System.Linq;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
@@ -12,46 +10,37 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+
+[UsedImplicitly]
+public class GetOfferHandler(
+    Order.Repository orders,
+    SalesCrudOperations crudOperations,
+    CalculatePrices calculatePrices)
+    : CommandHandler<GetOffer, OfferCalculated>
 {
-    [UsedImplicitly]
-    public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
+    [UseCase(nameof(GetOffer), Process = WholesaleOrderingProcess.Name)]
+    [Actor(Actors.WholesaleClient)]
+    public async Task<OfferCalculated> Handle(GetOffer command)
     {
-        private readonly Order.Repository _orders;
-        private readonly SalesCrudOperations _crudOperations;
-        private readonly CalculatePrices _calculatePrices;
-
-        public GetOfferHandler(Order.Repository orders, SalesCrudOperations crudOperations,
-            CalculatePrices calculatePrices)
-        {
-            _orders = orders;
-            _crudOperations = crudOperations;
-            _calculatePrices = calculatePrices;
-        }
-
-        [UseCase(nameof(GetOffer), Process = WholesaleOrderingProcess.Name)]
-        [Actor(Actors.WholesaleClient)]
-        public async Task<OfferCalculated> Handle(GetOffer command)
-        {
             var (orderId, currency) = CreateDomainModelFrom(command);
-            var order = await _orders.GetBy(orderId);
+            var order = await orders.GetBy(orderId);
             var clientId = await GetClient(orderId);
-            var offer = await _calculatePrices.For(clientId, SalesChannel.Wholesale, order.ProductAmounts, currency);
+            var offer = await calculatePrices.For(clientId, SalesChannel.Wholesale, order.ProductAmounts, currency);
             return CreateEventFrom(orderId, offer);
         }
 
-        private static (OrderId, Currency) CreateDomainModelFrom(GetOffer command) => (
-            OrderId.From(command.OrderId), command.CurrencyCode.ToDomainModel<Currency>());
+    private static (OrderId, Currency) CreateDomainModelFrom(GetOffer command) => (
+        OrderId.From(command.OrderId), command.CurrencyCode.ToDomainModel<Currency>());
 
-        private async Task<ClientId> GetClient(OrderId orderId)
-        {
-            var orderHeader = await _crudOperations.Read<OrderHeader>(orderId.Value);
+    private async Task<ClientId> GetClient(OrderId orderId)
+    {
+            var orderHeader = await crudOperations.Read<OrderHeader>(orderId.Value);
             return ClientId.From(orderHeader.ClientId);
         }
 
-        private static OfferCalculated CreateEventFrom(OrderId orderId, Offer offer) => new(
-            orderId.Value, offer.Quotes
-                .Select(quote => quote.ToDto())
-                .ToImmutableArray());
-    }
+    private static OfferCalculated CreateEventFrom(OrderId orderId, Offer offer) => new(
+        orderId.Value, offer.Quotes
+            .Select(quote => quote.ToDto())
+            .ToImmutableArray());
 }

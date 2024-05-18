@@ -2,12 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-
         <IsPackable>false</IsPackable>
-
         <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
-
         <AssemblyName>MyCompany.ECommerce.Sales.DeepModel.Tests</AssemblyName>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,18 +1,8 @@
-using System;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement
+public class OrderPlaced(Guid orderId, Guid clientId, DateTime placedOn) : OrderEvent
 {
-    public class OrderPlaced : OrderEvent
-    {
-        public Guid OrderId { get; }
-        public Guid ClientId { get; }
-        public DateTime PlacedOn { get; }
-
-        public OrderPlaced(Guid orderId, Guid clientId, DateTime placedOn)
-        {
-            OrderId = orderId;
-            ClientId = clientId;
-            PlacedOn = placedOn;
-        }
-    }
+    public Guid OrderId { get; } = orderId;
+    public Guid ClientId { get; } = clientId;
+    public DateTime PlacedOn { get; } = placedOn;
 }

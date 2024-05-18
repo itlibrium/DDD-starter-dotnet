@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;

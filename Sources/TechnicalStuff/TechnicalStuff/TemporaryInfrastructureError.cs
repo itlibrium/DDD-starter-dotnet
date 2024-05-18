@@ -1,14 +1,11 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
-namespace MyCompany.ECommerce.TechnicalStuff
+public class TemporaryInfrastructureError : InfrastructureError
 {
-    public class TemporaryInfrastructureError : InfrastructureError
-    {
-        public TemporaryInfrastructureError() { }
+    public TemporaryInfrastructureError() { }
         
-        public TemporaryInfrastructureError(string message) : base(message) { }
+    public TemporaryInfrastructureError(string message) : base(message) { }
 
-        public TemporaryInfrastructureError(string message, Exception innerException) :
-            base(message, innerException) { }
-    }
+    public TemporaryInfrastructureError(string message, Exception innerException) :
+        base(message, innerException) { }
 }

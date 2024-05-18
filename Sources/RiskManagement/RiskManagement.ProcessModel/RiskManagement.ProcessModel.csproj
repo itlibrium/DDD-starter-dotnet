@@ -5,6 +5,8 @@
         <AssemblyName>MyCompany.ECommerce.RiskManagement.ProcessModel</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.RiskManagement</RootNamespace>
         <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>    
 
     <ItemGroup>

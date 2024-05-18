@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.ExchangeRates;

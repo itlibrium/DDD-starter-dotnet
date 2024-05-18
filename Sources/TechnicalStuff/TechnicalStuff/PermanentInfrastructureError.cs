@@ -1,14 +1,11 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff;
 
-namespace MyCompany.ECommerce.TechnicalStuff
+public class PermanentInfrastructureError : InfrastructureError
 {
-    public class PermanentInfrastructureError : InfrastructureError
-    {
-        public PermanentInfrastructureError() { }
+    public PermanentInfrastructureError() { }
 
-        public PermanentInfrastructureError(string message) : base(message) { }
+    public PermanentInfrastructureError(string message) : base(message) { }
 
-        public PermanentInfrastructureError(string message, Exception innerException) :
-            base(message, innerException) { }
-    }
+    public PermanentInfrastructureError(string message, Exception innerException) :
+        base(message, innerException) { }
 }

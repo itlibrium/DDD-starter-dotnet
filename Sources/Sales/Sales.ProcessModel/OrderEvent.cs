@@ -1,10 +1,8 @@
-using System;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales
+namespace MyCompany.ECommerce.Sales;
+
+public interface OrderEvent : DomainEvent
 {
-    public interface OrderEvent : DomainEvent
-    {
-        public Guid OrderId { get; }
-    }
+    public Guid OrderId { get; }
 }

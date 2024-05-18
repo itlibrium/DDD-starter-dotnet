@@ -4,9 +4,6 @@ using MyCompany.ECommerce.TechnicalStuff.Crud.Ef;
 
 namespace MyCompany.ECommerce.Contacts;
 
-public class ContactsEfDao : EfCrudDao, ContactsCrudOperations
-{
-    [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter",
-        Justification = "Required by DI container")]
-    public ContactsEfDao(ContactsDbContext context) : base(context) { }
-}
+[method: SuppressMessage("ReSharper", "SuggestBaseTypeForParameter",
+    Justification = "Required by DI container")]
+public class ContactsEfDao(ContactsDbContext context) : EfCrudDao(context), ContactsCrudOperations;

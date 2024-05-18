@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;

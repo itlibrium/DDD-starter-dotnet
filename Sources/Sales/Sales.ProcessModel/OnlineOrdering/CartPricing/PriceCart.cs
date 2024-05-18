@@ -1,20 +1,12 @@
-using System;
 using System.Collections.Immutable;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing
-{
-    public readonly struct PriceCart : Command
-    {
-        public Guid ClientId { get; }   
-        public string Currency { get; }
-        public ImmutableArray<CartItemDto> CartItems { get; }
+namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing;
 
-        public PriceCart(Guid clientId, string currency, ImmutableArray<CartItemDto> cartItems)
-        {
-            ClientId = clientId;
-            Currency = currency;
-            CartItems = cartItems;
-        }
-    }
+public readonly struct PriceCart(Guid clientId, string currency, ImmutableArray<CartItemDto> cartItems)
+    : Command
+{
+    public Guid ClientId { get; } = clientId;
+    public string Currency { get; } = currency;
+    public ImmutableArray<CartItemDto> CartItems { get; } = cartItems;
 }

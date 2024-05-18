@@ -4,6 +4,9 @@
         <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

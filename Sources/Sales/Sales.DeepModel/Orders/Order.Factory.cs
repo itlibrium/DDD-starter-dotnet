@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
@@ -10,15 +9,11 @@ namespace MyCompany.ECommerce.Sales.Orders;
 public partial class Order
 {
     [DddFactory]
-    public abstract class Factory
+    public abstract class Factory(RiskManagement riskManagement)
     {
-        private readonly RiskManagement _riskManagement;
-        
-        protected Factory(RiskManagement riskManagement) => _riskManagement = riskManagement;
-
         public async Task<Order> NewWithMaxTotalCostFor(ClientId clientId)
         {
-            var maxTotalCost = await _riskManagement.GetMaxOrderTotalCostFor(clientId);
+            var maxTotalCost = await riskManagement.GetMaxOrderTotalCostFor(clientId);
             return NewWith(maxTotalCost);
         }
         

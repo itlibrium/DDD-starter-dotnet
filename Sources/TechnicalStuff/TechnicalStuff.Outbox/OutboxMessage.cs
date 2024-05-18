@@ -1,23 +1,15 @@
-using System;
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
 
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+public class OutboxMessage(
+    Guid id,
+    string partitionKey,
+    string processorType,
+    string messageTypeId,
+    string payloadAsJson)
 {
-    public class OutboxMessage
-    {
-        public Guid Id { get; }
-        public string PartitionKey { get; }
-        public string ProcessorType { get; }
-        public string MessageTypeId { get; }
-        public string PayloadAsJson { get; }
-
-        public OutboxMessage(Guid id, string partitionKey, string processorType, string messageTypeId,
-            string payloadAsJson)
-        {
-            Id = id;
-            PartitionKey = partitionKey;
-            ProcessorType = processorType;
-            MessageTypeId = messageTypeId;
-            PayloadAsJson = payloadAsJson;
-        }
-    }
+    public Guid Id { get; } = id;
+    public string PartitionKey { get; } = partitionKey;
+    public string ProcessorType { get; } = processorType;
+    public string MessageTypeId { get; } = messageTypeId;
+    public string PayloadAsJson { get; } = payloadAsJson;
 }

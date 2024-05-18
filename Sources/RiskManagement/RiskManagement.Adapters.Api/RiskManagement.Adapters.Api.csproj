@@ -2,11 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <AssemblyName>MyCompany.ECommerce.RiskManagement.Adapters.Api</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.RiskManagement</RootNamespace>
-        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

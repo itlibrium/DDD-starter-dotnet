@@ -1,4 +1,3 @@
-namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel
-{
-    public interface DomainEvent : Message { }
-}
+namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel;
+
+public interface DomainEvent : Message { }

@@ -1,9 +1,8 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox;
+
+public enum BatchProcessingResult
 {
-    public enum BatchProcessingResult
-    {
-        NotFullBatchProcessed,
-        FullBatchProcessed,
-        TemporaryError
-    }
+    NotFullBatchProcessed,
+    FullBatchProcessed,
+    TemporaryError
 }

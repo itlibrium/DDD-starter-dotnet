@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 

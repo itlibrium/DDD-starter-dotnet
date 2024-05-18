@@ -1,7 +1,6 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Kafka;
+
+internal static class OutboxMessageProcessors
 {
-    internal static class OutboxMessageProcessors
-    {
-        internal const string Kafka = "Kafka";
-    }
+    internal const string Kafka = "Kafka";
 }

@@ -1,7 +1,6 @@
-namespace MyCompany.ECommerce.Sales
+namespace MyCompany.ECommerce.Sales;
+
+public interface OrderEventsOutbox
 {
-    public interface OrderEventsOutbox
-    {
-        public void Add(OrderEvent orderEvent);
-    }
+    public void Add(OrderEvent orderEvent);
 }

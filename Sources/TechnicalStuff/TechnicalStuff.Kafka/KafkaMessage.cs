@@ -1,16 +1,8 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Kafka
+namespace MyCompany.ECommerce.TechnicalStuff.Kafka;
+
+public class KafkaMessage(string topic, string key, string valueAsJson)
 {
-    public class KafkaMessage
-    {
-        public string Topic { get; }
-        public string Key { get; }
-        public string ValueAsJson { get; }
-        
-        public KafkaMessage(string topic, string key, string valueAsJson)
-        {
-            Topic = topic;
-            Key = key;
-            ValueAsJson = valueAsJson;
-        }
-    }
+    public string Topic { get; } = topic;
+    public string Key { get; } = key;
+    public string ValueAsJson { get; } = valueAsJson;
 }

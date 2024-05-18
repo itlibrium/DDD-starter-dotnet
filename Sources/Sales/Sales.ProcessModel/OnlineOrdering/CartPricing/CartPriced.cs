@@ -1,21 +1,11 @@
-using System;
 using System.Collections.Immutable;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing
-{
-    public readonly struct CartPriced
-    {
-        public DateTime PricedOn { get; }
-        public Guid ClientId { get; }
-        public string Currency { get; }
-        public ImmutableArray<QuoteDto> Quotes { get; }
+namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing;
 
-        public CartPriced(DateTime pricedOn, Guid clientId, string currency, ImmutableArray<QuoteDto> quotes)
-        {
-            PricedOn = pricedOn;
-            ClientId = clientId;
-            Currency = currency;
-            Quotes = quotes;
-        }
-    }
+public readonly struct CartPriced(DateTime pricedOn, Guid clientId, string currency, ImmutableArray<QuoteDto> quotes)
+{
+    public DateTime PricedOn { get; } = pricedOn;
+    public Guid ClientId { get; } = clientId;
+    public string Currency { get; } = currency;
+    public ImmutableArray<QuoteDto> Quotes { get; } = quotes;
 }

@@ -1,20 +1,12 @@
-using System;
 using System.Collections.Immutable;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
-{
-    public readonly struct ConfirmOffer : Command
-    {
-        public Guid OrderId { get; }
-        public string CurrencyCode { get; }
-        public ImmutableArray<QuoteDto> Quotes { get; }
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
 
-        public ConfirmOffer(Guid orderId, string currencyCode, ImmutableArray<QuoteDto> quotes)
-        {
-            OrderId = orderId;
-            CurrencyCode = currencyCode;
-            Quotes = quotes;
-        }
-    }
+public readonly struct ConfirmOffer(Guid orderId, string currencyCode, ImmutableArray<QuoteDto> quotes)
+    : Command
+{
+    public Guid OrderId { get; } = orderId;
+    public string CurrencyCode { get; } = currencyCode;
+    public ImmutableArray<QuoteDto> Quotes { get; } = quotes;
 }

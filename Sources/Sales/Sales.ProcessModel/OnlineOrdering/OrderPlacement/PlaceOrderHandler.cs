@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
@@ -13,60 +10,48 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
+namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
+
+[UsedImplicitly]
+[Actor(Actors.RetailClient)]
+public class PlaceOrderHandler(
+    CalculatePrices calculatePrices,
+    Order.Repository repository,
+    Order.Factory factory,
+    SalesCrudOperations crudOperations,
+    OrderEventsOutbox eventsOutbox,
+    Clock clock)
+    : CommandHandler<PlaceOrder, OrderPlaced>
 {
-    [UsedImplicitly]
-    [Actor(Actors.RetailClient)]
-    public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
+    [PublicContract]
+    [UseCase(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
+    public async Task<OrderPlaced> Handle(PlaceOrder command)
     {
-        private readonly CalculatePrices _calculatePrices;
-        private readonly Order.Repository _repository;
-        private readonly Order.Factory _factory;
-        private readonly SalesCrudOperations _crudOperations;
-        private readonly OrderEventsOutbox _eventsOutbox;
-        private readonly Clock _clock;
-        
-        public PlaceOrderHandler(CalculatePrices calculatePrices, Order.Repository repository, Order.Factory factory, 
-            SalesCrudOperations crudOperations, OrderEventsOutbox eventsOutbox, Clock clock)
-        {
-            _calculatePrices = calculatePrices;
-            _repository = repository;
-            _factory = factory;
-            _crudOperations = crudOperations;
-            _eventsOutbox = eventsOutbox;
-            _clock = clock;
-        }
-        
-        [PublicContract]
-        [UseCase(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
-        public async Task<OrderPlaced> Handle(PlaceOrder command)
-        {
             var (clientId, offer) = CreateDomainModelFrom(command);
-            var currentOffer = await _calculatePrices.For(clientId,
+            var currentOffer = await calculatePrices.For(clientId,
                 SalesChannel.OnlineSale,
                 offer.ProductAmounts,
                 offer.Currency);
             if (!offer.Equals(currentOffer)) throw new DomainError();
-            var order = _factory.ImmediatelyPlacedBasedOn(offer);
+            var order = factory.ImmediatelyPlacedBasedOn(offer);
             var orderHeader = new OrderHeader
             {
                 Id = order.Id.Value, 
                 ClientId = clientId.Value, 
                 InvoicingDetails = command.InvoicingDetails
             };
-            await _repository.Save(order);
-            await _crudOperations.Create(orderHeader);
-            var orderPlaced = CreateEventFrom(clientId, order, _clock.Now);
-            _eventsOutbox.Add(orderPlaced);
+            await repository.Save(order);
+            await crudOperations.Create(orderHeader);
+            var orderPlaced = CreateEventFrom(clientId, order, clock.Now);
+            eventsOutbox.Add(orderPlaced);
             return orderPlaced;
         }
 
-        private static (ClientId, Offer) CreateDomainModelFrom(PlaceOrder command) => (
-            ClientId.From(command.ClientId),
-            Offer.FromQuotes(command.CurrencyCode.ToDomainModel<Currency>(),
-                command.Quotes.Select(quote => quote.ToDomainModel())));
+    private static (ClientId, Offer) CreateDomainModelFrom(PlaceOrder command) => (
+        ClientId.From(command.ClientId),
+        Offer.FromQuotes(command.CurrencyCode.ToDomainModel<Currency>(),
+            command.Quotes.Select(quote => quote.ToDomainModel())));
 
-        private static OrderPlaced CreateEventFrom(ClientId clientId, Order order, DateTime placedOn) =>
-            new(order.Id.Value, clientId.Value, placedOn);
-    }
+    private static OrderPlaced CreateEventFrom(ClientId clientId, Order order, DateTime placedOn) =>
+        new(order.Id.Value, clientId.Value, placedOn);
 }

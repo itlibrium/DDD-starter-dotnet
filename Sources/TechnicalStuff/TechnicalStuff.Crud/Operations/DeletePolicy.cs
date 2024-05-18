@@ -1,8 +1,7 @@
-namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations
+namespace MyCompany.ECommerce.TechnicalStuff.Crud.Operations;
+
+public enum DeletePolicy
 {
-    public enum DeletePolicy
-    {
-        Soft,
-        Hard
-    }
+    Soft,
+    Hard
 }

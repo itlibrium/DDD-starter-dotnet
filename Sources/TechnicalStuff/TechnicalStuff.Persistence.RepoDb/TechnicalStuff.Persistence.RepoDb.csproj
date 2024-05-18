@@ -2,11 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Persistence.RepoDb</RootNamespace>
-        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

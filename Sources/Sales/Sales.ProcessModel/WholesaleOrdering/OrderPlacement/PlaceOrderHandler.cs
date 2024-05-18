@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.Time;
@@ -7,45 +5,35 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
+
+[UsedImplicitly]
+public class PlaceOrderHandler(
+    Order.Repository orders,
+    SalesCrudOperations crudOperations,
+    Clock clock,
+    OrderEventsOutbox eventsOutbox)
+    : CommandHandler<PlaceOrder, OrderPlaced>
 {
-    [UsedImplicitly]
-    public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
+    [UseCase(nameof(PlaceOrder), Process = WholesaleOrderingProcess.Name)]
+    [Actor(Actors.WholesaleClient)]
+    public async Task<OrderPlaced> Handle(PlaceOrder command)
     {
-        private readonly Order.Repository _orders;
-        private readonly SalesCrudOperations _crudOperations;
-        private readonly Clock _clock;
-        private readonly OrderEventsOutbox _eventsOutbox;
-
-        public PlaceOrderHandler(Order.Repository orders, SalesCrudOperations crudOperations, Clock clock, 
-            OrderEventsOutbox eventsOutbox)
-        {
-            _orders = orders;
-            _crudOperations = crudOperations;
-            _clock = clock;
-            _eventsOutbox = eventsOutbox;
-        }
-
-        [UseCase(nameof(PlaceOrder), Process = WholesaleOrderingProcess.Name)]
-        [Actor(Actors.WholesaleClient)]
-        public async Task<OrderPlaced> Handle(PlaceOrder command)
-        {
             var orderId = CreateDomainModelFrom(command);
-            var order = await _orders.GetBy(orderId);
-            var now = _clock.Now;
+            var order = await orders.GetBy(orderId);
+            var now = clock.Now;
             order.Place(now);
-            await _orders.Save(order);
+            await orders.Save(order);
             var orderPlaced = await CreateEventFrom(order, now);
-            _eventsOutbox.Add(orderPlaced);
+            eventsOutbox.Add(orderPlaced);
             return orderPlaced;
         }
         
-        private static OrderId CreateDomainModelFrom(PlaceOrder command) => OrderId.From(command.OrderId);
+    private static OrderId CreateDomainModelFrom(PlaceOrder command) => OrderId.From(command.OrderId);
 
-        private async Task<OrderPlaced> CreateEventFrom(Order order, DateTime placedOn)
-        {
-            var orderHeader = await _crudOperations.Read<OrderHeader>(order.Id.Value);
+    private async Task<OrderPlaced> CreateEventFrom(Order order, DateTime placedOn)
+    {
+            var orderHeader = await crudOperations.Read<OrderHeader>(order.Id.Value);
             return new OrderPlaced(order.Id.Value, orderHeader.ClientId, placedOn);
         }
-    }
 }

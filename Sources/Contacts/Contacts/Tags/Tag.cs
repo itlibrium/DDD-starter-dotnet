@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Contacts.Companies;
 using MyCompany.ECommerce.Contacts.Groups;

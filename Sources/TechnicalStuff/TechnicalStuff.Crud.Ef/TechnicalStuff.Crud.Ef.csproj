@@ -4,6 +4,9 @@
         <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Crud.Ef</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Crud.Ef</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

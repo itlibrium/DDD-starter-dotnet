@@ -5,6 +5,8 @@
         <AssemblyName>MyCompany.ECommerce.Sales.ProcessModel</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.Sales</RootNamespace>
         <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>

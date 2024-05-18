@@ -1,11 +1,6 @@
-namespace MyCompany.ECommerce.Sales.Orders
-{
-    public class FakeOrderEventOutbox : OrderEventsOutbox
-    {
-        private readonly FakeMessageBroker _broker;
-        
-        public FakeOrderEventOutbox(FakeMessageBroker broker) => _broker = broker;
+namespace MyCompany.ECommerce.Sales.Orders;
 
-        public void Add(OrderEvent orderEvent) => _broker.Publish(orderEvent);
-    }
+public class FakeOrderEventOutbox(FakeMessageBroker broker) : OrderEventsOutbox
+{
+    public void Add(OrderEvent orderEvent) => broker.Publish(orderEvent);
 }

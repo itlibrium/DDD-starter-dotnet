@@ -2,8 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
-        <LangVersion>default</LangVersion>
+        <ImplicitUsings>true</ImplicitUsings>
         <AssemblyName>MyCompany.ECommerce.TechnicalStuff.Json</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.TechnicalStuff.Json</RootNamespace>
     </PropertyGroup>

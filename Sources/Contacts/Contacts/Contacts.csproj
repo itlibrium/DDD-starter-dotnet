@@ -6,6 +6,7 @@
         <RootNamespace>MyCompany.ECommerce.Contacts</RootNamespace>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
         <OutputType>Library</OutputType>
     </PropertyGroup>
     
