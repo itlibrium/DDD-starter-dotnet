@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using System.Transactions;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;

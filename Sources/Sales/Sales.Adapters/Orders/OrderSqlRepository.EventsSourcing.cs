@@ -8,6 +8,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
+    [UsedImplicitly]
     public partial class EventsSourcing(RiskManagement riskManagement, IDocumentSession session)
         : Order.Factory(riskManagement), Order.Repository
     {

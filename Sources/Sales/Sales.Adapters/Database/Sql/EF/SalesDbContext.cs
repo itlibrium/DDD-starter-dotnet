@@ -9,13 +9,11 @@ namespace MyCompany.ECommerce.Sales.Database.Sql.EF;
 
 [UsedImplicitly(ImplicitUseTargetFlags.Members)]
 [Database("Main", ClusterName = "Postgres")]
-public class SalesDbContext : DbContext
+public class SalesDbContext(DbContextOptions<SalesDbContext> options) : DbContext(options)
 {
     public DbSet<DbOrder> Orders { get; set; }
     public DbSet<OrderHeader> OrderHeaders { get; set; }
     public DbSet<OrderNote> OrderNotes { get; set; }
-
-    public SalesDbContext(DbContextOptions<SalesDbContext> options) : base(options) { }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
     {

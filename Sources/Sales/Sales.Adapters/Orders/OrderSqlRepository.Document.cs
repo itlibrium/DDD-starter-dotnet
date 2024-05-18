@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using Marten;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.Documents;
@@ -9,11 +8,10 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class Document([NotNull] RiskManagement riskManagement, IDocumentSession session) 
+    public class Document(RiskManagement riskManagement, IDocumentSession session)
         : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();
-        private readonly IDocumentSession _session = session;
 
         protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
         {
@@ -26,11 +24,11 @@ public static partial class OrderSqlRepository
         {
             if (_orders.ContainsKey(id))
                 throw new DesignError(SameAggregateRestoredMoreThanOnce);
-            var orderDoc = await _session.LoadAsync<DbOrder>(id.Value);
+            var orderDoc = await session.LoadAsync<DbOrder>(id.Value);
             if (orderDoc is null)
                 throw new DomainError();
             var order = Order.RestoreFrom(orderDoc);
-            var metadata = await _session.MetadataForAsync(orderDoc);
+            var metadata = await session.MetadataForAsync(orderDoc);
             _orders.Add(id, (orderDoc, metadata.CurrentVersion));
             return order;
         }
@@ -40,8 +38,8 @@ public static partial class OrderSqlRepository
             // TODO: document versioning
             if (!_orders.TryGetValue(order.Id, out var tuple))
                 throw new DesignError(SaveOfUnknownAggregate);
-            _session.UpdateExpectedVersion(tuple.OrderData, tuple.Version);
-            return _session.SaveChangesAsync();
+            session.UpdateExpectedVersion(tuple.OrderData, tuple.Version);
+            return session.SaveChangesAsync();
         }
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 public class MessageTypes

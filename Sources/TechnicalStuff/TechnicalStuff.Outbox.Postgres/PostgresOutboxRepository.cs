@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using MyCompany.ECommerce.TechnicalStuff.Persistence;
 
 namespace MyCompany.ECommerce.TechnicalStuff.Outbox.Postgres;

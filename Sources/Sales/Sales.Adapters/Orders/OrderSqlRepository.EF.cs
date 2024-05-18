@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.EF;
@@ -8,11 +9,11 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class EF(RiskManagement riskManagement, SalesDbContext dbContext) 
+    [UsedImplicitly]
+    public class EF(RiskManagement riskManagement, SalesDbContext dbContext)
         : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, DbOrder> _orders = new();
-        private readonly SalesDbContext _dbContext = dbContext;
 
         protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
         {
@@ -23,7 +24,7 @@ public static partial class OrderSqlRepository
                 Items = new List<Order.Item>()
             };
             _orders.Add(id, dbOrder);
-            _dbContext.Orders.Add(dbOrder);
+            dbContext.Orders.Add(dbOrder);
             return dbOrder;
         }
 
@@ -31,7 +32,7 @@ public static partial class OrderSqlRepository
         {
             if (_orders.ContainsKey(id))
                 throw new DesignError(SameAggregateRestoredMoreThanOnce);
-            var dbOrder = await _dbContext.Orders
+            var dbOrder = await dbContext.Orders
                 .Include(o => o.Items)
                 .SingleOrDefaultAsync(o => o.Id.Equals(id));
             if (dbOrder is null) 
@@ -46,7 +47,7 @@ public static partial class OrderSqlRepository
             if (!_orders.TryGetValue(order.Id, out var dbOrder))
                 throw new DesignError(SaveOfUnknownAggregate);
             dbOrder.Version++;
-            return _dbContext.SaveChangesAsync();
+            return dbContext.SaveChangesAsync();
             // TODO: error when not all tracked orders are explicitly saved
         }
     }
