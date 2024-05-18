@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <AssemblyName>MyCompany.ECommerce.Payments.ProcessModel</AssemblyName>
         <RootNamespace>MyCompany.ECommerce.Payments</RootNamespace>
         <LangVersion>latest</LangVersion>
