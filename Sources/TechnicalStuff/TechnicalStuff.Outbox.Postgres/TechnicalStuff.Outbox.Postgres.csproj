@@ -15,11 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="P3Model.Annotations" Version="0.4.0" />
-      <PackageReference Include="SqlKata" Version="2.3.7" />
-      <PackageReference Include="SqlKata.Execution" Version="2.3.7" />
+      <PackageReference Include="SqlKata" Version="2.4.0" />
+      <PackageReference Include="SqlKata.Execution" Version="2.4.0" />
     </ItemGroup>
 
 </Project>

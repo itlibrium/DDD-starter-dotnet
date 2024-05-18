@@ -4,7 +4,6 @@ using MyCompany.ECommerce.DI;
 using MyCompany.ECommerce.DI.Modules;
 using MyCompany.ECommerce.Infrastructure;
 using MyCompany.ECommerce.Sales;
-using MyCompany.ECommerce.TechnicalStuff.Api.Docs;
 using MyCompany.ECommerce.TechnicalStuff.Api.Versioning;
 using MyCompany.ECommerce.TechnicalStuff.Json.Json;
 using MyCompany.ECommerce.TechnicalStuff.Persistence;
@@ -26,7 +25,7 @@ ConfigureDecorators();
 var app = builder.Build();
 app.UseRouting();
 app.MapControllers();
-app.UseOpenApiWithUi();
+app.UseOpenApi();
 app.Run();
 return;
 

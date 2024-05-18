@@ -8,7 +8,7 @@ namespace Nuke.DockerCompose;
 public class DockerComposeSettings : ToolSettings
 {
     public override string ProcessToolPath => DockerComposeTasks.DockerPath;
-    public override Action<OutputType, string> ProcessCustomLogger => DockerComposeTasks.CustomLogger;
+    public override Action<OutputType, string> ProcessLogger => DockerComposeTasks.CustomLogger;
 
     internal List<string> FileInternal;
     public IReadOnlyCollection<string> File => FileInternal.AsReadOnly();

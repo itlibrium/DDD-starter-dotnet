@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Npgsql" Version="6.0.7" />
+      <PackageReference Include="Npgsql" Version="8.0.3" />
       <PackageReference Include="P3Model.Annotations" Version="0.4.0" />
     </ItemGroup>
 

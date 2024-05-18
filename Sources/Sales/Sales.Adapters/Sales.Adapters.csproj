@@ -10,13 +10,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Marten" Version="5.11.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
-      <PackageReference Include="Npgsql" Version="6.0.7" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />
+      <PackageReference Include="Marten" Version="7.13.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+      <PackageReference Include="Npgsql" Version="8.0.3" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
       <PackageReference Include="P3Model.Annotations" Version="0.4.0" />
-      <PackageReference Include="RepoDb" Version="1.13.0" />
-      <PackageReference Include="RepoDb.PostgreSql" Version="1.13.0" />
+      <PackageReference Include="RepoDb" Version="1.13.1" />
+      <PackageReference Include="RepoDb.PostgreSql" Version="1.13.1" />
     </ItemGroup>
 
     <ItemGroup>

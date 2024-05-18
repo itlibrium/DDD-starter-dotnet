@@ -42,7 +42,7 @@ public static partial class OrderSqlRepository
             // TODO: document versioning
             if (!_orders.TryGetValue(order.Id, out var tuple))
                 throw new DesignError(SaveOfUnknownAggregate);
-            _session.Store(tuple.OrderData, tuple.Version);
+            _session.UpdateExpectedVersion(tuple.OrderData, tuple.Version);
             return _session.SaveChangesAsync();
         }
     }

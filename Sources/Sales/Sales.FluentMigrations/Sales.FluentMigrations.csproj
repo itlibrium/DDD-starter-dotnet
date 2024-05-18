@@ -18,12 +18,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
-      <PackageReference Include="FluentMigrator.Runner.Postgres" Version="3.3.2" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="7.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-      <PackageReference Include="Npgsql" Version="6.0.7" />
+      <PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
+      <PackageReference Include="FluentMigrator.Runner.Postgres" Version="5.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+      <PackageReference Include="Npgsql" Version="8.0.3" />
     </ItemGroup>
 
     <ItemGroup>
