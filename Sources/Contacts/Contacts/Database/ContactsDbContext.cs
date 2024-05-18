@@ -15,7 +15,7 @@ public class ContactsDbContext : DbContext
     public DbSet<Group> Groups { get; set; }
     public DbSet<Tag> Tags { get; set; }
 
-    public ContactsDbContext([NotNull] DbContextOptions<ContactsDbContext> options) : base(options) { }
+    public ContactsDbContext(DbContextOptions<ContactsDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Database.Sql.EF;
@@ -9,7 +8,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class EF([NotNull] RiskManagement riskManagement, SalesDbContext dbContext) 
+    public class EF(RiskManagement riskManagement, SalesDbContext dbContext) 
         : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, DbOrder> _orders = new();

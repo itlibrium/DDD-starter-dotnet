@@ -15,7 +15,7 @@ public class SalesDbContext : DbContext
     public DbSet<OrderHeader> OrderHeaders { get; set; }
     public DbSet<OrderNote> OrderNotes { get; set; }
 
-    public SalesDbContext([NotNull] DbContextOptions<SalesDbContext> options) : base(options) { }
+    public SalesDbContext(DbContextOptions<SalesDbContext> options) : base(options) { }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
     {

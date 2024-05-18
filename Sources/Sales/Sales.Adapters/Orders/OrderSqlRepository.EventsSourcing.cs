@@ -8,7 +8,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public partial class EventsSourcing([NotNull] RiskManagement riskManagement, IDocumentSession session)
+    public partial class EventsSourcing(RiskManagement riskManagement, IDocumentSession session)
         : Order.Factory(riskManagement), Order.Repository
     {
         public static readonly IEnumerable<(Type Type, string Name)> Events = new[]
