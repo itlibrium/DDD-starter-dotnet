@@ -1,12 +1,14 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using P3Model.Annotations.Domain;
+using P3Model.Annotations.Domain.DDD;
 using P3Model.Annotations.Technology.CleanArchitecture;
 
 [assembly: InternalsVisibleTo("MyCompany.ECommerce.Monolith.Startup")]
 [assembly: InternalsVisibleTo("MyCompany.ECommerce.Sales.IntegrationTests")]
 [assembly: EntitiesLayer]
 [assembly: DomainModel]
+[assembly: DddBoundedContext("Sales")]
 
 namespace MyCompany.ECommerce.Sales;
 

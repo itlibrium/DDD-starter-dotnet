@@ -1,4 +1,4 @@
-using P3Model.Annotations.Domain.DynamicModel;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Payments;
 

@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Orders;
@@ -8,16 +9,12 @@ using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 {
-    [ProcessStep(nameof(GetOffer), Process = WholesaleOrderingProcess.Name,
-        NextSteps = new[] { nameof(ConfirmOffer) })]
-    [Actor(Actors.WholesaleClient)]
-    [DddApplicationService]
+    [UsedImplicitly]
     public class GetOfferHandler : CommandHandler<GetOffer, OfferCalculated>
     {
         private readonly Order.Repository _orders;
@@ -32,6 +29,8 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
             _calculatePrices = calculatePrices;
         }
 
+        [UseCase(nameof(GetOffer), Process = WholesaleOrderingProcess.Name)]
+        [Actor(Actors.WholesaleClient)]
         public async Task<OfferCalculated> Handle(GetOffer command)
         {
             var (orderId, currency) = CreateDomainModelFrom(command);

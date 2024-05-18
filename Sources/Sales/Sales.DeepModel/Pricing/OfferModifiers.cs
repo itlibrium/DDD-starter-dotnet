@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MyCompany.ECommerce.Sales.Pricing.Discounts;
 using MyCompany.ECommerce.Sales.Pricing.SpecialOffers;
 using MyCompany.ECommerce.Sales.SalesChannels;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing
 {

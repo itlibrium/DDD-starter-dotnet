@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using MyCompany.ECommerce.Sales.Products;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing.Discounts
 {

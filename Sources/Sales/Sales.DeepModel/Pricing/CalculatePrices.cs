@@ -8,7 +8,7 @@ using MyCompany.ECommerce.Sales.ExchangeRates;
 using MyCompany.ECommerce.Sales.Pricing.PriceLists;
 using MyCompany.ECommerce.Sales.Products;
 using MyCompany.ECommerce.Sales.SalesChannels;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Pricing
 {

@@ -12,15 +12,11 @@ using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.Sales.Time;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
 {
-    [ProcessStep(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.Name)]
-    [Actor(Actors.WholesaleClient)]
-    [DddApplicationService]
     [UsedImplicitly]
     public class ConfirmOfferHandler : CommandHandler<ConfirmOffer, OfferConfirmed>
     {
@@ -47,6 +43,8 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing
             _clock = clock;
         }
 
+        [UseCase(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.Name)]
+        [Actor(Actors.WholesaleClient)]
         public async Task<OfferConfirmed> Handle(ConfirmOffer command)
         {
             var (orderId, offer) = CreateDomainModelFrom(command);

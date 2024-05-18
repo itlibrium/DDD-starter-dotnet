@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Immutable;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing
 {
-    [ProcessStepContract]
     public readonly struct PriceCart : Command
     {
         public Guid ClientId { get; }   

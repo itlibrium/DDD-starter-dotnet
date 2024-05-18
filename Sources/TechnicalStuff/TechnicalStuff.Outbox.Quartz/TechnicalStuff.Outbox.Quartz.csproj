@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="P3Model.Annotations" Version="0.3.0-preview05" />
+      <PackageReference Include="P3Model.Annotations" Version="0.4.0" />
       <PackageReference Include="Quartz" Version="3.4.0" />
     </ItemGroup>
 

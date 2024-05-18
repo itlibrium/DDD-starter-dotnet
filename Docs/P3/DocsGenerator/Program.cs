@@ -1,5 +1,7 @@
-﻿using P3Model.Annotations.Domain;
-using P3Model.Parser.Configuration;
+﻿using P3Model.Parser.Configuration;
+using P3Model.Parser.OutputFormatting.Json.Configuration;
+using P3Model.Parser.OutputFormatting.Mermaid.Configuration;
+using Serilog.Events;
 
 await P3
     .Product(product => product
@@ -9,12 +11,12 @@ await P3
     .Analyzers(analyzers => analyzers
         .UseDefaults(options => options
             .TreatNamespacesAsDomainModules(namespaces => namespaces
-                .OnlyFromAssembliesAnnotatedWith<DomainModelAttribute>()
-                .RemoveRootNamespace("MyCompany.ECommerce"))))
+                .SkipNamespacePart("ECommerce", "MyCompany"))))
     .OutputFormat(formatters => formatters
         .UseMermaid(options => options
             .Directory("Docs/P3/MermaidOutput")
             .UseDefaultPages())
         .UseJson(options => options
             .File("Docs/P3/JsonOutput/model.json")))
+    .LogLevel(LogEventLevel.Information)
     .Analyze();

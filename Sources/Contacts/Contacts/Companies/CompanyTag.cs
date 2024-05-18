@@ -1,12 +1,12 @@
 using System;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Contacts.Tags;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Contacts.Companies;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-[AnemicEntity]
+[DddEntity]
 public class CompanyTag
 {
     public Guid CompanyId { get; set; }

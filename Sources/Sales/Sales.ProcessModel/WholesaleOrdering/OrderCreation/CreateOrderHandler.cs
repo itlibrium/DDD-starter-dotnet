@@ -1,18 +1,16 @@
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation
 {
-    [ProcessStep(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
-    [Actor(Actors.WholesaleClient)]
-    [DddApplicationService]
+    [UsedImplicitly]
     public class CreateOrderHandler : CommandHandler<CreateOrder, OrderCreated>
     {
         private readonly Order.Repository _orders;
@@ -28,6 +26,8 @@ namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation
             _eventsOutbox = eventsOutbox;
         }
 
+        [UseCase(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
+        [Actor(Actors.WholesaleClient)]
         public async Task<OrderCreated> Handle(CreateOrder command)
         {
             var clientId = command.ClientId;

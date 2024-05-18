@@ -1,9 +1,9 @@
 using System;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
-    [ProcessStepContract]
+    [Event]
     public class OrderPlaced : OrderEvent
     {
         public Guid OrderId { get; }

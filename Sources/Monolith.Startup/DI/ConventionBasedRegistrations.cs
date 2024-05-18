@@ -3,8 +3,8 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using MyCompany.ECommerce.TechnicalStuff.Metadata;
-using P3Model.Annotations.Domain.StaticModel.DDD;
-using P3Model.Annotations.Technology;
+using P3Model.Annotations.Domain;
+using P3Model.Annotations.Domain.DDD;
 using Scrutor;
 
 namespace MyCompany.ECommerce.DI
@@ -21,7 +21,7 @@ namespace MyCompany.ECommerce.DI
                         typeof(DddFactoryAttribute),
                         typeof(DddDomainServiceAttribute),
                         typeof(DddApplicationServiceAttribute),
-                        typeof(ExternalSoftwareSystemAttribute)),
+                        typeof(ExternalSystemIntegrationAttribute)),
                     false)
                 .AsSelfWithInterfaces()
                 .WithScopedLifetime());

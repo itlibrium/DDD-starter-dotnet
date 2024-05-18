@@ -3,7 +3,7 @@ using MyCompany.ECommerce.Sales.Clients;
 using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Integrations.RiskManagement;
 using MyCompany.ECommerce.Sales.Pricing;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 

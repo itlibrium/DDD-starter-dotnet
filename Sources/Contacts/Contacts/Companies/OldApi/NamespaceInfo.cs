@@ -1,8 +1,8 @@
 using JetBrains.Annotations;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Contacts.Companies.OldApi;
 
-[NotDomainModule(ApplyOnNamespace = true)]
+[SkipNamespaceInDomainModulesHierarchy(ApplyOnNamespace = true)]
 [UsedImplicitly]
-public class NamespaceInfo { }
+public class NamespaceInfo;

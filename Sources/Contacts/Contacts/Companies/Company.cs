@@ -4,12 +4,12 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MyCompany.ECommerce.TechnicalStuff.Crud;
 using Newtonsoft.Json;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Contacts.Companies;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-[AnemicEntity]
+[DddEntity]
 public class Company : CrudEntity
 {
     public string Name { get; set; }

@@ -10,16 +10,13 @@ using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.Sales.Time;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
     [UsedImplicitly]
-    [ProcessStep(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
     [Actor(Actors.RetailClient)]
-    [DddApplicationService]
     public class PlaceOrderHandler : CommandHandler<PlaceOrder, OrderPlaced>
     {
         private readonly CalculatePrices _calculatePrices;
@@ -39,7 +36,9 @@ namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
             _eventsOutbox = eventsOutbox;
             _clock = clock;
         }
-
+        
+        [PublicContract]
+        [UseCase(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
         public async Task<OrderPlaced> Handle(PlaceOrder command)
         {
             var (clientId, offer) = CreateDomainModelFrom(command);

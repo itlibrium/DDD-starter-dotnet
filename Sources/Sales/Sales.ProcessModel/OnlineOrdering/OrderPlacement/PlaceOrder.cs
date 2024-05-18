@@ -2,11 +2,12 @@ using System;
 using System.Collections.Immutable;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement
 {
-    [ProcessStepContract]
+    [PublicContract]
+    [Command]
     public readonly struct PlaceOrder : Command
     {
         public Guid ClientId { get; }

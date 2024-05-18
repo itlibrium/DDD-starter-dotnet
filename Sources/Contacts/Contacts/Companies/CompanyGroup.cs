@@ -1,12 +1,12 @@
 using System;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.Contacts.Groups;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Contacts.Companies;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-[AnemicEntity]
+[DddEntity]
 public class CompanyGroup
 {
     public Company Company { get; set; }

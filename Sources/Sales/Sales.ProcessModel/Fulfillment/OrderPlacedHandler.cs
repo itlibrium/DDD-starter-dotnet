@@ -1,31 +1,32 @@
 using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.Fulfillment;
 
+using OnlineOrderPlaced = OnlineOrdering.OrderPlacement.OrderPlaced;
+using WholesaleOrderPlaced = WholesaleOrdering.OrderPlacement.OrderPlaced;
+
 [UsedImplicitly]
-[ProcessStep(nameof(OrderPlaced), Process = FulfillmentProcess.Name)]
-[DddApplicationService]
-public class OrderPlacedHandler : DomainEventHandler<OrderPlaced>, DomainEventHandler<MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement.OrderPlaced>
+public class OrderPlacedHandler : DomainEventHandler<OnlineOrderPlaced>, DomainEventHandler<WholesaleOrderPlaced>
 {
     public Task Handle(Message message) => message switch
     {
-        OrderPlaced onlineOrderPlaced => Handle(onlineOrderPlaced),
-        MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement.OrderPlaced wholesaleOrderPlaced => Handle(wholesaleOrderPlaced),
+        OnlineOrderPlaced onlineOrderPlaced => Handle(onlineOrderPlaced),
+        WholesaleOrderPlaced wholesaleOrderPlaced => Handle(wholesaleOrderPlaced),
         _ => throw new ArgumentOutOfRangeException(nameof(message), message, null)
     };
 
-    public Task Handle(OrderPlaced domainEvent)
+    [UseCase(nameof(OnlineOrderPlaced), Process = FulfillmentProcess.Name)]
+    public Task Handle(OnlineOrderPlaced domainEvent)
     {
         throw new NotImplementedException();
     }
 
-    public Task Handle(MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement.OrderPlaced domainEvent)
+    [UseCase(nameof(WholesaleOrderPlaced), Process = FulfillmentProcess.Name)]
+    public Task Handle(WholesaleOrderPlaced domainEvent)
     {
         throw new NotImplementedException();
     }

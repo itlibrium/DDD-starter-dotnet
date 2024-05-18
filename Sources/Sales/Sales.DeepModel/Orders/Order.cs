@@ -6,11 +6,15 @@ using MyCompany.ECommerce.Sales.Orders.PriceChanges;
 using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.Products;
 using MyCompany.ECommerce.TechnicalStuff;
-using P3Model.Annotations.Domain.StaticModel.DDD;
+using P3Model.Annotations;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders
 {
     [DddAggregate]
+    [ShortDescription("*An order is a request for products.* It is placed by a customer and contains " +
+                      "a list of products with their amounts. The order is placed when the customer " +
+                      "confirms the prices of the products.")]
     public partial class Order : IEquatable<Order>, DataEquals<Order>
     {
         public OrderId Id => _data.Id;

@@ -1,10 +1,8 @@
 using System;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification
 {
-    [ProcessStepContract]
     public readonly struct AddToOrder : Command
     {
         public Guid OrderId { get; }

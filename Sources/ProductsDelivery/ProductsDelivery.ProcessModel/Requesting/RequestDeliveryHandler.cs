@@ -2,14 +2,14 @@ using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain.StaticModel;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.ProductsDelivery.Requesting;
 
 [UsedImplicitly]
-[ProcessStep(nameof(RequestDelivery), Process = ProductsDeliveryProcess.Name)]
 public class RequestDeliveryHandler : CommandHandler<RequestDelivery>
 {
+    [UseCase(nameof(RequestDelivery), Process = ProductsDeliveryProcess.Name)]
     public Task Handle(RequestDelivery command)
     {
         throw new NotImplementedException();
