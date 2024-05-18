@@ -1,9 +1,9 @@
 ﻿using JetBrains.Annotations;
-using MyCompany.ECommerce.TechnicalStuff.Metadata;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
-[DataStructure]
+[ReadModel]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class AllOrderDetails
 {

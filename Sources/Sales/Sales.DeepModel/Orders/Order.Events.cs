@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.Products;
-using MyCompany.ECommerce.TechnicalStuff.Metadata;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
@@ -16,13 +16,12 @@ public partial class Order
         _newEvents.Add(@event);
     }
 
-    [DomainEvent]
     public interface Event
     {
         void Apply(Order order);
     }
 
-    [DomainEvent]
+    [Event]
     public class CreatedFromOffer(ImmutableArray<Item> items) : Event
     {
         public ImmutableArray<Item> Items { get; } = items;
@@ -34,7 +33,7 @@ public partial class Order
         }
     }
 
-    [DomainEvent]
+    [Event]
     public class ProductAmountAdded(ProductAmount productAmount) : Event
     {
         public ProductAmount ProductAmount { get; } = productAmount;
@@ -42,7 +41,7 @@ public partial class Order
         public void Apply(Order order) => order.AddToItem(ProductAmount);
     }
 
-    [DomainEvent]
+    [Event]
     public class PricesConfirmed : Event
     {
         public ImmutableArray<Quote> Quotes { get; }
@@ -75,7 +74,7 @@ public partial class Order
         public void Apply(Order order) => order.ApplyPriceAgreements(Quotes, AgreementType, AgreementExpiresOn);
     }
 
-    [DomainEvent]
+    [Event]
     public class Placed : Event
     {
         public void Apply(Order order) => order._data.IsPlaced = true;

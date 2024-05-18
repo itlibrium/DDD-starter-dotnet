@@ -1,9 +1,9 @@
 using JetBrains.Annotations;
-using MyCompany.ECommerce.TechnicalStuff.Metadata;
+using P3Model.Annotations.Domain.DDD;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
-[DataStructure]
+[DddValueObject]
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public class OrderItemDetails
 {

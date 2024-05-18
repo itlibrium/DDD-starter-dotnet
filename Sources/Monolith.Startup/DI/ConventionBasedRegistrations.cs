@@ -1,5 +1,4 @@
 using System.Reflection;
-using MyCompany.ECommerce.TechnicalStuff.Metadata;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.Domain.DDD;
 using Scrutor;
@@ -13,7 +12,6 @@ public static class ConventionBasedRegistrations
         services.Scan(selector => selector
             .FromAssemblies(assemblies)
             .AddClasses(filter => filter.WithAnyAttribute(
-                    typeof(DaoAttribute),
                     typeof(DddRepositoryAttribute),
                     typeof(DddFactoryAttribute),
                     typeof(DddDomainServiceAttribute),

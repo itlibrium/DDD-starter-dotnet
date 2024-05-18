@@ -1,8 +1,8 @@
-using MyCompany.ECommerce.TechnicalStuff.Metadata;
+using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
-[DataStructure]
+[ReadModel]
 public class OrderDetails
 {
     // TODO: subset of data from AllAOderDetails
