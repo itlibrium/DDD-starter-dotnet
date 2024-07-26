@@ -1,6 +1,6 @@
 namespace MyCompany.ECommerce.Nuke.Postgres;
 
-public class PostgresSettings
+public record PostgresSettings
 {
     public const string Key = "Postgres";
         

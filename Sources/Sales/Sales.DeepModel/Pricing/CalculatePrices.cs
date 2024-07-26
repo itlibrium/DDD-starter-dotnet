@@ -32,6 +32,7 @@ public class CalculatePrices(
             priceLists.GetBasePricesFor(clientId, productAmounts),
             offerModifiers.ChooseFor(offerRequest),
             exchangeRates.GetFor(currency));
+
         return Offer.WithBasePrices(productAmounts, basePrices)
             .Apply(offerModifier)
             .Apply(exchangeRate);

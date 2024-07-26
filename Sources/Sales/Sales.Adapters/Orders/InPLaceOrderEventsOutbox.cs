@@ -4,13 +4,10 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
-public class InPlaceOrderEventsOutbox : InPlaceTransactionalOutbox<OrderEvent>, OrderEventsOutbox
-{
-    [SuppressMessage("ReSharper", "SuggestBaseTypeForParameterInConstructor",
+[method: SuppressMessage("ReSharper", "SuggestBaseTypeForParameterInConstructor",
         Justification = "Required by DI container")]
-    public InPlaceOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
-        MessageTypes messageTypes)
-        : base(outboxes, repository, messageTypes) { }
-
+public class InPlaceOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
+    MessageTypes messageTypes) : InPlaceTransactionalOutbox<OrderEvent>(outboxes, repository, messageTypes), OrderEventsOutbox
+{
     protected override string GetPartitionKeyFor(OrderEvent message) => message.OrderId.ToString("N");
 }

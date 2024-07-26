@@ -9,13 +9,11 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class EF : Order.Factory, Order.Repository
+    public class EF([NotNull] RiskManagement riskManagement, SalesDbContext dbContext) 
+        : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, DbOrder> _orders = new();
-        private readonly SalesDbContext _dbContext;
-
-        public EF([NotNull] RiskManagement riskManagement, SalesDbContext dbContext) : base(riskManagement) => 
-            _dbContext = dbContext;
+        private readonly SalesDbContext _dbContext = dbContext;
 
         protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
         {
