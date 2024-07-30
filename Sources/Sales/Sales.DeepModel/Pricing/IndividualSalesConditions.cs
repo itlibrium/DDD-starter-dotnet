@@ -15,6 +15,7 @@ internal class IndividualSalesConditions(
     {
         var quote1 =clientLevelDiscounts.ApplyOn(quote);
         var quote2 = productLevelDiscounts.ApplyOn(quote);
+
         return quote1.Price < quote2.Price ? quote1 : quote2;
     }
 }

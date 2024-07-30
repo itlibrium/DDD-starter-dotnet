@@ -23,6 +23,7 @@ public class OfferModifiers(DiscountsRepository discountsRepository)
         var (clientLevelDiscounts, productLevelDiscounts) = await (
             discountsRepository.GetFor(offerRequest.ClientId),
             discountsRepository.GetFor(offerRequest.ProductAmounts));
+
         return new IndividualSalesConditions(clientLevelDiscounts, productLevelDiscounts);
     }
 

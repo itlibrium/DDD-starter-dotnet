@@ -41,17 +41,16 @@ public static partial class OrderSqlRepository
 
             private static TrackedSet<Order.Item, DbOrderItem> CreateItemsSet(Guid id,
                 IEnumerable<DbOrderItem> dbOrderItems) => new(dbOrderItems,
-                item => new DbOrderItem
-                {
-                    OrderId = id,
-                    ProductId = item.ProductAmount.ProductId.Value,
-                    AmountUnit = item.ProductAmount.Amount.Unit.ToString(),
-                    AmountValue = item.ProductAmount.Amount.Value,
-                    PriceAgreementType = item.PriceAgreement.Type.ToString(),
-                    Price = item.PriceAgreement.Price?.Value,
-                    Currency = item.PriceAgreement.Price?.Currency.ToString(),
-                    PriceAgreementExpiresOn = item.PriceAgreement.ExpiresOn
-                },
+                item => new DbOrderItem(
+                     id,
+                     item.ProductAmount.ProductId.Value,
+                     item.ProductAmount.Amount.Unit.ToString(),
+                     item.ProductAmount.Amount.Value,
+                     item.PriceAgreement.Type.ToString(),
+                     item.PriceAgreement.ExpiresOn,
+                     item.PriceAgreement.Price?.Value,
+                     item.PriceAgreement.Price?.Currency.ToString()!
+                ),
                 dbItem => new Order.Item(
                     new ProductAmount(
                         ProductId.From(dbItem.ProductId),
@@ -76,7 +75,7 @@ public static partial class OrderSqlRepository
                 var (added, updated, deleted) = _items.GetDiff();
                 await transaction.Connection.InsertAllAsync(added, transaction: transaction);
                 await transaction.Connection.UpdateAllAsync(updated,
-                    qualifiers: i => new { i.OrderId, i.ProductId, i.AmountUnit }, 
+                    qualifiers: i => new { i.OrderId, i.ProductId, i.AmountUnit },
                     transaction: transaction);
                 await transaction.Connection.DeleteAllAsync(deleted, transaction: transaction);
             }

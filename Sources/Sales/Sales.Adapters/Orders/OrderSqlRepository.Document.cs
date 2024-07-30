@@ -9,13 +9,11 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class Document : Order.Factory, Order.Repository
+    public class Document([NotNull] RiskManagement riskManagement, IDocumentSession session) 
+        : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();
-        private readonly IDocumentSession _session;
-
-        public Document([NotNull] RiskManagement riskManagement, IDocumentSession session) : base(riskManagement) => 
-            _session = session;
+        private readonly IDocumentSession _session = session;
 
         protected override Order.Data CreateData(OrderId id, Money maxTotalCost)
         {

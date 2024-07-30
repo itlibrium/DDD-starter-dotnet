@@ -1,6 +1,6 @@
 namespace MyCompany.ECommerce.Nuke.Elastic;
 
-public class ElasticSettings
+public record ElasticSettings
 {
     public const string Key = "Elastic";
         

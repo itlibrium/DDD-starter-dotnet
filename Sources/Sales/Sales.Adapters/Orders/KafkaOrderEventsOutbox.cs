@@ -5,14 +5,11 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Sales.Orders;
 
-public class KafkaOrderEventsOutbox : TransactionalKafkaOutbox<OrderEvent>, OrderEventsOutbox
+[method: SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Required by DI container")]
+public class KafkaOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
+    MessageTypes messageTypes) : TransactionalKafkaOutbox<OrderEvent>(outboxes, repository, messageTypes), OrderEventsOutbox
 {
     protected override string Topic => "OrderEvents";
 
-    [SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Required by DI container")]
-    public KafkaOrderEventsOutbox(TransactionalOutboxes outboxes, TransactionalOutboxRepository repository,
-        MessageTypes messageTypes)
-        : base(outboxes, repository, messageTypes) { }
-        
     protected override string GetPartitionKeyFor(OrderEvent message) => message.OrderId.ToString("N");
 }

@@ -3,9 +3,7 @@ using JetBrains.Annotations;
 namespace MyCompany.ECommerce.Search.Products;
 
 [UsedImplicitly]
-internal class ProductElasticRepository : ProductRepository
+internal class ProductElasticRepository(SearchDb db) : ProductRepository
 {
-    private readonly SearchDb _db;
-    
-    public ProductElasticRepository(SearchDb db) => _db = db;
+    private readonly SearchDb _db = db;
 }

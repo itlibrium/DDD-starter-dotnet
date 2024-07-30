@@ -2,18 +2,10 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Payments.Requesting;
 
-public readonly struct RequestPayment : Command
+public readonly struct RequestPayment(Guid requestId, Guid clientId, decimal amount, string currencyCode) : Command
 {
-    public Guid RequestId { get; }
-    public Guid ClientId { get; }
-    public decimal Amount { get; }
-    public string CurrencyCode { get; }
-
-    public RequestPayment(Guid requestId, Guid clientId, decimal amount, string currencyCode)
-    {
-        RequestId = requestId;
-        ClientId = clientId;
-        Amount = amount;
-        CurrencyCode = currencyCode;
-    }
+    public Guid RequestId { get; } = requestId;
+    public Guid ClientId { get; } = clientId;
+    public decimal Amount { get; } = amount;
+    public string CurrencyCode { get; } = currencyCode;
 }
