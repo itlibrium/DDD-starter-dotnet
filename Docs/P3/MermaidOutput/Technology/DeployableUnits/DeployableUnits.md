@@ -12,9 +12,9 @@ This view contains all deployable units for MyCompany e-commerce product.
 ```mermaid
   flowchart TB
     subgraph 0["Application"]
-      1(ecommerce-search)
+      1(ecommerce-monolith)
       class 1 TechnologyPerspective
-      2(ecommerce-monolith)
+      2(ecommerce-search)
       class 2 TechnologyPerspective
     end
     classDef DomainPerspective stroke:#009900
