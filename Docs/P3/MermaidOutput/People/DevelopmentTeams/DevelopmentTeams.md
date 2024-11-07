@@ -11,12 +11,7 @@ This view contains all development teams that build and maintain MyCompany e-com
 
 ```mermaid
   flowchart TB
-    0(Core team)
-    class 0 PeoplePerspective
-    1(Inventory team)
-    class 1 PeoplePerspective
-    2(Supporting team)
-    class 2 PeoplePerspective
+    0([no teams found])
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -31,15 +26,6 @@ This view contains all development teams that build and maintain MyCompany e-com
 #### Domain perspective
 
 [Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
-
-#### People perspective
-
-
-##### Development Teams
-
-[Core team](CoreTeam.md)  
-[Inventory team](InventoryTeam.md)  
-[Supporting team](SupportingTeam.md)  
 
 ### Zoom-out
 

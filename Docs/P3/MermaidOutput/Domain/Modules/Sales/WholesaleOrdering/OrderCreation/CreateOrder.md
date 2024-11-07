@@ -45,9 +45,12 @@ This view contains details information about Create Order use case, including:
     3([Order Factory])
     class 3 DomainPerspective
     0-->|uses|3
-    4([Order Repository])
+    4([Order Header])
     class 4 DomainPerspective
     0-->|uses|4
+    5([Order Repository])
+    class 5 DomainPerspective
+    0-->|uses|5
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -80,12 +83,6 @@ No source code files were found.
     1([Wholesale Client])
     class 1 PeoplePerspective
     1-->|uses|0
-    2([Core team])
-    class 2 PeoplePerspective
-    2-->|develops & maintains|0
-    3([Sales department])
-    class 3 PeoplePerspective
-    3-->|owns|0
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -103,6 +100,10 @@ No source code files were found.
 ##### Ddd Aggregates
 
 [Order](../../Orders/Order.md)  
+
+##### Ddd Entities
+
+[Order Header](../../Orders/OrderHeader.md)  
 
 ##### Ddd Factories
 
@@ -122,17 +123,6 @@ No source code files were found.
 ##### Deployable Units
 
 [ecommerce-monolith](../../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Core team](../../../../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 

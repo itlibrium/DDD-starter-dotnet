@@ -54,15 +54,18 @@ This view contains details information about Place Order use case, including:
     6([Order Factory])
     class 6 DomainPerspective
     0-->|uses|6
-    7([Order Repository])
+    7([Order Header])
     class 7 DomainPerspective
     0-->|uses|7
-    8([Product Amount])
+    8([Order Repository])
     class 8 DomainPerspective
     0-->|uses|8
-    9([Sales Channel])
+    9([Product Amount])
     class 9 DomainPerspective
     0-->|uses|9
+    10([Sales Channel])
+    class 10 DomainPerspective
+    0-->|uses|10
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -88,20 +91,7 @@ No source code files were found.
 
 ## People Perspective
 
-```mermaid
-  flowchart TB
-    0(Place Order)
-    class 0 DomainPerspective
-    1([Core team])
-    class 1 PeoplePerspective
-    1-->|develops & maintains|0
-    2([Sales department])
-    class 2 PeoplePerspective
-    2-->|owns|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No engaged people were found.  
 
 ## Next use cases
 
@@ -119,6 +109,10 @@ No source code files were found.
 ##### Ddd Domain Services
 
 [Calculate Prices](../../Pricing/CalculatePrices.md)  
+
+##### Ddd Entities
+
+[Order Header](../../Orders/OrderHeader.md)  
 
 ##### Ddd Factories
 
@@ -142,17 +136,6 @@ No source code files were found.
 ##### Deployable Units
 
 [ecommerce-monolith](../../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Core team](../../../../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 

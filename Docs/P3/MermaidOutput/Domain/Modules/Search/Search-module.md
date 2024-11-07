@@ -65,20 +65,7 @@ No source code files were found.
 
 ### Engaged people
 
-```mermaid
-  flowchart TB
-    0(Search)
-    class 0 DomainPerspective
-    1([Supporting team])
-    class 1 PeoplePerspective
-    1-->|develops & maintains|0
-    2([Sales department])
-    class 2 PeoplePerspective
-    2-->|owns|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No engaged people were found.  
 
 ## Next use cases
 
@@ -99,17 +86,6 @@ No source code files were found.
 ##### Deployable Units
 
 [ecommerce-search](../../../Technology/DeployableUnits/EcommerceSearch.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Supporting team](../../../People/DevelopmentTeams/SupportingTeam.md)  
 
 ### Zoom-out
 

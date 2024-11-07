@@ -21,20 +21,17 @@
     end
     4<-->|are integrated with|0
     subgraph 6["Development Teams"]
-      7([Core team])
-      8([Inventory team])
-      9([Supporting team])
+      7([no teams found])
     end
     0---6
     6-->|develops & maintains|0
     6---0
-    subgraph 10["Business Units"]
-      11([Inventory department])
-      12([Sales department])
+    subgraph 8["Business Units"]
+      9([no units found])
     end
-    0---10
-    10-->|owns|0
-    10---0
+    0---8
+    8-->|owns|0
+    8---0
     linkStyle 2,4,5,7 stroke:none
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB

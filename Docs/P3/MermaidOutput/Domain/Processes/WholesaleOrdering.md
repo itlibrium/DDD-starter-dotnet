@@ -93,16 +93,14 @@ This view contains details information about Wholesale Ordering business process
     0-->|uses|2
     subgraph 3["Teams"]
       direction TB
-      4([Core team])
-      class 4 PeoplePerspective
+      4([no teams found])
     end
     2---3
     3-->|develops & maintains|2
     3---2
     subgraph 5["Business"]
       direction TB
-      6([Sales department])
-      class 6 PeoplePerspective
+      6([no units found])
     end
     2---5
     5-->|owns|2
@@ -137,17 +135,6 @@ This view contains details information about Wholesale Ordering business process
 ##### Deployable Units
 
 [ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Core team](../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 

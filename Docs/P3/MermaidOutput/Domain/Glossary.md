@@ -129,6 +129,8 @@ This view contains definitions of key domain terms.
 
 **Place Order**
 
+**Order Details Finder**
+
 
 ### Orders
 
@@ -143,11 +145,19 @@ This view contains definitions of key domain terms.
 
 **Price Changes Policy**
 
+**Invoicing Details**
+
 **Order**
 
 **Order Factory**
 
+**Order Header**
+
 **Order Id**
+
+**Order Item Details**
+
+**Order Note**
 
 **Order Price Agreement**
 
@@ -265,6 +275,8 @@ This view contains definitions of key domain terms.
 #### Product Pricing
 
 **Create Order**
+
+**Order Details Finder**
 
 
 ## Search

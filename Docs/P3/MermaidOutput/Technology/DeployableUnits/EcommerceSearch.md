@@ -73,17 +73,7 @@ This view contains details information about ecommerce-search deployable unit, i
 
 ### Related development teams
 
-```mermaid
-  flowchart TB
-    0(ecommerce-search)
-    class 0 TechnologyPerspective
-    1([Supporting team])
-    class 1 PeoplePerspective
-    1-->|maintains|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related development teams were found.  
 
 ## Next use cases
 
@@ -97,13 +87,6 @@ This view contains details information about ecommerce-search deployable unit, i
 ##### Domain Modules
 
 [Search](../../Domain/Modules/Search/Search-module.md)  
-
-#### People perspective
-
-
-##### Development Teams
-
-[Supporting team](../../People/DevelopmentTeams/SupportingTeam.md)  
 
 ### Zoom-out
 

@@ -56,7 +56,17 @@ This view contains details information about Online Ordering domain module, incl
 
 ### Direct building blocks
 
-No direct building blocks were found.  
+```mermaid
+  flowchart TB
+    0(Online Ordering)
+    class 0 DomainPerspective
+    1([Order Details Finder])
+    class 1 DomainPerspective
+    0-->|contains|1
+    classDef DomainPerspective stroke:#009900
+    classDef TechnologyPerspective stroke:#1F41EB
+    classDef PeoplePerspective stroke:#FFF014
+```
 
 ## Technology Perspective
 
@@ -84,20 +94,7 @@ No source code files were found.
 
 ### Engaged people
 
-```mermaid
-  flowchart TB
-    0(Online Ordering)
-    class 0 DomainPerspective
-    1([Core team])
-    class 1 PeoplePerspective
-    1-->|develops & maintains|0
-    2([Sales department])
-    class 2 PeoplePerspective
-    2-->|owns|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No engaged people were found.  
 
 ## Next use cases
 
@@ -107,6 +104,10 @@ No source code files were found.
 
 #### Domain perspective
 
+
+##### Ddd Repositories
+
+[Order Details Finder](OrderDetailsFinder.md)  
 
 ##### Domain Modules
 
@@ -123,17 +124,6 @@ No source code files were found.
 ##### Deployable Units
 
 [ecommerce-monolith](../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Core team](../../../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 

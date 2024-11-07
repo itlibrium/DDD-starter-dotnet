@@ -66,36 +66,7 @@ This view contains details information about Payment business process, including
 
 ### Engaged people
 
-```mermaid
-  flowchart LR
-    subgraph 0["Actors"]
-      direction TB
-      1([no actors found])
-    end
-    2(Payment)
-    class 2 DomainPerspective
-    0-->|uses|2
-    subgraph 3["Teams"]
-      direction TB
-      4([Supporting team])
-      class 4 PeoplePerspective
-    end
-    2---3
-    3-->|develops & maintains|2
-    3---2
-    subgraph 5["Business"]
-      direction TB
-      6([Sales department])
-      class 6 PeoplePerspective
-    end
-    2---5
-    5-->|owns|2
-    5---2
-    linkStyle 1,3,4,6 stroke:none
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No engaged people were found.  
 
 ## Next use cases
 
@@ -116,17 +87,6 @@ This view contains details information about Payment business process, including
 ##### Deployable Units
 
 [ecommerce-monolith](../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Supporting team](../../People/DevelopmentTeams/SupportingTeam.md)  
 
 ### Zoom-out
 

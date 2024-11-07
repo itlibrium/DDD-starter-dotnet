@@ -11,10 +11,7 @@ This view contains all business organizational units that owns MyCompany e-comme
 
 ```mermaid
   flowchart TB
-    0(Inventory department)
-    class 0 PeoplePerspective
-    1(Sales department)
-    class 1 PeoplePerspective
+    0([no units found])
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -29,14 +26,6 @@ This view contains all business organizational units that owns MyCompany e-comme
 #### Domain perspective
 
 [Domain Module Owners](../../Domain/Modules/ModuleOwners.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Inventory department](InventoryDepartment.md)  
-[Sales department](SalesDepartment.md)  
 
 ### Zoom-out
 

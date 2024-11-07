@@ -60,24 +60,36 @@ This view contains details information about Orders domain module, including:
   flowchart TB
     0(Orders)
     class 0 DomainPerspective
-    1([Order])
+    1([Invoicing Details])
     class 1 DomainPerspective
     0-->|contains|1
-    2([Order Factory])
+    2([Order])
     class 2 DomainPerspective
     0-->|contains|2
-    3([Order Id])
+    3([Order Factory])
     class 3 DomainPerspective
     0-->|contains|3
-    4([Order Price Agreement])
+    4([Order Header])
     class 4 DomainPerspective
     0-->|contains|4
-    5([Order Repository])
+    5([Order Id])
     class 5 DomainPerspective
     0-->|contains|5
-    6([Price Agreement Type])
+    6([Order Item Details])
     class 6 DomainPerspective
     0-->|contains|6
+    7([Order Note])
+    class 7 DomainPerspective
+    0-->|contains|7
+    8([Order Price Agreement])
+    class 8 DomainPerspective
+    0-->|contains|8
+    9([Order Repository])
+    class 9 DomainPerspective
+    0-->|contains|9
+    10([Price Agreement Type])
+    class 10 DomainPerspective
+    0-->|contains|10
     classDef DomainPerspective stroke:#009900
     classDef TechnologyPerspective stroke:#1F41EB
     classDef PeoplePerspective stroke:#FFF014
@@ -109,20 +121,7 @@ No source code files were found.
 
 ### Engaged people
 
-```mermaid
-  flowchart TB
-    0(Orders)
-    class 0 DomainPerspective
-    1([Core team])
-    class 1 PeoplePerspective
-    1-->|develops & maintains|0
-    2([Sales department])
-    class 2 PeoplePerspective
-    2-->|owns|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No engaged people were found.  
 
 ## Next use cases
 
@@ -137,6 +136,11 @@ No source code files were found.
 
 [Order](Order.md)  
 
+##### Ddd Entities
+
+[Order Header](OrderHeader.md)  
+[Order Note](OrderNote.md)  
+
 ##### Ddd Factories
 
 [Order Factory](OrderFactory.md)  
@@ -147,7 +151,9 @@ No source code files were found.
 
 ##### Ddd Value Objects
 
+[Invoicing Details](InvoicingDetails.md)  
 [Order Id](OrderId.md)  
+[Order Item Details](OrderItemDetails.md)  
 [Order Price Agreement](OrderPriceAgreement.md)  
 [Price Agreement Type](PriceAgreementType.md)  
 
@@ -166,17 +172,6 @@ No source code files were found.
 ##### Deployable Units
 
 [ecommerce-monolith](../../../../Technology/DeployableUnits/EcommerceMonolith.md)  
-
-#### People perspective
-
-
-##### Business Organizational Units
-
-[Sales department](../../../../People/BusinessOrganizationalUnits/SalesDepartment.md)  
-
-##### Development Teams
-
-[Core team](../../../../People/DevelopmentTeams/CoreTeam.md)  
 
 ### Zoom-out
 

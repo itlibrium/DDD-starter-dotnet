@@ -109,23 +109,7 @@ This view contains details information about ecommerce-monolith deployable unit,
 
 ### Related development teams
 
-```mermaid
-  flowchart TB
-    0(ecommerce-monolith)
-    class 0 TechnologyPerspective
-    1([Core team])
-    class 1 PeoplePerspective
-    1-->|maintains|0
-    2([Inventory team])
-    class 2 PeoplePerspective
-    2-->|maintains|0
-    3([Supporting team])
-    class 3 PeoplePerspective
-    3-->|maintains|0
-    classDef DomainPerspective stroke:#009900
-    classDef TechnologyPerspective stroke:#1F41EB
-    classDef PeoplePerspective stroke:#FFF014
-```
+No related development teams were found.  
 
 ## Next use cases
 
@@ -143,15 +127,6 @@ This view contains details information about ecommerce-monolith deployable unit,
 [Products delivery](../../Domain/Modules/ProductsDelivery/ProductsDelivery-module.md)  
 [Risk management](../../Domain/Modules/RiskManagement/RiskManagement-module.md)  
 [Sales](../../Domain/Modules/Sales/Sales-module.md)  
-
-#### People perspective
-
-
-##### Development Teams
-
-[Core team](../../People/DevelopmentTeams/CoreTeam.md)  
-[Inventory team](../../People/DevelopmentTeams/InventoryTeam.md)  
-[Supporting team](../../People/DevelopmentTeams/SupportingTeam.md)  
 
 ### Zoom-out
 
