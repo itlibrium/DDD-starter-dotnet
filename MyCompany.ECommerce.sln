@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{B442AF5F-B127-45EF-B835-714A187D3F0A}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\Sales\SalesDomainModuleInfo.json = Sources\Sales\SalesDomainModuleInfo.json
+		Sources\Sales\SalesDomainModelInfo.json = Sources\Sales\SalesDomainModelInfo.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contacts", "Contacts", "{6114F446-78E7-49DC-BA34-C9904FE7838B}"
@@ -68,17 +68,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalStuff.Postgres", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{BFB7ABD8-A1AC-41A9-B40B-C2F9389ABAF0}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\Payments\PaymentsDomainModuleInfo.json = Sources\Payments\PaymentsDomainModuleInfo.json
+		Sources\Payments\PaymentModelInfo.json = Sources\Payments\PaymentModelInfo.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RiskManagement", "RiskManagement", "{B132FA8E-B99A-420A-919D-5DA77555517C}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\RiskManagement\RiskManagementModuleInfo.json = Sources\RiskManagement\RiskManagementModuleInfo.json
+		Sources\RiskManagement\RiskManagementModelInfo.json = Sources\RiskManagement\RiskManagementModelInfo.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductsDelivery", "ProductsDelivery", "{A1B88082-6C3F-4A8E-89E7-ABFD08A5A89E}"
 	ProjectSection(SolutionItems) = preProject
-		Sources\ProductsDelivery\ProductsDeliveryDomainModuleInfo.json = Sources\ProductsDelivery\ProductsDeliveryDomainModuleInfo.json
+		Sources\ProductsDelivery\ProductsDeliveryModelInfo.json = Sources\ProductsDelivery\ProductsDeliveryModelInfo.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.ProcessModel", "Sources\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj", "{F0906A93-243B-4BD0-A10F-FD6975F7DF10}"
@@ -106,6 +106,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocsGenerator", "Docs\P3\DocsGenerator\DocsGenerator.csproj", "{E881ACB1-F271-4CD8-B01D-4378E256CD6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Search", "Search", "{77FDB1B2-4CDF-4787-AE38-5090B9101CE5}"
+	ProjectSection(SolutionItems) = preProject
+		Sources\Search\SearchModelInfo.json = Sources\Search\SearchModelInfo.json
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Startup", "Sources\Search.Startup\Search.Startup.csproj", "{76F474F0-ABF9-45ED-B4DA-52411E5B7D2B}"
 EndProject

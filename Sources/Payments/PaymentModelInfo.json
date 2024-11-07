@@ -1,5 +1,5 @@
 {
-  "DomainModule": "Payments",
+  "ModelBoundary": "Payments",
   "BusinessOwner": "Sales department",
   "DevelopmentOwner": "Supporting team"
 }

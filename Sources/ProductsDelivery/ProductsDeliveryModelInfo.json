@@ -1,5 +1,5 @@
 {
-  "DomainModule": "Products Delivery",
+  "ModelBoundary": "Products Delivery",
   "BusinessOwner": "Inventory department",
   "DevelopmentOwner": "Inventory team"
 }
