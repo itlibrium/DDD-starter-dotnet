@@ -22,14 +22,14 @@ public class PostgresConnectionProvider : DbConnectionProvider, IDisposable, IAs
         return connection;
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         if (_oneOffConnections is not null)
             foreach (var connection in _oneOffConnections)
                 connection.Dispose();
     }
 
-    public async ValueTask DisposeAsync()
+    public virtual async ValueTask DisposeAsync()
     {
         if (_oneOffConnections is not null)
             foreach (var connection in _oneOffConnections)

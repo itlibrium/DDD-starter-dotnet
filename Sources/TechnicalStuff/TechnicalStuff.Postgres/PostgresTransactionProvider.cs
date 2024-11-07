@@ -59,7 +59,7 @@ public class PostgresTransactionProvider : PostgresConnectionProvider, DbTransac
         await transaction.Connection!.DisposeAsync();
     }
         
-    public void Dispose()
+    public override void Dispose()
     {
         base.Dispose();
         if (_transactions is not null)
@@ -67,7 +67,7 @@ public class PostgresTransactionProvider : PostgresConnectionProvider, DbTransac
                 transaction.Dispose();
     }
 
-    public async ValueTask DisposeAsync()
+    public override async ValueTask DisposeAsync()
     {
         await base.DisposeAsync();
         if (_transactions is not null)
