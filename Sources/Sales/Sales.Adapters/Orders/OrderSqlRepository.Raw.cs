@@ -9,7 +9,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public partial class Raw(RiskManagement riskManagement, MainDb db) : Order.Factory(riskManagement), Order.Repository
+    public partial class Raw(RiskManagementIntegration riskManagement, MainDb db) : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, Data> _orders = new();
 

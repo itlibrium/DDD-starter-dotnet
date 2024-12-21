@@ -9,7 +9,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 public partial class Order
 {
     [DddFactory]
-    public abstract class Factory(RiskManagement riskManagement)
+    public abstract class Factory(RiskManagementIntegration riskManagement)
     {
         public async Task<Order> NewWithMaxTotalCostFor(ClientId clientId)
         {

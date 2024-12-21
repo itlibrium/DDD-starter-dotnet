@@ -13,7 +13,7 @@ using P3Model.Annotations.People;
 namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
 
 [UsedImplicitly]
-[Actor(Actors.RetailClient)]
+
 public class PlaceOrderHandler(
     CalculatePrices calculatePrices,
     Order.Repository repository,
@@ -24,6 +24,7 @@ public class PlaceOrderHandler(
     : CommandHandler<PlaceOrder, OrderPlaced>
 {
     [PublicContract]
+    [Actor(Actors.RetailClient)]
     [UseCase(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
     public async Task<OrderPlaced> Handle(PlaceOrder command)
     {

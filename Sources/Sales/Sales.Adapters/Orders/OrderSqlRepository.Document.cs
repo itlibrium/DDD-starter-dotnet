@@ -8,7 +8,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 
 public static partial class OrderSqlRepository
 {
-    public class Document(RiskManagement riskManagement, IDocumentSession session)
+    public class Document(RiskManagementIntegration riskManagement, IDocumentSession session)
         : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, (DbOrder OrderData, Guid Version)> _orders = new();

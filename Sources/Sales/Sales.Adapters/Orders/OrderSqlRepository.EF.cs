@@ -10,7 +10,7 @@ namespace MyCompany.ECommerce.Sales.Orders;
 public static partial class OrderSqlRepository
 {
     [UsedImplicitly]
-    public class EF(RiskManagement riskManagement, SalesDbContext dbContext)
+    public class EF(RiskManagementIntegration riskManagement, SalesDbContext dbContext)
         : Order.Factory(riskManagement), Order.Repository
     {
         private readonly Dictionary<OrderId, DbOrder> _orders = new();

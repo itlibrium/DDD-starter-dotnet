@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Payments\Payments.ProcessModel\Payments.ProcessModel.csproj" />
+      <ProjectReference Include="..\..\RiskManagement\RiskManagement.ProcessModel\RiskManagement.ProcessModel.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Crud.Ef\TechnicalStuff.Crud.Ef.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Ef\TechnicalStuff.Ef.csproj" />
       <ProjectReference Include="..\..\TechnicalStuff\TechnicalStuff.Outbox.Kafka\TechnicalStuff.Outbox.Kafka.csproj" />

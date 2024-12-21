@@ -8,7 +8,6 @@ using P3Model.Annotations.Technology.CleanArchitecture;
 [assembly: InternalsVisibleTo("MyCompany.ECommerce.Sales.IntegrationTests")]
 [assembly: EntitiesLayer]
 [assembly: DomainModel]
-[assembly: DddBoundedContext("Sales")]
 
 namespace MyCompany.ECommerce.Sales;
 
