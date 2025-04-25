@@ -7,10 +7,9 @@ using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class GetOfferHandler(
@@ -19,7 +18,6 @@ public class GetOfferHandler(
     CalculatePrices calculatePrices)
     : CommandHandler<GetOffer, OfferCalculated>
 {
-    [UseCase(nameof(GetOffer), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<OfferCalculated> Handle(GetOffer command)
     {

@@ -10,10 +10,9 @@ using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
+namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
 [UsedImplicitly]
-
 public class PlaceOrderHandler(
     CalculatePrices calculatePrices,
     Order.Repository repository,
@@ -25,7 +24,6 @@ public class PlaceOrderHandler(
 {
     [PublicContract]
     [Actor(Actors.RetailClient)]
-    [UseCase(nameof(PlaceOrder), Process = OnlineOrderingProcess.Name)]
     public async Task<OrderPlaced> Handle(PlaceOrder command)
     {
             var (clientId, offer) = CreateDomainModelFrom(command);

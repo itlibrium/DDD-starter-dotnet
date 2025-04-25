@@ -3,16 +3,14 @@ using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.Products;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class AddToOrderHandler(Order.Repository orders, OrderEventsOutbox eventsOutbox)
     : CommandHandler<AddToOrder, AddedToOrder>
 {
-    [UseCase(nameof(AddToOrder), WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<AddedToOrder> Handle(AddToOrder command)
     {

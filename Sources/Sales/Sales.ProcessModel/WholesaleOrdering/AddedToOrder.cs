@@ -1,4 +1,4 @@
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public class AddedToOrder(Guid orderId, Guid productId, int amount, string unitCode)
     : OrderEvent

@@ -2,10 +2,9 @@ using JetBrains.Annotations;
 using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.Time;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class PlaceOrderHandler(
@@ -15,7 +14,6 @@ public class PlaceOrderHandler(
     OrderEventsOutbox eventsOutbox)
     : CommandHandler<PlaceOrder, OrderPlaced>
 {
-    [UseCase(nameof(PlaceOrder), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<OrderPlaced> Handle(PlaceOrder command)
     {

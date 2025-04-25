@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing;
+namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
 public readonly struct CartPriced(DateTime pricedOn, Guid clientId, string currency, ImmutableArray<QuoteDto> quotes)
 {

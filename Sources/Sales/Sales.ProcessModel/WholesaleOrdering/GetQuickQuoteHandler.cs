@@ -4,18 +4,15 @@ using MyCompany.ECommerce.Sales.Commons;
 using MyCompany.ECommerce.Sales.Pricing;
 using MyCompany.ECommerce.Sales.Products;
 using MyCompany.ECommerce.Sales.SalesChannels;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class GetQuickQuoteHandler(CalculatePrices calculatePrices) : CommandHandler<GetQuickQuote, QuickQuoteCalculated>
 {
-    [UseCase(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<QuickQuoteCalculated> Handle(GetQuickQuote command)
     {

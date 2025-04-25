@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPlacement;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using PlaceOrder = MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement.PlaceOrder;
+using PlaceOrder = MyCompany.ECommerce.Sales.OnlineOrdering.PlaceOrder;
 
 namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
@@ -10,10 +9,10 @@ namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 [ApiVersion("1")]
 public class OrdersController : ControllerBase
 {
-    private readonly CommandHandler<PlaceOrder, OrderPlaced> _placeOrderHandler;
+    private readonly CommandHandler<PlaceOrder, WholesaleOrdering.OrderPlaced> _placeOrderHandler;
     private readonly OrderDetailsFinder _orderDetailsFinder;
 
-    public OrdersController(CommandHandler<PlaceOrder, OrderPlaced> placeOrderHandler,
+    public OrdersController(CommandHandler<PlaceOrder, WholesaleOrdering.OrderPlaced> placeOrderHandler,
         OrderDetailsFinder orderDetailsFinder)
     {
         _placeOrderHandler = placeOrderHandler;

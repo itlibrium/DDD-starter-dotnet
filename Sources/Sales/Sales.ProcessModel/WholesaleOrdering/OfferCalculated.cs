@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public class OfferCalculated(Guid orderId, ImmutableArray<QuoteDto> quotes)
 {

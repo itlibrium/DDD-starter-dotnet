@@ -1,4 +1,4 @@
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public class OrderCreated(Guid orderId, Guid clientId, string salesChannel) : OrderEvent
 {

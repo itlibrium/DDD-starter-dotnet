@@ -2,7 +2,6 @@ using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering;

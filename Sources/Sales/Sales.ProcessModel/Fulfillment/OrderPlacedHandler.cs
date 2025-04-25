@@ -1,11 +1,12 @@
 using JetBrains.Annotations;
+using MyCompany.ECommerce.Sales.OnlineOrdering;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 
 namespace MyCompany.ECommerce.Sales.Fulfillment;
 
-using OnlineOrderPlaced = OnlineOrdering.OrderPlacement.OrderPlaced;
-using WholesaleOrderPlaced = WholesaleOrdering.OrderPlacement.OrderPlaced;
+using OnlineOrderPlaced = OrderPlaced;
+using WholesaleOrderPlaced = WholesaleOrdering.OrderPlaced;
 
 [UsedImplicitly]
 public class OrderPlacedHandler : DomainEventHandler<OnlineOrderPlaced>, DomainEventHandler<WholesaleOrderPlaced>

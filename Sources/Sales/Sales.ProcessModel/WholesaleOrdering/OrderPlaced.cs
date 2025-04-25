@@ -1,8 +1,5 @@
-using P3Model.Annotations.Domain;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
-
-[Event]
 public class OrderPlaced(Guid orderId, Guid clientId, DateTime placedOn) : OrderEvent
 {
     public Guid OrderId { get; } = orderId;

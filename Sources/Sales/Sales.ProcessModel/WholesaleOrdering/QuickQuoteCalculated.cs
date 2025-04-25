@@ -1,4 +1,4 @@
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public class QuickQuoteCalculated(Guid clientId, QuoteDto quote)
 {

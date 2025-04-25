@@ -1,6 +1,6 @@
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public readonly struct GetOffer(Guid orderId, string currencyCode) : Command
 {

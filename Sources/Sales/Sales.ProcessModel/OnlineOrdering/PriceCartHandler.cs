@@ -7,15 +7,13 @@ using MyCompany.ECommerce.Sales.Products;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.CartPricing;
+namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
 [UsedImplicitly]
 public class PriceCartHandler(CalculatePrices calculatePrices) : CommandHandler<PriceCart, CartPriced>
 {
-    [UseCase(nameof(PriceCart), Process = OnlineOrderingProcess.Name)]
     [Actor(Actors.RetailClient)]
     public async Task<CartPriced> Handle(PriceCart command)
     {

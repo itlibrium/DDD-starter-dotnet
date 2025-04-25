@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public readonly struct ConfirmOffer(Guid orderId, string currencyCode, ImmutableArray<QuoteDto> quotes)
     : Command

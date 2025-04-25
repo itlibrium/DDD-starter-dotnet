@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.ECommerce.Sales.Orders;
-using MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
 namespace MyCompany.ECommerce.Sales.WholesaleOrdering;

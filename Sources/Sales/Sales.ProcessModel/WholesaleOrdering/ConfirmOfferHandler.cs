@@ -9,10 +9,9 @@ using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.Sales.Time;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class ConfirmOfferHandler(
@@ -26,7 +25,6 @@ public class ConfirmOfferHandler(
 {
     private readonly TimeSpan _offerExpirationTime = TimeSpan.FromHours(24);
 
-    [UseCase(nameof(ConfirmOffer), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<OfferConfirmed> Handle(ConfirmOffer command)
     {

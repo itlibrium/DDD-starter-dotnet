@@ -1,6 +1,6 @@
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.ProductPricing;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public readonly struct GetQuickQuote(Guid clientId, Guid productId, int amount, string unitCode, string currencyCode)
     : Command

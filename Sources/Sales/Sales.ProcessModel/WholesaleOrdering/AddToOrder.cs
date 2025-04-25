@@ -1,6 +1,6 @@
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderModification;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 public readonly struct AddToOrder(Guid orderId, Guid productId, int amount, string unitCode)
     : Command

@@ -3,7 +3,7 @@ using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
 using P3Model.Annotations.Domain;
 
-namespace MyCompany.ECommerce.Sales.OnlineOrdering.OrderPlacement;
+namespace MyCompany.ECommerce.Sales.OnlineOrdering;
 
 [PublicContract]
 [Command]

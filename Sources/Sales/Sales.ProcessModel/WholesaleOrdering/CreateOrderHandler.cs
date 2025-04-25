@@ -4,10 +4,9 @@ using MyCompany.ECommerce.Sales.Orders;
 using MyCompany.ECommerce.Sales.SalesChannels;
 using MyCompany.ECommerce.TechnicalStuff;
 using MyCompany.ECommerce.TechnicalStuff.ProcessModel;
-using P3Model.Annotations.Domain;
 using P3Model.Annotations.People;
 
-namespace MyCompany.ECommerce.Sales.WholesaleOrdering.OrderCreation;
+namespace MyCompany.ECommerce.Sales.WholesaleOrdering;
 
 [UsedImplicitly]
 public class CreateOrderHandler(
@@ -18,7 +17,6 @@ public class CreateOrderHandler(
 {
     private readonly Order.Factory _orderFactory;
 
-    [UseCase(nameof(CreateOrder), Process = WholesaleOrderingProcess.Name)]
     [Actor(Actors.WholesaleClient)]
     public async Task<OrderCreated> Handle(CreateOrder command)
     {
