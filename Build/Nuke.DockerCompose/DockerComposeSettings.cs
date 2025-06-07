@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Nuke.Common.Tooling;
 
-namespace Nuke.DockerCompose;
+namespace MyCompany.ECommerce.Nuke.DockerCompose;
 
 [Serializable]
 public class DockerComposeSettings : ToolSettings

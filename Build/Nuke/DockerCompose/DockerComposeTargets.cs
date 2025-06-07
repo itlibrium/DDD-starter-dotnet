@@ -5,7 +5,6 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.Docker;
-using Nuke.DockerCompose;
 using static MyCompany.ECommerce.Nuke.Paths;
 using static MyCompany.ECommerce.Nuke.Environment;
 using static MyCompany.ECommerce.Nuke.Certs.CertsTargets;

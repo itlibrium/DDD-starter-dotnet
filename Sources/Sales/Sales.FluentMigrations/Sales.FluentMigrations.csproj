@@ -6,6 +6,8 @@
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>true</ImplicitUsings>
+        <AssemblyName>MyCompany.ECommerce.Sales.FluentMigrations</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Sales.FluentMigrations</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyCompany.Crm.Sales.Database.Sql.EF;
+using MyCompany.ECommerce.Sales.Database.Sql.EF;
 using MyCompany.ECommerce.Sales.Database.Sql.EF;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
+namespace MyCompany.ECommerce.Sales.Database.Sql.EF.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
     [Migration("20221229083720_Initial")]
@@ -25,7 +25,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Database.Sql.EF.DbOrder", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Database.Sql.EF.DbOrder", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
@@ -42,7 +42,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Orders.OrderHeader", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                     b.ToTable("OrderHeaders");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Orders.OrderNote", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,9 +91,9 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                     b.ToTable("OrderNotes");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Database.Sql.EF.DbOrder", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Database.Sql.EF.DbOrder", b =>
                 {
-                    b.OwnsMany("MyCompany.Crm.Sales.Orders.Order+Item", "Items", b1 =>
+                    b.OwnsMany("MyCompany.ECommerce.Sales.Orders.Order+Item", "Items", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uuid");
@@ -111,7 +111,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
 
-                            b1.OwnsOne("MyCompany.Crm.Sales.Orders.Order+PriceAgreement", "PriceAgreement", b2 =>
+                            b1.OwnsOne("MyCompany.ECommerce.Sales.Orders.Order+PriceAgreement", "PriceAgreement", b2 =>
                                 {
                                     b2.Property<Guid>("ItemOrderId")
                                         .HasColumnType("uuid");
@@ -132,7 +132,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("ItemOrderId", "ItemId1");
 
-                                    b2.OwnsOne("MyCompany.Crm.Sales.Commons.Money", "Price", b3 =>
+                                    b2.OwnsOne("MyCompany.ECommerce.Sales.Commons.Money", "Price", b3 =>
                                         {
                                             b3.Property<Guid>("PriceAgreementItemOrderId")
                                                 .HasColumnType("uuid");
@@ -157,7 +157,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.Navigation("Price");
                                 });
 
-                            b1.OwnsOne("MyCompany.Crm.Sales.Products.ProductAmount", "ProductAmount", b2 =>
+                            b1.OwnsOne("MyCompany.ECommerce.Sales.Products.ProductAmount", "ProductAmount", b2 =>
                                 {
                                     b2.Property<Guid>("ItemOrderId")
                                         .HasColumnType("uuid");
@@ -175,7 +175,7 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("ItemOrderId", "ItemId1");
 
-                                    b2.OwnsOne("MyCompany.Crm.Sales.Products.Amount", "Amount", b3 =>
+                                    b2.OwnsOne("MyCompany.ECommerce.Sales.Products.Amount", "Amount", b3 =>
                                         {
                                             b3.Property<Guid>("ProductAmountItemOrderId")
                                                 .HasColumnType("uuid");
@@ -211,9 +211,9 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Orders.OrderHeader", b =>
                 {
-                    b.OwnsOne("MyCompany.Crm.Sales.Orders.InvoicingDetails", "InvoicingDetails", b1 =>
+                    b.OwnsOne("MyCompany.ECommerce.Sales.Orders.InvoicingDetails", "InvoicingDetails", b1 =>
                         {
                             b1.Property<Guid>("OrderHeaderId")
                                 .HasColumnType("uuid");
@@ -238,14 +238,14 @@ namespace MyCompany.Crm.Sales.Database.Sql.EF.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderNote", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Orders.OrderNote", b =>
                 {
-                    b.HasOne("MyCompany.Crm.Sales.Orders.OrderHeader", null)
+                    b.HasOne("MyCompany.ECommerce.Sales.Orders.OrderHeader", null)
                         .WithMany("Notes")
                         .HasForeignKey("OrderHeaderId");
                 });
 
-            modelBuilder.Entity("MyCompany.Crm.Sales.Orders.OrderHeader", b =>
+            modelBuilder.Entity("MyCompany.ECommerce.Sales.Orders.OrderHeader", b =>
                 {
                     b.Navigation("Notes");
                 });

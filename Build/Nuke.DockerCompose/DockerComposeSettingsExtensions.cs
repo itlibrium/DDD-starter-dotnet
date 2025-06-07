@@ -3,7 +3,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using Nuke.Common.Tooling;
 
-namespace Nuke.DockerCompose;
+namespace MyCompany.ECommerce.Nuke.DockerCompose;
 
 public static class DockerComposeSettingsExtensions
 {

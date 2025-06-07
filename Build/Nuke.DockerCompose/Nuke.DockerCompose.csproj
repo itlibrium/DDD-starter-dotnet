@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <AssemblyName>MyCompany.ECommerce.Nuke.DockerCompose</AssemblyName>
+        <RootNamespace>MyCompany.ECommerce.Nuke.DockerCompose</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

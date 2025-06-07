@@ -1,6 +1,6 @@
 using FluentMigrator;
 
-namespace Sales.FluentMigrations.Raw._2022;
+namespace MyCompany.ECommerce.Sales.FluentMigrations.Raw._2022;
 
 [Migration(2022_12_01)]
 public class AddOrderTables : Migration
